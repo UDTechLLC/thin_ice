@@ -1,0 +1,29 @@
+//
+//  PrefixHeader.pch
+//  ThinIce
+//
+//  Created by Dima Shapovalov on 16.02.16.
+//  Copyright © 2016 udtech.co. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+    #define MR_SHORTHAND
+    #import <MagicalRecord/MagicalRecord.h>
+#endif
+
+#import "Header.h"
+#import "BaseViewController.h"
+#import "MBProgressHUD.h"
+#import "HelperManager.h"
+#import "ServerManager.h"
+#import "FHSTwitterEngine.h"
+#import "DatabaseEntities.h"
+#import "CustomNavigationBar.h"
+
+#endif /* PrefixHeader_pch */
