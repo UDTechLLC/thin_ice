@@ -17,7 +17,6 @@
 		D8867E6C1C732D27005F7B6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8867E6B1C732D27005F7B6D /* CoreGraphics.framework */; };
 		D8867E751C735677005F7B6D /* Thin_ice_background_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8867E721C735677005F7B6D /* Thin_ice_background_320@2x.png */; };
 		D8867E761C735677005F7B6D /* Thin_ice_background_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8867E731C735677005F7B6D /* Thin_ice_background_375@2x.png */; };
-		D8867E771C735677005F7B6D /* Thin_ice_background_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8867E741C735677005F7B6D /* Thin_ice_background_414@3x.png */; };
 		D8867E7B1C735724005F7B6D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E7A1C735724005F7B6D /* BaseViewController.m */; };
 		D8867E841C736715005F7B6D /* HelperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E831C736715005F7B6D /* HelperManager.m */; };
 		D8867E881C736BF7005F7B6D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8867E871C736BF7005F7B6D /* FBSDKLoginKit.framework */; };
@@ -69,7 +68,6 @@
 		D8867E6E1C732D55005F7B6D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D8867E721C735677005F7B6D /* Thin_ice_background_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thin_ice_background_320@2x.png"; sourceTree = "<group>"; };
 		D8867E731C735677005F7B6D /* Thin_ice_background_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thin_ice_background_375@2x.png"; sourceTree = "<group>"; };
-		D8867E741C735677005F7B6D /* Thin_ice_background_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thin_ice_background_414@3x.png"; sourceTree = "<group>"; };
 		D8867E791C735724005F7B6D /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		D8867E7A1C735724005F7B6D /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		D8867E821C736715005F7B6D /* HelperManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperManager.h; sourceTree = "<group>"; };
@@ -332,7 +330,6 @@
 		D8E1344D1C74C4A100B9D813 /* IP6Plus */ = {
 			isa = PBXGroup;
 			children = (
-				D8867E741C735677005F7B6D /* Thin_ice_background_414@3x.png */,
 				D8EDC9A01C75F28F00F5F524 /* HomeScreen */,
 			);
 			name = IP6Plus;
@@ -452,7 +449,6 @@
 				D8EDC9A31C75F2B400F5F524 /* btn_sign_up_active_375@2x.png in Resources */,
 				D8EDC9A41C75F2B400F5F524 /* btn_sign_up_normal_375@2x.png in Resources */,
 				D8867E751C735677005F7B6D /* Thin_ice_background_320@2x.png in Resources */,
-				D8867E771C735677005F7B6D /* Thin_ice_background_414@3x.png in Resources */,
 				D8EDC99D1C75F28600F5F524 /* btn_sign_up_active_320@2x.png in Resources */,
 				D8867E761C735677005F7B6D /* Thin_ice_background_375@2x.png in Resources */,
 				D8867E5F1C732D02005F7B6D /* Assets.xcassets in Resources */,
