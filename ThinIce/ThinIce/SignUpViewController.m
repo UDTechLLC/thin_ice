@@ -11,18 +11,18 @@
 #import "UserInfoRegViewController.h"
 #import "LoginRegViewController.h"
 
-@interface SignUpViewController () <UITextFieldDelegate, UIScrollViewDelegate> {
+@interface SignUpViewController () <UITextFieldDelegate> {
     
     LoginRegViewController          *loginRegistrationViewController;
     UserInfoRegViewController       *userInfoRegistrationViewController;
     BluetoothConnectViewController  *bluetoothConnectViewController;
     
+    int currentPageSizeWidth;
     int currentPage;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCreateAccount;
-
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @end
@@ -31,7 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    [self addLoginBackgroundImage];
     [self createAccountButton];
     [self createScrollViewAndPageControl];
     [self createScrollViewStack];
@@ -76,20 +77,21 @@
 }
 
 - (IBAction)changeView:(id)sender {
-    currentPage += self.scrollView.frame.size.width;
+    currentPageSizeWidth += self.scrollView.frame.size.width;
+    currentPage += pluseOnePage;
     [self changeTutorialScreenWithButton];
 }
 
 - (void)createScrollViewAndPageControl {
     
     currentPage = 0;
-    [self.pageControl setPageIndicatorTintColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0]];
+    currentPageSizeWidth = 0;
+    [self.pageControl setPageIndicatorTintColor:[[HelperManager sharedServer] colorwithHexString:@"#6a818f" alpha:1.0]];
     [self.pageControl setCurrentPageIndicatorTintColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0]];
     self.pageControl.numberOfPages = 3;
     self.pageControl.currentPage = 0;
     
     self.scrollView.layer.cornerRadius = 13;
-    self.scrollView.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.scrollView.contentInset = UIEdgeInsetsZero;
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
@@ -98,22 +100,15 @@
 
 - (void)createScrollViewStack {
     
-    loginRegistrationViewController = [self.storyboard instantiateViewControllerWithIdentifier:kLoginRegViewController];
-    userInfoRegistrationViewController = [self.storyboard instantiateViewControllerWithIdentifier:kUserInfoRegViewController];
-    bluetoothConnectViewController = [self.storyboard instantiateViewControllerWithIdentifier:kBluetoothConnectViewController];
-}
-
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    CGFloat pageWidth = scrollView.bounds.size.width;
-    int page = scrollView.contentOffset.x / pageWidth;
-    [self.pageControl setCurrentPage:page];
+    loginRegistrationViewController = [self.storyboard instantiateViewControllerWithIdentifier:kLoginRegViewControllerID];
+    userInfoRegistrationViewController = [self.storyboard instantiateViewControllerWithIdentifier:kUserInfoRegViewControllerID];
+    bluetoothConnectViewController = [self.storyboard instantiateViewControllerWithIdentifier:kBluetoothConnectViewControllerID];
 }
 
 - (void)changeTutorialScreenWithButton {
     
-    [self.scrollView scrollRectToVisible:CGRectMake(currentPage , 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height) animated:YES];
+    [self.scrollView scrollRectToVisible:CGRectMake(currentPageSizeWidth , 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height) animated:YES];
+    [self.pageControl setCurrentPage:currentPage];
 }
 
 - (IBAction)dismissViewControllerAction:(id)sender {

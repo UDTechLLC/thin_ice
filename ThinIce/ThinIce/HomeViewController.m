@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self addLoginBackgroundImage];
     [self createFaceBookTwitter];
     [self createViewController];
 }
@@ -47,11 +48,14 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    
-    if(kScreenWidth == 375) {
-        self.signInButton.center = CGPointMake(187.5, 301.5);
+    if (kScreenWidth == 320) {
+        self.signInButton.center = CGPointMake(kScreenWidth / 2, 257);
+    } else if(kScreenWidth == 375) {
+        self.signInButton.center = CGPointMake(kScreenWidth / 2, 301.5);
     } else if (kScreenWidth == 414) {
-        self.signInButton.center = CGPointMake(187.5, 301.5);
+        self.signInButton.frame = CGRectMake(0, 0, 172, 184);
+        self.signInButton.center = CGPointMake(kScreenWidth / 2, 333.5);
+        NSLog(@"%@", NSStringFromCGRect(self.signInButton.frame));
     }
     [super viewDidLayoutSubviews];
 }

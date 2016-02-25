@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "LeftMenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,23 @@
     // Override point for customization after application launch.
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"ThinIce.sqlite"];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:kMainStoryBoardIdentifier bundle: nil];
+    LeftMenuViewController *leftMenu = (LeftMenuViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: kLeftMenuViewControllerID];
+    
+    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
+    [SlideNavigationController sharedInstance].menuRevealAnimationDuration = .18;
+    [SlideNavigationController sharedInstance].enableShadow = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidClose object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSLog(@"Closed %@", note.userInfo[@"menu"]);
+    }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidOpen object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSLog(@"Opened %@", note.userInfo[@"menu"]);
+    }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidReveal object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSLog(@"Revealed %@", note.userInfo[@"menu"]);
+    }];
     
     return YES;
 }

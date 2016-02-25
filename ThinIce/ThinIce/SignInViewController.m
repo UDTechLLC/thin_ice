@@ -7,6 +7,7 @@
 //
 
 #import "SignInViewController.h"
+#import "DashboardViewController.h"
 
 static NSString*const kLoginKey                                         = @"Login";
 static NSString*const kPasswordKey                                      = @"Password";
@@ -33,6 +34,7 @@ static NSString*const kPasswordKey                                      = @"Pass
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self addLoginBackgroundImage];
     [self createViewController];
 }
 
@@ -96,6 +98,7 @@ static NSString*const kPasswordKey                                      = @"Pass
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField endEditing:YES];
+    [self performSegueWithIdentifier:kDashboardSegueIdentifier sender:nil];
     return YES;
 }
 

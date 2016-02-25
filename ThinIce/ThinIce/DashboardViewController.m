@@ -8,7 +8,9 @@
 
 #import "DashboardViewController.h"
 
-@interface DashboardViewController ()
+@interface DashboardViewController () <SlideNavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewPhoto;
 
 @end
 
@@ -16,22 +18,99 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self addDashboardBackgroundImage];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = NO;
+    [self translucentNavigationBar: YES];
+    [super viewWillAppear:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillLayoutSubviews {
+        [self createViewController];
 }
-*/
+
+- (void)createViewController {
+    
+        self.imageViewPhoto.image = [UIImage imageNamed:@"SlideMenuSelectedImage"];
+    
+        CGFloat lineWidth    = 5.0;
+        UIBezierPath *path   = [self roundedPolygonPathWithRect:self.imageViewPhoto.frame
+                                                      lineWidth:lineWidth
+                                                          sides:6
+                                                   cornerRadius:30];
+    
+        CAShapeLayer *mask   = [CAShapeLayer layer];
+        mask.path            = path.CGPath;
+        mask.lineWidth       = lineWidth;
+        mask.strokeColor     = [UIColor clearColor].CGColor;
+        mask.fillColor       = [UIColor whiteColor].CGColor;
+        self.imageViewPhoto.layer.mask = mask;
+    
+        CAShapeLayer *border = [CAShapeLayer layer];
+        border.path          = path.CGPath;
+        border.lineWidth     = lineWidth;
+        border.strokeColor   = [UIColor blackColor].CGColor;
+        border.fillColor     = [UIColor clearColor].CGColor;
+        [self.imageViewPhoto.layer addSublayer:border];
+}
+
+- (UIBezierPath *)roundedPolygonPathWithRect:(CGRect)rect
+                                   lineWidth:(CGFloat)lineWidth
+                                       sides:(NSInteger)sides
+                                cornerRadius:(CGFloat)cornerRadius
+{
+    UIBezierPath *path  = [UIBezierPath bezierPath];
+
+    CGFloat theta       = 2.0 * M_PI / sides;                           // how much to turn at every corner
+    CGFloat offset      = cornerRadius * tan(theta / 2.0);              // offset from which to start rounding corners
+    CGFloat width = MIN(rect.size.width, rect.size.height);             // width of the square
+
+    // Calculate Center
+    CGPoint center = CGPointMake(rect.origin.x + width / 2.0, rect.origin.y + width / 2.0);
+    // Radius of the circle that encircles the polygon
+    // Notice that the radius is adjusted for the corners, that way the largest outer
+    // dimension of the resulting shape is always exactly the width - linewidth
+    CGFloat radius = (width - lineWidth + cornerRadius - (cos(theta) * cornerRadius)) / 2.0;
+
+    // Start drawing at a point, which by default is at the right hand edge
+    // but can be offset
+    CGFloat angle = M_PI / 2;
+
+    CGPoint corner = CGPointMake(center.x + (radius - cornerRadius) * cos(angle), center.y + (radius - cornerRadius) * sin(angle));
+    [path moveToPoint:(CGPointMake(corner.x + cornerRadius * cos(angle + theta), corner.y + cornerRadius * sin(angle + theta)))];
+
+    for (NSInteger side = 0; side < sides; side++)
+    {
+
+        angle += theta;
+
+        CGPoint corner = CGPointMake(center.x + (radius - cornerRadius) * cos(angle), center.y + (radius - cornerRadius) * sin(angle));
+        CGPoint tip = CGPointMake(center.x + radius * cos(angle), center.y + radius * sin(angle));
+        CGPoint start = CGPointMake(corner.x + cornerRadius * cos(angle - theta), corner.y + cornerRadius * sin(angle - theta));
+        CGPoint end = CGPointMake(corner.x + cornerRadius * cos(angle + theta), corner.y + cornerRadius * sin(angle + theta));
+
+        [path addLineToPoint:start];
+        [path addQuadCurveToPoint:end controlPoint:tip];
+    }
+
+    [path closePath];
+
+    // Move the path to the correct origins
+    CGRect bounds = path.bounds;
+    CGAffineTransform transform =  CGAffineTransformMakeTranslation(-bounds.origin.x + rect.origin.x + lineWidth / 2.0, -bounds.origin.y + rect.origin.y + lineWidth / 2.0);
+    [path applyTransform:transform];
+
+    return path;
+}
+
+#pragma mark - SlideNavigationController Methods -
+
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    
+    return YES;
+}
 
 @end

@@ -10,4 +10,8 @@
 
 @interface BaseViewController : UIViewController
 
+- (void)addLoginBackgroundImage;
+- (void)addDashboardBackgroundImage;
+- (void)translucentNavigationBar:(BOOL)select;
+
 @end
