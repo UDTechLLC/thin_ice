@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BluetoothConnectViewController : BaseViewController
+@interface BluetoothConnectViewController : BaseSignUpViewController
 
 @end

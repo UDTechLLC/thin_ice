@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignUpViewController : BaseViewController
+@interface SignUpViewController : BaseSignUpViewController
 
 @end

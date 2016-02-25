@@ -72,7 +72,7 @@
     
     self.buttonCreateAccount.layer.cornerRadius = 13;
     self.buttonCreateAccount.backgroundColor = [UIColor lightGrayColor];
-    self.buttonCreateAccount.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
+    self.buttonCreateAccount.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#ffffff" alpha:1.0];
     [self.buttonCreateAccount setTitle:@"Create Account" forState:UIControlStateNormal];
 }
 
@@ -106,9 +106,33 @@
 }
 
 - (void)changeTutorialScreenWithButton {
-    
+
     [self.scrollView scrollRectToVisible:CGRectMake(currentPageSizeWidth , 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height) animated:YES];
     [self.pageControl setCurrentPage:currentPage];
+
+    [self changeButtonWithAnimatiion];
+}
+
+- (void)changeButtonWithAnimatiion {
+    switch (currentPage) {
+        case 1:
+        {
+            [UIView transitionWithView:self.buttonCreateAccount duration:1 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+                [self.buttonCreateAccount setTitle:@"Next" forState:UIControlStateNormal];
+            } completion:nil];
+            break;
+        }
+        case 2:
+        {
+            [UIView transitionWithView:self.buttonCreateAccount duration:1 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+                [self.buttonCreateAccount setTitle:@"Search Thin Ice" forState:UIControlStateNormal];
+                [self.buttonCreateAccount setBackgroundColor: [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha: 1.0]];
+            } completion:nil];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (IBAction)dismissViewControllerAction:(id)sender {

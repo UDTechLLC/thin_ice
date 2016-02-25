@@ -26,5 +26,6 @@
 #import "DatabaseEntities.h"
 #import "CustomNavigationBar.h"
 #import "SlideNavigationController.h"
+#import "BaseSignUpViewController.h"
 
 #endif /* PrefixHeader_pch */

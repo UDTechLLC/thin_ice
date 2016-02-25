@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACA316861C7EFB10007FD570 /* BaseSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA316851C7EFB10007FD570 /* BaseSignUpViewController.m */; };
 		D8867E511C732D02005F7B6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E501C732D02005F7B6D /* main.m */; };
 		D8867E541C732D02005F7B6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E531C732D02005F7B6D /* AppDelegate.m */; };
 		D8867E571C732D02005F7B6D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E561C732D02005F7B6D /* HomeViewController.m */; };
@@ -65,6 +66,8 @@
 /* Begin PBXFileReference section */
 		33C806EB0926C366CC18D7AA /* libPods-ThinIce.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThinIce.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE9A0F52AEF2A99A42AE250 /* Pods-ThinIce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThinIce.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThinIce/Pods-ThinIce.debug.xcconfig"; sourceTree = "<group>"; };
+		ACA316841C7EFB10007FD570 /* BaseSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSignUpViewController.h; sourceTree = "<group>"; };
+		ACA316851C7EFB10007FD570 /* BaseSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSignUpViewController.m; sourceTree = "<group>"; };
 		B8F8B1830A2539DF36354C98 /* Pods-ThinIce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThinIce.release.xcconfig"; path = "Pods/Target Support Files/Pods-ThinIce/Pods-ThinIce.release.xcconfig"; sourceTree = "<group>"; };
 		D8867E4C1C732D02005F7B6D /* ThinIce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThinIce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8867E501C732D02005F7B6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 			children = (
 				D8867E791C735724005F7B6D /* BaseViewController.h */,
 				D8867E7A1C735724005F7B6D /* BaseViewController.m */,
+				ACA316841C7EFB10007FD570 /* BaseSignUpViewController.h */,
+				ACA316851C7EFB10007FD570 /* BaseSignUpViewController.m */,
 			);
 			name = BaseViewController;
 			sourceTree = "<group>";
@@ -664,6 +669,7 @@
 				D8EF71331C7B08D20006FDEF /* LeftMenuViewController.m in Sources */,
 				D8EF71421C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				D8EF71431C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				ACA316861C7EFB10007FD570 /* BaseSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
