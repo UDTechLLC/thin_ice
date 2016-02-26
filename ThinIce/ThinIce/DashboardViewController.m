@@ -28,33 +28,32 @@
     [super viewWillAppear:YES];
 }
 
-- (void)viewWillLayoutSubviews {
-        [self createViewController];
+- (void)viewDidLayoutSubviews {
+    [self createViewController];
 }
 
 - (void)createViewController {
     
-        self.imageViewPhoto.image = [UIImage imageNamed:@"SlideMenuSelectedImage"];
-    
-        CGFloat lineWidth    = 5.0;
-        UIBezierPath *path   = [self roundedPolygonPathWithRect:self.imageViewPhoto.frame
-                                                      lineWidth:lineWidth
-                                                          sides:6
-                                                   cornerRadius:30];
-    
-        CAShapeLayer *mask   = [CAShapeLayer layer];
-        mask.path            = path.CGPath;
-        mask.lineWidth       = lineWidth;
-        mask.strokeColor     = [UIColor clearColor].CGColor;
-        mask.fillColor       = [UIColor whiteColor].CGColor;
-        self.imageViewPhoto.layer.mask = mask;
-    
-        CAShapeLayer *border = [CAShapeLayer layer];
-        border.path          = path.CGPath;
-        border.lineWidth     = lineWidth;
-        border.strokeColor   = [UIColor blackColor].CGColor;
-        border.fillColor     = [UIColor clearColor].CGColor;
-        [self.imageViewPhoto.layer addSublayer:border];
+    CGFloat lineWidth    = 2.0;
+    UIBezierPath *path   = [self roundedPolygonPathWithRect:self.imageViewPhoto.bounds
+                                                  lineWidth:lineWidth
+                                                      sides:6
+                                               cornerRadius:15];
+
+    CAShapeLayer *mask   = [CAShapeLayer layer];
+    mask.path            = path.CGPath;
+    mask.lineWidth       = lineWidth;
+    mask.strokeColor     = [UIColor clearColor].CGColor;
+    mask.fillColor       = [UIColor whiteColor].CGColor;
+    self.imageViewPhoto.layer.mask = mask;
+
+    CAShapeLayer *border = [CAShapeLayer layer];
+    border.path          = path.CGPath;
+    border.lineWidth     = lineWidth;
+    border.strokeColor   = [UIColor blackColor].CGColor;
+    border.fillColor     = [UIColor clearColor].CGColor;
+    [self.imageViewPhoto.layer addSublayer:border];
+    self.imageViewPhoto.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (UIBezierPath *)roundedPolygonPathWithRect:(CGRect)rect

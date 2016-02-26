@@ -30,8 +30,11 @@
 }
 
 - (void)viewDidLoad {
-    
 	[super viewDidLoad];
+    
+    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+    statusBarView.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#222e3b" alpha:1.0];
+    [self.view addSubview:statusBarView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
