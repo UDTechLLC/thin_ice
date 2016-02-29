@@ -22,7 +22,6 @@
 
 
 
-
 // Image Name Deffines
 #define kBackButtonImage                                        @"btn_back"
 #define SlideMenuBackgroundImage                                @"SlideMenuBackground"
@@ -49,7 +48,7 @@
 
 
 // ViewController StoryBoardID
-
+#define kPageViewController                                     @"PageViewController"
 #define kDashboardViewControllerID                              @"DashboardViewControllerID"
 #define kSignUpViewControllerID                                 @"SignUpViewControllerID"
 #define kLoginRegViewControllerID                               @"LoginRegViewControllerID"

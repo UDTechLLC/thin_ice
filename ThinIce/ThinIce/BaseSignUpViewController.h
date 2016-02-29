@@ -13,5 +13,6 @@
 - (void)addLoginBackgroundImage;
 - (void)addDashboardBackgroundImage;
 - (void)translucentNavigationBar:(BOOL)select;
+- (void)addStatusBarBlueView;
 
 @end

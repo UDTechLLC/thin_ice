@@ -10,4 +10,6 @@
 
 @interface UserInfoRegViewController : BaseSignUpViewController
 
+@property NSUInteger pageIndex;
+
 @end

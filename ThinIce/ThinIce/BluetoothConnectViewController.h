@@ -10,4 +10,6 @@
 
 @interface BluetoothConnectViewController : BaseSignUpViewController
 
+@property NSUInteger pageIndex;
+
 @end

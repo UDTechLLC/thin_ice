@@ -17,13 +17,14 @@
     UserInfoRegViewController       *userInfoRegistrationViewController;
     BluetoothConnectViewController  *bluetoothConnectViewController;
     
-    float currentPageSizeWidth;
     int currentPage;
 }
-@property (strong, nonatomic) UIPageViewController *pageViewController;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIButton *buttonCreateAccount;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
+@property (strong, nonatomic) UIPageViewController  *pageViewController;
+@property (weak, nonatomic) IBOutlet UIView         *pageViewControllerContainer;
+@property (strong, nonatomic) NSArray               *pageViewControllerStack;
+@property (weak, nonatomic) IBOutlet UIButton       *buttonCreateAccount;
+@property (weak, nonatomic) IBOutlet UIPageControl  *pageControl;
 
 @end
 
@@ -32,9 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self addStatusBarBlueView];
     [self addLoginBackgroundImage];
-    [self createScrollViewAndPageControl];
-    [self createScrollViewStack];
+    [self createPageControllerStack];
+    [self createPageController];
     [self createAccountButton];
 }
 
@@ -52,12 +54,89 @@
     [super viewWillDisappear:animated];
 }
 
+- (void)viewDidLayoutSubviews {
+    // Change the size of page view controller
+    self.pageViewController.view.frame = self.pageViewControllerContainer.bounds;
+}
+
+- (void)createAccountButton {
+    
+    self.buttonCreateAccount.layer.cornerRadius = 13;
+    self.buttonCreateAccount.backgroundColor = [UIColor lightGrayColor];
+    self.buttonCreateAccount.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#ffffff" alpha:1.0];
+    [self.buttonCreateAccount setTitle:@"Create Account" forState:UIControlStateNormal];
+}
+
+- (void)createPageControllerStack {
+    
+    loginRegistrationViewController = [self.storyboard instantiateViewControllerWithIdentifier:kLoginRegViewControllerID];
+    userInfoRegistrationViewController = [self.storyboard instantiateViewControllerWithIdentifier:kUserInfoRegViewControllerID];
+    bluetoothConnectViewController = [self.storyboard instantiateViewControllerWithIdentifier:kBluetoothConnectViewControllerID];
+    self.pageViewControllerStack = @[loginRegistrationViewController, userInfoRegistrationViewController, bluetoothConnectViewController];
+}
+
+- (void)createPageController {
+    
+    self.pageViewControllerContainer.layer.cornerRadius = 13;
+    self.pageViewControllerContainer.backgroundColor = [UIColor clearColor];
+    
+    // Create page view controller
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:kPageViewController];
+    self.pageViewController.dataSource = self;
+    
+    self.pageViewController.view.layer.cornerRadius = 13;
+    self.pageViewController.view.backgroundColor = [UIColor clearColor];
+    
+    id startingViewController = [self viewControllerAtIndex:0];
+    NSArray *viewControllers = @[startingViewController];
+    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+
+    for (UIScrollView *view in self.pageViewController.view.subviews) {
+        
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            
+            view.scrollEnabled = NO;
+        }
+    }
+    
+    [self addChildViewController:_pageViewController];
+    [self.pageViewControllerContainer addSubview:self.pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
+    
+    currentPage = 0;
+    self.pageControl.numberOfPages = 3;
+}
+
+- (IBAction)changeView:(id)sender {
+    
+    currentPage++;
+    if(currentPage < self.pageViewControllerStack.count) {
+        id startingViewController = [self viewControllerAtIndex: currentPage];
+        NSArray *viewControllers = @[startingViewController];
+        [self changeButtonTitleAndColorWithAnimation];
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }
+}
+
+- (IBAction)dismissViewControllerAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - Page View Controller Data Source
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
+    NSUInteger index;
+    
+    if([viewController isKindOfClass:[LoginRegViewController class]]) {
+        index = ((LoginRegViewController*)viewController).pageIndex;
+    } else if ([viewController isKindOfClass:[UserInfoRegViewController class]]) {
+        index = ((UserInfoRegViewController*)viewController).pageIndex;
+    } else if ([viewController isKindOfClass:[BluetoothConnectViewController class]]) {
+        index = ((BluetoothConnectViewController*)viewController).pageIndex;
+    }
+
+    [self.pageControl setCurrentPage:index];
     
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
@@ -69,98 +148,66 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
+    NSUInteger index;
+    
+    if([viewController isKindOfClass:[LoginRegViewController class]]) {
+        index = ((LoginRegViewController*)viewController).pageIndex;
+    } else if ([viewController isKindOfClass:[UserInfoRegViewController class]]) {
+        index = ((UserInfoRegViewController*)viewController).pageIndex;
+    } else if ([viewController isKindOfClass:[BluetoothConnectViewController class]]) {
+        index = ((BluetoothConnectViewController*)viewController).pageIndex;
+    }
+    
+    [self.pageControl setCurrentPage:index];
     
     if (index == NSNotFound) {
         return nil;
     }
     
     index++;
-    if (index == [self.pageTitles count]) {
+    if (index == [self.pageViewControllerStack count]) {
         return nil;
     }
     return [self viewControllerAtIndex:index];
 }
 
-- (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
+- (id)viewControllerAtIndex:(NSUInteger)index
 {
-    if (([self.pageTitles count] == 0) || (index >= [self.pageTitles count])) {
+    id pageContentViewController;
+    
+    if (([self.pageViewControllerStack count] == 0) || (index >= [self.pageViewControllerStack count])) {
         return nil;
     }
-    
+
     // Create a new view controller and pass suitable data.
-    PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    pageContentViewController.imageFile = self.pageImages[index];
-    pageContentViewController.titleText = self.pageTitles[index];
-    pageContentViewController.pageIndex = index;
-    
+    switch (index) {
+        case 0:
+        {
+            pageContentViewController = [self.pageViewControllerStack objectAtIndex: index];
+            ((LoginRegViewController*)pageContentViewController).pageIndex = index;
+            break;
+        }
+        case 1:
+        {
+            pageContentViewController = [self.pageViewControllerStack objectAtIndex: index];
+            ((UserInfoRegViewController*)pageContentViewController).pageIndex = index;
+            break;
+        }
+        case 2:
+        {
+            pageContentViewController = [self.pageViewControllerStack objectAtIndex: index];
+            ((BluetoothConnectViewController*)pageContentViewController).pageIndex = index;
+            break;
+        }
+        default:
+            break;
+    }
+
     return pageContentViewController;
 }
 
-- (void)viewDidLayoutSubviews {
+- (void)changeButtonTitleAndColorWithAnimation {
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 3, self.scrollView.frame.size.height);
-    
-    loginRegistrationViewController.view.frame = CGRectMake(0, CGRectGetMinY(self.scrollView.bounds), self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-    [self.scrollView addSubview: loginRegistrationViewController.view];
-    
-    userInfoRegistrationViewController.view.frame = CGRectMake(CGRectGetMaxX(self.scrollView.bounds), CGRectGetMinY(self.scrollView.bounds), self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-    [self.scrollView addSubview:userInfoRegistrationViewController.view];
-    
-    bluetoothConnectViewController.view.frame = CGRectMake(CGRectGetMaxX(self.scrollView.bounds) * 2, CGRectGetMinY(self.scrollView.bounds), self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-    [self.scrollView addSubview:bluetoothConnectViewController.view];
-}
-
-- (void)createAccountButton {
-    
-    self.buttonCreateAccount.layer.cornerRadius = 13;
-    self.buttonCreateAccount.backgroundColor = [UIColor lightGrayColor];
-    self.buttonCreateAccount.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#ffffff" alpha:1.0];
-    [self.buttonCreateAccount setTitle:@"Create Account" forState:UIControlStateNormal];
-}
-
-- (void)createScrollViewAndPageControl {
-    
-    currentPage = 0;
-    currentPageSizeWidth = 0;
-    [self.pageControl setPageIndicatorTintColor:[[HelperManager sharedServer] colorwithHexString:@"#6a818f" alpha:1.0]];
-    [self.pageControl setCurrentPageIndicatorTintColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0]];
-    self.pageControl.numberOfPages = 3;
-    self.pageControl.currentPage = 0;
-    self.pageControl.userInteractionEnabled = NO;
-    
-    self.scrollView.layer.cornerRadius = 13;
-    self.scrollView.delaysContentTouches = NO;
-    [self.scrollView scrollRectToVisible:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height) animated:NO];
-    self.scrollView.backgroundColor = [UIColor lightGrayColor];
-}
-
-- (void)createScrollViewStack {
-    
-    loginRegistrationViewController = [self.storyboard instantiateViewControllerWithIdentifier:kLoginRegViewControllerID];
-    userInfoRegistrationViewController = [self.storyboard instantiateViewControllerWithIdentifier:kUserInfoRegViewControllerID];
-    bluetoothConnectViewController = [self.storyboard instantiateViewControllerWithIdentifier:kBluetoothConnectViewControllerID];
-}
-
-- (IBAction)changeView:(id)sender {
-    currentPageSizeWidth += CGRectGetMaxX(self.scrollView.frame);
-    currentPage += pluseOnePage;
-    [self changeTutorialScreenWithButton];
-}
-
-- (IBAction)dismissViewControllerAction:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)changeTutorialScreenWithButton {
-    if(currentPage < 3) {
-        [self.scrollView scrollRectToVisible:CGRectMake(currentPageSizeWidth , 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height) animated: YES];
-        [self.pageControl setCurrentPage:currentPage];
-        [self changeButtonWithAnimatiion];
-    }
-}
-
-- (void)changeButtonWithAnimatiion {
     __weak __typeof(self) weakSelf = self;
     switch (currentPage) {
         case 1:

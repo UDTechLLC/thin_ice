@@ -10,4 +10,6 @@
 
 @interface LoginRegViewController : BaseSignUpViewController
 
+@property NSUInteger pageIndex;
+
 @end
