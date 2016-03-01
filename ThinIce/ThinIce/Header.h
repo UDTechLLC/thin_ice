@@ -9,6 +9,7 @@
 #ifndef Header_h
 #define Header_h
 
+// ----------------------------------------====================================================================================----------------------------------------
 
 // Other Deffines
 
@@ -20,19 +21,23 @@
 #define kMainStoryBoardIdentifier                               @"Main"
 
 
+// ----------------------------------------====================================================================================----------------------------------------
 
 
 // Image Name Deffines
-#define kBackButtonImage                                        @"btn_back"
+
+#define kBackButtonImageNormal                                  @"btn_back_normal"
+#define kBackButtonImageActive                                  @"btn_back_active"
 #define SlideMenuBackgroundImage                                @"SlideMenuBackground"
 
 
 
-
+// ----------------------------------------====================================================================================----------------------------------------
 
 
 
 // Segue Identifiers
+
 #define kDashboardSegueIdentifier                               @"DashboardSegueIdentifier"
 
 
@@ -40,7 +45,7 @@
 
 
 
-
+// ----------------------------------------====================================================================================----------------------------------------
 
 
 
@@ -48,6 +53,7 @@
 
 
 // ViewController StoryBoardID
+
 #define kPageViewController                                     @"PageViewController"
 #define kDashboardViewControllerID                              @"DashboardViewControllerID"
 #define kSignUpViewControllerID                                 @"SignUpViewControllerID"
@@ -62,13 +68,23 @@
 
 // Cells Identifier
 
+// ----------------------------------------====================================================================================----------------------------------------
+
 // Slide Menu Cells ID ===----
+
 #define kDashboardCellID                                        @"DashboardCellID"
 #define kStatisticCellID                                        @"StatisticCellID"
 #define kThinIceControllCellID                                  @"ThinIceControllCellID"
 #define kAccountCellID                                          @"AccountCellID"
 #define kAchievementsCellID                                     @"AchievementsCellID"
 #define kSettingsCellID                                         @"SettingsCellID"
+
+// DashboardCellID
+
+#define kDashboardCellIdentifier                                @"DashboardDayCardIdentifier"
+
+
+// ----------------------------------------====================================================================================----------------------------------------
 
 // Slide Menu Cells Image Strings ===----
 
@@ -82,6 +98,7 @@
 #define kSlideMenuSelectedImage                                 @"SlideMenuSelectedImage"
 
 
+// ----------------------------------------====================================================================================----------------------------------------
 
 
 #endif /* Header_h */

@@ -128,4 +128,17 @@
     view.layer.borderWidth = width;
 }
 
+- (void)changeDelayButtonClickInTableView:(UITableView*)tableView {
+    
+    for(id view in tableView.subviews) {
+        if([NSStringFromClass([view class]) isEqualToString:@"UITableViewWrapperView"]) {
+            if([view isKindOfClass:[UIScrollView class]]) {
+                UIScrollView* scroll = (UIScrollView *)view;
+                scroll.delaysContentTouches = NO;
+            }
+            break;
+        }
+    }
+}
+
 @end

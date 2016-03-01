@@ -8,6 +8,7 @@ target 'ThinIce' do
 pod 'MagicalRecord'
 pod 'MBProgressHUD'
 pod 'IQKeyboardManager'
+pod 'YLProgressBar'
 
 end
 

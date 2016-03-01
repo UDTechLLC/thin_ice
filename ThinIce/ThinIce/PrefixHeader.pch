@@ -27,5 +27,6 @@
 #import "CustomNavigationBar.h"
 #import "SlideNavigationController.h"
 #import "BaseSignUpViewController.h"
+#import "YLProgressBar.h"
 
 #endif /* PrefixHeader_pch */

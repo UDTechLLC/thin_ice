@@ -13,6 +13,7 @@
 #import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
 #import "SlideMenuTableCell.h"
+#import "DashboardViewController.h"
 
 @interface LeftMenuViewController ()
 
@@ -111,7 +112,7 @@
 	{
         case 0:
         {
-            
+            vc = [self.storyboard instantiateViewControllerWithIdentifier: kDashboardViewControllerID];
             break;
         }
 		case 1:
@@ -124,19 +125,34 @@
             
             break;
         }
+        case 3:
+        {
+            
+            break;
+        }
+        case 4:
+        {
+            
+            break;
+        }
+        case 5:
+        {
+            
+            break;
+        }
         default:
         {
-//            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-//            [[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
-//            return;
+            [self.leftMenuTableView deselectRowAtIndexPath:[self.leftMenuTableView indexPathForSelectedRow] animated:YES];
+            [[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
+            return;
             break;
         }
 	}
 	
-//	[[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
-//															 withSlideOutAnimation:self.slideOutAnimationEnabled
-//																	 andCompletion:nil];
-//    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+	[[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
+															 withSlideOutAnimation:self.slideOutAnimationEnabled
+																	 andCompletion:nil];
+    [self.leftMenuTableView deselectRowAtIndexPath:[self.leftMenuTableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)checkViewControllerInNavStack:(UIViewController*)vc {

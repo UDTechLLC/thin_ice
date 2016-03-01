@@ -6,20 +6,21 @@
 //  Copyright © 2016 udtech.co. All rights reserved.
 //
 
-//
-#define iPhone5XCoordinateForImege
-#define iPhone5YCoordinateForImege
-
-#define iPhone6XCoordinateForImege
-#define iPhone6YCoordinateForImege
-
-#define iPhone6PlusXCoordinateForImege
-#define iPhone6PlusYCoordinateForImege
-
+#define iPhone6XCoordinateForImege              14
+#define iPhone6YCoordinateForImege              88
+#define iPhone6PlusXCoordinateForImege          14
+#define iPhone6PlusYCoordinateForImege          93
+#define SpaceBetweenTwoCells                    10
+#define CellAndTableCornerRadius                13
 
 #import "DashboardViewController.h"
+#import "DashboardDaysCardTableViewCell.h"
 
-@interface DashboardViewController () <SlideNavigationControllerDelegate>
+@interface DashboardViewController () <SlideNavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+    // Array With Data for TableView
+    NSMutableArray *cellData;
+}
+
 // Image Block
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPhoto;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageXCoordinate;
@@ -45,6 +46,13 @@
 @property (weak, nonatomic) IBOutlet UIView *powerVestBattaryMiddleView;
 @property (weak, nonatomic) IBOutlet UIView *powerVestBattaryLowerView;
 
+// Day Cards Block
+
+@property (weak, nonatomic) IBOutlet UITableView *dayCardsTableView;
+
+
+
+
 @end
 
 @implementation DashboardViewController
@@ -65,14 +73,19 @@
 - (void)viewDidLayoutSubviews {
     [self createProfilePhotoImageView];
     if((int)kScreenWidth == 375) {
-        self.imageXCoordinate.constant = 14;
-        self.imageYCoordinate.constant = 88;
+        self.imageXCoordinate.constant = iPhone6XCoordinateForImege;
+        self.imageYCoordinate.constant = iPhone6YCoordinateForImege;
+    } else if((int)kScreenWidth == 414) {
+        self.imageXCoordinate.constant = iPhone6PlusXCoordinateForImege;
+        self.imageYCoordinate.constant = iPhone6PlusYCoordinateForImege;
     }
     [self.view setNeedsLayout];
     [super viewDidLayoutSubviews];
 }
 
 - (void)createViewController {
+    
+    cellData = [[NSMutableArray alloc] init];
     
     self.userNameLabel.backgroundColor = [UIColor clearColor];
     self.userNameLabel.textColor = [[HelperManager sharedServer] colorwithHexString:@"#ccccccc" alpha:1.0];
@@ -84,6 +97,12 @@
     // Create SeparatorsView
     self.insolesAndVestVerticalSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
     self.horisontalSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
+    
+    self.dayCardsTableView.backgroundColor = [UIColor clearColor];
+    self.dayCardsTableView.layer.cornerRadius = CellAndTableCornerRadius;
+    self.dayCardsTableView.estimatedRowHeight = 370;
+    self.dayCardsTableView.rowHeight = UITableViewAutomaticDimension;
+    [self changeDelayButtonClickInTableView:self.dayCardsTableView];
 }
 
 - (void)createProfilePhotoImageView {
@@ -142,6 +161,46 @@
     [self addBorderLineFor: self.powerInsolesBattaryMiddleView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0 radius:5.0];
     self.powerInsolesBattaryLowerView.backgroundColor = [UIColor clearColor];
     [self addBorderLineFor: self.powerInsolesBattaryLowerView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0 radius:5.0];
+}
+
+#pragma mark - UITableViewDelegate / UITableViewDataSource -
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;//cellData.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1; //array count returns 10
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [UIView new];
+    [view setBackgroundColor:[UIColor clearColor]];
+    return view;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    DashboardDaysCardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDashboardCellIdentifier forIndexPath:indexPath];
+    [cell loadCellWithData:nil];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0){
+        return 0;
+    }
+    return SpaceBetweenTwoCells;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    cell.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha:0.5];
+    cell.layer.cornerRadius = CellAndTableCornerRadius;
 }
 
 #pragma mark - SlideNavigationController Methods -

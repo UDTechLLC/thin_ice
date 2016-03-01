@@ -54,7 +54,7 @@ static NSString*const kPasswordKey                                      = @"Pass
 }
 
 - (void)createCustomNavBar {
-    [self.navigationbar addBackButtonWithImageName:kBackButtonImage highlightedImage:kBackButtonImage];
+    [self.navigationbar addBackButtonWithImageName:kBackButtonImageNormal highlightedImage:kBackButtonImageActive];
     [self.navigationbar setTintColor: [UIColor clearColor]];
     self.navigationbar.backgroundColor = [UIColor clearColor];
 }
