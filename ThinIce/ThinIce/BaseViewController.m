@@ -122,8 +122,8 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)addBorderLineFor:(UIView*)view withColor:(UIColor*)color borderWidth:(float)width radius:(float)radius {
-    view.layer.cornerRadius = radius;
+- (void)addBorderLineFor:(UIView*)view withColor:(UIColor*)color borderWidth:(float)width {
+    view.layer.cornerRadius = view.frame.size.height / 2;
     view.layer.borderColor = color.CGColor;
     view.layer.borderWidth = width;
 }

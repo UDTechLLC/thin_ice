@@ -6,18 +6,10 @@
 //  Copyright © 2016 udtech.co. All rights reserved.
 //
 
-
-#define ColorFromSeparators                 @"#33c6cb"
-#define ColorFromPlaceHolderText            @"#cccccc"
-#define ColorFromInputTextTELLOW            @"#cddc39"
-#define ColorFromInputTextGYMSession        @"#00e676"
-#define ColorFromInputTextWaterIntake       @"#4285f4"
-#define ColorFromInputTextJunkFood          @"#64ffda"
-#define ColorFromHproteinMeals              @"#b2ff59"
-
 #define BurntCaloriesLength                 16
 
 #import "DashboardDaysCardTableViewCell.h"
+#import "DashboardFlipViewController.h"
 
 @implementation DashboardDaysCardTableViewCell
 
@@ -140,6 +132,10 @@
     
     self.hProteinCountLabel.text = @"1";
     self.hProteinCountLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromHproteinMeals alpha:1.0];
+}
+
+- (IBAction)cellflipActionButton:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:FlipTableViewNotification object:self];
 }
 
 @end

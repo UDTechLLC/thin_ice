@@ -81,7 +81,7 @@
     self.pageViewControllerContainer.backgroundColor = [UIColor clearColor];
     
     // Create page view controller
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:kPageViewController];
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:kPageViewControllerID];
     self.pageViewController.dataSource = self;
     
     self.pageViewController.view.layer.cornerRadius = 13;

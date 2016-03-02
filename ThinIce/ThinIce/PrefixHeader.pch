@@ -28,5 +28,6 @@
 #import "SlideNavigationController.h"
 #import "BaseSignUpViewController.h"
 #import "YLProgressBar.h"
+#import "QuartzCore/QuartzCore.h"
 
 #endif /* PrefixHeader_pch */

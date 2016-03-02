@@ -15,6 +15,7 @@
 
 #import "DashboardViewController.h"
 #import "DashboardDaysCardTableViewCell.h"
+#import "DashboardFlipViewController.h"
 
 @interface DashboardViewController () <SlideNavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     // Array With Data for TableView
@@ -22,17 +23,17 @@
 }
 
 // Image Block
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewPhoto;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageXCoordinate;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageYCoordinate;
+@property (weak, nonatomic) IBOutlet UIImageView                        *imageViewPhoto;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint                 *imageXCoordinate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint                 *imageYCoordinate;
 
 // ViewController UI
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *userNameLabelYCoordinate;
+@property (weak, nonatomic) IBOutlet UILabel                            *userNameLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint                 *userNameLabelYCoordinate;
 
 // insoles Block
-@property (weak, nonatomic) IBOutlet UIImageView *insolesPic;
-@property (weak, nonatomic) IBOutlet UILabel *powerInsolesLabel;
+@property (weak, nonatomic) IBOutlet UIImageView                        *insolesPic;
+@property (weak, nonatomic) IBOutlet UILabel                            *powerInsolesLabel;
 @property (weak, nonatomic) IBOutlet UIView *powerInsolesBattaryHigherView;
 @property (weak, nonatomic) IBOutlet UIView *powerInsolesBattaryMiddleView;
 @property (weak, nonatomic) IBOutlet UIView *powerInsolesBattaryLowerView;
@@ -57,6 +58,10 @@
 
 @implementation DashboardViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -65,6 +70,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self addNavigationBarAttributeTitle];
     self.navigationController.navigationBarHidden = NO;
     [self translucentNavigationBar: YES];
     [super viewWillAppear:YES];
@@ -87,6 +93,8 @@
     
     cellData = [[NSMutableArray alloc] init];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(flipTableViewAction:) name:FlipTableViewNotification object:nil];
+    
     self.userNameLabel.backgroundColor = [UIColor clearColor];
     self.userNameLabel.textColor = [[HelperManager sharedServer] colorwithHexString:@"#ccccccc" alpha:1.0];
     self.userNameLabel.text = @"Artem Arefin";
@@ -99,7 +107,6 @@
     self.horisontalSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
     
     self.dayCardsTableView.backgroundColor = [UIColor clearColor];
-    self.dayCardsTableView.layer.cornerRadius = CellAndTableCornerRadius;
     self.dayCardsTableView.estimatedRowHeight = 370;
     self.dayCardsTableView.rowHeight = UITableViewAutomaticDimension;
     [self changeDelayButtonClickInTableView:self.dayCardsTableView];
@@ -139,11 +146,11 @@
     self.powerVestLabel.text = @"100 %";
     
     self.powerVestBattaryHigherView.backgroundColor = [UIColor clearColor];
-    [self addBorderLineFor: self.powerVestBattaryHigherView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0 radius:5.0];
+    [self addBorderLineFor: self.powerVestBattaryHigherView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
     self.powerVestBattaryMiddleView.backgroundColor = [UIColor clearColor];
-    [self addBorderLineFor: self.powerVestBattaryMiddleView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0 radius:5.0];
+    [self addBorderLineFor: self.powerVestBattaryMiddleView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
     self.powerVestBattaryLowerView.backgroundColor = [UIColor clearColor];
-    [self addBorderLineFor: self.powerVestBattaryLowerView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0 radius:5.0];
+    [self addBorderLineFor: self.powerVestBattaryLowerView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
 }
 
 - (void)createVestBlock {
@@ -156,11 +163,38 @@
     self.powerInsolesLabel.text = @"100 %";
     
     self.powerInsolesBattaryHigherView.backgroundColor = [UIColor clearColor];
-    [self addBorderLineFor: self.powerInsolesBattaryHigherView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0 radius:5.0];
+    [self addBorderLineFor: self.powerInsolesBattaryHigherView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
     self.powerInsolesBattaryMiddleView.backgroundColor = [UIColor clearColor];
-    [self addBorderLineFor: self.powerInsolesBattaryMiddleView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0 radius:5.0];
+    [self addBorderLineFor: self.powerInsolesBattaryMiddleView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
     self.powerInsolesBattaryLowerView.backgroundColor = [UIColor clearColor];
-    [self addBorderLineFor: self.powerInsolesBattaryLowerView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0 radius:5.0];
+    [self addBorderLineFor: self.powerInsolesBattaryLowerView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
+}
+
+- (void)addNavigationBarAttributeTitle {
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0]};
+    self.title = @"Dashboard";
+}
+
+#pragma mark - NotificationAction -
+
+- (void)flipTableViewAction:(NSNotification*)notification {
+    DashboardDaysCardTableViewCell *cell = (DashboardDaysCardTableViewCell*)notification;
+//    DashboardFlipViewController *dashboardFlipView = [self.storyboard instantiateViewControllerWithIdentifier:kDashboardFlipViewControllerID];
+//    dashboardFlipView.view.frame = self.dayCardsTableView.frame;
+////    [UIView transitionWithView:self.dayCardsTableView duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+////        
+////    } completion:^(BOOL finished) {
+////                [self.view insertSubview: dashboardFlipView.view aboveSubview:self.dayCardsTableView];
+////    }];
+//    
+//    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionTransitionFlipFromRight
+//                     animations:^{
+//
+//                     }  completion:^(BOOL finished) {
+//                         if(finished) {
+//                             [self.view insertSubview:dashboardFlipView.view aboveSubview:self.dayCardsTableView];
+//                         }
+//                     }];
 }
 
 #pragma mark - UITableViewDelegate / UITableViewDataSource -
