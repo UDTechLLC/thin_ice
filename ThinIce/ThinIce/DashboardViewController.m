@@ -11,11 +11,9 @@
 #define iPhone6PlusXCoordinateForImege          14
 #define iPhone6PlusYCoordinateForImege          93
 #define SpaceBetweenTwoCells                    10
-#define CellAndTableCornerRadius                13
 
 #import "DashboardViewController.h"
 #import "DashboardDaysCardTableViewCell.h"
-#import "DashboardFlipViewController.h"
 
 @interface DashboardViewController () <SlideNavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     // Array With Data for TableView
@@ -51,9 +49,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *dayCardsTableView;
 
-
-
-
 @end
 
 @implementation DashboardViewController
@@ -70,7 +65,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self addNavigationBarAttributeTitle];
+    [self addNavigationBarAttributeTitle: @"Dashboard"];
     self.navigationController.navigationBarHidden = NO;
     [self translucentNavigationBar: YES];
     [super viewWillAppear:YES];
@@ -170,33 +165,6 @@
     [self addBorderLineFor: self.powerInsolesBattaryLowerView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
 }
 
-- (void)addNavigationBarAttributeTitle {
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0]};
-    self.title = @"Dashboard";
-}
-
-#pragma mark - NotificationAction -
-
-- (void)flipTableViewAction:(NSNotification*)notification {
-    DashboardDaysCardTableViewCell *cell = (DashboardDaysCardTableViewCell*)notification;
-//    DashboardFlipViewController *dashboardFlipView = [self.storyboard instantiateViewControllerWithIdentifier:kDashboardFlipViewControllerID];
-//    dashboardFlipView.view.frame = self.dayCardsTableView.frame;
-////    [UIView transitionWithView:self.dayCardsTableView duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
-////        
-////    } completion:^(BOOL finished) {
-////                [self.view insertSubview: dashboardFlipView.view aboveSubview:self.dayCardsTableView];
-////    }];
-//    
-//    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionTransitionFlipFromRight
-//                     animations:^{
-//
-//                     }  completion:^(BOOL finished) {
-//                         if(finished) {
-//                             [self.view insertSubview:dashboardFlipView.view aboveSubview:self.dayCardsTableView];
-//                         }
-//                     }];
-}
-
 #pragma mark - UITableViewDelegate / UITableViewDataSource -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -231,10 +199,15 @@
     return SpaceBetweenTwoCells;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark - NSNotification Action Methods -
+
+- (void)flipTableViewAction:(NSNotification*)notification {
     
-    cell.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha:0.5];
-    cell.layer.cornerRadius = CellAndTableCornerRadius;
+    
+    
+    
+    
+    
 }
 
 #pragma mark - SlideNavigationController Methods -

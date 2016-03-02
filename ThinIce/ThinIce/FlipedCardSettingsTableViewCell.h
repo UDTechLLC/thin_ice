@@ -1,5 +1,5 @@
 //
-//  DashboardFlipViewController.h
+//  FlipedCardSettingsTableViewCell.h
 //  ThinIce
 //
 //  Created by Dima Shapovalov on 02.03.16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DashboardFlipViewController : UIViewController
+@interface FlipedCardSettingsTableViewCell : UITableViewCell
 
 @end

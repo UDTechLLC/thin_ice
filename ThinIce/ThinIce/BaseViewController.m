@@ -41,6 +41,10 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"Thin_ice_background_%d", (int)kScreenWidth]]];
 }
 
+- (void)addStatisticsBackgroundImage {
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"Thin_ice_background_%d", (int)kScreenWidth]]];
+}
+
 - (void)addDashboardBackgroundImage {
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"thin_ice_dashboard_background_%d", (int)kScreenWidth]]];
 }
@@ -139,6 +143,11 @@
             break;
         }
     }
+}
+
+- (void)addNavigationBarAttributeTitle:(NSString*)title {
+    [[SlideNavigationController sharedInstance].navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName: [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0], NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:NagivationBarTitleFontSize]}];
+    self.title = title;
 }
 
 @end

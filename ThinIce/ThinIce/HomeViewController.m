@@ -82,9 +82,9 @@
     [self.signUpButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn_sign_up_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
     [self.signUpButton setTitle:@"  Sign Up" forState:UIControlStateNormal];
     [self.signUpButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn_sign_up_active_%d", (int)kScreenWidth]] forState:UIControlStateSelected];
-    [self.signUpButton setTitleColor: [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha: 1.0] forState:UIControlStateSelected];
+    [self.signUpButton setTitleColor: [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha: 1.0] forState:UIControlStateSelected];
     [self.signUpButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn_sign_up_active_%d", (int)kScreenWidth]] forState:UIControlStateHighlighted];
-    [self.signUpButton setTitleColor: [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha: 1.0] forState:UIControlStateHighlighted];
+    [self.signUpButton setTitleColor: [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha: 1.0] forState:UIControlStateHighlighted];
 }
 
 - (void)createFaceBookTwitter {

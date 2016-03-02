@@ -19,6 +19,7 @@
 #define pluseOnePage                                            (1)
 #define numberOfSlideMenuCells                                  (6)
 #define kMainStoryBoardIdentifier                               @"Main"
+#define NagivationBarTitleFontSize                              23
 
 // ----------------------------------------====================================================================================----------------------------------------
 
@@ -32,11 +33,15 @@
 
 #define ColorFromSeparators                 @"#33c6cb"
 #define ColorFromPlaceHolderText            @"#cccccc"
-#define ColorFromInputTextTELLOW            @"#cddc39"
+#define ColorFromInputTextYELLOW            @"#cddc39"
 #define ColorFromInputTextGYMSession        @"#00e676"
 #define ColorFromInputTextWaterIntake       @"#4285f4"
 #define ColorFromInputTextJunkFood          @"#64ffda"
 #define ColorFromHproteinMeals              @"#b2ff59"
+#define ColorForStatisticsCircleStateEmpty  @"#5e35b1"
+#define ColorForStatisticsCircleStateFull   @"#33c6cb"
+#define ColorForStatisticsPlannedLabel      @"#9575cd"
+
 
 // ----------------------------------------====================================================================================----------------------------------------
 
@@ -79,7 +84,8 @@
 #define kBluetoothConnectViewControllerID                       @"BluetoothConnectViewControllerID"
 #define kLeftMenuViewControllerID                               @"LeftMenuViewControllerStoryboardID"
 #define kDashboardFlipViewControllerID                          @"DashboardFlipViewControllerIdentifier"
-
+#define kStatisticsViewControllerID                             @"StatisticsViewControllerIdentifier"
+#define kStatisticsContentViewControllerID                      @"StatisticsContentViewControllerIdentifier"
 
 
 

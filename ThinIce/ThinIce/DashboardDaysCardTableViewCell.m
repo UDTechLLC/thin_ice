@@ -6,16 +6,23 @@
 //  Copyright © 2016 udtech.co. All rights reserved.
 //
 
-#define BurntCaloriesLength                 16
+#define BurntCaloriesLength                     16
+#define CellAndTableCornerRadius                13
 
 #import "DashboardDaysCardTableViewCell.h"
-#import "DashboardFlipViewController.h"
 
-@implementation DashboardDaysCardTableViewCell
+@implementation DashboardDaysCardTableViewCell {
+    BOOL isFlip;
+}
 
 - (void)awakeFromNib {
     // Initialization code
+    
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha:0.5];
+    self.layer.cornerRadius = CellAndTableCornerRadius;
+    self.contentView.layer.cornerRadius = CellAndTableCornerRadius;
+    isFlip = NO;
 }
 
 - (void)loadCellWithData:(id)data {
@@ -50,16 +57,16 @@
     self.clockImageView.contentMode = UIViewContentModeCenter;
     
     self.temperature.text = @"12C";
-    self.temperature.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextTELLOW alpha:1.0];
+    self.temperature.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
     
     self.timeInfoLabel.text = @"5:31:16";
-    self.timeInfoLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextTELLOW alpha:1.0];
+    self.timeInfoLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
     
     self.targetLabel.text = @"Target:";
     self.targetLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     
     self.targetTimeLabel.text = @"7 hrs";
-    self.targetTimeLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextTELLOW alpha:1.0];
+    self.targetTimeLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
     
     self.progressBar.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#6b8896" alpha:1.0];
     self.progressBar.layer.cornerRadius = self.progressBar.frame.size.height / 2;
@@ -74,7 +81,7 @@
     
     NSMutableAttributedString * stringCalWithColors = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Burnt Calories - %@", @"2500 cal"]];
     [stringCalWithColors addAttribute:NSForegroundColorAttributeName value:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] range:NSMakeRange(0,BurntCaloriesLength)];
-    [stringCalWithColors addAttribute:NSForegroundColorAttributeName value:[[HelperManager sharedServer] colorwithHexString:ColorFromInputTextTELLOW alpha:1.0] range:NSMakeRange(BurntCaloriesLength, [NSString stringWithFormat:@"Burnt Calories - %@", @"2500 cal"].length - BurntCaloriesLength)];
+    [stringCalWithColors addAttribute:NSForegroundColorAttributeName value:[[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0] range:NSMakeRange(BurntCaloriesLength, [NSString stringWithFormat:@"Burnt Calories - %@", @"2500 cal"].length - BurntCaloriesLength)];
     self.burntCaloriesTitleLabelAndInfoLabel.attributedText = stringCalWithColors;
     
     self.burntCaloriesSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
@@ -135,7 +142,32 @@
 }
 
 - (IBAction)cellflipActionButton:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FlipTableViewNotification object:self];
+
+        [UIView transitionWithView:self duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+            if(isFlip) {
+                for (UIView *view in self.contentView.subviews) {
+                    view.hidden = NO;
+                }
+                isFlip = NO;
+            } else {
+                for (UIView *view in self.contentView.subviews) {
+                    if(view == self.headerCellView) {
+                        view.hidden = NO;
+                    } else if (view == self.dateLabel) {
+                        view.hidden = NO;
+                    } else if (view == self.daysAgoLabel) {
+                        view.hidden = NO;
+                    } else if (view == self.flipButton) {
+                        view.hidden = NO;
+                    } else {
+                        view.hidden = YES;
+                    }
+                }
+                isFlip = YES;
+            }
+        } completion:^(BOOL finished) {
+            
+        }];
 }
 
 @end

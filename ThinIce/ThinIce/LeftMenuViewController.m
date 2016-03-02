@@ -117,7 +117,7 @@
         }
 		case 1:
         {
-            
+            vc = [self.storyboard instantiateViewControllerWithIdentifier: kStatisticsViewControllerID];
             break;
         }
 		case 2:
@@ -150,7 +150,7 @@
 	}
 	
 	[[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
-															 withSlideOutAnimation:self.slideOutAnimationEnabled
+															 withSlideOutAnimation:nil //self.slideOutAnimationEnabled
 																	 andCompletion:nil];
     [self.leftMenuTableView deselectRowAtIndexPath:[self.leftMenuTableView indexPathForSelectedRow] animated:YES];
 }
