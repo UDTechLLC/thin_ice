@@ -14,6 +14,7 @@
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
 #import "SlideMenuTableCell.h"
 #import "DashboardViewController.h"
+#import "AccountInformationViewController.h"
 
 @interface LeftMenuViewController ()
 
@@ -127,7 +128,7 @@
         }
         case 3:
         {
-            
+            vc = [self.storyboard instantiateViewControllerWithIdentifier: kAccountInformationViewControllerID];
             break;
         }
         case 4:
@@ -150,7 +151,7 @@
 	}
 	
 	[[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
-															 withSlideOutAnimation:nil //self.slideOutAnimationEnabled
+															 withSlideOutAnimation:NO       // Disable Animation
 																	 andCompletion:nil];
     [self.leftMenuTableView deselectRowAtIndexPath:[self.leftMenuTableView indexPathForSelectedRow] animated:YES];
 }

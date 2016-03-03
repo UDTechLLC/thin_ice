@@ -13,11 +13,11 @@
 
 @interface SignUpViewController () <UITextFieldDelegate, UIPageViewControllerDataSource> {
     
-    LoginRegViewController          *loginRegistrationViewController;
-    UserInfoRegViewController       *userInfoRegistrationViewController;
-    BluetoothConnectViewController  *bluetoothConnectViewController;
+    LoginRegViewController                          *loginRegistrationViewController;
+    UserInfoRegViewController                       *userInfoRegistrationViewController;
+    BluetoothConnectViewController                  *bluetoothConnectViewController;
     
-    int currentPage;
+    int                                             currentPage;
 }
 
 @property (strong, nonatomic) UIPageViewController  *pageViewController;

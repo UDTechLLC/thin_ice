@@ -11,14 +11,14 @@
 #import "CarbonKit.h"
 
 @interface StatisticsViewController () <CarbonTabSwipeDelegate> {
-    NSArray *items;
+    NSArray                                     *items;
     
-    CarbonTabSwipeNavigation *tabSwipe;
+    CarbonTabSwipeNavigation                    *tabSwipe;
     
-    StatisticsContentViewController *segmentWeek;
-    StatisticsContentViewController *segmentTwoWeeks;
-    StatisticsContentViewController *segmentMonth;
-    StatisticsContentViewController *segmentAllTime;
+    StatisticsContentViewController             *segmentWeek;
+    StatisticsContentViewController             *segmentTwoWeeks;
+    StatisticsContentViewController             *segmentMonth;
+    StatisticsContentViewController             *segmentAllTime;
 }
 
 @end
@@ -30,6 +30,7 @@
     // Do any additional setup after loading the view.
     
     [self addStatisticsBackgroundImage];
+    [self addRightBarButtonWithTitle:@"Clear" normalColorHexName:ColorFromSeparators highlightedColor:ColorForHighlightedButton selector:@selector(clearStatistics)];
     [self createStatisticsViewController];
 }
 
@@ -52,6 +53,11 @@
     [tabSwipe setIndicatorHeight:3.f];
     [tabSwipe setSelectedColor:[[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0] font:[UIFont boldSystemFontOfSize:17]];
     [tabSwipe setNormalColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] font:[UIFont boldSystemFontOfSize:17]];
+}
+
+- (void)clearStatistics {
+
+    NSLog(@"clear Statistics");
 }
 
 # pragma mark - Carbon Tab Swipe Delegate

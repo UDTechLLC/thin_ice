@@ -79,11 +79,6 @@
 			((UIScrollView *)v).delegate = self;
 		}
 	}
-	
-//    CGRect rectForPageController = self.view.frame;
-//    rectForPageController.origin.y = rectForPageController.origin.y - 66;
-//    rectForPageController.size.width = rectForPageController.size.width - 66;
-//    pageController.view.frame = rectForPageController;
     
 	// add page controller as child
 	[self addChildViewController:pageController];
@@ -250,6 +245,12 @@
 	
 	// set tint color
 	[self setTintColor:tintColor];
+    
+    CALayer *bottomBorder = [CALayer layer];
+    
+    bottomBorder.frame = CGRectMake(0.0f, 43.0f, segmentController.frame.size.width, 1.0f);
+    bottomBorder.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:0.5].CGColor;
+    [segmentController.layer addSublayer:bottomBorder];
     
 	return self;
 }

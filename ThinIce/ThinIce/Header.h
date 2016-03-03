@@ -19,7 +19,7 @@
 #define pluseOnePage                                            (1)
 #define numberOfSlideMenuCells                                  (6)
 #define kMainStoryBoardIdentifier                               @"Main"
-#define NagivationBarTitleFontSize                              23
+#define NagivationBarTitleFontSize                              20
 
 // ----------------------------------------====================================================================================----------------------------------------
 
@@ -41,7 +41,8 @@
 #define ColorForStatisticsCircleStateEmpty  @"#5e35b1"
 #define ColorForStatisticsCircleStateFull   @"#33c6cb"
 #define ColorForStatisticsPlannedLabel      @"#9575cd"
-
+#define ColorForHighlightedButton           @"#cccccc"
+#define ColorFroAccountImageBackground      @"#396465"
 
 // ----------------------------------------====================================================================================----------------------------------------
 
@@ -51,7 +52,6 @@
 #define kBackButtonImageNormal                                  @"btn_back_normal"
 #define kBackButtonImageActive                                  @"btn_back_active"
 #define SlideMenuBackgroundImage                                @"SlideMenuBackground"
-
 
 
 // ----------------------------------------====================================================================================----------------------------------------
@@ -86,8 +86,9 @@
 #define kDashboardFlipViewControllerID                          @"DashboardFlipViewControllerIdentifier"
 #define kStatisticsViewControllerID                             @"StatisticsViewControllerIdentifier"
 #define kStatisticsContentViewControllerID                      @"StatisticsContentViewControllerIdentifier"
-
-
+#define kAccountInformationViewControllerID                     @"AccountInformationViewControllerIdentifier"
+#define kAccountViewControllerID                                @"AccountViewControllerIdentifier"
+#define kInformationViewControllerID                            @"InformationViewControllerIdentifier"
 
 // Cells Identifier
 

@@ -10,29 +10,29 @@
 
 @interface UserInfoRegViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *logoPic;
+@property (weak, nonatomic) IBOutlet UIImageView            *logoPic;
 
-@property (weak, nonatomic) IBOutlet UILabel *chooseSexLabel;
-@property (weak, nonatomic) IBOutlet UITextField *cooseSexTextField;
-@property (weak, nonatomic) IBOutlet UIView *cooseSexBorderLine;
+@property (weak, nonatomic) IBOutlet UILabel                *chooseSexLabel;
+@property (weak, nonatomic) IBOutlet UITextField            *cooseSexTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *cooseSexBorderLine;
 
-@property (weak, nonatomic) IBOutlet UILabel *DateOfBirthLabel;
-@property (weak, nonatomic) IBOutlet UITextField *DayTextField;
-@property (weak, nonatomic) IBOutlet UIView *DayBorderLine;
+@property (weak, nonatomic) IBOutlet UILabel                *DateOfBirthLabel;
+@property (weak, nonatomic) IBOutlet UITextField            *DayTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *DayBorderLine;
 
-@property (weak, nonatomic) IBOutlet UITextField *monthTextField;
-@property (weak, nonatomic) IBOutlet UIView *monthBorderLine;
+@property (weak, nonatomic) IBOutlet UITextField            *monthTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *monthBorderLine;
 
-@property (weak, nonatomic) IBOutlet UITextField *yearTextField;
-@property (weak, nonatomic) IBOutlet UIView *yesrBorderLine;
+@property (weak, nonatomic) IBOutlet UITextField            *yearTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *yesrBorderLine;
 
-@property (weak, nonatomic) IBOutlet UILabel *heightLabel;
-@property (weak, nonatomic) IBOutlet UITextField *heightTextField;
-@property (weak, nonatomic) IBOutlet UIView *heightBorderLine;
+@property (weak, nonatomic) IBOutlet UILabel                *heightLabel;
+@property (weak, nonatomic) IBOutlet UITextField            *heightTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *heightBorderLine;
 
-@property (weak, nonatomic) IBOutlet UILabel *weightLabel;
-@property (weak, nonatomic) IBOutlet UITextField *weightTextField;
-@property (weak, nonatomic) IBOutlet UIView *weightBorderLine;
+@property (weak, nonatomic) IBOutlet UILabel                *weightLabel;
+@property (weak, nonatomic) IBOutlet UITextField            *weightTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *weightBorderLine;
 
 @end
 

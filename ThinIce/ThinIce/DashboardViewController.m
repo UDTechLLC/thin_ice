@@ -17,7 +17,7 @@
 
 @interface DashboardViewController () <SlideNavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     // Array With Data for TableView
-    NSMutableArray *cellData;
+    NSMutableArray                                                      *cellData;
 }
 
 // Image Block
@@ -32,22 +32,22 @@
 // insoles Block
 @property (weak, nonatomic) IBOutlet UIImageView                        *insolesPic;
 @property (weak, nonatomic) IBOutlet UILabel                            *powerInsolesLabel;
-@property (weak, nonatomic) IBOutlet UIView *powerInsolesBattaryHigherView;
-@property (weak, nonatomic) IBOutlet UIView *powerInsolesBattaryMiddleView;
-@property (weak, nonatomic) IBOutlet UIView *powerInsolesBattaryLowerView;
+@property (weak, nonatomic) IBOutlet UIView                             *powerInsolesBattaryHigherView;
+@property (weak, nonatomic) IBOutlet UIView                             *powerInsolesBattaryMiddleView;
+@property (weak, nonatomic) IBOutlet UIView                             *powerInsolesBattaryLowerView;
 // Separators Block
-@property (weak, nonatomic) IBOutlet UIView *insolesAndVestVerticalSeparator;
-@property (weak, nonatomic) IBOutlet UIView *horisontalSeparator;
+@property (weak, nonatomic) IBOutlet UIView                             *insolesAndVestVerticalSeparator;
+@property (weak, nonatomic) IBOutlet UIView                             *horisontalSeparator;
 // Vest Block
-@property (weak, nonatomic) IBOutlet UIImageView *vestPic;
-@property (weak, nonatomic) IBOutlet UILabel *powerVestLabel;
-@property (weak, nonatomic) IBOutlet UIView *powerVestBattaryHigherView;
-@property (weak, nonatomic) IBOutlet UIView *powerVestBattaryMiddleView;
-@property (weak, nonatomic) IBOutlet UIView *powerVestBattaryLowerView;
+@property (weak, nonatomic) IBOutlet UIImageView                        *vestPic;
+@property (weak, nonatomic) IBOutlet UILabel                            *powerVestLabel;
+@property (weak, nonatomic) IBOutlet UIView                             *powerVestBattaryHigherView;
+@property (weak, nonatomic) IBOutlet UIView                             *powerVestBattaryMiddleView;
+@property (weak, nonatomic) IBOutlet UIView                             *powerVestBattaryLowerView;
 
 // Day Cards Block
 
-@property (weak, nonatomic) IBOutlet UITableView *dayCardsTableView;
+@property (weak, nonatomic) IBOutlet UITableView                        *dayCardsTableView;
 
 @end
 
@@ -128,7 +128,9 @@
     border.strokeColor   = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0].CGColor;
     border.fillColor     = [UIColor clearColor].CGColor;
     [self.imageViewPhoto.layer addSublayer:border];
-    self.imageViewPhoto.backgroundColor = [UIColor lightGrayColor];
+    self.imageViewPhoto.backgroundColor = [UIColor clearColor];
+    self.imageViewPhoto.contentMode = UIViewContentModeScaleAspectFill;
+    self.imageViewPhoto.image = [UIImage imageNamed:@"img"];
 }
 
 - (void)createInsolesBlock {

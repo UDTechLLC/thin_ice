@@ -42,11 +42,15 @@
 }
 
 - (void)addStatisticsBackgroundImage {
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"Thin_ice_background_%d", (int)kScreenWidth]]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"background_statistics_%d", (int)kScreenWidth]]];
 }
 
 - (void)addDashboardBackgroundImage {
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"thin_ice_dashboard_background_%d", (int)kScreenWidth]]];
+}
+
+- (void)addAccountInformationBackgroundImage {
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"background_accaunt_%d", (int)kScreenWidth]]];
 }
 
 - (void)translucentNavigationBar:(BOOL)select {
@@ -148,6 +152,48 @@
 - (void)addNavigationBarAttributeTitle:(NSString*)title {
     [[SlideNavigationController sharedInstance].navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName: [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0], NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:NagivationBarTitleFontSize]}];
     self.title = title;
+}
+
+- (void)addRightBarButtonWithTitle:(NSString*)title normalColorHexName:(NSString*)NormalColorName highlightedColor:(NSString*)hColorName selector:(SEL)selector {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    // fixed problem with auto push up back button
+    button.translatesAutoresizingMaskIntoConstraints = YES;
+    button.exclusiveTouch = YES;
+    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    [button setTitleColor:[[HelperManager sharedServer] colorwithHexString:NormalColorName alpha: 1.0] forState:UIControlStateNormal];
+    [button setTitleColor:[[HelperManager sharedServer] colorwithHexString:hColorName alpha: 1.0] forState:UIControlStateHighlighted];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(1.0, 0.0, 0.0, 0.0)];
+    [button addTarget:self action: selector forControlEvents:UIControlEventTouchUpInside];
+    CGSize fontSize = [button.titleLabel sizeThatFits:CGSizeMake(100.0, 30.0)];
+    button.frame = CGRectMake(0.0, 0.0, button.imageView.image.size.width+fontSize.width, 30.0);
+    UIBarButtonItem *barbtn = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    //fix iOS 7 left margin
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -10;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:barbtn, negativeSpacer, nil];
+}
+
+- (void)addRightBarButtonWithImageName:(NSString*)imageName highlightedImageName:(NSString*)hImageName selector:(SEL)selector {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    // fixed problem with auto push up back button
+    button.translatesAutoresizingMaskIntoConstraints = YES;
+    button.exclusiveTouch = YES;
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:hImageName] forState:UIControlStateHighlighted];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(1.0, 0.0, 0.0, 0.0)];
+    [button addTarget:self action: selector forControlEvents:UIControlEventTouchUpInside];
+    CGSize fontSize = [button.titleLabel sizeThatFits:CGSizeMake(100.0, 30.0)];
+    button.frame = CGRectMake(0.0, 0.0, button.imageView.image.size.width+fontSize.width, 30.0);
+    UIBarButtonItem *barbtn = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    //fix iOS 7 left margin
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -10;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:barbtn, negativeSpacer, nil];
 }
 
 @end

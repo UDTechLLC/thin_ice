@@ -125,7 +125,7 @@
     
     // Configure the apperence of the circle
     self.backgroundLayer.fillColor = fillColor.CGColor;
-    self.backgroundLayer.strokeColor = [UIColor lightGrayColor].CGColor;
+    self.backgroundLayer.strokeColor = [[HelperManager sharedServer] colorwithHexString: ColorForStatisticsCircleStateEmpty alpha: 1.0].CGColor;
     self.backgroundLayer.lineWidth = self.lineWidth;
     self.backgroundLayer.lineCap = self.lineCap;
     self.backgroundLayer.rasterizationScale = 2 * [UIScreen mainScreen].scale;
@@ -167,7 +167,7 @@
 }
 
 - (void)startAnimation {
-    [self drawBackgroundCircle];
+  //  [self drawBackgroundCircle];
     [self drawCircle];
     KNPercentLabel *tween = [[KNPercentLabel alloc] initWithObject:self.percentLabel key:@"text" from:0 to:self.percent duration:self.duration];
     tween.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];

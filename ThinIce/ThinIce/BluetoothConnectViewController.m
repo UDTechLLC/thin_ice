@@ -10,7 +10,7 @@
 
 @interface BluetoothConnectViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *logoPic;
+@property (weak, nonatomic) IBOutlet UIImageView            *logoPic;
 
 @end
 

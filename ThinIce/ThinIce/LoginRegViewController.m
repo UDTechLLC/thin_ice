@@ -10,20 +10,20 @@
 
 @interface LoginRegViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *logoPic;
+@property (weak, nonatomic) IBOutlet UIImageView            *logoPic;
 
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextFeild;
-@property (weak, nonatomic) IBOutlet UIView *loginBorderLine;
+@property (weak, nonatomic) IBOutlet UILabel                *emailLabel;
+@property (weak, nonatomic) IBOutlet UITextField            *emailTextFeild;
+@property (weak, nonatomic) IBOutlet UIView                 *loginBorderLine;
 
-@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UIView *passwordBorderLine;
+@property (weak, nonatomic) IBOutlet UILabel                *passwordLabel;
+@property (weak, nonatomic) IBOutlet UITextField            *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *passwordBorderLine;
 
-@property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
-@property (weak, nonatomic) IBOutlet UIView *confirmPasswordBorderLine;
+@property (weak, nonatomic) IBOutlet UITextField            *confirmPasswordTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *confirmPasswordBorderLine;
 
-@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UITextView             *descriptionTextView;
 
 @end
 
