@@ -236,7 +236,7 @@
 	
 	UIView *tab = tabs[segmentController.selectedSegmentIndex];
 	indicatorWidthConst.constant = tab.frame.size.width;
-	indicatorLeftConst.constant = tab.frame.origin.x;
+    indicatorLeftConst.constant = tab.frame.origin.x;
 	
 	tabScrollView.contentInset = UIEdgeInsetsZero;
 	

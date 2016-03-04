@@ -10,6 +10,14 @@
 
 @interface InformationViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollForInformationBlock;
+@property (weak, nonatomic) IBOutlet UIView *backgroundForInformationFields;
+
+
+
+
+
+
 @end
 
 @implementation InformationViewController
@@ -24,6 +32,14 @@
 - (void)createInformationViewController {
     
     self.view.backgroundColor = [UIColor clearColor];
+    
+    self.scrollForInformationBlock.layer.cornerRadius = 13;
+    self.scrollForInformationBlock.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha: 0.5];
+    
+    
+    
+    
+    
 }
 
 @end

@@ -159,12 +159,10 @@
     UIView *viewBackground = [[UIView alloc] initWithFrame:self.accountPhotoImageView.bounds];
     viewBackground.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFroAccountImageBackground alpha:0.5];
     
-    UIImageView *photoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images"]];
-    [photoImageView sizeToFit];
-    photoImageView.frame = view.frame;
+    UIImageView *photoImageView = [[UIImageView alloc] initWithImage: image];
+    photoImageView.frame = self.accountPhotoImageView.bounds;
     
     UIImageView *photoCameraImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"icons_account_photo_%d", (int)kScreenWidth]]];
-    [photoCameraImageView sizeToFit];
     photoCameraImageView.center = view.center;
     
     [view addSubview:photoImageView];
