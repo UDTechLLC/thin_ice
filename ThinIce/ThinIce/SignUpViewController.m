@@ -111,6 +111,7 @@
     
     currentPage++;
     if(currentPage < self.pageViewControllerStack.count) {
+        [self.pageControl setCurrentPage: currentPage];
         id startingViewController = [self viewControllerAtIndex: currentPage];
         NSArray *viewControllers = @[startingViewController];
         [self changeButtonTitleAndColorWithAnimation];
@@ -135,8 +136,6 @@
     } else if ([viewController isKindOfClass:[BluetoothConnectViewController class]]) {
         index = ((BluetoothConnectViewController*)viewController).pageIndex;
     }
-
-    [self.pageControl setCurrentPage:index];
     
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
@@ -157,8 +156,6 @@
     } else if ([viewController isKindOfClass:[BluetoothConnectViewController class]]) {
         index = ((BluetoothConnectViewController*)viewController).pageIndex;
     }
-    
-    [self.pageControl setCurrentPage:index];
     
     if (index == NSNotFound) {
         return nil;

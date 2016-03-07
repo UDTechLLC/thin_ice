@@ -15,6 +15,7 @@
 #import "SlideMenuTableCell.h"
 #import "DashboardViewController.h"
 #import "AccountInformationViewController.h"
+#import "SettingsViewController.h"
 
 @interface LeftMenuViewController ()
 
@@ -138,7 +139,7 @@
         }
         case 5:
         {
-            
+            vc = [self.storyboard instantiateViewControllerWithIdentifier: kSettingsViewControllerID];
             break;
         }
         default:

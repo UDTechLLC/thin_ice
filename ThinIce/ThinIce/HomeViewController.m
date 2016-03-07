@@ -34,6 +34,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
+    NSLog(@"%@", [SlideNavigationController sharedInstance].viewControllers);
     [super viewWillAppear:animated];
 }
 

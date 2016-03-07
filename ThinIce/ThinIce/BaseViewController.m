@@ -53,6 +53,10 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"background_accaunt_%d", (int)kScreenWidth]]];
 }
 
+- (void)addSettingsBackgroundImage {
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"background_statistics_%d", (int)kScreenWidth]]];
+}
+
 - (void)translucentNavigationBar:(BOOL)select {
     if(select) {
         [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];

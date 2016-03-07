@@ -14,6 +14,7 @@
 - (void)addStatisticsBackgroundImage;
 - (void)addDashboardBackgroundImage;
 - (void)addAccountInformationBackgroundImage;
+- (void)addSettingsBackgroundImage;
 
 - (void)translucentNavigationBar:(BOOL)select;
 

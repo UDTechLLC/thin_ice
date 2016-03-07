@@ -10,6 +10,7 @@
 #import "AccountViewController.h"
 #import "InformationViewController.h"
 #import "CarbonKit.h"
+#import "HomeViewController.h"
 
 #define iPhone6XCoordinateForAccountImege               117
 #define iPhone6YCoordinateForAccountImege               70
@@ -27,14 +28,13 @@
 }
 
 // Account Image Block
-
 @property (weak, nonatomic) IBOutlet UIImageView                    *accountPhotoImageView;
 
+// Image Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint             *imageYCoordinate;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint             *imageXCoordinate;
 
 // Account Content Account And Information Block
-
 @property (weak, nonatomic) IBOutlet UIView                         *accountAndInformationContentView;
 @property (strong, nonatomic) UIViewController                      *accountAndInformationContentViewController;
 
@@ -74,16 +74,15 @@
 }
 
 - (void)createAccountInformationViewController {
-
+    
 }
 
 - (void)createCarbonTabSwipe {
     
     self.accountAndInformationContentViewController = [[UIViewController alloc] init];
+    [self.accountAndInformationContentView addSubview: self.accountAndInformationContentViewController.view];
     self.accountAndInformationContentViewController.view.frame = self.accountAndInformationContentView.bounds;
     self.accountAndInformationContentViewController.navigationController.navigationBarHidden = YES;
-    [self.accountAndInformationContentView addSubview: self.accountAndInformationContentViewController.view];
-    
     
     items = @[@"Account", @"Information"];
     tabSwipe = [[CarbonTabSwipeNavigation alloc] createWithRootViewController:self.accountAndInformationContentViewController tabNames:items tintColor:[UIColor clearColor] delegate:self isBuyerEnable:NO];
@@ -143,6 +142,8 @@
 
 - (void)logout {
     NSLog(@"logout");
+    HomeViewController *homeController = [self.storyboard instantiateViewControllerWithIdentifier: kHomeViewControllerID];
+    [[SlideNavigationController sharedInstance] setViewControllers:[NSArray arrayWithObject:homeController] animated:YES];
 }
 
 - (void)insertPhotoInAccountPhotoImageView {

@@ -43,6 +43,7 @@
 #define ColorForStatisticsPlannedLabel      @"#9575cd"
 #define ColorForHighlightedButton           @"#cccccc"
 #define ColorFroAccountImageBackground      @"#396465"
+#define ColorForSettingsBackgroundSlider    @"#6b8a98"
 
 // ----------------------------------------====================================================================================----------------------------------------
 
@@ -52,7 +53,6 @@
 #define kBackButtonImageNormal                                  @"btn_back_normal"
 #define kBackButtonImageActive                                  @"btn_back_active"
 #define SlideMenuBackgroundImage                                @"SlideMenuBackground"
-
 
 // ----------------------------------------====================================================================================----------------------------------------
 
@@ -76,6 +76,7 @@
 
 // ViewController StoryBoardID
 
+#define kHomeViewControllerID                                   @"HomeViewControllerIdentifier"
 #define kPageViewControllerID                                   @"PageViewController"
 #define kDashboardViewControllerID                              @"DashboardViewControllerID"
 #define kSignUpViewControllerID                                 @"SignUpViewControllerID"
@@ -89,6 +90,9 @@
 #define kAccountInformationViewControllerID                     @"AccountInformationViewControllerIdentifier"
 #define kAccountViewControllerID                                @"AccountViewControllerIdentifier"
 #define kInformationViewControllerID                            @"InformationViewControllerIdentifier"
+#define kSettingsViewControllerID                               @"SettingsViewControllerIdentifier"
+#define kMeasurementsViewControllerID                           @"MeasurementsViewControllerIdentifier"
+#define kNotificationsViewControllerID                          @"NotificationsViewControllerIdentifier"
 
 // Cells Identifier
 

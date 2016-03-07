@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccountViewController.h"
+#import "InformationViewController.h"
 
 @interface AccountInformationViewController : BaseViewController
 
