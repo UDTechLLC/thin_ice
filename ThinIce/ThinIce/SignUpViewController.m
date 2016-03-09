@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSArray               *pageViewControllerStack;
 @property (weak, nonatomic) IBOutlet UIButton       *buttonCreateAccount;
 @property (weak, nonatomic) IBOutlet UIPageControl  *pageControl;
+@property (weak, nonatomic) IBOutlet UIButton       *cancelButton;
 
 @end
 
@@ -60,6 +61,8 @@
 }
 
 - (void)createAccountButton {
+    
+    self.cancelButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     self.buttonCreateAccount.layer.cornerRadius = 13;
     self.buttonCreateAccount.backgroundColor = [UIColor lightGrayColor];
@@ -105,6 +108,9 @@
     
     currentPage = 0;
     self.pageControl.numberOfPages = 3;
+    
+    self.pageControl.pageIndicatorTintColor = [[HelperManager sharedServer] colorwithHexString:@"6a828f" alpha:1.0];
+    self.pageControl.currentPageIndicatorTintColor = [[HelperManager sharedServer] colorwithHexString:@"33c6cb" alpha:1.0];
 }
 
 - (IBAction)changeView:(id)sender {

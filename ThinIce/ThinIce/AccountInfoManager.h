@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ServerManager : NSObject
+@interface AccountInfoManager : NSObject
 
-+ (ServerManager *)sharedServer;
++ (AccountInfoManager *)sharedManager;
 
 @end

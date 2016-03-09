@@ -134,7 +134,7 @@
         }
         case 4:
         {
-            
+            vc = [self.storyboard instantiateViewControllerWithIdentifier: kAchievementsCollectionViewControllerID];
             break;
         }
         case 5:

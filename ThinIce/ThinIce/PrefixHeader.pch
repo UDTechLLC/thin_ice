@@ -21,7 +21,7 @@
 #import "BaseViewController.h"
 #import "MBProgressHUD.h"
 #import "HelperManager.h"
-#import "ServerManager.h"
+#import "AccountInfoManager.h"
 #import "FHSTwitterEngine.h"
 #import "DatabaseEntities.h"
 #import "CustomNavigationBar.h"
@@ -29,5 +29,7 @@
 #import "BaseSignUpViewController.h"
 #import "YLProgressBar.h"
 #import "QuartzCore/QuartzCore.h"
+#import "AchievemetsUnlockedViewController.h"
+#import "AchievementsUnlockerManager.h"
 
 #endif /* PrefixHeader_pch */

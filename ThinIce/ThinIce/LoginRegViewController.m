@@ -60,16 +60,19 @@
     // Create TextField Group
     self.emailTextFeild.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
     self.emailTextFeild.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
+    self.emailTextFeild.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.loginBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
     
     self.passwordTextField.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
     self.passwordTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
+    self.passwordTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.passwordBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
 
     self.confirmPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Confirm Password" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0],
                                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:19]}];
     self.confirmPasswordTextField.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
     self.confirmPasswordTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
+    self.confirmPasswordTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.confirmPasswordBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
     
     self.descriptionTextView.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];

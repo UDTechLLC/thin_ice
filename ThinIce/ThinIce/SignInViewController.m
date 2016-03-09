@@ -44,12 +44,12 @@ static NSString*const kPasswordKey                                      = @"Pass
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    
+    // Focused UItextField
+    [self.loginTextField becomeFirstResponder];
     [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    
     [super viewWillDisappear:animated];
 }
 
@@ -73,10 +73,12 @@ static NSString*const kPasswordKey                                      = @"Pass
     
     self.loginPic.image = [UIImage imageNamed: @"mail_icon"];
     self.loginBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
+    self.loginTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.loginTextField.delegate = self;
     
     self.passPic.image = [UIImage imageNamed: @"pass_icon"];
     self.passBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
+    self.passTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.passTextField.delegate = self;
 }
 

@@ -8,7 +8,11 @@
 
 #import "UserInfoRegViewController.h"
 
-@interface UserInfoRegViewController ()
+@interface UserInfoRegViewController () {
+    UIDatePicker                                            *datePicker_;
+    NSDateFormatter                                         *dateFormatter_;
+    UITextField                                             *currentTextField_;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView            *logoPic;
 
@@ -16,15 +20,10 @@
 @property (weak, nonatomic) IBOutlet UITextField            *cooseSexTextField;
 @property (weak, nonatomic) IBOutlet UIView                 *cooseSexBorderLine;
 
-@property (weak, nonatomic) IBOutlet UILabel                *DateOfBirthLabel;
-@property (weak, nonatomic) IBOutlet UITextField            *DayTextField;
-@property (weak, nonatomic) IBOutlet UIView                 *DayBorderLine;
-
-@property (weak, nonatomic) IBOutlet UITextField            *monthTextField;
-@property (weak, nonatomic) IBOutlet UIView                 *monthBorderLine;
-
-@property (weak, nonatomic) IBOutlet UITextField            *yearTextField;
-@property (weak, nonatomic) IBOutlet UIView                 *yesrBorderLine;
+@property (weak, nonatomic) IBOutlet UILabel                *dateOfBirthLabel;
+@property (weak, nonatomic) IBOutlet UITextField            *dateTextField;
+@property (weak, nonatomic) IBOutlet UIView                 *dateBorderLine;
+@property (weak, nonatomic) IBOutlet UIImageView            *dateImageArrow;
 
 @property (weak, nonatomic) IBOutlet UILabel                *heightLabel;
 @property (weak, nonatomic) IBOutlet UITextField            *heightTextField;
@@ -61,6 +60,11 @@
 
 - (void)createViewController {
     
+    dateFormatter_ = [[NSDateFormatter alloc] init];
+    datePicker_ = [[UIDatePicker alloc] init];
+    datePicker_.datePickerMode = UIDatePickerModeDate;
+    [datePicker_ addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
+    
     // Change Background View Color / Radius
     self.view.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha: 0.5];
     
@@ -68,41 +72,44 @@
     
     // Create TextField Group
     
-    self.cooseSexTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Male" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0],
+    self.cooseSexTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Male" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0],
                                                                                                              NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:19]}];
-    self.cooseSexTextField.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.cooseSexTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
+    self.cooseSexTextField.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.cooseSexTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.cooseSexTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.cooseSexBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
     
-    self.DayTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Day" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0],
+    self.dateTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Choose your date of birth" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0],
                                                                                                                         NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:19]}];
-    self.DayTextField.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.DayTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.DayBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
+    self.dateTextField.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.dateTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.dateTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.dateTextField.inputView = datePicker_;
     
-    self.monthTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Month" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0],
-                                                                                                                        NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:19]}];
-    self.monthTextField.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.monthTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.monthBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
+    self.dateImageArrow.image = [UIImage imageNamed: [NSString stringWithFormat:@"arrow_%d", (int)kScreenWidth]];
+    self.dateImageArrow.contentMode = UIViewContentModeCenter;
+    self.dateBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
     
-    self.yearTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Year" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0],
-                                                                                                                        NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:19]}];
-    self.yearTextField.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.yearTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.yesrBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
-    
-    self.heightTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Your Height" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0],
+
+    self.heightTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Your Height" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0],
                                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:19]}];
-    self.heightTextField.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.heightTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
+    self.heightTextField.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.heightTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.heightTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.heightBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
     
-    self.weightTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Your Weight" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0],
+    self.weightTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Your Weight" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0],
                                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:19]}];
-    self.weightTextField.textColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
-    self.weightTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:@"#cccccc" alpha:1.0];
+    self.weightTextField.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.weightTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.weightTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.weightBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
+}
+
+- (void)updateTextField:(UIDatePicker *)sender {
+    [dateFormatter_ setDateFormat:@"MMM d, yyyy"];
+    self.dateTextField.text = [dateFormatter_ stringFromDate:sender.date];
+//    NSNumber * userBirth = [NSNumber numberWithInteger:[sender.date timeIntervalSince1970]];
 }
 
 @end

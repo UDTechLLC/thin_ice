@@ -56,7 +56,7 @@
     self.clockImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icons_clock_%d", (int)kScreenWidth]];
     self.clockImageView.contentMode = UIViewContentModeCenter;
     
-    self.temperature.text = @"12C";
+    self.temperature.text = @"12 ℃";
     self.temperature.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
     
     self.timeInfoLabel.text = @"5:31:16";

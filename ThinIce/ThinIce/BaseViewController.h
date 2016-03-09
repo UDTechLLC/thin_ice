@@ -15,6 +15,8 @@
 - (void)addDashboardBackgroundImage;
 - (void)addAccountInformationBackgroundImage;
 - (void)addSettingsBackgroundImage;
+- (void)addAchievementsBackgroundImage;
+- (void)addNewAchievementBackgroundImage;
 
 - (void)translucentNavigationBar:(BOOL)select;
 

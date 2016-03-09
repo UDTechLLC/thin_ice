@@ -128,7 +128,7 @@
     
     self.avgSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.avgLabelCount.text = @"12 C";
+    self.avgLabelCount.text = @"12 ℃";
     self.avgLabelCount.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
 }
 

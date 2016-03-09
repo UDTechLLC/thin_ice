@@ -6,12 +6,12 @@
 //  Copyright © 2016 udtech.co. All rights reserved.
 //
 
-#import "ServerManager.h"
+#import "AccountInfoManager.h"
 
-@implementation ServerManager
+@implementation AccountInfoManager
 
-+ (ServerManager *)sharedServer {
-    static ServerManager *instanceHelper = nil;
++ (AccountInfoManager *)sharedManager {
+    static AccountInfoManager *instanceHelper = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instanceHelper = [[self alloc] init];

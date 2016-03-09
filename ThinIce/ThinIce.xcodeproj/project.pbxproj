@@ -36,9 +36,28 @@
 		D8867E881C736BF7005F7B6D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8867E871C736BF7005F7B6D /* FBSDKLoginKit.framework */; };
 		D8867E8A1C736C0A005F7B6D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8867E891C736C0A005F7B6D /* FBSDKCoreKit.framework */; };
 		D8867E8C1C736C11005F7B6D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8867E8B1C736C11005F7B6D /* FBSDKShareKit.framework */; };
-		D8867E931C737595005F7B6D /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E921C737595005F7B6D /* ServerManager.m */; };
+		D8867E931C737595005F7B6D /* AccountInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E921C737595005F7B6D /* AccountInfoManager.m */; };
 		D8867E981C7379CD005F7B6D /* NSDictionary+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E951C7379CD005F7B6D /* NSDictionary+Extended.m */; };
 		D8867E991C7379CD005F7B6D /* NSObject+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E961C7379CD005F7B6D /* NSObject+Runtime.m */; };
+		D88845AD1C900D51005DFE5C /* arrow_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845AC1C900D51005DFE5C /* arrow_414@3x.png */; };
+		D88845AF1C900D57005DFE5C /* arrow_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845AE1C900D57005DFE5C /* arrow_375@2x.png */; };
+		D88845B11C900D5D005DFE5C /* arrow_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845B01C900D5D005DFE5C /* arrow_320@2x.png */; };
+		D88845B51C904D15005DFE5C /* AchievementsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88845B41C904D15005DFE5C /* AchievementsCollectionViewController.m */; };
+		D88845B81C904D4A005DFE5C /* AchievemetsUnlockedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88845B71C904D4A005DFE5C /* AchievemetsUnlockedViewController.m */; };
+		D88845BC1C90516D005DFE5C /* AchievementsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D88845BB1C90516D005DFE5C /* AchievementsCollectionCell.m */; };
+		D88845C21C905746005DFE5C /* achievements_inactive_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C01C905746005DFE5C /* achievements_inactive_414@3x.png */; };
+		D88845C31C905746005DFE5C /* achievements_active_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C11C905746005DFE5C /* achievements_active_414@3x.png */; };
+		D88845C61C90574D005DFE5C /* achievements_inactive_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C41C90574D005DFE5C /* achievements_inactive_375@2x.png */; };
+		D88845C71C90574D005DFE5C /* achievements_active_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C51C90574D005DFE5C /* achievements_active_375@2x.png */; };
+		D88845CA1C905753005DFE5C /* achievements_inactive_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C81C905753005DFE5C /* achievements_inactive_320@2x.png */; };
+		D88845CB1C905753005DFE5C /* achievements_active_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C91C905753005DFE5C /* achievements_active_320@2x.png */; };
+		D88845CD1C9060C4005DFE5C /* background_over_achievements_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845CC1C9060C4005DFE5C /* background_over_achievements_320@2x.png */; };
+		D88845CF1C9060CB005DFE5C /* background_over_achievements_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845CE1C9060CB005DFE5C /* background_over_achievements_375@2x.png */; };
+		D88845D11C9060D2005DFE5C /* background_over_achievements_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845D01C9060D2005DFE5C /* background_over_achievements_414@3x.png */; };
+		D88845D41C907542005DFE5C /* AchievementsUnlockerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D88845D31C907542005DFE5C /* AchievementsUnlockerManager.m */; };
+		D88845D61C90852F005DFE5C /* badges_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845D51C90852F005DFE5C /* badges_320@2x.png */; };
+		D88845D81C908533005DFE5C /* badges_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845D71C908533005DFE5C /* badges_375@2x.png */; };
+		D88845DA1C90853A005DFE5C /* badges_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845D91C90853A005DFE5C /* badges_414@3x.png */; };
 		D88C62611C8485EF00FDDF0B /* thin_ice_vest_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88C625F1C8485EF00FDDF0B /* thin_ice_vest_320@2x.png */; };
 		D88C62651C8485F700FDDF0B /* thin_ice_vest_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88C62631C8485F700FDDF0B /* thin_ice_vest_375@2x.png */; };
 		D88C62691C84860100FDDF0B /* thin_ice_vest_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88C62671C84860100FDDF0B /* thin_ice_vest_414@3x.png */; };
@@ -194,12 +213,35 @@
 		D8867E871C736BF7005F7B6D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		D8867E891C736C0A005F7B6D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D8867E8B1C736C11005F7B6D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		D8867E911C737595005F7B6D /* ServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerManager.h; sourceTree = "<group>"; };
-		D8867E921C737595005F7B6D /* ServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerManager.m; sourceTree = "<group>"; };
+		D8867E911C737595005F7B6D /* AccountInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfoManager.h; sourceTree = "<group>"; };
+		D8867E921C737595005F7B6D /* AccountInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfoManager.m; sourceTree = "<group>"; };
 		D8867E951C7379CD005F7B6D /* NSDictionary+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extended.m"; sourceTree = "<group>"; };
 		D8867E961C7379CD005F7B6D /* NSObject+Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Runtime.m"; sourceTree = "<group>"; };
 		D8867E9B1C7379E8005F7B6D /* NSDictionary+Extended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extended.h"; sourceTree = "<group>"; };
 		D8867E9C1C7379E8005F7B6D /* NSObject+Runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Runtime.h"; sourceTree = "<group>"; };
+		D88845AC1C900D51005DFE5C /* arrow_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_414@3x.png"; sourceTree = "<group>"; };
+		D88845AE1C900D57005DFE5C /* arrow_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_375@2x.png"; sourceTree = "<group>"; };
+		D88845B01C900D5D005DFE5C /* arrow_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_320@2x.png"; sourceTree = "<group>"; };
+		D88845B31C904D15005DFE5C /* AchievementsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsCollectionViewController.h; sourceTree = "<group>"; };
+		D88845B41C904D15005DFE5C /* AchievementsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsCollectionViewController.m; sourceTree = "<group>"; };
+		D88845B61C904D4A005DFE5C /* AchievemetsUnlockedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievemetsUnlockedViewController.h; sourceTree = "<group>"; };
+		D88845B71C904D4A005DFE5C /* AchievemetsUnlockedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievemetsUnlockedViewController.m; sourceTree = "<group>"; };
+		D88845BA1C90516D005DFE5C /* AchievementsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsCollectionCell.h; sourceTree = "<group>"; };
+		D88845BB1C90516D005DFE5C /* AchievementsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsCollectionCell.m; sourceTree = "<group>"; };
+		D88845C01C905746005DFE5C /* achievements_inactive_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_inactive_414@3x.png"; sourceTree = "<group>"; };
+		D88845C11C905746005DFE5C /* achievements_active_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_active_414@3x.png"; sourceTree = "<group>"; };
+		D88845C41C90574D005DFE5C /* achievements_inactive_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_inactive_375@2x.png"; sourceTree = "<group>"; };
+		D88845C51C90574D005DFE5C /* achievements_active_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_active_375@2x.png"; sourceTree = "<group>"; };
+		D88845C81C905753005DFE5C /* achievements_inactive_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_inactive_320@2x.png"; sourceTree = "<group>"; };
+		D88845C91C905753005DFE5C /* achievements_active_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_active_320@2x.png"; sourceTree = "<group>"; };
+		D88845CC1C9060C4005DFE5C /* background_over_achievements_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_over_achievements_320@2x.png"; sourceTree = "<group>"; };
+		D88845CE1C9060CB005DFE5C /* background_over_achievements_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_over_achievements_375@2x.png"; sourceTree = "<group>"; };
+		D88845D01C9060D2005DFE5C /* background_over_achievements_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_over_achievements_414@3x.png"; sourceTree = "<group>"; };
+		D88845D21C907542005DFE5C /* AchievementsUnlockerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsUnlockerManager.h; sourceTree = "<group>"; };
+		D88845D31C907542005DFE5C /* AchievementsUnlockerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsUnlockerManager.m; sourceTree = "<group>"; };
+		D88845D51C90852F005DFE5C /* badges_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badges_320@2x.png"; sourceTree = "<group>"; };
+		D88845D71C908533005DFE5C /* badges_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badges_375@2x.png"; sourceTree = "<group>"; };
+		D88845D91C90853A005DFE5C /* badges_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badges_414@3x.png"; sourceTree = "<group>"; };
 		D88C625F1C8485EF00FDDF0B /* thin_ice_vest_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thin_ice_vest_320@2x.png"; sourceTree = "<group>"; };
 		D88C62631C8485F700FDDF0B /* thin_ice_vest_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thin_ice_vest_375@2x.png"; sourceTree = "<group>"; };
 		D88C62671C84860100FDDF0B /* thin_ice_vest_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thin_ice_vest_414@3x.png"; sourceTree = "<group>"; };
@@ -513,9 +555,10 @@
 		D8867E7C1C735C87005F7B6D /* CustomView+UI */ = {
 			isa = PBXGroup;
 			children = (
+				D88845B91C905130005DFE5C /* CollectionCells */,
 				D8CABAE21C87316A007EEBC7 /* CirclePercentView */,
 				D8CABACD1C87238C007EEBC7 /* CarbotTabSwipe */,
-				D8B2B2AC1C858BD00089E6B9 /* CellsForTableView */,
+				D8B2B2AC1C858BD00089E6B9 /* TableViewCells */,
 				D8EF712E1C7B08A40006FDEF /* LeftSideMenu */,
 				D8EDC98B1C75B9E900F5F524 /* navigationBar */,
 			);
@@ -527,8 +570,10 @@
 			children = (
 				D8867E821C736715005F7B6D /* HelperManager.h */,
 				D8867E831C736715005F7B6D /* HelperManager.m */,
-				D8867E911C737595005F7B6D /* ServerManager.h */,
-				D8867E921C737595005F7B6D /* ServerManager.m */,
+				D8867E911C737595005F7B6D /* AccountInfoManager.h */,
+				D8867E921C737595005F7B6D /* AccountInfoManager.m */,
+				D88845D21C907542005DFE5C /* AchievementsUnlockerManager.h */,
+				D88845D31C907542005DFE5C /* AchievementsUnlockerManager.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -545,6 +590,7 @@
 				D8CABAC91C872075007EEBC7 /* Statictics */,
 				D8A1677A1C885C5D000C4C1C /* Account */,
 				D845D7F61C8D769400F8B563 /* ThinIceSettings */,
+				D88845B21C904BEB005DFE5C /* Achievements */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -566,6 +612,59 @@
 				D8867E961C7379CD005F7B6D /* NSObject+Runtime.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		D88845B21C904BEB005DFE5C /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				D88845B31C904D15005DFE5C /* AchievementsCollectionViewController.h */,
+				D88845B41C904D15005DFE5C /* AchievementsCollectionViewController.m */,
+				D88845B61C904D4A005DFE5C /* AchievemetsUnlockedViewController.h */,
+				D88845B71C904D4A005DFE5C /* AchievemetsUnlockedViewController.m */,
+			);
+			name = Achievements;
+			sourceTree = "<group>";
+		};
+		D88845B91C905130005DFE5C /* CollectionCells */ = {
+			isa = PBXGroup;
+			children = (
+				D88845BA1C90516D005DFE5C /* AchievementsCollectionCell.h */,
+				D88845BB1C90516D005DFE5C /* AchievementsCollectionCell.m */,
+			);
+			name = CollectionCells;
+			sourceTree = "<group>";
+		};
+		D88845BD1C90571C005DFE5C /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				D88845D51C90852F005DFE5C /* badges_320@2x.png */,
+				D88845CC1C9060C4005DFE5C /* background_over_achievements_320@2x.png */,
+				D88845C81C905753005DFE5C /* achievements_inactive_320@2x.png */,
+				D88845C91C905753005DFE5C /* achievements_active_320@2x.png */,
+				D88845D71C908533005DFE5C /* badges_375@2x.png */,
+			);
+			name = Achievements;
+			sourceTree = "<group>";
+		};
+		D88845BE1C905728005DFE5C /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				D88845CE1C9060CB005DFE5C /* background_over_achievements_375@2x.png */,
+				D88845C41C90574D005DFE5C /* achievements_inactive_375@2x.png */,
+				D88845C51C90574D005DFE5C /* achievements_active_375@2x.png */,
+			);
+			name = Achievements;
+			sourceTree = "<group>";
+		};
+		D88845BF1C90572C005DFE5C /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				D88845D91C90853A005DFE5C /* badges_414@3x.png */,
+				D88845D01C9060D2005DFE5C /* background_over_achievements_414@3x.png */,
+				D88845C01C905746005DFE5C /* achievements_inactive_414@3x.png */,
+				D88845C11C905746005DFE5C /* achievements_active_414@3x.png */,
+			);
+			name = Achievements;
 			sourceTree = "<group>";
 		};
 		D8A1677A1C885C5D000C4C1C /* Account */ = {
@@ -622,12 +721,12 @@
 			name = ContentViewController;
 			sourceTree = "<group>";
 		};
-		D8B2B2AC1C858BD00089E6B9 /* CellsForTableView */ = {
+		D8B2B2AC1C858BD00089E6B9 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				D8B2B2AD1C858BDB0089E6B9 /* Dashboard_Cell */,
 			);
-			name = CellsForTableView;
+			name = TableViewCells;
 			sourceTree = "<group>";
 		};
 		D8B2B2AD1C858BDB0089E6B9 /* Dashboard_Cell */ = {
@@ -753,6 +852,7 @@
 		D8E1344B1C74C48B00B9D813 /* IP5 */ = {
 			isa = PBXGroup;
 			children = (
+				D88845B01C900D5D005DFE5C /* arrow_320@2x.png */,
 				D845D81F1C8DD66D00F8B563 /* btn_save_normal_320@2x.png */,
 				D845D8201C8DD66D00F8B563 /* btn_save_active_320@2x.png */,
 				D8EF71561C7B66680006FDEF /* Thin_ice_background_320@2x.png */,
@@ -761,6 +861,7 @@
 				D8CABAEB1C87336F007EEBC7 /* Statistics */,
 				D8A1677E1C885D4C000C4C1C /* Account */,
 				D845D8011C8D7CCF00F8B563 /* Settings */,
+				D88845BD1C90571C005DFE5C /* Achievements */,
 			);
 			name = IP5;
 			sourceTree = "<group>";
@@ -768,6 +869,7 @@
 		D8E1344C1C74C49B00B9D813 /* IP6 */ = {
 			isa = PBXGroup;
 			children = (
+				D88845AE1C900D57005DFE5C /* arrow_375@2x.png */,
 				D845D81B1C8DD66000F8B563 /* btn_save_normal_375@2x.png */,
 				D845D81C1C8DD66000F8B563 /* btn_save_active_375@2x.png */,
 				D8AB987D1C7C489400E7BD0E /* Thin_ice_background_375@2x.png */,
@@ -776,6 +878,7 @@
 				D8CABAE91C87334C007EEBC7 /* Statistics */,
 				D8A1677F1C885D58000C4C1C /* Account */,
 				D845D8021C8D7CD500F8B563 /* Settings */,
+				D88845BE1C905728005DFE5C /* Achievements */,
 			);
 			name = IP6;
 			sourceTree = "<group>";
@@ -783,6 +886,7 @@
 		D8E1344D1C74C4A100B9D813 /* IP6Plus */ = {
 			isa = PBXGroup;
 			children = (
+				D88845AC1C900D51005DFE5C /* arrow_414@3x.png */,
 				D8AB98811C7C4CCD00E7BD0E /* Thin_ice_background_414@3x.png */,
 				D845D8171C8DD65A00F8B563 /* btn_save_normal_414@3x.png */,
 				D845D8181C8DD65A00F8B563 /* btn_save_active_414@3x.png */,
@@ -791,6 +895,7 @@
 				D8CABAEA1C873366007EEBC7 /* Statistics */,
 				D8A167801C885D60000C4C1C /* Account */,
 				D845D8031C8D7CE000F8B563 /* Setting */,
+				D88845BF1C90572C005DFE5C /* Achievements */,
 			);
 			name = IP6Plus;
 			sourceTree = "<group>";
@@ -1019,19 +1124,28 @@
 				D8CABAF31C873399007EEBC7 /* icons_statisticsBurnedCal_375@2x.png in Resources */,
 				D8B2B2C61C85A47B0089E6B9 /* icons_temperature_375@2x.png in Resources */,
 				D8B2B2B21C8599770089E6B9 /* icons_dashboardFlip_normal_320@2x.png in Resources */,
+				D88845CB1C905753005DFE5C /* achievements_active_320@2x.png in Resources */,
 				D845D80F1C8D7D0B00F8B563 /* btn_help_normal_414@3x.png in Resources */,
+				D88845D81C908533005DFE5C /* badges_375@2x.png in Resources */,
 				D8A167791C882D33000C4C1C /* background_statistics_414@3x.png in Resources */,
 				D8B2B2B81C859A150089E6B9 /* icons_dashboardFlip_normal_375@2x.png in Resources */,
+				D88845CF1C9060CB005DFE5C /* background_over_achievements_375@2x.png in Resources */,
 				D8A167901C88601B000C4C1C /* icons_account_exit_account_normal_320@2x.png in Resources */,
 				D8CABAEE1C87338F007EEBC7 /* icons_statisticsBurnedCal_414@3x.png in Resources */,
+				D88845C31C905746005DFE5C /* achievements_active_414@3x.png in Resources */,
 				D8B2B2E61C85C33E0089E6B9 /* icons_waterIntake_320@2x.png in Resources */,
 				D845D81E1C8DD66000F8B563 /* btn_save_active_375@2x.png in Resources */,
 				D88C62691C84860100FDDF0B /* thin_ice_vest_414@3x.png in Resources */,
+				D88845CD1C9060C4005DFE5C /* background_over_achievements_320@2x.png in Resources */,
 				D845D8221C8DD66D00F8B563 /* btn_save_active_320@2x.png in Resources */,
+				D88845C61C90574D005DFE5C /* achievements_inactive_375@2x.png in Resources */,
 				D8EF71591C7B6D180006FDEF /* thin_ice_dashboard_background_320@2x.png in Resources */,
 				D8B2B2B41C8599C90089E6B9 /* icons_dashboardFlip_active_320@2x.png in Resources */,
 				D8CABAB91C86D4FC007EEBC7 /* insoles_320@2x.png in Resources */,
+				D88845CA1C905753005DFE5C /* achievements_inactive_320@2x.png in Resources */,
+				D88845AD1C900D51005DFE5C /* arrow_414@3x.png in Resources */,
 				D8B2B2D41C85C10B0089E6B9 /* icons_burntCalories_414@3x.png in Resources */,
+				D88845C71C90574D005DFE5C /* achievements_active_375@2x.png in Resources */,
 				D8B2B2AB1C85850A0089E6B9 /* thin_ice_dashboard_background_414@3x.png in Resources */,
 				D8B2B2FA1C85EBE40089E6B9 /* icons_thinIceCellLogo_320@2x.png in Resources */,
 				D8B2B2FC1C85EBEA0089E6B9 /* icons_thinIceCellLogo_375@2x.png in Resources */,
@@ -1040,6 +1154,8 @@
 				D845D81D1C8DD66000F8B563 /* btn_save_normal_375@2x.png in Resources */,
 				D8A167861C88600C000C4C1C /* background_accaunt_414@3x.png in Resources */,
 				D8867E621C732D02005F7B6D /* LaunchScreen.storyboard in Resources */,
+				D88845C21C905746005DFE5C /* achievements_inactive_414@3x.png in Resources */,
+				D88845DA1C90853A005DFE5C /* badges_414@3x.png in Resources */,
 				D8B2B2EC1C85C3460089E6B9 /* icons_waterIntake_375@2x.png in Resources */,
 				D8B2B2F61C85C3DB0089E6B9 /* icons_H_protein_375@2x.png in Resources */,
 				D8B2B2FE1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png in Resources */,
@@ -1081,6 +1197,7 @@
 				D845D8061C8D7CFC00F8B563 /* btn_help_active_320@2x.png in Resources */,
 				D8B2B2F11C85C34E0089E6B9 /* icons_JunkFood_414@3x.png in Resources */,
 				D8A1679F1C886490000C4C1C /* icons_account_exit_account_active_375@2x.png in Resources */,
+				D88845D11C9060D2005DFE5C /* background_over_achievements_414@3x.png in Resources */,
 				D8B2B2DC1C85C2180089E6B9 /* icons_gymSession_320@2x.png in Resources */,
 				D8A1678B1C886014000C4C1C /* icons_account_photo_375@2x.png in Resources */,
 				D8CABAF21C873399007EEBC7 /* icons_statisticstemperature_375@2x.png in Resources */,
@@ -1089,12 +1206,15 @@
 				D8867E5F1C732D02005F7B6D /* Assets.xcassets in Resources */,
 				D8CABAF71C87339F007EEBC7 /* icons_statisticsBurnedCal_320@2x.png in Resources */,
 				D8A167911C88601B000C4C1C /* icons_account_photo_320@2x.png in Resources */,
+				D88845D61C90852F005DFE5C /* badges_320@2x.png in Resources */,
 				D8B2B2DE1C85C21D0089E6B9 /* icons_gymSession_375@2x.png in Resources */,
 				D8CABAF61C87339F007EEBC7 /* icons_statisticstemperature_320@2x.png in Resources */,
 				D845D8071C8D7CFC00F8B563 /* btn_help_normal_320@2x.png in Resources */,
+				D88845AF1C900D57005DFE5C /* arrow_375@2x.png in Resources */,
 				D8CABAB71C86D4F8007EEBC7 /* insoles_375@2x.png in Resources */,
 				D8B2B2D01C85C1000089E6B9 /* icons_burntCalories_320@2x.png in Resources */,
 				D8EC0E8F1C88842000D7DFA9 /* images.png in Resources */,
+				D88845B11C900D5D005DFE5C /* arrow_320@2x.png in Resources */,
 				D8EC0E911C8899D300D7DFA9 /* img.png in Resources */,
 				D8EDC99E1C75F28600F5F524 /* btn_sign_up_normal_320@2x.png in Resources */,
 				D845D80E1C8D7D0B00F8B563 /* btn_help_active_414@3x.png in Resources */,
@@ -1164,6 +1284,7 @@
 				D8B2B2B01C858C100089E6B9 /* DashboardDaysCardTableViewCell.m in Sources */,
 				D8867E7B1C735724005F7B6D /* BaseViewController.m in Sources */,
 				D8EDC9991C75D66400F5F524 /* DashboardViewController.m in Sources */,
+				D88845B81C904D4A005DFE5C /* AchievemetsUnlockedViewController.m in Sources */,
 				D8CABAD41C8723A3007EEBC7 /* CarbonTabSwipeNavigation.m in Sources */,
 				D8EF71361C7B08DE0006FDEF /* SlideNavigationController.m in Sources */,
 				D8E134451C74A2AB00B9D813 /* _UserSettings.m in Sources */,
@@ -1173,6 +1294,7 @@
 				D8A1677D1C885C92000C4C1C /* AccountInformationViewController.m in Sources */,
 				D8A167961C88618A000C4C1C /* AccountViewController.m in Sources */,
 				D8E133D91C7477AC00B9D813 /* FHSTwitterEngine.m in Sources */,
+				D88845D41C907542005DFE5C /* AchievementsUnlockerManager.m in Sources */,
 				D8E134471C74A2AB00B9D813 /* UserSettings.m in Sources */,
 				D845D7FD1C8D76E800F8B563 /* MeasurementsViewController.m in Sources */,
 				D8EF71441C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
@@ -1180,14 +1302,16 @@
 				D8867E841C736715005F7B6D /* HelperManager.m in Sources */,
 				D8EDC9961C75D59600F5F524 /* SignUpViewController.m in Sources */,
 				D8EDC98A1C75B89900F5F524 /* SignInViewController.m in Sources */,
-				D8867E931C737595005F7B6D /* ServerManager.m in Sources */,
+				D8867E931C737595005F7B6D /* AccountInfoManager.m in Sources */,
 				D8CABAD71C8724A6007EEBC7 /* StatisticsContentViewController.m in Sources */,
 				D8CABAD31C8723A3007EEBC7 /* CarbonSwipeRefresh.m in Sources */,
 				D8E134461C74A2AB00B9D813 /* User.m in Sources */,
 				D8867E981C7379CD005F7B6D /* NSDictionary+Extended.m in Sources */,
+				D88845B51C904D15005DFE5C /* AchievementsCollectionViewController.m in Sources */,
 				D8CABAE81C87317A007EEBC7 /* KNPercentLabel.m in Sources */,
 				D8CABAE71C87317A007EEBC7 /* KNCirclePercentView.m in Sources */,
 				D8E134041C7498D100B9D813 /* ThinIce.xcdatamodeld in Sources */,
+				D88845BC1C90516D005DFE5C /* AchievementsCollectionCell.m in Sources */,
 				D8E133D81C7477AC00B9D813 /* FHSStream.m in Sources */,
 				D8EDC9AF1C7619D800F5F524 /* LoginRegViewController.m in Sources */,
 				D8EF71451C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
