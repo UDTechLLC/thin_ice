@@ -6,13 +6,11 @@
 //  Copyright © 2016 udtech.co. All rights reserved.
 //
 
-#define BurntCaloriesLength                     16
-#define CellAndTableCornerRadius                13
-
 #import "DashboardDaysCardTableViewCell.h"
+#import "BackSideCellViewController.h"
 
 @implementation DashboardDaysCardTableViewCell {
-    BOOL isFlip;
+    BackSideCellViewController                           *vc;
 }
 
 - (void)awakeFromNib {
@@ -22,7 +20,9 @@
     self.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha:0.5];
     self.layer.cornerRadius = CellAndTableCornerRadius;
     self.contentView.layer.cornerRadius = CellAndTableCornerRadius;
-    isFlip = NO;
+    self.isFlip = NO;
+    vc = [[UIStoryboard storyboardWithName:kMainStoryBoardIdentifier bundle:nil] instantiateViewControllerWithIdentifier: kBackSideDashboardID];
+    vc.cellSelf = self;
 }
 
 - (void)loadCellWithData:(id)data {
@@ -41,6 +41,7 @@
     
     self.dateLabel.backgroundColor = [UIColor clearColor];
     self.dateLabel.textColor = [UIColor whiteColor];
+    self.dateLabel.text = [NSString stringWithFormat:@"May %d", arc4random()%10];
     
     // INIT Thin Ice Time Cell Block
     
@@ -142,32 +143,37 @@
 }
 
 - (IBAction)cellflipActionButton:(UIButton *)sender {
-
-        [UIView transitionWithView:self duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
-            if(isFlip) {
-                for (UIView *view in self.contentView.subviews) {
-                    view.hidden = NO;
-                }
-                isFlip = NO;
-            } else {
-                for (UIView *view in self.contentView.subviews) {
-                    if(view == self.headerCellView) {
-                        view.hidden = NO;
-                    } else if (view == self.dateLabel) {
-                        view.hidden = NO;
-                    } else if (view == self.daysAgoLabel) {
-                        view.hidden = NO;
-                    } else if (view == self.flipButton) {
-                        view.hidden = NO;
-                    } else {
-                        view.hidden = YES;
-                    }
-                }
-                isFlip = YES;
+    
+    CGRect cellRect = self.bounds;
+    vc.view.frame = cellRect;
+    
+    [UIView transitionWithView:self duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+        if(self.isFlip) {
+            [vc.view removeFromSuperview];
+            for (UIView *view in self.contentView.subviews) {
+                view.hidden = NO;
             }
-        } completion:^(BOOL finished) {
-            
-        }];
+            self.isFlip = NO;
+        } else {
+            for (UIView *view in self.contentView.subviews) {
+                if(view == self.headerCellView) {
+                    view.hidden = NO;
+                } else if (view == self.dateLabel) {
+                    view.hidden = NO;
+                } else if (view == self.daysAgoLabel) {
+                    view.hidden = NO;
+                } else if (view == self.flipButton) {
+                    view.hidden = NO;
+                } else {
+                    view.hidden = YES;
+                }
+            }
+            self.isFlip = YES;
+            [self.contentView addSubview:vc.view];
+        }
+    } completion:^(BOOL finished) {
+
+    }];
 }
 
 @end

@@ -124,7 +124,7 @@
         }
 		case 2:
         {
-            
+            vc = [self.storyboard instantiateViewControllerWithIdentifier: kThinIceControlViewControllerID];
             break;
         }
         case 3:

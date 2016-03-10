@@ -65,6 +65,10 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"background_over_achievements_%d", (int)kScreenWidth]]];
 }
 
+- (void)addThinIceControlBackgroundImage {
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"background_over_achievements_%d", (int)kScreenWidth]]];
+}
+
 - (void)translucentNavigationBar:(BOOL)select {
     if(select) {
         [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];

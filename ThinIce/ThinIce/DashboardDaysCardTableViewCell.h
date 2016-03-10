@@ -10,6 +10,8 @@
 
 @interface DashboardDaysCardTableViewCell : UITableViewCell
 
+@property (nonatomic) BOOL                                              isFlip;
+
 // Header View Block
 @property (weak, nonatomic) IBOutlet UIView                             *headerCellView;
 @property (weak, nonatomic) IBOutlet UIButton                           *flipButton;
@@ -67,5 +69,6 @@
 
 
 - (void)loadCellWithData:(id)data;
+- (IBAction)cellflipActionButton:(UIButton *)sender;
 
 @end

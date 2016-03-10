@@ -17,6 +17,7 @@
 - (void)addSettingsBackgroundImage;
 - (void)addAchievementsBackgroundImage;
 - (void)addNewAchievementBackgroundImage;
+- (void)addThinIceControlBackgroundImage;
 
 - (void)translucentNavigationBar:(BOOL)select;
 

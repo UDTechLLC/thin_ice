@@ -7,7 +7,6 @@
 //
 
 #import "AchievementsUnlockerManager.h"
-#import "AFBlurSegue.h"
 
 @interface AchievementsUnlockerManager ()
 

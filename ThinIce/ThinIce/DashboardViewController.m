@@ -86,10 +86,6 @@
 
 - (void)createViewController {
     
-    cellData = [[NSMutableArray alloc] init];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(flipTableViewAction:) name:FlipTableViewNotification object:nil];
-    
     self.userNameLabel.backgroundColor = [UIColor clearColor];
     self.userNameLabel.textColor = [[HelperManager sharedServer] colorwithHexString:@"#ccccccc" alpha:1.0];
     self.userNameLabel.text = @"Artem Arefin";
@@ -101,6 +97,8 @@
     self.insolesAndVestVerticalSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
     self.horisontalSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
     
+    cellData = [[NSMutableArray alloc] init];
+
     self.dayCardsTableView.backgroundColor = [UIColor clearColor];
     self.dayCardsTableView.estimatedRowHeight = 370;
     self.dayCardsTableView.rowHeight = UITableViewAutomaticDimension;
@@ -170,23 +168,24 @@
 #pragma mark - UITableViewDelegate / UITableViewDataSource -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;//cellData.count;
+    return 1; //cellData.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1; //array count returns 10
+    return 4; //array count returns 10
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = [UIView new];
-    [view setBackgroundColor:[UIColor clearColor]];
+    [view setBackgroundColor: [UIColor clearColor]];
     return view;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    DashboardDaysCardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDashboardCellIdentifier forIndexPath:indexPath];
+    
+    DashboardDaysCardTableViewCell *cell = [self.dayCardsTableView dequeueReusableCellWithIdentifier:kDashboardCellIdentifier forIndexPath:indexPath];
     [cell loadCellWithData:nil];
+    
     return cell;
 }
 
@@ -201,15 +200,9 @@
     return SpaceBetweenTwoCells;
 }
 
-#pragma mark - NSNotification Action Methods -
-
-- (void)flipTableViewAction:(NSNotification*)notification {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    
-    
-    
-    
+    return UITableViewAutomaticDimension;
 }
 
 #pragma mark - SlideNavigationController Methods -

@@ -28,12 +28,20 @@
 #define numberOfSlideMenuCells                                  (6)
 #define kMainStoryBoardIdentifier                               @"Main"
 #define NagivationBarTitleFontSize                              20
-#define STATUSplusNAVIGATIONBARINSETS                              64
+#define STATUSplusNAVIGATIONBARINSETS                           64
+
 // ----------------------------------------====================================================================================----------------------------------------
 
 // NotificationCenter
 
 #define FlipTableViewNotification                               @"FlipTableView"
+
+// ----------------------------------------====================================================================================----------------------------------------
+
+// DashBoard Cell Settings =====------
+
+#define BurntCaloriesLength                     16
+#define CellAndTableCornerRadius                13
 
 // ----------------------------------------====================================================================================----------------------------------------
 
@@ -103,8 +111,8 @@
 #define kNotificationsViewControllerID                          @"NotificationsViewControllerIdentifier"
 #define kAchievementsCollectionViewControllerID                 @"AchievementsCollectionViewControllerIdentifier"
 #define kAchievemetsUnlockedViewControllerID                    @"AchievemetsUnlockedViewControllerIdentifier"
-
-
+#define kThinIceControlViewControllerID                         @"ThinIceControlViewControllerIdentifier"
+#define kBackSideDashboardID                                    @"BackSideDashboardIdentifier"
 
 // Cells Identifier
 
