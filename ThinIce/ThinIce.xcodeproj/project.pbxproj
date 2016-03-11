@@ -45,6 +45,13 @@
 		D872D95E1C916A69004EAC59 /* thiniceplus_normal_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D872D9571C916A69004EAC59 /* thiniceplus_normal_320@2x.png */; };
 		D872D95F1C916A69004EAC59 /* thiniceplus_active_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D872D9581C916A69004EAC59 /* thiniceplus_active_320@2x.png */; };
 		D872D96A1C91B4C8004EAC59 /* BackSideCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D872D9691C91B4C8004EAC59 /* BackSideCellViewController.m */; };
+		D8846B411C93190C000ECA38 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B321C93190C000ECA38 /* CGGeometry+RSKImageCropper.m */; };
+		D8846B421C93190C000ECA38 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B351C93190C000ECA38 /* RSKImageCropViewController.m */; };
+		D8846B431C93190C000ECA38 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B381C93190C000ECA38 /* RSKImageScrollView.m */; };
+		D8846B441C93190C000ECA38 /* RSKInternalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B3A1C93190C000ECA38 /* RSKInternalUtility.m */; };
+		D8846B451C93190C000ECA38 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B3C1C93190C000ECA38 /* RSKTouchView.m */; };
+		D8846B461C93190C000ECA38 /* UIApplication+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B3E1C93190C000ECA38 /* UIApplication+RSKImageCropper.m */; };
+		D8846B471C93190C000ECA38 /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B401C93190C000ECA38 /* UIImage+RSKImageCropper.m */; };
 		D8867E511C732D02005F7B6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E501C732D02005F7B6D /* main.m */; };
 		D8867E541C732D02005F7B6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E531C732D02005F7B6D /* AppDelegate.m */; };
 		D8867E571C732D02005F7B6D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8867E561C732D02005F7B6D /* HomeViewController.m */; };
@@ -237,6 +244,22 @@
 		D872D9581C916A69004EAC59 /* thiniceplus_active_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thiniceplus_active_320@2x.png"; sourceTree = "<group>"; };
 		D872D9681C91B4C8004EAC59 /* BackSideCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackSideCellViewController.h; sourceTree = "<group>"; };
 		D872D9691C91B4C8004EAC59 /* BackSideCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackSideCellViewController.m; sourceTree = "<group>"; };
+		D8846B311C93190C000ECA38 /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
+		D8846B321C93190C000ECA38 /* CGGeometry+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+RSKImageCropper.m"; sourceTree = "<group>"; };
+		D8846B331C93190C000ECA38 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
+		D8846B341C93190C000ECA38 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
+		D8846B351C93190C000ECA38 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
+		D8846B361C93190C000ECA38 /* RSKImageCropViewController+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSKImageCropViewController+Protected.h"; sourceTree = "<group>"; };
+		D8846B371C93190C000ECA38 /* RSKImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageScrollView.h; sourceTree = "<group>"; };
+		D8846B381C93190C000ECA38 /* RSKImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageScrollView.m; sourceTree = "<group>"; };
+		D8846B391C93190C000ECA38 /* RSKInternalUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKInternalUtility.h; sourceTree = "<group>"; };
+		D8846B3A1C93190C000ECA38 /* RSKInternalUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKInternalUtility.m; sourceTree = "<group>"; };
+		D8846B3B1C93190C000ECA38 /* RSKTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKTouchView.h; sourceTree = "<group>"; };
+		D8846B3C1C93190C000ECA38 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
+		D8846B3D1C93190C000ECA38 /* UIApplication+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+RSKImageCropper.h"; sourceTree = "<group>"; };
+		D8846B3E1C93190C000ECA38 /* UIApplication+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+RSKImageCropper.m"; sourceTree = "<group>"; };
+		D8846B3F1C93190C000ECA38 /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
+		D8846B401C93190C000ECA38 /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
 		D8867E4C1C732D02005F7B6D /* ThinIce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThinIce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8867E501C732D02005F7B6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8867E521C732D02005F7B6D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -573,6 +596,29 @@
 			name = ThinIceControl;
 			sourceTree = "<group>";
 		};
+		D8846B301C9318EF000ECA38 /* ImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				D8846B311C93190C000ECA38 /* CGGeometry+RSKImageCropper.h */,
+				D8846B321C93190C000ECA38 /* CGGeometry+RSKImageCropper.m */,
+				D8846B331C93190C000ECA38 /* RSKImageCropper.h */,
+				D8846B341C93190C000ECA38 /* RSKImageCropViewController.h */,
+				D8846B351C93190C000ECA38 /* RSKImageCropViewController.m */,
+				D8846B361C93190C000ECA38 /* RSKImageCropViewController+Protected.h */,
+				D8846B371C93190C000ECA38 /* RSKImageScrollView.h */,
+				D8846B381C93190C000ECA38 /* RSKImageScrollView.m */,
+				D8846B391C93190C000ECA38 /* RSKInternalUtility.h */,
+				D8846B3A1C93190C000ECA38 /* RSKInternalUtility.m */,
+				D8846B3B1C93190C000ECA38 /* RSKTouchView.h */,
+				D8846B3C1C93190C000ECA38 /* RSKTouchView.m */,
+				D8846B3D1C93190C000ECA38 /* UIApplication+RSKImageCropper.h */,
+				D8846B3E1C93190C000ECA38 /* UIApplication+RSKImageCropper.m */,
+				D8846B3F1C93190C000ECA38 /* UIImage+RSKImageCropper.h */,
+				D8846B401C93190C000ECA38 /* UIImage+RSKImageCropper.m */,
+			);
+			name = ImageCropper;
+			sourceTree = "<group>";
+		};
 		D8867E431C732D02005F7B6D = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +694,7 @@
 		D8867E7C1C735C87005F7B6D /* CustomView+UI */ = {
 			isa = PBXGroup;
 			children = (
+				D8846B301C9318EF000ECA38 /* ImageCropper */,
 				D88845B91C905130005DFE5C /* CollectionCells */,
 				D8CABAE21C87316A007EEBC7 /* CirclePercentView */,
 				D8CABACD1C87238C007EEBC7 /* CarbotTabSwipe */,
@@ -1400,6 +1447,7 @@
 				D8EF714A1C7B158F0006FDEF /* SlideMenuTableCell.m in Sources */,
 				D8B2B2B01C858C100089E6B9 /* DashboardDaysCardTableViewCell.m in Sources */,
 				D8867E7B1C735724005F7B6D /* BaseViewController.m in Sources */,
+				D8846B441C93190C000ECA38 /* RSKInternalUtility.m in Sources */,
 				D8EDC9991C75D66400F5F524 /* DashboardViewController.m in Sources */,
 				D88845B81C904D4A005DFE5C /* AchievemetsUnlockedViewController.m in Sources */,
 				D8CABAD41C8723A3007EEBC7 /* CarbonTabSwipeNavigation.m in Sources */,
@@ -1408,8 +1456,10 @@
 				D8867E991C7379CD005F7B6D /* NSObject+Runtime.m in Sources */,
 				D8867E571C732D02005F7B6D /* HomeViewController.m in Sources */,
 				D8EDC9B51C7619FC00F5F524 /* BluetoothConnectViewController.m in Sources */,
+				D8846B431C93190C000ECA38 /* RSKImageScrollView.m in Sources */,
 				D8A1677D1C885C92000C4C1C /* AccountInformationViewController.m in Sources */,
 				D872D9341C9163C7004EAC59 /* ThinIceControlViewController.m in Sources */,
+				D8846B451C93190C000ECA38 /* RSKTouchView.m in Sources */,
 				D8A167961C88618A000C4C1C /* AccountViewController.m in Sources */,
 				D8E133D91C7477AC00B9D813 /* FHSTwitterEngine.m in Sources */,
 				D88845D41C907542005DFE5C /* AchievementsUnlockerManager.m in Sources */,
@@ -1424,10 +1474,13 @@
 				D8CABAD71C8724A6007EEBC7 /* StatisticsContentViewController.m in Sources */,
 				D8CABAD31C8723A3007EEBC7 /* CarbonSwipeRefresh.m in Sources */,
 				D8E134461C74A2AB00B9D813 /* User.m in Sources */,
+				D8846B411C93190C000ECA38 /* CGGeometry+RSKImageCropper.m in Sources */,
 				D8867E981C7379CD005F7B6D /* NSDictionary+Extended.m in Sources */,
 				D88845B51C904D15005DFE5C /* AchievementsCollectionViewController.m in Sources */,
 				D8CABAE81C87317A007EEBC7 /* KNPercentLabel.m in Sources */,
 				D8CABAE71C87317A007EEBC7 /* KNCirclePercentView.m in Sources */,
+				D8846B421C93190C000ECA38 /* RSKImageCropViewController.m in Sources */,
+				D8846B471C93190C000ECA38 /* UIImage+RSKImageCropper.m in Sources */,
 				D8E134041C7498D100B9D813 /* ThinIce.xcdatamodeld in Sources */,
 				D88845BC1C90516D005DFE5C /* AchievementsCollectionCell.m in Sources */,
 				D8E133D81C7477AC00B9D813 /* FHSStream.m in Sources */,
@@ -1444,6 +1497,7 @@
 				D8EF71331C7B08D20006FDEF /* LeftMenuViewController.m in Sources */,
 				D8EF71421C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				D8EF71431C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				D8846B461C93190C000ECA38 /* UIApplication+RSKImageCropper.m in Sources */,
 				ACA316861C7EFB10007FD570 /* BaseSignUpViewController.m in Sources */,
 				D8CABACC1C87209B007EEBC7 /* StatisticsViewController.m in Sources */,
 			);

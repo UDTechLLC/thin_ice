@@ -45,10 +45,6 @@
 @property (weak, nonatomic) IBOutlet UIView                             *powerVestBattaryMiddleView;
 @property (weak, nonatomic) IBOutlet UIView                             *powerVestBattaryLowerView;
 
-// Day Cards Block
-
-@property (weak, nonatomic) IBOutlet UITableView                        *dayCardsTableView;
-
 @end
 
 @implementation DashboardViewController
@@ -99,6 +95,8 @@
     
     cellData = [[NSMutableArray alloc] init];
 
+    self.dayCardTableViewBackgroundView.backgroundColor = [UIColor clearColor];
+    
     self.dayCardsTableView.backgroundColor = [UIColor clearColor];
     self.dayCardsTableView.estimatedRowHeight = 370;
     self.dayCardsTableView.rowHeight = UITableViewAutomaticDimension;
@@ -185,6 +183,7 @@
     
     DashboardDaysCardTableViewCell *cell = [self.dayCardsTableView dequeueReusableCellWithIdentifier:kDashboardCellIdentifier forIndexPath:indexPath];
     [cell loadCellWithData:nil];
+    cell.dashboardSelf = self;
     
     return cell;
 }
@@ -203,6 +202,20 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return UITableViewAutomaticDimension;
+}
+
+- (void)reloadCellsInTableView {
+    
+    [self.dayCardsTableView reloadData];
+}
+
+- (void)flipTableViewWithAnimationsBlock:(void(^)())animBlock ComplitionBlock:(void(^)())complitionblock {
+    
+    [UIView transitionWithView:self.dayCardsTableView duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+        animBlock();
+    } completion:^(BOOL finished) {
+        complitionblock();
+    }];
 }
 
 #pragma mark - SlideNavigationController Methods -

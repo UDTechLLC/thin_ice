@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DashboardViewController.h"
 
 @interface DashboardDaysCardTableViewCell : UITableViewCell
 
@@ -67,8 +68,28 @@
 @property (weak, nonatomic) IBOutlet UIView                             *hProteinMealsSeparator;
 @property (weak, nonatomic) IBOutlet UILabel                            *hProteinCountLabel;
 
+    // Hourse Slept
+
+@property (weak, nonatomic) IBOutlet UIImageView                        *hourseSleptImageView;
+@property (weak, nonatomic) IBOutlet UILabel                            *hourseSleptLabel;
+@property (weak, nonatomic) IBOutlet UIView                             *hourseSleptSeparator;
+@property (weak, nonatomic) IBOutlet UILabel                            *hourseSleptCountLabel;
+
+    // Carbs consumed
+
+@property (weak, nonatomic) IBOutlet UIImageView                        *carbsConsumedImageView;
+@property (weak, nonatomic) IBOutlet UILabel                            *carbsConsumedLabel;
+@property (weak, nonatomic) IBOutlet UIView                             *carbsConsumedSeparator;
+@property (weak, nonatomic) IBOutlet UILabel                            *carbsConsumedCountLabel;
+
+// Dashboard Self Point
+
+@property(strong, nonatomic) DashboardViewController                    *dashboardSelf;
+
+
 
 - (void)loadCellWithData:(id)data;
 - (IBAction)cellflipActionButton:(UIButton *)sender;
+- (void)leftFlip;
 
 @end

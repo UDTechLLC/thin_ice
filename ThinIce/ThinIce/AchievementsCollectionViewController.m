@@ -81,7 +81,7 @@ typedef NS_ENUM(NSUInteger, ImageState) {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
    // AchievemetsUnlockedViewController *unlockerAchive = [self.storyboard instantiateViewControllerWithIdentifier:kAchievemetsUnlockedViewControllerID];
-    [self performSegueWithIdentifier:kAchievemetsUnlockedViewControllerSegueIdentifier sender:nil];
+   // [self performSegueWithIdentifier:kAchievemetsUnlockedViewControllerSegueIdentifier sender:nil];
 }
 
 #pragma mark - SlideNavigationController Methods -

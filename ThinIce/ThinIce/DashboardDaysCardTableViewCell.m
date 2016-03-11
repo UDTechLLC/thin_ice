@@ -140,10 +140,38 @@
     
     self.hProteinCountLabel.text = @"1";
     self.hProteinCountLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromHproteinMeals alpha:1.0];
+    
+        // Hours Slapt
+    
+    self.hourseSleptImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icons_H_protein_%d", (int)kScreenWidth]];
+    self.hourseSleptImageView.contentMode = UIViewContentModeCenter;
+    
+    self.hourseSleptLabel.text = @"Hours Slept, hrs";
+    self.hourseSleptLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    
+    self.hourseSleptSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    
+    self.hourseSleptCountLabel.text = @"1";
+    self.hourseSleptCountLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromHproteinMeals alpha:1.0];
+    
+        // Carbs Consumed
+    
+    self.carbsConsumedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icons_H_protein_%d", (int)kScreenWidth]];
+    self.carbsConsumedImageView.contentMode = UIViewContentModeCenter;
+    
+    self.carbsConsumedLabel.text = @"Carbs consumed, g";
+    self.carbsConsumedLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    
+    self.carbsConsumedSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    
+    self.carbsConsumedCountLabel.text = @"0";
+    self.carbsConsumedCountLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromHproteinMeals alpha:1.0];
 }
 
+// RightFlip
+
 - (IBAction)cellflipActionButton:(UIButton *)sender {
-    
+
     CGRect cellRect = self.bounds;
     vc.view.frame = cellRect;
     
@@ -172,7 +200,43 @@
             [self.contentView addSubview:vc.view];
         }
     } completion:^(BOOL finished) {
+        [self.dashboardSelf reloadCellsInTableView];
+    }];
+}
 
+// LeftFlip
+
+- (void)leftFlip {
+
+    CGRect cellRect = self.bounds;
+    vc.view.frame = cellRect;
+    
+    [UIView transitionWithView:self duration:0.6 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        if(self.isFlip) {
+            [vc.view removeFromSuperview];
+            for (UIView *view in self.contentView.subviews) {
+                view.hidden = NO;
+            }
+            self.isFlip = NO;
+        } else {
+            for (UIView *view in self.contentView.subviews) {
+                if(view == self.headerCellView) {
+                    view.hidden = NO;
+                } else if (view == self.dateLabel) {
+                    view.hidden = NO;
+                } else if (view == self.daysAgoLabel) {
+                    view.hidden = NO;
+                } else if (view == self.flipButton) {
+                    view.hidden = NO;
+                } else {
+                    view.hidden = YES;
+                }
+            }
+            self.isFlip = YES;
+            [self.contentView addSubview:vc.view];
+        }
+    } completion:^(BOOL finished) {
+        
     }];
 }
 

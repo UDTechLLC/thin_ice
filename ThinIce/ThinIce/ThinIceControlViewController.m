@@ -10,6 +10,8 @@
 
 @interface ThinIceControlViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *deviceListTableView;
+
 @end
 
 @implementation ThinIceControlViewController
@@ -19,6 +21,7 @@
     // Do any additional setup after loading the view.
  
     [self createViewController];
+    [self addRightBarButtonWithImageName:[NSString stringWithFormat:@"thiniceplus_normal_%d", (int)kScreenWidth] highlightedImageName:[NSString stringWithFormat:@"thiniceplus_active_%d", (int)kScreenWidth] selector:@selector(addBluetoothDevice)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -32,15 +35,11 @@
     
     [self addThinIceControlBackgroundImage];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    self.deviceListTableView.backgroundColor = [UIColor clearColor];
+}
+
+- (void)addBluetoothDevice {
+    NSLog(@"addBluetoothDevice");
 }
 
 #pragma mark - SlideNavigationController Methods -

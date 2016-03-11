@@ -11,6 +11,7 @@
 #import "InformationViewController.h"
 #import "CarbonKit.h"
 #import "HomeViewController.h"
+#import "RSKImageCropper.h"
 
 #define iPhone6XCoordinateForAccountImege               117
 #define iPhone6YCoordinateForAccountImege               70
@@ -18,13 +19,14 @@
 #define iPhone6PlusXCoordinateForAccountImege           119.5
 #define iPhone6PlusYCoordinateForAccountImege           65
 
-@interface AccountInformationViewController () <CarbonTabSwipeDelegate> {
+@interface AccountInformationViewController () <CarbonTabSwipeDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     NSArray                                                         *items;
     
     CarbonTabSwipeNavigation                                        *tabSwipe;
     
     AccountViewController                                           *segmentAccount;
     InformationViewController                                       *segmentInformation;
+    UIImagePickerController                                         *imagePicker;
 }
 
 // Account Image Block
@@ -49,6 +51,11 @@
     [self addAccountInformationBackgroundImage];
     [self addRightBarButtonWithImageName:[NSString stringWithFormat:@"icons_account_exit_account_normal_%d", (int)kScreenWidth] highlightedImageName:[NSString stringWithFormat:@"icons_account_exit_account_active_%d", (int)kScreenWidth] selector:@selector(logout)];
     [self createAccountInformationViewController];
+    [self createAccountImageBlock];
+    
+    [self createCarbonTabSwipe];
+    [self insertPhotoInAccountPhotoImageView];
+    [self.view setNeedsDisplay];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,7 +66,6 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    [self createAccountImageBlock];
     if((int)kScreenWidth == 375) {
         self.imageXCoordinate.constant = iPhone6XCoordinateForAccountImege;
         self.imageYCoordinate.constant = iPhone6YCoordinateForAccountImege;
@@ -67,14 +73,17 @@
         self.imageXCoordinate.constant = iPhone6PlusXCoordinateForAccountImege;
         self.imageYCoordinate.constant = iPhone6PlusYCoordinateForAccountImege;
     }
-    [self createCarbonTabSwipe];
-    [self insertPhotoInAccountPhotoImageView];
-    [self.view setNeedsLayout];
-    [super viewDidLayoutSubviews];
 }
 
 - (void)createAccountInformationViewController {
     
+    imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    
+    UITapGestureRecognizer *openPhotoDataSource = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseImageDataSource)];
+    openPhotoDataSource.numberOfTapsRequired = 1;
+    self.accountPhotoImageView.userInteractionEnabled = YES;
+    [self.accountPhotoImageView addGestureRecognizer:openPhotoDataSource];
 }
 
 - (void)createCarbonTabSwipe {
@@ -119,10 +128,7 @@
 
 - (void)createAccountImageBlock {
     CGFloat lineWidth    = 3.0;
-    UIBezierPath *path   = [self roundedPolygonPathWithRect:self.accountPhotoImageView.bounds
-                                                  lineWidth:lineWidth
-                                                      sides:6
-                                               cornerRadius:15];
+    UIBezierPath *path   = [self selfedRoundedPolygonPathWithRect:self.accountPhotoImageView.bounds lineWidth:lineWidth sides:6 cornerRadius:15];
     
     CAShapeLayer *mask   = [CAShapeLayer layer];
     mask.path            = path.CGPath;
@@ -157,13 +163,14 @@
     UIView *view = [[UIView alloc] initWithFrame:self.accountPhotoImageView.bounds];
     view.backgroundColor = [UIColor clearColor];
     
-    UIView *viewBackground = [[UIView alloc] initWithFrame:self.accountPhotoImageView.bounds];
-    viewBackground.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFroAccountImageBackground alpha:0.5];
-    
     UIImageView *photoImageView = [[UIImageView alloc] initWithImage: image];
     photoImageView.frame = self.accountPhotoImageView.bounds;
     
+    UIView *viewBackground = [[UIView alloc] initWithFrame:self.accountPhotoImageView.bounds];
+    viewBackground.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFroAccountImageBackground alpha:0.5];
+    
     UIImageView *photoCameraImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"icons_account_photo_%d", (int)kScreenWidth]]];
+    [photoCameraImageView sizeToFit];
     photoCameraImageView.center = view.center;
     
     [view addSubview:photoImageView];
@@ -185,6 +192,153 @@
     UIGraphicsEndImageContext();
     return image;
 }
+
+#pragma mark - UIAlertControllerDelegate
+
+- (void)chooseImageDataSource {
+    
+    __weak __typeof(self) weakSelf = self;
+    UIAlertController *actionMultimediaView = [UIAlertController alertControllerWithTitle: nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [actionMultimediaView.navigationItem setHidesBackButton:YES];
+    [actionMultimediaView addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // Cancel
+    }]];
+    [actionMultimediaView addAction:[UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf takePhoto];
+    }]];
+    [actionMultimediaView addAction:[UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf takePhotoWithGallery];
+    }]];
+    
+    
+    [self presentViewController:actionMultimediaView animated:YES completion:nil];
+}
+
+#pragma mark - ImagePickerDelegate
+
+- (void)takePhotoWithGallery {
+    
+    imagePicker.allowsEditing = NO;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)takePhoto {
+    
+    imagePicker.allowsEditing = NO;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    if(image) {
+        [self onAddPhotoButtonTouch:image];
+    }
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)onAddPhotoButtonTouch:(UIImage *)image {
+    
+    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCustom];
+    imageCropVC.delegate = self;
+    imageCropVC.dataSource = self;
+    [self.navigationController pushViewController:imageCropVC animated:NO];
+}
+
+#pragma mark - RSKImageCropViewControllerDelegate
+
+- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage usingCropRect:(CGRect)cropRect {
+    
+    [self setImageOnImage:croppedImage];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - RSKImageCropViewControllerDataSource
+
+// Returns a custom rect for the mask.
+- (CGRect)imageCropViewControllerCustomMaskRect:(RSKImageCropViewController *)controller {
+    
+    CGSize maskSize;
+    if ([controller isPortraitInterfaceOrientation]) {
+        maskSize = CGSizeMake(250, 250);
+    } else {
+        maskSize = CGSizeMake(220, 220);
+    }
+    
+    CGFloat viewWidth = CGRectGetWidth(controller.view.frame);
+    CGFloat viewHeight = CGRectGetHeight(controller.view.frame);
+    
+    CGRect maskRect = CGRectMake((viewWidth - maskSize.width) * 0.5f,
+                                 (viewHeight - maskSize.height) * 0.5f,
+                                 maskSize.width,
+                                 maskSize.height);
+    
+    return maskRect;
+}
+
+// Returns a custom path for the mask.
+- (UIBezierPath *)imageCropViewControllerCustomMaskPath:(RSKImageCropViewController *)controller {
+    
+    return [self roundedPolygonPathWithRect: controller.maskRect lineWidth:1.0 sides:6 cornerRadius:10];
+}
+
+// Returns a custom rect in which the image can be moved.
+- (CGRect)imageCropViewControllerCustomMovementRect:(RSKImageCropViewController *)controller {
+    
+    // If the image is not rotated, then the movement rect coincides with the mask rect.
+    return controller.maskRect;
+}
+
+- (UIBezierPath *)selfedRoundedPolygonPathWithRect:(CGRect)rect lineWidth:(CGFloat)lineWidth sides:(NSInteger)sides cornerRadius:(CGFloat)cornerRadius {
+    
+    UIBezierPath *path  = [UIBezierPath bezierPath];
+    
+    CGFloat theta       = 2.0 * M_PI / sides;                           // how much to turn at every corner
+    CGFloat offset      = cornerRadius * tanf(theta / 2.0);             // offset from which to start rounding corners
+    CGFloat width = MIN(rect.size.width, rect.size.height);   // width of the square
+    
+    // Calculate Center
+    CGPoint center = CGPointMake(rect.origin.x + width / 2.0, rect.origin.y + width / 2.0);
+    CGFloat radius = (width - lineWidth + cornerRadius - (cos(theta) * cornerRadius)) / 2.0;
+    
+    // Start drawing at a point, which by default is at the right hand edge
+    // but can be offset
+    CGFloat angle = M_PI / 2;
+    
+    CGPoint corner = CGPointMake(center.x + (radius - cornerRadius) * cos(angle), center.y + (radius - cornerRadius) * sin(angle));
+    [path moveToPoint:(CGPointMake(corner.x + cornerRadius * cos(angle + theta), corner.y + cornerRadius * sin(angle + theta)))];
+    
+    // draw the sides and rounded corners of the polygon
+    
+    for (NSInteger side = 0; side < sides; side++) {
+        
+        angle += theta;
+        
+        CGPoint corner = CGPointMake(center.x + (radius - cornerRadius) * cos(angle), center.y + (radius - cornerRadius) * sin(angle));
+        CGPoint tip = CGPointMake(center.x + radius * cos(angle), center.y + radius * sin(angle));
+        CGPoint start = CGPointMake(corner.x + cornerRadius * cos(angle - theta), corner.y + cornerRadius * sin(angle - theta));
+        CGPoint end = CGPointMake(corner.x + cornerRadius * cos(angle + theta), corner.y + cornerRadius * sin(angle + theta));
+        
+        [path addLineToPoint:start];
+        [path addQuadCurveToPoint:end controlPoint:tip];
+    }
+    
+    [path closePath];
+    
+    return path;
+}
+
 
 #pragma mark - SlideNavigationController Methods -
 

@@ -10,4 +10,12 @@
 
 @interface DashboardViewController : BaseViewController
 
+// Day Cards Block
+
+@property (weak, nonatomic) IBOutlet UITableView                        *dayCardsTableView;
+@property (weak, nonatomic) IBOutlet UIView                             *dayCardTableViewBackgroundView;
+
+- (void)reloadCellsInTableView;
+- (void)flipTableViewWithAnimationsBlock:(void(^)())animBlock ComplitionBlock:(void(^)())complitionblock;
+
 @end

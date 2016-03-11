@@ -66,7 +66,7 @@
 }
 
 - (void)addThinIceControlBackgroundImage {
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"background_over_achievements_%d", (int)kScreenWidth]]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"background_statistics_%d", (int)kScreenWidth]]];
 }
 
 - (void)translucentNavigationBar:(BOOL)select {
