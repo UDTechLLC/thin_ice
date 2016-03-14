@@ -10,6 +10,10 @@ const struct UserSettingsAttributes UserSettingsAttributes = {
 	.user_weight = @"user_weight",
 };
 
+const struct UserSettingsRelationships UserSettingsRelationships = {
+	.user = @"user",
+};
+
 @implementation UserSettingsID
 @end
 
@@ -46,6 +50,8 @@ const struct UserSettingsAttributes UserSettingsAttributes = {
 @dynamic user_temperature;
 
 @dynamic user_weight;
+
+@dynamic user;
 
 @end
 

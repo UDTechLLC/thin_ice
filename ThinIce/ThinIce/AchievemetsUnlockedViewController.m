@@ -11,7 +11,6 @@
 @interface AchievemetsUnlockedViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView                *picViewer;
-@property (weak, nonatomic) IBOutlet UIView                     *separatorView;
 @property (weak, nonatomic) IBOutlet UILabel                    *ahievementName;
 @property (weak, nonatomic) IBOutlet UILabel                    *achievementDescription;
 @property (weak, nonatomic) IBOutlet UILabel                    *titleLabel;
@@ -38,9 +37,6 @@
     
     self.picViewer.contentMode = UIViewContentModeCenter;
     self.picViewer.image = [UIImage imageNamed: [NSString stringWithFormat:@"badges_%d", (int)kScreenWidth]];
-    
-    self.separatorView.layer.cornerRadius = self.separatorView.frame.size.height / 2;
-    self.separatorView.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#cddc39" alpha:1.0];
     
     self.ahievementName.textColor = [UIColor whiteColor];
     self.ahievementName.text = @"Newbie";

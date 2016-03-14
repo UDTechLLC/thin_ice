@@ -84,7 +84,7 @@
     
     self.userNameLabel.backgroundColor = [UIColor clearColor];
     self.userNameLabel.textColor = [[HelperManager sharedServer] colorwithHexString:@"#ccccccc" alpha:1.0];
-    self.userNameLabel.text = @"Artem Arefin";
+    self.userNameLabel.text = @"Name";// @"Artem Arefin";
     
     [self createInsolesBlock];
     [self createVestBlock];
@@ -126,7 +126,7 @@
     [self.imageViewPhoto.layer addSublayer:border];
     self.imageViewPhoto.backgroundColor = [UIColor clearColor];
     self.imageViewPhoto.contentMode = UIViewContentModeScaleAspectFill;
-    self.imageViewPhoto.image = [UIImage imageNamed:@"img"];
+   // self.imageViewPhoto.image = [UIImage imageNamed:@"img"];
 }
 
 - (void)createInsolesBlock {

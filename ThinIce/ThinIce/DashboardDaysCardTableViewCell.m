@@ -76,7 +76,6 @@
                                       
     // INIT Thin Ice Burn Calories Cell Block
     
-    
     self.burntCaloriesImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icons_burntCalories_%d", (int)kScreenWidth]];
     self.burntCaloriesImageView.contentMode = UIViewContentModeCenter;
     
@@ -174,8 +173,9 @@
 
     CGRect cellRect = self.bounds;
     vc.view.frame = cellRect;
+    self.clipsToBounds = YES;
     
-    [UIView transitionWithView:self duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+    [UIView transitionWithView:self duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews animations:^{
         if(self.isFlip) {
             [vc.view removeFromSuperview];
             for (UIView *view in self.contentView.subviews) {
@@ -199,6 +199,7 @@
             self.isFlip = YES;
             [self.contentView addSubview:vc.view];
         }
+
     } completion:^(BOOL finished) {
         [self.dashboardSelf reloadCellsInTableView];
     }];

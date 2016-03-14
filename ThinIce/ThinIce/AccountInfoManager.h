@@ -7,9 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface AccountInfoManager : NSObject
 
+@property (readonly, nonatomic) User *userToken;
+
 + (AccountInfoManager *)sharedManager;
+- (void)createAchivementsDataBaseForUser:(User*)user;
+- (void)autorizationWithLoginAndPass:(NSString*)login pass:(NSString*)pass Block:(void(^)(BOOL isUserEnable))block;
+
+
+
 
 @end

@@ -12,7 +12,9 @@
 static NSString*const kLoginKey                                         = @"Login";
 static NSString*const kPasswordKey                                      = @"Password";
 
-@interface SignInViewController () <UITextFieldDelegate>
+@interface SignInViewController () <UITextFieldDelegate> {
+    NSMutableDictionary                                                 *dictLoginPass;
+}
 
 @property (weak, nonatomic) IBOutlet CustomNavigationBar                *navigationbar;
 
@@ -80,6 +82,8 @@ static NSString*const kPasswordKey                                      = @"Pass
     self.passBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
     self.passTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.passTextField.delegate = self;
+    
+    dictLoginPass = [[NSMutableDictionary alloc] init];
 }
 
 #pragma UITextFieldDelegate
@@ -91,16 +95,24 @@ static NSString*const kPasswordKey                                      = @"Pass
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     if([textField isKindOfClass:[self.loginTextField class]]) {
-
+        [dictLoginPass setValue:self.loginTextField.text forKey:kLoginKey];
     } else if([textField isKindOfClass:[self.passTextField class]]) {
-        
+        [dictLoginPass setValue:self.passTextField.text forKey:kPasswordKey];
     }
     return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField endEditing:YES];
-    [self performSegueWithIdentifier:kDashboardSegueIdentifier sender:nil];
+    if([dictLoginPass objectForKey:kLoginKey] != nil || [dictLoginPass objectForKey:kPasswordKey] != nil) {
+        [[AccountInfoManager sharedManager] autorizationWithLoginAndPass: [dictLoginPass objectForKey:kLoginKey] pass:[dictLoginPass objectForKey:kPasswordKey] Block:^(BOOL isUserEnable) {
+            if(isUserEnable) {
+                [self performSegueWithIdentifier:kDashboardSegueIdentifier sender:nil];
+            } else {
+                
+            }
+        }];
+    }
     return YES;
 }
 

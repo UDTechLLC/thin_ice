@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface HelperManager : NSObject
 
 + (HelperManager *)sharedServer;
 - (UIColor *)colorwithHexString:(NSString *)hexStr alpha:(CGFloat)alpha;
+
 
 @end

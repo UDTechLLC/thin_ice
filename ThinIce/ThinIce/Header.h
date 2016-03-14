@@ -29,6 +29,8 @@
 #define kMainStoryBoardIdentifier                               @"Main"
 #define NagivationBarTitleFontSize                              20
 #define STATUSplusNAVIGATIONBARINSETS                           64
+#define AchievementsCount                                       16
+#define DEGREES_RADIANS(angle)                                  ((angle) / 180.0 * M_PI)
 
 // ----------------------------------------====================================================================================----------------------------------------
 

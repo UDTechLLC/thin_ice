@@ -10,6 +10,12 @@ extern const struct UserSettingsAttributes {
 	__unsafe_unretained NSString *user_weight;
 } UserSettingsAttributes;
 
+extern const struct UserSettingsRelationships {
+	__unsafe_unretained NSString *user;
+} UserSettingsRelationships;
+
+@class User;
+
 @interface UserSettingsID : NSManagedObjectID {}
 @end
 
@@ -35,6 +41,10 @@ extern const struct UserSettingsAttributes {
 
 //- (BOOL)validateUser_weight:(id*)value_ error:(NSError**)error_;
 
+@property (nonatomic, strong) User *user;
+
+//- (BOOL)validateUser:(id*)value_ error:(NSError**)error_;
+
 @end
 
 @interface _UserSettings (CoreDataGeneratedPrimitiveAccessors)
@@ -50,5 +60,8 @@ extern const struct UserSettingsAttributes {
 
 - (NSString*)primitiveUser_weight;
 - (void)setPrimitiveUser_weight:(NSString*)value;
+
+- (User*)primitiveUser;
+- (void)setPrimitiveUser:(User*)value;
 
 @end

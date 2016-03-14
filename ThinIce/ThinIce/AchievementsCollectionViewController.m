@@ -23,9 +23,6 @@ typedef NS_ENUM(NSUInteger, ImageState) {
 @property (weak, nonatomic) IBOutlet UICollectionView                               *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout                     *collectionViewFlowLayout;
 
-
-
-
 @end
 
 @implementation AchievementsCollectionViewController
