@@ -45,6 +45,13 @@
 		D872D95E1C916A69004EAC59 /* thiniceplus_normal_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D872D9571C916A69004EAC59 /* thiniceplus_normal_320@2x.png */; };
 		D872D95F1C916A69004EAC59 /* thiniceplus_active_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D872D9581C916A69004EAC59 /* thiniceplus_active_320@2x.png */; };
 		D872D96A1C91B4C8004EAC59 /* BackSideCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D872D9691C91B4C8004EAC59 /* BackSideCellViewController.m */; };
+		D87F8EDF1C98434E00D6E58A /* SavedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F8EDE1C98434E00D6E58A /* SavedUser.m */; };
+		D87F8EE21C98506B00D6E58A /* failed_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F8EE01C98506B00D6E58A /* failed_414@3x.png */; };
+		D87F8EE31C98506B00D6E58A /* success_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F8EE11C98506B00D6E58A /* success_414@3x.png */; };
+		D87F8EE61C98507300D6E58A /* failed_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F8EE41C98507300D6E58A /* failed_375@2x.png */; };
+		D87F8EE71C98507300D6E58A /* success_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F8EE51C98507300D6E58A /* success_375@2x.png */; };
+		D87F8EEA1C98507A00D6E58A /* failed_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F8EE81C98507A00D6E58A /* failed_320@2x.png */; };
+		D87F8EEB1C98507A00D6E58A /* success_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F8EE91C98507A00D6E58A /* success_320@2x.png */; };
 		D8846B411C93190C000ECA38 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B321C93190C000ECA38 /* CGGeometry+RSKImageCropper.m */; };
 		D8846B421C93190C000ECA38 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B351C93190C000ECA38 /* RSKImageCropViewController.m */; };
 		D8846B431C93190C000ECA38 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8846B381C93190C000ECA38 /* RSKImageScrollView.m */; };
@@ -256,6 +263,14 @@
 		D872D9581C916A69004EAC59 /* thiniceplus_active_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thiniceplus_active_320@2x.png"; sourceTree = "<group>"; };
 		D872D9681C91B4C8004EAC59 /* BackSideCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackSideCellViewController.h; sourceTree = "<group>"; };
 		D872D9691C91B4C8004EAC59 /* BackSideCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackSideCellViewController.m; sourceTree = "<group>"; };
+		D87F8EDD1C98434E00D6E58A /* SavedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedUser.h; sourceTree = "<group>"; };
+		D87F8EDE1C98434E00D6E58A /* SavedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedUser.m; sourceTree = "<group>"; };
+		D87F8EE01C98506B00D6E58A /* failed_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failed_414@3x.png"; sourceTree = "<group>"; };
+		D87F8EE11C98506B00D6E58A /* success_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success_414@3x.png"; sourceTree = "<group>"; };
+		D87F8EE41C98507300D6E58A /* failed_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failed_375@2x.png"; sourceTree = "<group>"; };
+		D87F8EE51C98507300D6E58A /* success_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success_375@2x.png"; sourceTree = "<group>"; };
+		D87F8EE81C98507A00D6E58A /* failed_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failed_320@2x.png"; sourceTree = "<group>"; };
+		D87F8EE91C98507A00D6E58A /* success_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success_320@2x.png"; sourceTree = "<group>"; };
 		D8846B311C93190C000ECA38 /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
 		D8846B321C93190C000ECA38 /* CGGeometry+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+RSKImageCropper.m"; sourceTree = "<group>"; };
 		D8846B331C93190C000ECA38 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
@@ -745,6 +760,8 @@
 		D8867E811C735DBE005F7B6D /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				D87F8EDD1C98434E00D6E58A /* SavedUser.h */,
+				D87F8EDE1C98434E00D6E58A /* SavedUser.m */,
 				D8867E821C736715005F7B6D /* HelperManager.h */,
 				D8867E831C736715005F7B6D /* HelperManager.m */,
 				D8867E911C737595005F7B6D /* AccountInfoManager.h */,
@@ -1061,6 +1078,8 @@
 		D8E1344B1C74C48B00B9D813 /* IP5 */ = {
 			isa = PBXGroup;
 			children = (
+				D87F8EE81C98507A00D6E58A /* failed_320@2x.png */,
+				D87F8EE91C98507A00D6E58A /* success_320@2x.png */,
 				D88845B01C900D5D005DFE5C /* arrow_320@2x.png */,
 				D845D81F1C8DD66D00F8B563 /* btn_save_normal_320@2x.png */,
 				D845D8201C8DD66D00F8B563 /* btn_save_active_320@2x.png */,
@@ -1079,6 +1098,8 @@
 		D8E1344C1C74C49B00B9D813 /* IP6 */ = {
 			isa = PBXGroup;
 			children = (
+				D87F8EE41C98507300D6E58A /* failed_375@2x.png */,
+				D87F8EE51C98507300D6E58A /* success_375@2x.png */,
 				D88845AE1C900D57005DFE5C /* arrow_375@2x.png */,
 				D845D81B1C8DD66000F8B563 /* btn_save_normal_375@2x.png */,
 				D845D81C1C8DD66000F8B563 /* btn_save_active_375@2x.png */,
@@ -1097,6 +1118,8 @@
 		D8E1344D1C74C4A100B9D813 /* IP6Plus */ = {
 			isa = PBXGroup;
 			children = (
+				D87F8EE01C98506B00D6E58A /* failed_414@3x.png */,
+				D87F8EE11C98506B00D6E58A /* success_414@3x.png */,
 				D88845AC1C900D51005DFE5C /* arrow_414@3x.png */,
 				D8AB98811C7C4CCD00E7BD0E /* Thin_ice_background_414@3x.png */,
 				D845D8171C8DD65A00F8B563 /* btn_save_normal_414@3x.png */,
@@ -1347,6 +1370,7 @@
 				D8A167901C88601B000C4C1C /* icons_account_exit_account_normal_320@2x.png in Resources */,
 				D8CABAEE1C87338F007EEBC7 /* icons_statisticsBurnedCal_414@3x.png in Resources */,
 				D88845C31C905746005DFE5C /* achievements_active_414@3x.png in Resources */,
+				D87F8EEA1C98507A00D6E58A /* failed_320@2x.png in Resources */,
 				D8B2B2E61C85C33E0089E6B9 /* icons_waterIntake_320@2x.png in Resources */,
 				D872D9511C916A5C004EAC59 /* thiniceplus_active_375@2x.png in Resources */,
 				D845D81E1C8DD66000F8B563 /* btn_save_active_375@2x.png in Resources */,
@@ -1358,8 +1382,10 @@
 				D8EF71591C7B6D180006FDEF /* thin_ice_dashboard_background_320@2x.png in Resources */,
 				D8B2B2B41C8599C90089E6B9 /* icons_dashboardFlip_active_320@2x.png in Resources */,
 				D8CABAB91C86D4FC007EEBC7 /* insoles_320@2x.png in Resources */,
+				D87F8EE21C98506B00D6E58A /* failed_414@3x.png in Resources */,
 				D88845CA1C905753005DFE5C /* achievements_inactive_320@2x.png in Resources */,
 				D88845AD1C900D51005DFE5C /* arrow_414@3x.png in Resources */,
+				D87F8EE61C98507300D6E58A /* failed_375@2x.png in Resources */,
 				D8B2B2D41C85C10B0089E6B9 /* icons_burntCalories_414@3x.png in Resources */,
 				D88845C71C90574D005DFE5C /* achievements_active_375@2x.png in Resources */,
 				D8B2B2AB1C85850A0089E6B9 /* thin_ice_dashboard_background_414@3x.png in Resources */,
@@ -1374,6 +1400,7 @@
 				D88845C21C905746005DFE5C /* achievements_inactive_414@3x.png in Resources */,
 				D88845DA1C90853A005DFE5C /* badges_414@3x.png in Resources */,
 				D8B2B2EC1C85C3460089E6B9 /* icons_waterIntake_375@2x.png in Resources */,
+				D87F8EE71C98507300D6E58A /* success_375@2x.png in Resources */,
 				D8B2B2F61C85C3DB0089E6B9 /* icons_H_protein_375@2x.png in Resources */,
 				D8B2B2FE1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png in Resources */,
 				D8B2B2EB1C85C3460089E6B9 /* icons_JunkFood_375@2x.png in Resources */,
@@ -1424,6 +1451,7 @@
 				D872D9431C916A4C004EAC59 /* thiniceplus_active_414@3x.png in Resources */,
 				D88845D11C9060D2005DFE5C /* background_over_achievements_414@3x.png in Resources */,
 				D8B2B2DC1C85C2180089E6B9 /* icons_gymSession_320@2x.png in Resources */,
+				D87F8EE31C98506B00D6E58A /* success_414@3x.png in Resources */,
 				D872D94B1C916A5C004EAC59 /* thiniceControl_vest_375@2x.png in Resources */,
 				D8A1678B1C886014000C4C1C /* icons_account_photo_375@2x.png in Resources */,
 				D8CABAF21C873399007EEBC7 /* icons_statisticstemperature_375@2x.png in Resources */,
@@ -1437,6 +1465,7 @@
 				D8B2B2DE1C85C21D0089E6B9 /* icons_gymSession_375@2x.png in Resources */,
 				D8CABAF61C87339F007EEBC7 /* icons_statisticstemperature_320@2x.png in Resources */,
 				D872D9591C916A69004EAC59 /* thiniceControl_vest_320@2x.png in Resources */,
+				D87F8EEB1C98507A00D6E58A /* success_320@2x.png in Resources */,
 				D845D8071C8D7CFC00F8B563 /* btn_help_normal_320@2x.png in Resources */,
 				D88845AF1C900D57005DFE5C /* arrow_375@2x.png in Resources */,
 				D872D94C1C916A5C004EAC59 /* thinicebt_minus_inactive_375@2x.png in Resources */,
@@ -1523,6 +1552,7 @@
 				D887CCE21C96BBE000077447 /* TOActionSheet.m in Sources */,
 				D8EF71361C7B08DE0006FDEF /* SlideNavigationController.m in Sources */,
 				D8867E991C7379CD005F7B6D /* NSObject+Runtime.m in Sources */,
+				D87F8EDF1C98434E00D6E58A /* SavedUser.m in Sources */,
 				D887CD6D1C96FFBE00077447 /* _User.m in Sources */,
 				D8867E571C732D02005F7B6D /* HomeViewController.m in Sources */,
 				D8EDC9B51C7619FC00F5F524 /* BluetoothConnectViewController.m in Sources */,

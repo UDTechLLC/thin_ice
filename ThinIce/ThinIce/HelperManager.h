@@ -13,6 +13,11 @@
 
 + (HelperManager *)sharedServer;
 - (UIColor *)colorwithHexString:(NSString *)hexStr alpha:(CGFloat)alpha;
-
+- (void)createAchivementsDataBaseForUser:(User*)user;
+- (void)saveContextWithBlock:(void(^)(NSManagedObjectContext *localContext))block;
+- (NSString*)saveImage:(UIImage *)image withFileName:(NSString *)imageName ofType:(NSString *)extension;
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
+- (NSString*)definitionImageType:(UIImage*)image;
+- (UIImage *)getImageFromURL:(NSString *)fileURL;
 
 @end

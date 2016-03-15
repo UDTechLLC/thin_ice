@@ -1884,7 +1884,17 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldShouldBeginEditing:" destination="del-iV-Wgk" eventType="editingDidBegin" id="dff-4j-02A"/>
+                                    <action selector="textFieldShouldEndEditing:" destination="del-iV-Wgk" eventType="editingDidEnd" id="bM9-xX-m40"/>
+                                </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rgA-cn-dZu" userLabel="login Highlighted Image">
+                                <rect key="frame" x="257" y="174" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rgA-cn-dZu" secondAttribute="height" multiplier="1:1" id="U9o-4A-gzR"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjl-7W-hcV" userLabel="LoginBorderLine">
                                 <rect key="frame" x="6" y="202" width="278" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1908,7 +1918,17 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldShouldBeginEditing:" destination="del-iV-Wgk" eventType="editingDidBegin" id="6Ue-wn-VuP"/>
+                                    <action selector="textFieldShouldEndEditing:" destination="del-iV-Wgk" eventType="editingDidEnd" id="TBf-5j-ho8"/>
+                                </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ikY-wH-spO" userLabel="pass Highlighted Image">
+                                <rect key="frame" x="257" y="241" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ikY-wH-spO" secondAttribute="height" multiplier="1:1" id="6v1-Pi-1D7"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXH-fN-jLA" userLabel="PasswordBorderLine">
                                 <rect key="frame" x="6" y="269" width="278" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1923,6 +1943,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldShouldBeginEditing:" destination="del-iV-Wgk" eventType="editingDidBegin" id="dGX-2V-ccM"/>
+                                    <action selector="textFieldShouldEndEditing:" destination="del-iV-Wgk" eventType="editingDidEnd" id="yAE-cd-ZiR"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfG-4J-OTy" userLabel="ConfirmPassBorderLine">
                                 <rect key="frame" x="6" y="308" width="278" height="1"/>
@@ -1941,22 +1965,33 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xjj-Ka-pxE" userLabel="confirm Highlighted Image">
+                                <rect key="frame" x="257" y="280" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xjj-Ka-pxE" secondAttribute="height" multiplier="1:1" id="Cr5-sn-J1G"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="leading" secondItem="gXU-ct-WAV" secondAttribute="leading" constant="-13" id="0r8-6u-WCq"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="leading" secondItem="Tb1-UB-tzS" secondAttribute="leading" constant="-13" id="2ub-RQ-WG0"/>
+                            <constraint firstItem="ikY-wH-spO" firstAttribute="trailing" secondItem="gXU-ct-WAV" secondAttribute="trailing" id="6QE-dA-JNK"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="leading" secondItem="QBW-Wx-uK6" secondAttribute="leading" constant="6" id="6kg-g9-IQh"/>
                             <constraint firstItem="Jdj-Ey-uqF" firstAttribute="top" secondItem="toA-hO-eMc" secondAttribute="bottom" constant="3" id="9vf-AQ-eTf"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="trailing" secondItem="Bjl-7W-hcV" secondAttribute="trailing" id="CLd-2R-Kkw"/>
+                            <constraint firstItem="rgA-cn-dZu" firstAttribute="bottom" secondItem="Jdj-Ey-uqF" secondAttribute="bottom" id="E39-kd-DH3"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="trailing" secondItem="Jdj-Ey-uqF" secondAttribute="trailing" id="EYY-os-rNS"/>
+                            <constraint firstItem="rgA-cn-dZu" firstAttribute="top" secondItem="Jdj-Ey-uqF" secondAttribute="top" id="LTX-jT-bNy"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="top" secondItem="gXU-ct-WAV" secondAttribute="bottom" constant="1" id="Nw7-yi-MrJ"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="leading" secondItem="Jdj-Ey-uqF" secondAttribute="leading" constant="-13" id="OYb-CB-mcu"/>
                             <constraint firstItem="4HY-Mt-U6o" firstAttribute="top" secondItem="QBW-Wx-uK6" secondAttribute="topMargin" constant="48" id="OuK-ta-P2K"/>
+                            <constraint firstItem="xjj-Ka-pxE" firstAttribute="bottom" secondItem="Tb1-UB-tzS" secondAttribute="bottom" id="PYq-oU-IJU"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="leading" secondItem="Bjl-7W-hcV" secondAttribute="leading" id="QGY-bv-YrO"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="leading" secondItem="toA-hO-eMc" secondAttribute="leading" id="Quc-jB-7OL"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="trailing" secondItem="cfG-4J-OTy" secondAttribute="trailing" id="Tae-D9-tOI"/>
                             <constraint firstItem="Tb1-UB-tzS" firstAttribute="top" secondItem="NXH-fN-jLA" secondAttribute="bottom" constant="10" id="ViY-kX-59P"/>
+                            <constraint firstItem="ikY-wH-spO" firstAttribute="top" secondItem="gXU-ct-WAV" secondAttribute="top" id="W2Q-Ni-NcA"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="leading" secondItem="cfG-4J-OTy" secondAttribute="leading" id="Wqp-1H-NkD"/>
                             <constraint firstItem="r0b-um-Y9S" firstAttribute="centerX" secondItem="4HY-Mt-U6o" secondAttribute="centerX" id="aRH-Qq-9M0"/>
                             <constraint firstItem="4HY-Mt-U6o" firstAttribute="leading" secondItem="QBW-Wx-uK6" secondAttribute="leading" constant="31" id="b5b-R8-Jdu"/>
@@ -1967,24 +2002,31 @@
                             <constraint firstItem="4HY-Mt-U6o" firstAttribute="centerX" secondItem="QBW-Wx-uK6" secondAttribute="centerXWithinMargins" id="f94-eH-eaU"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="top" secondItem="QBW-Wx-uK6" secondAttribute="top" constant="269" id="gdk-QH-h4z"/>
                             <constraint firstItem="fgr-98-Rgq" firstAttribute="top" secondItem="Bjl-7W-hcV" secondAttribute="bottom" constant="9" id="i6q-Wc-JBj"/>
+                            <constraint firstItem="xjj-Ka-pxE" firstAttribute="trailing" secondItem="Tb1-UB-tzS" secondAttribute="trailing" id="jmR-1r-WzL"/>
                             <constraint firstItem="Bjl-7W-hcV" firstAttribute="top" secondItem="Jdj-Ey-uqF" secondAttribute="bottom" constant="1" id="kDU-ov-2cL"/>
                             <constraint firstItem="gXU-ct-WAV" firstAttribute="top" secondItem="fgr-98-Rgq" secondAttribute="bottom" constant="3" id="kV4-Qg-hS2"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="trailing" secondItem="gXU-ct-WAV" secondAttribute="trailing" id="lHp-YZ-1Al"/>
                             <constraint firstAttribute="trailing" secondItem="NXH-fN-jLA" secondAttribute="trailing" constant="6" id="mRD-Lf-Fud"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="trailing" secondItem="Tb1-UB-tzS" secondAttribute="trailing" id="mvM-lO-6vi"/>
+                            <constraint firstItem="rgA-cn-dZu" firstAttribute="trailing" secondItem="Jdj-Ey-uqF" secondAttribute="trailing" id="nbv-iJ-BZp"/>
+                            <constraint firstItem="ikY-wH-spO" firstAttribute="bottom" secondItem="gXU-ct-WAV" secondAttribute="bottom" id="opW-t8-1vw"/>
+                            <constraint firstItem="xjj-Ka-pxE" firstAttribute="top" secondItem="Tb1-UB-tzS" secondAttribute="top" id="sG4-xh-TrK"/>
                             <constraint firstItem="NXH-fN-jLA" firstAttribute="leading" secondItem="r0b-um-Y9S" secondAttribute="leading" id="wCU-EV-kIN"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="290" height="460"/>
                     <connections>
+                        <outlet property="confirmPassHighlightedImage" destination="xjj-Ka-pxE" id="2pV-Jm-W0f"/>
                         <outlet property="confirmPasswordBorderLine" destination="cfG-4J-OTy" id="EEh-aJ-3yn"/>
                         <outlet property="confirmPasswordTextField" destination="Tb1-UB-tzS" id="tnh-ry-ajk"/>
                         <outlet property="descriptionTextView" destination="r0b-um-Y9S" id="i1N-xr-REr"/>
+                        <outlet property="emailHighlightedImage" destination="rgA-cn-dZu" id="zQJ-dM-NG4"/>
                         <outlet property="emailLabel" destination="toA-hO-eMc" id="V0D-c6-rKJ"/>
                         <outlet property="emailTextFeild" destination="Jdj-Ey-uqF" id="0tZ-RH-2L7"/>
                         <outlet property="loginBorderLine" destination="Bjl-7W-hcV" id="bkg-8S-5Zc"/>
                         <outlet property="logoPic" destination="4HY-Mt-U6o" id="nvY-jm-AoA"/>
+                        <outlet property="passHighlightedImage" destination="ikY-wH-spO" id="iwh-p1-eG4"/>
                         <outlet property="passwordBorderLine" destination="NXH-fN-jLA" id="L2p-sq-u1L"/>
                         <outlet property="passwordLabel" destination="fgr-98-Rgq" id="y07-lz-Ex3"/>
                         <outlet property="passwordTextField" destination="gXU-ct-WAV" id="dGW-EW-Ko9"/>
@@ -2286,6 +2328,12 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U7V-IX-WsR" userLabel="login highlighted Image">
+                                        <rect key="frame" x="255" y="19" width="27" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="U7V-IX-WsR" secondAttribute="height" multiplier="1:1" id="GZC-Ni-WcS"/>
+                                        </constraints>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yv5-Mj-Hs4">
                                         <rect key="frame" x="13" y="70" width="26" height="20"/>
                                     </imageView>
@@ -2299,6 +2347,12 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mDA-I9-cyC" userLabel="pass Highlighted Image">
+                                        <rect key="frame" x="255" y="67" width="27" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mDA-I9-cyC" secondAttribute="height" multiplier="1:1" id="Ybb-mj-brg"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2311,8 +2365,11 @@
                                     <constraint firstAttribute="trailing" secondItem="WjT-cY-I49" secondAttribute="trailing" constant="13" id="DlT-fV-bHI"/>
                                     <constraint firstItem="WjT-cY-I49" firstAttribute="bottom" secondItem="yv5-Mj-Hs4" secondAttribute="bottom" constant="4" id="Dqc-V5-Zpr"/>
                                     <constraint firstItem="z8A-60-Hy5" firstAttribute="top" secondItem="WjT-cY-I49" secondAttribute="bottom" constant="1" id="Dr7-93-WQV"/>
+                                    <constraint firstItem="mDA-I9-cyC" firstAttribute="trailing" secondItem="WjT-cY-I49" secondAttribute="trailing" id="N2j-1e-wCw"/>
                                     <constraint firstAttribute="trailing" secondItem="z8A-60-Hy5" secondAttribute="trailing" constant="13" id="ORP-d6-mD6"/>
                                     <constraint firstItem="yv5-Mj-Hs4" firstAttribute="leading" secondItem="Sgh-kE-3Cn" secondAttribute="leading" constant="13" id="OdR-cy-IyC"/>
+                                    <constraint firstItem="U7V-IX-WsR" firstAttribute="bottom" secondItem="ST6-yS-ocv" secondAttribute="bottom" id="SLY-CG-52S"/>
+                                    <constraint firstItem="mDA-I9-cyC" firstAttribute="bottom" secondItem="WjT-cY-I49" secondAttribute="bottom" id="Uhf-FC-wGV"/>
                                     <constraint firstAttribute="width" secondItem="Sgh-kE-3Cn" secondAttribute="height" multiplier="146:69" constant="3" id="V7b-qM-QuZ"/>
                                     <constraint firstAttribute="trailing" secondItem="ST6-yS-ocv" secondAttribute="trailing" constant="13" id="ZtH-wX-4oD"/>
                                     <constraint firstItem="ST6-yS-ocv" firstAttribute="leading" secondItem="WjT-cY-I49" secondAttribute="leading" id="cAE-p0-cGq"/>
@@ -2320,7 +2377,10 @@
                                     <constraint firstItem="Sx9-ri-ux2" firstAttribute="centerY" secondItem="ST6-yS-ocv" secondAttribute="centerY" id="ijS-QN-q7I"/>
                                     <constraint firstItem="IYV-Nh-ydK" firstAttribute="top" secondItem="ST6-yS-ocv" secondAttribute="bottom" constant="1" id="kib-sC-2k8"/>
                                     <constraint firstItem="ST6-yS-ocv" firstAttribute="top" secondItem="Sgh-kE-3Cn" secondAttribute="top" constant="19" id="m1a-yo-pqt"/>
+                                    <constraint firstItem="U7V-IX-WsR" firstAttribute="trailing" secondItem="ST6-yS-ocv" secondAttribute="trailing" id="oKd-i5-pwF"/>
                                     <constraint firstAttribute="trailing" secondItem="IYV-Nh-ydK" secondAttribute="trailing" constant="13" id="qH5-Kh-qLq"/>
+                                    <constraint firstItem="mDA-I9-cyC" firstAttribute="top" secondItem="WjT-cY-I49" secondAttribute="top" id="qjT-G0-RrM"/>
+                                    <constraint firstItem="U7V-IX-WsR" firstAttribute="top" secondItem="ST6-yS-ocv" secondAttribute="top" id="tGF-al-5up"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2343,10 +2403,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="loginBorderLine" destination="IYV-Nh-ydK" id="h8S-LC-UTL"/>
+                        <outlet property="loginHighLightedImage" destination="U7V-IX-WsR" id="Khb-Pj-wfY"/>
                         <outlet property="loginPic" destination="Sx9-ri-ux2" id="yDo-Q7-SnG"/>
                         <outlet property="loginTextField" destination="ST6-yS-ocv" id="621-mz-ay9"/>
                         <outlet property="navigationbar" destination="EEj-tS-yRF" id="sZh-RS-WGM"/>
                         <outlet property="passBorderLine" destination="z8A-60-Hy5" id="PZD-O8-Uyv"/>
+                        <outlet property="passHighlightedImage" destination="mDA-I9-cyC" id="wnE-GV-1V3"/>
                         <outlet property="passPic" destination="yv5-Mj-Hs4" id="xie-cZ-uP4"/>
                         <outlet property="passTextField" destination="WjT-cY-I49" id="5oW-kV-lGB"/>
                         <outlet property="pic" destination="dPt-PI-quE" id="YND-mK-qU2"/>
@@ -3405,19 +3467,16 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="raz-e2-5gd" kind="relationship" relationship="rootViewController" id="d3k-Fv-USE"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="29H-76-r0z"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvE-7u-9WI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2158" y="-71"/>
+            <point key="canvasLocation" x="606" y="-287"/>
         </scene>
     </scenes>
     <resources>
         <image name="btn_cancel_active" width="42" height="42"/>
         <image name="btn_cancel_normal" width="42" height="42"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="d3k-Fv-USE"/>
-    </inferredMetricsTieBreakers>
 </document>

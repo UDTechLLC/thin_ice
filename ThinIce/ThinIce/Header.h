@@ -32,6 +32,17 @@
 #define AchievementsCount                                       16
 #define DEGREES_RADIANS(angle)                                  ((angle) / 180.0 * M_PI)
 
+                    // LOGIN SCREEN DEFINES
+
+#define kLoginKey                                               @"login"
+#define kPassKey                                                @"PassKey"
+#define kConfirmPassKey                                         @"ConfirmPassKey"
+
+#define kSexFieldKey                                            @"SexField"
+#define kDateOfBirthKey                                         @"DateOfBirthField"
+#define kWeightKey                                              @"WeightField"
+#define kHeightKey                                              @"HeightField"
+
 // ----------------------------------------====================================================================================----------------------------------------
 
 // NotificationCenter

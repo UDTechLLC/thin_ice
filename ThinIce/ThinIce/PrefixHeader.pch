@@ -32,5 +32,6 @@
 #import "AchievemetsUnlockedViewController.h"
 #import "AchievementsUnlockerManager.h"
 #import "AchievementsInfo.h"
+#import "SavedUser.h"
 
 #endif /* PrefixHeader_pch */

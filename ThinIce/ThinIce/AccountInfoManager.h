@@ -8,16 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "SavedUser.h"
 
 @interface AccountInfoManager : NSObject
 
+@property (readonly, nonatomic) SavedUser *userSavedInHomeDirectory;
 @property (readonly, nonatomic) User *userToken;
 
 + (AccountInfoManager *)sharedManager;
-- (void)createAchivementsDataBaseForUser:(User*)user;
+
 - (void)autorizationWithLoginAndPass:(NSString*)login pass:(NSString*)pass Block:(void(^)(BOOL isUserEnable))block;
-
-
-
+- (void)autorizationWithFaceBookAndTwitter:(NSString*)key firstName:(NSString*)userFirstName lastName:(NSString*)userLastName image:(UIImage*)profileImage Block:(void(^)(BOOL isUserEnable))block;
+- (void)loadUserObjectWithBlock:(void(^)())block;
+- (void)logout;
 
 @end

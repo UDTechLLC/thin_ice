@@ -115,13 +115,15 @@
 
 - (IBAction)changeView:(id)sender {
     
-    currentPage++;
-    if(currentPage < self.pageViewControllerStack.count) {
-        [self.pageControl setCurrentPage: currentPage];
-        id startingViewController = [self viewControllerAtIndex: currentPage];
-        NSArray *viewControllers = @[startingViewController];
-        [self changeButtonTitleAndColorWithAnimation];
-        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    if([self checktextFieldFields]) {
+        currentPage++;
+        if(currentPage < self.pageViewControllerStack.count) {
+            [self.pageControl setCurrentPage: currentPage];
+            id startingViewController = [self viewControllerAtIndex: currentPage];
+            NSArray *viewControllers = @[startingViewController];
+            [self changeButtonTitleAndColorWithAnimation];
+            [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        }
     }
 }
 
@@ -174,8 +176,8 @@
     return [self viewControllerAtIndex:index];
 }
 
-- (id)viewControllerAtIndex:(NSUInteger)index
-{
+- (id)viewControllerAtIndex:(NSUInteger)index {
+    
     id pageContentViewController;
     
     if (([self.pageViewControllerStack count] == 0) || (index >= [self.pageViewControllerStack count])) {
@@ -235,6 +237,40 @@
         default:
             break;
     }
+}
+
+#pragma mark - Check User Info Validation
+
+- (BOOL)checktextFieldFields {
+    
+    switch (currentPage) {
+        case 0:
+        {
+            if([[loginRegistrationViewController.regUserBOOLDict objectForKey:kLoginKey] isEqualToString:@"1"] && [[loginRegistrationViewController.regUserBOOLDict objectForKey:kPassKey] isEqualToString:@"1"] && [[loginRegistrationViewController.regUserBOOLDict objectForKey:kConfirmPassKey] isEqualToString:@"1"]) {
+                return YES;
+            } else {
+                if([[loginRegistrationViewController.regUserBOOLDict objectForKey:kLoginKey] isEqualToString:@"0"]) {
+                    [loginRegistrationViewController errorForTextFieldLogin:YES];
+                }
+                if([[loginRegistrationViewController.regUserBOOLDict objectForKey:kPassKey] isEqualToString:@"0"]) {
+                    [loginRegistrationViewController errorForTextFieldPass:YES];
+                }
+                if([[loginRegistrationViewController.regUserBOOLDict objectForKey:kConfirmPassKey] isEqualToString:@"0"]) {
+                    [loginRegistrationViewController errorForTextFieldConfirmPass:YES];
+                }
+                return NO;
+            }
+        }
+            break;
+        case 1:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
+    return NO;
 }
 
 @end

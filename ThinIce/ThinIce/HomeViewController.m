@@ -9,6 +9,12 @@
 #import "HomeViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "DashboardViewController.h"
+
+// define for FaceBook
+
+#define kGetNameKey                                             @"name"
+#define kGetIdKey                                               @"id"
 
 @interface HomeViewController () <FHSTwitterEngineAccessTokenDelegate>
 
@@ -28,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self checkUserAccount];
+    
     [self addLoginBackgroundImage];
     [self createFaceBookTwitter];
     [self createViewController];
@@ -35,7 +43,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
-    NSLog(@"%@", [SlideNavigationController sharedInstance].viewControllers);
     [super viewWillAppear:animated];
 }
 
@@ -119,8 +126,16 @@
                          if (!error) {
                              NSDictionary * responce = result;
                              NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal",[responce objectForKey:@"id"]]];
-                             NSData  *data = [NSData dataWithContentsOfURL:url];
-                             _pic.image = [UIImage imageWithData:data];
+                             [[HelperManager sharedServer] downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
+                                 if(succeeded) {
+                                     [[AccountInfoManager sharedManager] autorizationWithFaceBookAndTwitter: [responce objectForKey:kGetIdKey] firstName:[self cutFirstName:[responce objectForKey:kGetNameKey]] lastName:[self cutLastName:[responce objectForKey:kGetNameKey]] image:image Block:^(BOOL isUserEnable) {
+                                         if(isUserEnable) {
+                                             DashboardViewController *dashboard = [self.storyboard instantiateViewControllerWithIdentifier:kDashboardViewControllerID];
+                                             [self.navigationController pushViewController:dashboard animated:YES];
+                                         }
+                                     }];
+                                 }
+                             }];
                          }
                      }];
                 }
@@ -140,6 +155,12 @@
             NSString *username = [FHSTwitterEngine sharedEngine].authenticatedUsername;
             if (username.length > 0) {
                 UIImage *profileImg = [[FHSTwitterEngine sharedEngine] getProfileImageForUsername:[[FHSTwitterEngine sharedEngine] authenticatedUsername] andSize:FHSTwitterEngineImageSizeOriginal];
+                [[AccountInfoManager sharedManager] autorizationWithFaceBookAndTwitter: [FHSTwitterEngine sharedEngine].authenticatedID firstName:username lastName:nil image:profileImg Block:^(BOOL isUserEnable) {
+                    if(isUserEnable) {
+                        DashboardViewController *dashboard = [self.storyboard instantiateViewControllerWithIdentifier:kDashboardViewControllerID];
+                        [self.navigationController pushViewController:dashboard animated:YES];
+                    }
+                }];
             }
         }
     }];
@@ -157,5 +178,34 @@
 }
 
 #pragma mark - twitter API -end
+
+- (NSString*)cutFirstName:(NSString*)firstName {
+    NSRange range = [firstName rangeOfString:@" "];
+    
+    return [firstName substringWithRange:NSMakeRange(0, range.location)];
+}
+
+- (NSString*)cutLastName:(NSString*)lastName {
+    NSRange range = [lastName rangeOfString:@" "];
+    return [lastName substringWithRange:NSMakeRange(range.location, lastName.length - range.location)];
+}
+
+#pragma mark - checkUserAccount
+
+- (void)checkUserAccount {
+    
+    __weak typeof(self) weakself = self;
+    
+    NSLog(@"socialityKey key - %@", [AccountInfoManager sharedManager].userToken.socialityKey);
+    NSLog(@"userLogin key - %@", [AccountInfoManager sharedManager].userToken.userLogin);
+    NSLog(@"userPass key - %@", [AccountInfoManager sharedManager].userToken.userPass);
+          
+    if(([AccountInfoManager sharedManager].userSavedInHomeDirectory.savedUserLogin != nil && [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedUserPass != nil ) || [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedSocialityKey != nil ) {
+        [[AccountInfoManager sharedManager] loadUserObjectWithBlock:^{
+            DashboardViewController *dashboard = [weakself.storyboard instantiateViewControllerWithIdentifier:kDashboardViewControllerID];
+            [weakself.navigationController pushViewController:dashboard animated:YES];
+        }];
+    }
+}
 
 @end

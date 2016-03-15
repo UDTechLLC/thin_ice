@@ -84,7 +84,7 @@
     
     self.userNameLabel.backgroundColor = [UIColor clearColor];
     self.userNameLabel.textColor = [[HelperManager sharedServer] colorwithHexString:@"#ccccccc" alpha:1.0];
-    self.userNameLabel.text = @"Name";// @"Artem Arefin";
+    self.userNameLabel.text = [self createFirstAndLastName];
     
     [self createInsolesBlock];
     [self createVestBlock];
@@ -126,7 +126,7 @@
     [self.imageViewPhoto.layer addSublayer:border];
     self.imageViewPhoto.backgroundColor = [UIColor clearColor];
     self.imageViewPhoto.contentMode = UIViewContentModeScaleAspectFill;
-   // self.imageViewPhoto.image = [UIImage imageNamed:@"img"];
+    self.imageViewPhoto.image = [[HelperManager sharedServer] getImageFromURL: [AccountInfoManager sharedManager].userToken.user_photo_url];
 }
 
 - (void)createInsolesBlock {
@@ -216,6 +216,23 @@
     } completion:^(BOOL finished) {
         complitionblock();
     }];
+}
+
+- (NSString*)createFirstAndLastName {
+    NSString *firstNameTemp;
+    NSString *lastNameTemp;
+    
+    if([AccountInfoManager sharedManager].userToken.first_name.length > 0) {
+        firstNameTemp = [AccountInfoManager sharedManager].userToken.first_name;
+    } else {
+        firstNameTemp = @"";
+    }
+    if([AccountInfoManager sharedManager].userToken.last_name.length > 0) {
+        lastNameTemp  = [AccountInfoManager sharedManager].userToken.last_name;
+    } else {
+        lastNameTemp = @"";
+    }
+    return [NSString stringWithFormat:@"%@%@",lastNameTemp, firstNameTemp];
 }
 
 #pragma mark - SlideNavigationController Methods -

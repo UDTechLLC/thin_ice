@@ -165,13 +165,13 @@
 }
 
 - (void)logout {
-    NSLog(@"logout");
+    [[AccountInfoManager sharedManager] logout];
     HomeViewController *homeController = [self.storyboard instantiateViewControllerWithIdentifier: kHomeViewControllerID];
     [[SlideNavigationController sharedInstance] setViewControllers:[NSArray arrayWithObject:homeController] animated:YES];
 }
 
 - (void)insertPhotoInAccountPhotoImageView {
-    [self setImageOnImage: [UIImage imageNamed:@"images"]];
+    [self setImageOnImage: [[HelperManager sharedServer] getImageFromURL: [AccountInfoManager sharedManager].userToken.user_photo_url]];
 }
 
 #pragma Mark - drow text on Image
@@ -188,9 +188,13 @@
     viewBackground.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFroAccountImageBackground alpha:0.5];
     
     UIImageView *photoCameraImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"icons_account_photo_%d", (int)kScreenWidth]]];
-    photoCameraImageView.contentMode = UIViewContentModeCenter;
-    photoCameraImageView.frame = viewBackground.bounds;
-
+    [photoCameraImageView sizeToFit];
+    
+    photoCameraImageView.center = viewBackground.center;
+    CGPoint centerPhotoCam = photoCameraImageView.center;
+    centerPhotoCam.y = centerPhotoCam.y - 6;
+    photoCameraImageView.center = centerPhotoCam;
+    
     [view addSubview:photoImageView];
     [view addSubview:viewBackground];
     [view addSubview:photoCameraImageView];
