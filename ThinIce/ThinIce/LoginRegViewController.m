@@ -149,9 +149,6 @@ typedef NS_ENUM(NSUInteger, TextFields) {
                 
                 [self.regUserDict setObject:self.confirmPasswordTextField.text forKey:kConfirmPassKey];
                 [self checkPasswordEquals];
-            } else {
-                
-                [self errorForTextFieldConfirmPass:YES];
             }
         }
             break;

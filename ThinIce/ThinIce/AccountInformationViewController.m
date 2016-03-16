@@ -298,7 +298,10 @@
 
 - (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage usingCropRect:(CGRect)cropRect {
     
+    [AccountInfoManager sharedManager].userToken.user_photo_url = [[HelperManager sharedServer] saveImage:croppedImage withFileName:[self writeImageFileName] ofType:[[HelperManager sharedServer] definitionImageType:croppedImage]];
     [self setImageOnImage:croppedImage];
+    NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+    [defaultContext MR_saveToPersistentStoreAndWait];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -369,6 +372,15 @@
     return path;
 }
 
+- (NSString*)writeImageFileName {
+    
+    if([AccountInfoManager sharedManager].userToken.socialityKey) {
+        return [AccountInfoManager sharedManager].userToken.socialityKey;
+    } else if([AccountInfoManager sharedManager].userToken.userLogin) {
+        return [AccountInfoManager sharedManager].userToken.userLogin;
+    }
+    return @"feil";
+}
 
 #pragma mark - SlideNavigationController Methods -
 

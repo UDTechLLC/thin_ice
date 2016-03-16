@@ -10,6 +10,7 @@
 #import "BluetoothConnectViewController.h"
 #import "UserInfoRegViewController.h"
 #import "LoginRegViewController.h"
+#import "DashboardViewController.h"
 
 @interface SignUpViewController () <UITextFieldDelegate, UIPageViewControllerDataSource> {
     
@@ -111,10 +112,13 @@
     
     self.pageControl.pageIndicatorTintColor = [[HelperManager sharedServer] colorwithHexString:@"6a828f" alpha:1.0];
     self.pageControl.currentPageIndicatorTintColor = [[HelperManager sharedServer] colorwithHexString:@"33c6cb" alpha:1.0];
+    self.pageControl.userInteractionEnabled = NO;
 }
 
 - (IBAction)changeView:(id)sender {
     
+    __weak __typeof(self) weakSelf = self;
+
     if([self checktextFieldFields]) {
         currentPage++;
         if(currentPage < self.pageViewControllerStack.count) {
@@ -123,6 +127,11 @@
             NSArray *viewControllers = @[startingViewController];
             [self changeButtonTitleAndColorWithAnimation];
             [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        } else {
+            [[AccountInfoManager sharedManager] registrationNewUserWithParams:bluetoothConnectViewController.regUserDict Block:^{ }];
+            DashboardViewController *dashboard = [[UIStoryboard storyboardWithName:kMainStoryBoardIdentifier bundle:nil] instantiateViewControllerWithIdentifier:kDashboardViewControllerID];
+            [[SlideNavigationController sharedInstance] setViewControllers:@[dashboard] animated:NO];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
         }
     }
 }
@@ -196,12 +205,16 @@
         {
             pageContentViewController = [self.pageViewControllerStack objectAtIndex: index];
             ((UserInfoRegViewController*)pageContentViewController).pageIndex = index;
+            ((UserInfoRegViewController*)pageContentViewController).regUserDict = loginRegistrationViewController.regUserDict;
+            ((UserInfoRegViewController*)pageContentViewController).regUserBOOLDict = loginRegistrationViewController.regUserBOOLDict;
             break;
         }
         case 2:
         {
             pageContentViewController = [self.pageViewControllerStack objectAtIndex: index];
             ((BluetoothConnectViewController*)pageContentViewController).pageIndex = index;
+            ((BluetoothConnectViewController*)pageContentViewController).regUserDict = userInfoRegistrationViewController.regUserDict;
+            ((BluetoothConnectViewController*)pageContentViewController).regUserBOOLDict = userInfoRegistrationViewController.regUserBOOLDict;
             break;
         }
         default:
@@ -264,7 +277,31 @@
             break;
         case 1:
         {
-            
+            if([[userInfoRegistrationViewController.regUserBOOLDict objectForKey:kSexFieldKey] isEqualToString:@"1"] &&
+               [[userInfoRegistrationViewController.regUserBOOLDict objectForKey:kDateOfBirthKey] isEqualToString:@"1"] &&
+               [[userInfoRegistrationViewController.regUserBOOLDict objectForKey:kHeightKey] isEqualToString:@"1"] &&
+               [[userInfoRegistrationViewController.regUserBOOLDict objectForKey:kWeightKey] isEqualToString:@"1"]) {
+                return YES;
+            } else {
+                if([[userInfoRegistrationViewController.regUserBOOLDict objectForKey:kSexFieldKey] isEqualToString:@"0"]) {
+                   // [userInfoRegistrationViewController errorForTextFieldSex:YES];
+                }
+                if([[userInfoRegistrationViewController.regUserBOOLDict objectForKey:kDateOfBirthKey] isEqualToString:@"0"]) {
+                  //  [userInfoRegistrationViewController errorForTextFieldDateOfBirth:YES];
+                }
+                if([[userInfoRegistrationViewController.regUserBOOLDict objectForKey:kHeightKey] isEqualToString:@"0"]) {
+                 //   [userInfoRegistrationViewController errorForTextFieldHeight:YES];
+                }
+                if([[userInfoRegistrationViewController.regUserBOOLDict objectForKey:kWeightKey] isEqualToString:@"0"]) {
+                 //   [userInfoRegistrationViewController errorForTextFieldWeight:YES];
+                }
+                return NO;
+            }
+        }
+            break;
+        case 2:
+        {
+            return YES;
         }
             break;
         default:

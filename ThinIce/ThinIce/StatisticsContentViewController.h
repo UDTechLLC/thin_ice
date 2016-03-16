@@ -10,4 +10,6 @@
 
 @interface StatisticsContentViewController : UIViewController
 
+@property (strong, nonatomic) NSMutableArray * dataStatisticArray;
+
 @end

@@ -232,7 +232,7 @@
     } else {
         lastNameTemp = @"";
     }
-    return [NSString stringWithFormat:@"%@%@",lastNameTemp, firstNameTemp];
+    return [NSString stringWithFormat:@"%@%@",firstNameTemp, lastNameTemp];
 }
 
 #pragma mark - SlideNavigationController Methods -

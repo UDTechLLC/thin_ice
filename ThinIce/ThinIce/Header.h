@@ -18,6 +18,13 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 // ----------------------------------------====================================================================================----------------------------------------
+                    // CoreData - MagicalRecord
+
+#define kSocialityKey                                            @"socialityKey"
+#define kLoginEmailKey                                           @"userLogin"
+#define kPasswordUserKey                                         @"userPass"
+
+// ----------------------------------------====================================================================================----------------------------------------
 
 // Other Deffines
 
@@ -38,6 +45,8 @@
 #define kPassKey                                                @"PassKey"
 #define kConfirmPassKey                                         @"ConfirmPassKey"
 
+#define kFirstNameKey                                           @"FirstNameKey"
+#define kLastNameKey                                            @"LastNameKey"
 #define kSexFieldKey                                            @"SexField"
 #define kDateOfBirthKey                                         @"DateOfBirthField"
 #define kWeightKey                                              @"WeightField"

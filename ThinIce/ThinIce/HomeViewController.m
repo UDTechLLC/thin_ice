@@ -200,10 +200,10 @@
     NSLog(@"userLogin key - %@", [AccountInfoManager sharedManager].userToken.userLogin);
     NSLog(@"userPass key - %@", [AccountInfoManager sharedManager].userToken.userPass);
           
-    if(([AccountInfoManager sharedManager].userSavedInHomeDirectory.savedUserLogin != nil && [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedUserPass != nil ) || [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedSocialityKey != nil ) {
+    if(([AccountInfoManager sharedManager].userSavedInHomeDirectory.savedUserLogin.length > 0 && [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedUserPass.length > 0 ) || [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedSocialityKey.length > 0 ) {
         [[AccountInfoManager sharedManager] loadUserObjectWithBlock:^{
             DashboardViewController *dashboard = [weakself.storyboard instantiateViewControllerWithIdentifier:kDashboardViewControllerID];
-            [weakself.navigationController pushViewController:dashboard animated:YES];
+            [weakself.navigationController pushViewController:dashboard animated:NO];
         }];
     }
 }

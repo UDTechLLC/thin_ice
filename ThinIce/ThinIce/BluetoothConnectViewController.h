@@ -11,5 +11,7 @@
 @interface BluetoothConnectViewController : BaseSignUpViewController
 
 @property NSUInteger                    pageIndex;
+@property NSMutableDictionary           *regUserDict;
+@property NSMutableDictionary           *regUserBOOLDict;       // User Information Validation State (NSInteger) 1 = YES | 0 = NO
 
 @end

@@ -21,5 +21,7 @@
 - (void)autorizationWithFaceBookAndTwitter:(NSString*)key firstName:(NSString*)userFirstName lastName:(NSString*)userLastName image:(UIImage*)profileImage Block:(void(^)(BOOL isUserEnable))block;
 - (void)loadUserObjectWithBlock:(void(^)())block;
 - (void)logout;
+- (User*)findUserInDataBase;
+- (void)registrationNewUserWithParams:(NSDictionary*)userParams Block:(void(^)())block;
 
 @end

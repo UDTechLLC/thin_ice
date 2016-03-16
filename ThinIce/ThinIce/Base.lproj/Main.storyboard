@@ -555,7 +555,17 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldShouldBeginEditing:" destination="Iep-0W-IRe" eventType="editingDidBegin" id="PDQ-Jb-BRH"/>
+                                    <action selector="textFieldShouldEndEditing:" destination="Iep-0W-IRe" eventType="editingDidEnd" id="Ybw-7i-xUu"/>
+                                </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cjw-AH-vfJ" userLabel="login Highlighted Image">
+                                <rect key="frame" x="266" y="66" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Cjw-AH-vfJ" secondAttribute="height" multiplier="1:1" id="gyu-Zg-57e"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLh-Kz-b3N" userLabel="LoginBorderLine">
                                 <rect key="frame" x="22" y="95" width="278" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -573,7 +583,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uPJ-tW-AWx" userLabel="PasswordTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uPJ-tW-AWx" userLabel="PasswordTextField">
                                 <rect key="frame" x="28" y="132" width="265" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -581,7 +591,17 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldShouldBeginEditing:" destination="Iep-0W-IRe" eventType="editingDidBegin" id="mFP-P5-FIr"/>
+                                    <action selector="textFieldShouldEndEditing:" destination="Iep-0W-IRe" eventType="editingDidEnd" id="YWT-9Z-uI5"/>
+                                </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ULp-uN-53z" userLabel="password Highlighted Image">
+                                <rect key="frame" x="266" y="132" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ULp-uN-53z" secondAttribute="height" multiplier="1:1" id="Dzq-h1-daj"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6V-xl-VLe" userLabel="PasswordBorderLine">
                                 <rect key="frame" x="22" y="161" width="278" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -589,7 +609,7 @@
                                     <constraint firstAttribute="height" constant="1" id="PIo-wG-p87"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Confirm New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nud-Nw-gRw" userLabel="Confirm PasswordTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nud-Nw-gRw" userLabel="Confirm PasswordTextField">
                                 <rect key="frame" x="28" y="171" width="265" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -597,6 +617,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldShouldBeginEditing:" destination="Iep-0W-IRe" eventType="editingDidBegin" id="89y-VE-cfe"/>
+                                    <action selector="textFieldShouldEndEditing:" destination="Iep-0W-IRe" eventType="editingDidEnd" id="kqG-Wq-AG0"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vN8-Hh-sa1" userLabel="ConfirmPassBorderLine">
                                 <rect key="frame" x="22" y="200" width="278" height="1"/>
@@ -611,7 +635,16 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="38B-oW-Xf5" secondAttribute="height" multiplier="298:51" id="2BT-Io-JvK"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="saveButtonHendlier:" destination="Iep-0W-IRe" eventType="touchUpInside" id="aSs-mH-aCo"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ttf-oY-clb" userLabel="confirm Highlighted Image">
+                                <rect key="frame" x="266" y="171" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ttf-oY-clb" secondAttribute="height" multiplier="1:1" id="43c-hs-EPq"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -619,9 +652,13 @@
                             <constraint firstItem="nud-Nw-gRw" firstAttribute="top" secondItem="L6V-xl-VLe" secondAttribute="bottom" constant="9" id="5ay-HN-p5Z"/>
                             <constraint firstItem="H5G-rD-Vmy" firstAttribute="leading" secondItem="ye7-76-N2G" secondAttribute="leading" constant="11" id="6F8-po-xU3"/>
                             <constraint firstItem="vN8-Hh-sa1" firstAttribute="top" secondItem="nud-Nw-gRw" secondAttribute="bottom" constant="2" id="7XY-ON-SaR"/>
+                            <constraint firstItem="ULp-uN-53z" firstAttribute="width" secondItem="ULp-uN-53z" secondAttribute="height" multiplier="1:1" id="8Kh-N5-iGg"/>
                             <constraint firstItem="38B-oW-Xf5" firstAttribute="top" secondItem="H5G-rD-Vmy" secondAttribute="bottom" constant="18" id="8Y9-1o-QAh"/>
+                            <constraint firstItem="ULp-uN-53z" firstAttribute="top" secondItem="uPJ-tW-AWx" secondAttribute="top" id="8bB-Ee-2dy"/>
                             <constraint firstItem="yUI-e8-rAH" firstAttribute="top" secondItem="oLh-Kz-b3N" secondAttribute="bottom" constant="9" id="9bH-mT-hZY"/>
+                            <constraint firstItem="Cjw-AH-vfJ" firstAttribute="trailing" secondItem="FUb-gw-kge" secondAttribute="trailing" id="9iZ-l2-rYX"/>
                             <constraint firstItem="uPJ-tW-AWx" firstAttribute="top" secondItem="yUI-e8-rAH" secondAttribute="bottom" constant="2" id="9od-pS-Vkc"/>
+                            <constraint firstItem="ULp-uN-53z" firstAttribute="trailing" secondItem="uPJ-tW-AWx" secondAttribute="trailing" id="ANb-6U-TXj"/>
                             <constraint firstItem="L6V-xl-VLe" firstAttribute="top" secondItem="uPJ-tW-AWx" secondAttribute="bottom" constant="2" id="AdD-6K-fRi"/>
                             <constraint firstAttribute="trailing" secondItem="oLh-Kz-b3N" secondAttribute="trailing" constant="20" id="DEM-q8-iDS"/>
                             <constraint firstItem="BQv-Mn-EC5" firstAttribute="leading" secondItem="ye7-76-N2G" secondAttribute="leading" constant="21" id="ExI-wr-UCR"/>
@@ -630,17 +667,25 @@
                             <constraint firstItem="38B-oW-Xf5" firstAttribute="centerX" secondItem="ye7-76-N2G" secondAttribute="centerXWithinMargins" id="HnN-oT-4qM"/>
                             <constraint firstAttribute="trailing" secondItem="L6V-xl-VLe" secondAttribute="trailing" constant="20" id="Ier-vx-aO3"/>
                             <constraint firstItem="oLh-Kz-b3N" firstAttribute="leading" secondItem="ye7-76-N2G" secondAttribute="leading" constant="22" id="JfA-rb-nxs"/>
+                            <constraint firstItem="Ttf-oY-clb" firstAttribute="top" secondItem="nud-Nw-gRw" secondAttribute="top" id="JrM-DW-7sT"/>
+                            <constraint firstItem="ULp-uN-53z" firstAttribute="bottom" secondItem="uPJ-tW-AWx" secondAttribute="bottom" id="Jyb-Wm-AMS"/>
                             <constraint firstItem="uPJ-tW-AWx" firstAttribute="leading" secondItem="ye7-76-N2G" secondAttribute="leading" constant="28" id="KOe-LB-wVd"/>
+                            <constraint firstItem="Cjw-AH-vfJ" firstAttribute="width" secondItem="Cjw-AH-vfJ" secondAttribute="height" multiplier="1:1" id="Me6-ba-7EA"/>
+                            <constraint firstItem="Cjw-AH-vfJ" firstAttribute="top" secondItem="FUb-gw-kge" secondAttribute="top" id="Mju-lV-m0r"/>
                             <constraint firstItem="H5G-rD-Vmy" firstAttribute="centerX" secondItem="ye7-76-N2G" secondAttribute="centerX" id="RD6-Qv-wDB"/>
                             <constraint firstItem="oLh-Kz-b3N" firstAttribute="top" secondItem="FUb-gw-kge" secondAttribute="bottom" constant="2" id="ROo-yg-OCZ"/>
                             <constraint firstItem="vN8-Hh-sa1" firstAttribute="leading" secondItem="ye7-76-N2G" secondAttribute="leading" constant="22" id="Ttv-MP-PBM"/>
+                            <constraint firstItem="Ttf-oY-clb" firstAttribute="bottom" secondItem="nud-Nw-gRw" secondAttribute="bottom" id="b7A-kT-bKj"/>
                             <constraint firstAttribute="trailing" secondItem="nud-Nw-gRw" secondAttribute="trailing" constant="27" id="cLO-vr-2LE"/>
                             <constraint firstItem="FUb-gw-kge" firstAttribute="top" secondItem="BQv-Mn-EC5" secondAttribute="bottom" constant="2" id="g9u-IH-OJR"/>
+                            <constraint firstItem="Cjw-AH-vfJ" firstAttribute="bottom" secondItem="FUb-gw-kge" secondAttribute="bottom" id="mUg-Xc-Cww"/>
                             <constraint firstAttribute="trailing" secondItem="FUb-gw-kge" secondAttribute="trailing" constant="27" id="mpc-fi-qkP"/>
                             <constraint firstAttribute="trailing" secondItem="uPJ-tW-AWx" secondAttribute="trailing" constant="27" id="odO-26-lzG"/>
                             <constraint firstItem="L6V-xl-VLe" firstAttribute="leading" secondItem="ye7-76-N2G" secondAttribute="leading" constant="22" id="owG-ON-Dg1"/>
+                            <constraint firstItem="Ttf-oY-clb" firstAttribute="trailing" secondItem="nud-Nw-gRw" secondAttribute="trailing" id="pO3-SC-4Oc"/>
                             <constraint firstItem="nud-Nw-gRw" firstAttribute="leading" secondItem="ye7-76-N2G" secondAttribute="leading" constant="28" id="qlb-mm-mk9"/>
                             <constraint firstAttribute="bottomMargin" relation="lessThanOrEqual" secondItem="38B-oW-Xf5" secondAttribute="bottom" priority="750" constant="284" id="rdy-V6-aGq"/>
+                            <constraint firstItem="Ttf-oY-clb" firstAttribute="width" secondItem="Ttf-oY-clb" secondAttribute="height" multiplier="1:1" id="uNN-ET-axA"/>
                             <constraint firstItem="FUb-gw-kge" firstAttribute="leading" secondItem="ye7-76-N2G" secondAttribute="leading" constant="28" id="v0w-26-rDo"/>
                             <constraint firstItem="BQv-Mn-EC5" firstAttribute="top" secondItem="ye7-76-N2G" secondAttribute="topMargin" constant="39" id="woS-h6-yyF"/>
                             <constraint firstItem="H5G-rD-Vmy" firstAttribute="top" secondItem="ye7-76-N2G" secondAttribute="topMargin" constant="20" id="x9L-N9-s3J"/>
@@ -650,11 +695,14 @@
                     <connections>
                         <outlet property="backgoundForAutorizationBlock" destination="H5G-rD-Vmy" id="3pW-eN-ees"/>
                         <outlet property="confirmPasswordBorderLine" destination="vN8-Hh-sa1" id="bBQ-bU-cEb"/>
+                        <outlet property="confirmPasswordHighlightedImage" destination="Ttf-oY-clb" id="4pL-WN-3Lx"/>
                         <outlet property="confirmPasswordTextField" destination="nud-Nw-gRw" id="ha5-AD-dDL"/>
                         <outlet property="emailBorderLine" destination="oLh-Kz-b3N" id="dGq-ll-iSl"/>
                         <outlet property="emailLabel" destination="BQv-Mn-EC5" id="FGV-Ct-H1g"/>
                         <outlet property="emailTextField" destination="FUb-gw-kge" id="S9N-as-gsl"/>
+                        <outlet property="loginHighlightedImage" destination="Cjw-AH-vfJ" id="m8h-9V-mKC"/>
                         <outlet property="passwordBorderLine" destination="L6V-xl-VLe" id="g16-vD-Aul"/>
+                        <outlet property="passwordHighlightedImage" destination="ULp-uN-53z" id="ODc-hY-1R1"/>
                         <outlet property="passwordLabel" destination="yUI-e8-rAH" id="5mc-sk-tiS"/>
                         <outlet property="passwordTextField" destination="uPJ-tW-AWx" id="JQj-TX-bpC"/>
                         <outlet property="saveButton" destination="38B-oW-Xf5" id="shG-Nd-Xta"/>
@@ -695,6 +743,10 @@
                                                 <rect key="frame" x="15" y="37" width="268" height="26"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldBeginEditing:" destination="CgR-rV-WfE" eventType="editingDidBegin" id="Q4W-Kj-wIu"/>
+                                                    <action selector="textFieldEndEditing:" destination="CgR-rV-WfE" eventType="editingDidEnd" id="Wlp-Zz-S1S"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpf-1t-Vf3" userLabel="FirstNameBorderLine">
                                                 <rect key="frame" x="11" y="65" width="275" height="1"/>
@@ -715,6 +767,10 @@
                                                 <rect key="frame" x="15" y="99" width="268" height="26"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldBeginEditing:" destination="CgR-rV-WfE" eventType="editingDidBegin" id="agO-uq-vEX"/>
+                                                    <action selector="textFieldEndEditing:" destination="CgR-rV-WfE" eventType="editingDidEnd" id="24m-vC-CIt"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-SK-TB9" userLabel="LastNameBorderLine">
                                                 <rect key="frame" x="11" y="127" width="275" height="1"/>
@@ -735,6 +791,10 @@
                                                 <rect key="frame" x="15" y="162" width="268" height="26"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldBeginEditing:" destination="CgR-rV-WfE" eventType="editingDidBegin" id="ilH-uV-ODJ"/>
+                                                    <action selector="textFieldEndEditing:" destination="CgR-rV-WfE" eventType="editingDidEnd" id="4Lc-Uk-iSc"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6E-M0-iGd" userLabel="chooseSexBorderLine">
                                                 <rect key="frame" x="11" y="190" width="275" height="1"/>
@@ -756,7 +816,8 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="editingEnd:" destination="CgR-rV-WfE" eventType="editingDidEnd" id="Icp-BV-bZV"/>
+                                                    <action selector="textFieldBeginEditing:" destination="CgR-rV-WfE" eventType="editingDidBegin" id="lT5-gN-NoC"/>
+                                                    <action selector="textFieldEndEditing:" destination="CgR-rV-WfE" eventType="editingDidEnd" id="Vne-6B-Kiq"/>
                                                 </connections>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-kG-Kd3" userLabel="Date Image Arrow">
@@ -784,6 +845,10 @@
                                                 <rect key="frame" x="15" y="286" width="268" height="26"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldBeginEditing:" destination="CgR-rV-WfE" eventType="editingDidBegin" id="G5j-B4-XAo"/>
+                                                    <action selector="textFieldEndEditing:" destination="CgR-rV-WfE" eventType="editingDidEnd" id="DlM-i6-fN2"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syN-XZ-Fdz" userLabel="HeightBorderLine">
                                                 <rect key="frame" x="11" y="314" width="275" height="1"/>
@@ -791,7 +856,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="TRG-wO-TuH"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Width:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-jw-1CZ" userLabel="WidthName">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-jw-1CZ" userLabel="WidthName">
                                                 <rect key="frame" x="10" y="320" width="127" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="LYz-jw-1CZ" secondAttribute="height" multiplier="66:13" id="cjb-4W-tTr"/>
@@ -804,6 +869,10 @@
                                                 <rect key="frame" x="15" y="350" width="268" height="26"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldBeginEditing:" destination="CgR-rV-WfE" eventType="editingDidBegin" id="xp9-EG-61A"/>
+                                                    <action selector="textFieldEndEditing:" destination="CgR-rV-WfE" eventType="editingDidEnd" id="IaQ-hE-2rz"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ne0-R8-X0p" userLabel="WidthBorderLine">
                                                 <rect key="frame" x="11" y="379" width="275" height="1"/>
@@ -886,6 +955,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="OkB-sH-fUu" secondAttribute="height" multiplier="298:51" id="mmK-kM-7mI"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="saveButtonActionHendlier:" destination="CgR-rV-WfE" eventType="touchUpInside" id="k7b-Ua-7rA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -2070,6 +2142,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldBeginEditing:" destination="rHq-VW-NGH" eventType="editingDidBegin" id="bhs-Ve-2qz"/>
+                                    <action selector="textFieldEndEditing:" destination="rHq-VW-NGH" eventType="editingDidEnd" id="7d3-ex-Bww"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfM-RU-vYS" userLabel="chooseSexBorderLine">
                                 <rect key="frame" x="6" y="206" width="278" height="1"/>
@@ -2093,6 +2169,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldBeginEditing:" destination="rHq-VW-NGH" eventType="editingDidBegin" id="vUc-qO-t8m"/>
+                                    <action selector="textFieldEndEditing:" destination="rHq-VW-NGH" eventType="editingDidEnd" id="KMj-ws-ilR"/>
+                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4c-kQ-394" userLabel="Date Image Arrow">
                                 <rect key="frame" x="271" y="247" width="13" height="27"/>
@@ -2131,6 +2211,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldBeginEditing:" destination="rHq-VW-NGH" eventType="editingDidBegin" id="sbF-lF-vMj"/>
+                                    <action selector="textFieldEndEditing:" destination="rHq-VW-NGH" eventType="editingDidEnd" id="uZK-Mq-fhp"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s94-Va-wSC" userLabel="HeightBorderLine">
                                 <rect key="frame" x="6" y="344" width="127" height="1"/>
@@ -2142,6 +2226,10 @@
                                 <rect key="frame" x="170" y="315" width="97" height="27"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldBeginEditing:" destination="rHq-VW-NGH" eventType="editingDidBegin" id="20V-QS-XtA"/>
+                                    <action selector="textFieldEndEditing:" destination="rHq-VW-NGH" eventType="editingDidEnd" id="KzH-kA-H80"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FC-EH-tBS" userLabel="WeightBorderLine">
                                 <rect key="frame" x="157" y="344" width="127" height="1"/>

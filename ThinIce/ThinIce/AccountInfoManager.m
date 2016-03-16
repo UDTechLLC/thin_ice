@@ -41,19 +41,21 @@ static NSString*const kPasswordKey                  = @"PassKey";
 
 - (void)p_getToken {
     
-    self.userSavedInHomeDirectory = [[SavedUser alloc] init];
-    
     NSLog(@"keyChain - %@", [[NSUserDefaults standardUserDefaults] objectForKey:ktokenKey]);
     NSLog(@"keyChain - %@", [[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey]);
     NSLog(@"keyChain - %@", [[NSUserDefaults standardUserDefaults] objectForKey:kPasswordKey]);
     
-    self.userSavedInHomeDirectory.savedSocialityKey = [[NSUserDefaults standardUserDefaults] objectForKey:ktokenKey];
-    self.userSavedInHomeDirectory.savedUserLogin = [[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey];
-    self.userSavedInHomeDirectory.savedUserPass = [[NSUserDefaults standardUserDefaults] objectForKey:kPasswordKey];
+    if([self checkVariable: [[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey]] && [self checkVariable: [[NSUserDefaults standardUserDefaults] objectForKey:kPasswordKey]]) {
+        
+        self.userSavedInHomeDirectory = [SavedUser initWithLogin:[[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey] Pass:[[NSUserDefaults standardUserDefaults] objectForKey:kPasswordKey]];
+    } else if([self checkVariable: [[NSUserDefaults standardUserDefaults] objectForKey:ktokenKey]]) {
+        
+        self.userSavedInHomeDirectory = [SavedUser initWithSocialityKey:[[NSUserDefaults standardUserDefaults] objectForKey:ktokenKey]];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context {
-    if ([keyPath isEqual:@"userToken"]) {
+    if ([keyPath isEqual:@"userSavedInHomeDirectory"]) {
         [self saveToken: ((AccountInfoManager*)object).userSavedInHomeDirectory];
     }
 }
@@ -71,12 +73,31 @@ static NSString*const kPasswordKey                  = @"PassKey";
     [self saveToken:self.userSavedInHomeDirectory];
 }
 
+- (void)registrationNewUserWithParams:(NSDictionary*)userParams Block:(void(^)())block {
+    
+    NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+    User *newUser =             [User MR_createEntityInContext:defaultContext];
+    newUser.birthday =          [userParams objectForKey:kDateOfBirthKey];
+    newUser.userLogin =         [userParams objectForKey:kLoginKey];
+    newUser.userPass =          [userParams objectForKey:kPassKey];
+    newUser.user_heightValue =  [[userParams objectForKey:kHeightKey] floatValue];
+    newUser.user_weightValue =  [[userParams objectForKey:kWeightKey] floatValue];
+    newUser.user_sex =          [userParams objectForKey:kSexFieldKey];
+    [defaultContext MR_saveToPersistentStoreAndWait];
+    self.userToken =            newUser;
+    block();
+}
+
 - (void)autorizationWithLoginAndPass:(NSString*)login pass:(NSString*)pass Block:(void(^)(BOOL isUserEnable))block {
     
     NSPredicate *peopleFilterWithLogin = [NSPredicate predicateWithFormat:@"userLogin == %@", login];
-    
     NSFetchRequest *peopleRequest = [User MR_requestAllWithPredicate:peopleFilterWithLogin];
     NSArray *filteredUser = [User MR_executeFetchRequest:peopleRequest];
+    
+    NSLog(@"count - %lu" , (unsigned long)filteredUser.count );
+    User *user = [filteredUser firstObject];
+    NSLog(@"%@" , user.userPass);
+    NSLog(@"%@" , user.userLogin);
     
     NSPredicate *peopleFilterWithPass = [NSPredicate predicateWithFormat:@"userPass == %@", pass];
     NSArray *filteredPassword = [filteredUser filteredArrayUsingPredicate:peopleFilterWithPass];
@@ -85,11 +106,13 @@ static NSString*const kPasswordKey                  = @"PassKey";
         
         NSLog(@"-------=======user Find=======-------");
         self.userToken = [filteredPassword firstObject];
+        self.userSavedInHomeDirectory = [SavedUser initWithLogin:self.userToken.userLogin Pass:self.userToken.userPass];
+        
         block(YES);
     } else {
         
         NSLog(@"-------=======user not find=======-------");
-        block(YES);
+        block(NO);
     }
 }
 
@@ -105,6 +128,9 @@ static NSString*const kPasswordKey                  = @"PassKey";
         
         NSLog(@"-------=======user Find=======-------");
         self.userToken = [filteredUser firstObject];
+        
+        self.userSavedInHomeDirectory = [SavedUser initWithSocialityKey:self.userToken.socialityKey];
+        
         block(YES);
     } else {
         
@@ -113,7 +139,7 @@ static NSString*const kPasswordKey                  = @"PassKey";
         self.userToken = newUser;
 
         newUser.socialityKey = key;
-        if([[HelperManager sharedServer] saveImage:profileImage withFileName:[NSString stringWithFormat:@"%@_%@", key, userFirstName] ofType:[[HelperManager sharedServer] definitionImageType:profileImage]].length > 0) {
+        if([[HelperManager sharedServer] saveImage:profileImage withFileName:[NSString stringWithFormat:@"%@", key] ofType:[[HelperManager sharedServer] definitionImageType:profileImage]].length > 0) {
             newUser.user_photo_url = [[HelperManager sharedServer] saveImage:profileImage withFileName:[NSString stringWithFormat:@"%@_%@", key, userFirstName] ofType:[[HelperManager sharedServer] definitionImageType:profileImage]];
             NSLog(@"image - %@", profileImage);
             NSLog(@"imageURL - %@", newUser.user_photo_url);
@@ -124,6 +150,9 @@ static NSString*const kPasswordKey                  = @"PassKey";
         if(userLastName.length > 0) {
             newUser.last_name = userLastName;
         }
+        
+        self.userSavedInHomeDirectory = [SavedUser initWithSocialityKey:self.userToken.socialityKey];
+        
         [defaultContext MR_saveToPersistentStoreAndWait];
         block(YES);
     }
@@ -137,7 +166,52 @@ static NSString*const kPasswordKey                  = @"PassKey";
     if(filteredUser.count > 0) {
         self.userToken = [filteredUser firstObject];
         block();
+        return;
     }
+    
+    NSPredicate *peopleFilterWithEmail = [NSPredicate predicateWithFormat:@"userLogin == %@", self.userSavedInHomeDirectory.savedUserLogin];
+    NSFetchRequest *emailPeopleRequest = [User MR_requestAllWithPredicate:peopleFilterWithEmail];
+    NSArray *emailFilteredUser = [User MR_executeFetchRequest:emailPeopleRequest];
+    if(emailFilteredUser.count > 0) {
+        self.userToken = [emailFilteredUser firstObject];
+        block();
+        return;
+    }
+}
+
+- (User*)findUserInDataBase {
+    
+    NSPredicate *peopleFilterWithKey = [NSPredicate predicateWithFormat:@"socialityKey == %@", self.userSavedInHomeDirectory.savedSocialityKey];
+    NSFetchRequest *peopleRequest = [User MR_requestAllWithPredicate:peopleFilterWithKey];
+    NSArray *filteredUser = [User MR_executeFetchRequest:peopleRequest];
+    if(filteredUser.count > 0) {
+        return [filteredUser firstObject];
+    }
+    
+    NSPredicate *peopleFilterWithEmail = [NSPredicate predicateWithFormat:@"userLogin == %@", self.userSavedInHomeDirectory.savedUserLogin];
+    NSFetchRequest *emailPeopleRequest = [User MR_requestAllWithPredicate:peopleFilterWithEmail];
+    NSArray *emailFilteredUser = [User MR_executeFetchRequest:emailPeopleRequest];
+    if(emailFilteredUser.count > 0) {
+        return [filteredUser firstObject];
+    }
+    return nil;
+}
+
+- (BOOL)checkVariable:(NSString*)string {
+    
+    BOOL state = YES;
+    
+    if(string.length == 0) {
+        state = NO;
+    }
+    if([string isEqualToString:@"(null)"]) {
+        state = NO;
+    }
+    if(string == nil) {
+        state = NO;
+    }
+    
+    return state;
 }
 
 @end

@@ -10,6 +10,16 @@
 #import "StatisticsContentViewController.h"
 #import "CarbonKit.h"
 
+#define weekStatistics                           @"weekStat"
+#define twoWeeksStatistics                       @"twoWeekStat"
+#define monthStatistics                          @"monthStat"
+#define allTimeStatistics                        @"allTimeStat"
+
+#define week                                     7
+#define twoWeeks                                14
+#define month                                   31
+
+
 @interface StatisticsViewController () <CarbonTabSwipeDelegate> {
     NSArray                                     *items;
     
@@ -19,6 +29,8 @@
     StatisticsContentViewController             *segmentTwoWeeks;
     StatisticsContentViewController             *segmentMonth;
     StatisticsContentViewController             *segmentAllTime;
+    
+    NSMutableDictionary                         *blockStatistics;
 }
 
 @end
@@ -53,11 +65,13 @@
     [tabSwipe setIndicatorHeight:3.f];
     [tabSwipe setSelectedColor:[[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0] font:[UIFont boldSystemFontOfSize:17]];
     [tabSwipe setNormalColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] font:[UIFont boldSystemFontOfSize:17]];
+    
+    [self createStatisticsData];
 }
 
 - (void)clearStatistics {
 
-    NSLog(@"clear Statistics");
+    NSLog(@"CLear All Statistics");
 }
 
 # pragma mark - Carbon Tab Swipe Delegate
@@ -68,21 +82,25 @@
         case 0:
         {
             segmentWeek = [self.storyboard instantiateViewControllerWithIdentifier:kStatisticsContentViewControllerID];
+            segmentWeek.dataStatisticArray = [blockStatistics objectForKey: weekStatistics];
             return segmentWeek;
         }
         case 1:
         {
             segmentTwoWeeks = [self.storyboard instantiateViewControllerWithIdentifier:kStatisticsContentViewControllerID];
+            segmentWeek.dataStatisticArray = [blockStatistics objectForKey: twoWeeksStatistics];
             return segmentTwoWeeks;
         }
         case 2:
         {
             segmentMonth = [self.storyboard instantiateViewControllerWithIdentifier:kStatisticsContentViewControllerID];
+            segmentWeek.dataStatisticArray = [blockStatistics objectForKey: monthStatistics];
             return segmentMonth;
         }
         case 3:
         {
             segmentAllTime = [self.storyboard instantiateViewControllerWithIdentifier:kStatisticsContentViewControllerID];
+            segmentWeek.dataStatisticArray = [blockStatistics objectForKey: allTimeStatistics];
             return segmentAllTime;
         }
         default:
@@ -93,6 +111,33 @@
 // optional
 - (void)tabSwipeNavigation:(CarbonTabSwipeNavigation *)tabSwipe didMoveAtIndex:(NSInteger)index {
     NSLog(@"Current tab: %d", (int)index);
+}
+
+- (void)createStatisticsData {
+    
+    NSMutableArray *weekStat = [[NSMutableArray alloc] init];
+    NSMutableArray *twoWeeksStat = [[NSMutableArray alloc] init];
+    NSMutableArray *monthStat = [[NSMutableArray alloc] init];
+    NSMutableArray *allTimeStat = [[NSMutableArray alloc] init];
+    
+    for (UserSession *session in [AccountInfoManager sharedManager].userToken.userStatistics.userSessions) {
+        
+        if(session.dateOfSessions >= [[NSDate date] dateByAddingTimeInterval:-week*60*60*24]) {
+            [weekStat addObject:session];
+        }
+        if(session.dateOfSessions >= [[NSDate date] dateByAddingTimeInterval:-twoWeeks*60*60*24]) {
+            [twoWeeksStat addObject:session];
+        }
+        if(session.dateOfSessions >= [[NSDate date] dateByAddingTimeInterval:-month*60*60*24]) {
+            [monthStat addObject:session];
+        }
+        [allTimeStat addObject:session];
+    }
+    
+    [blockStatistics setObject:weekStat forKey:weekStatistics];
+    [blockStatistics setObject:twoWeeksStat forKey:twoWeeksStatistics];
+    [blockStatistics setObject:monthStat forKey:monthStatistics];
+    [blockStatistics setObject:allTimeStat forKey:allTimeStatistics];
 }
 
 #pragma mark - SlideNavigationController Methods -

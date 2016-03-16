@@ -8,6 +8,8 @@
 
 #import "UserInfoRegViewController.h"
 
+#define kArrayWithSexField                                  [NSArray arrayWithObjects:@"Male",@"Female", nil]
+
 typedef NS_ENUM(NSUInteger, TextFields) {
     SexTextField,
     DateOfBirthTextField,
@@ -15,7 +17,10 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     WeightTextField
 };
 
-@interface UserInfoRegViewController () {
+@interface UserInfoRegViewController () <UIPickerViewDataSource, UIPickerViewDelegate> {
+    
+    UIPickerView                                            *picker_;
+    NSMutableArray                                          *currentArrayForPicker_;
     UIDatePicker                                            *datePicker_;
     NSDateFormatter                                         *dateFormatter_;
     UITextField                                             *currentTextField_;
@@ -65,11 +70,15 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     [super viewWillDisappear:animated];
 }
 
-/*
- [textField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
- [textField reloadInputViews];*/
-
 - (void)createViewController {
+    
+    picker_ = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    picker_.bounds = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height / 5);
+    picker_.showsSelectionIndicator = YES;
+    picker_.dataSource = self;
+    picker_.delegate = self;
+    
+    currentArrayForPicker_ = [[NSMutableArray alloc] init];
     
     dateFormatter_ = [[NSDateFormatter alloc] init];
     datePicker_ = [[UIDatePicker alloc] init];
@@ -88,6 +97,7 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     self.cooseSexTextField.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     self.cooseSexTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     self.cooseSexTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.cooseSexTextField.inputView = picker_;
     self.cooseSexTextField.tag = SexTextField;
     self.cooseSexBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
     
@@ -110,6 +120,7 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     self.heightTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     self.heightTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.heightTextField.tag = HeightTextField;
+    [self.heightTextField setKeyboardType:UIKeyboardTypeNumberPad];
     self.heightBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
     
     self.weightTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Your Weight" attributes:@{NSForegroundColorAttributeName:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0],
@@ -118,74 +129,95 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     self.weightTextField.tintColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     self.weightTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.weightTextField.tag = WeightTextField;
+    [self.weightTextField setKeyboardType:UIKeyboardTypeNumberPad];
     self.weightBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha:1.0];
+    
+    [self.regUserBOOLDict setObject:@"0" forKey:kSexFieldKey];
+    [self.regUserBOOLDict setObject:@"0" forKey:kDateOfBirthKey];
+    [self.regUserBOOLDict setObject:@"0" forKey:kHeightKey];
+    [self.regUserBOOLDict setObject:@"0" forKey:kWeightKey];
 }
 
 #pragma UITextFieldDelegate
 
-- (IBAction)textFieldShouldBeginEditing:(UITextField *)textField {
+- (IBAction)textFieldBeginEditing:(UITextField *)textField {
     
-    if([[self.regUserBOOLDict objectForKey:kSexFieldKey] isEqualToString:@"0"]) {
-        self.cooseSexTextField.attributedPlaceholder = 
-    }
-    if([[self.regUserBOOLDict objectForKey:kDateOfBirthKey] isEqualToString:@"0"]) {
-        self.emailHighlightedImage.hidden = YES;
-    }
-    if([[self.regUserBOOLDict objectForKey:kWeightKey] isEqualToString:@"0"]) {
-        self.passHighlightedImage.hidden = YES;
-    }
-    if([[self.regUserBOOLDict objectForKey:kHeightKey] isEqualToString:@"0"]) {
-        self.confirmPassHighlightedImage.hidden = YES;
+    currentTextField_ = nil;
+    currentTextField_ = textField;
+    
+    if(currentTextField_.tag == SexTextField) {
+        currentArrayForPicker_ = [kArrayWithSexField mutableCopy];
+        [picker_ reloadAllComponents];
+    } else if (currentTextField_.tag == DateOfBirthTextField) {
+        
+    } else if (currentTextField_.tag == HeightTextField) {
+        
+    } else if (currentTextField_.tag == WeightTextField) {
+        
     }
 }
 
-- (IBAction)textFieldShouldEndEditing:(UITextField *)textField {
+- (IBAction)textFieldEndEditing:(UITextField *)textField {
     
-    switch (textField.tag) {
-        case LoginTextField:
-        {
-            if(self.emailTextFeild.text.length > 0) {
-                
-                [self.regUserDict setObject:self.emailTextFeild.text forKey:kLoginKey];
-                [self checkLoginInCoreData];
-            } else {
-                [self errorForTextFieldLogin:YES];
-            }
+    if(currentTextField_.tag == SexTextField) {
+        [currentTextField_ setText:[self pickerView:picker_ titleForRow:0 forComponent:0]];
+        [self definitionSexFieldsValue:currentTextField_];
+        
+    } else if (currentTextField_.tag == DateOfBirthTextField) {
+        [self updateTextField: datePicker_];
+        
+    } else if (currentTextField_.tag == HeightTextField) {
+        if(currentTextField_.text.length > 0) {
+            [self.regUserDict setObject:currentTextField_.text forKey:kHeightKey];
+            [self.regUserBOOLDict setObject:@"1" forKey:kHeightKey];
         }
-            break;
-        case PasswordTextField:
-        {
-            if(self.passwordTextField.text.length > 0) {
-                
-                [self.regUserDict setObject:self.passwordTextField.text forKey:kPassKey];
-                [self checkPasswordEquals];
-            } else {
-                
-                [self errorForTextFieldPass:YES];
-            }
+    } else if (currentTextField_.tag == WeightTextField) {
+        if(currentTextField_.text.length > 0) {
+            [self.regUserDict setObject:currentTextField_.text forKey:kWeightKey];
+            [self.regUserBOOLDict setObject:@"1" forKey:kWeightKey];
         }
-            break;
-        case ConfirmPasswordTextField:
-        {
-            if(self.confirmPasswordTextField.text.length > 0) {
-                
-                [self.regUserDict setObject:self.confirmPasswordTextField.text forKey:kConfirmPassKey];
-                [self checkPasswordEquals];
-            } else {
-                
-                [self errorForTextFieldConfirmPass:YES];
-            }
-        }
-            break;
-        default:
-            break;
     }
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    
+    return [currentArrayForPicker_ count];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [currentArrayForPicker_ objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    //and here you can do in two ways:
+    //1
+    [currentTextField_ setText:[currentArrayForPicker_ objectAtIndex:row]];
+    //2
+    [currentTextField_ setText:[self pickerView:picker_ titleForRow:row forComponent:component]];
 }
 
 - (void)updateTextField:(UIDatePicker *)sender {
     [dateFormatter_ setDateFormat:@"MMM d, yyyy"];
     self.dateTextField.text = [dateFormatter_ stringFromDate:sender.date];
-//    NSNumber * userBirth = [NSNumber numberWithInteger:[sender.date timeIntervalSince1970]];
+    [self.regUserDict setObject:sender.date forKey:kDateOfBirthKey];
+    [self.regUserBOOLDict setObject:@"1" forKey:kDateOfBirthKey];
+}
+
+- (void)definitionSexFieldsValue:(UITextField*)textField {
+    
+    if([textField.text isEqualToString:@"Male"]) {
+        [self.regUserDict setObject:@"Male" forKey:kSexFieldKey];
+    } else {
+        [self.regUserDict setObject:@"Female" forKey:kSexFieldKey];
+    }
+    [self.regUserBOOLDict setObject:@"1" forKey:kSexFieldKey];
 }
 
 @end

@@ -9,8 +9,14 @@
 #import "SignInViewController.h"
 #import "DashboardViewController.h"
 
+typedef NS_ENUM(NSUInteger, TextFields) {
+    LoginTextField,
+    PasswordTextField,
+};
+
 @interface SignInViewController () <UITextFieldDelegate> {
     NSMutableDictionary                                                 *dictLoginPass;
+    UITextField                                                         *currentTextField_;
 }
 
 @property (weak, nonatomic) IBOutlet CustomNavigationBar                *navigationbar;
@@ -83,12 +89,14 @@
     self.loginBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
     self.loginTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.loginTextField.delegate = self;
+    self.loginTextField.tag = LoginTextField;
     
     self.passPic.image = [UIImage imageNamed: @"pass_icon"];
     self.passBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
     self.passTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.passTextField.secureTextEntry = YES;
     self.passTextField.delegate = self;
+    self.passTextField.tag = PasswordTextField;
     
     dictLoginPass = [[NSMutableDictionary alloc] init];
 }
@@ -105,22 +113,18 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     
-    if([textField isKindOfClass:[self.loginTextField class]]) {
+    currentTextField_ = textField;
+    
+    if(currentTextField_.tag == LoginTextField) {
         
         if(self.loginTextField.text.length > 0) {
-            [self errorForTextFieldLogin:NO];
             [dictLoginPass setValue:self.loginTextField.text forKey:kLoginKey];
-        } else {
-            [self errorForTextFieldLogin:YES];
         }
         
-    } else if([textField isKindOfClass:[self.passTextField class]]) {
+    } else if(currentTextField_.tag == PasswordTextField) {
         
-        if(self.loginTextField.text.length > 0) {
-            [self errorForTextFieldPass:NO];
+        if(self.passTextField.text.length > 0) {
             [dictLoginPass setValue:self.passTextField.text forKey:kPassKey];
-        } else {
-            [self errorForTextFieldPass:YES];
         }
     }
     

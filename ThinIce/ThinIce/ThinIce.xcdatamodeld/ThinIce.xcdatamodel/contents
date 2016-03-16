@@ -58,12 +58,12 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userStatistics" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-542" positionY="-612" width="128" height="253"/>
-        <element name="UserSettings" positionX="-218" positionY="-693" width="128" height="118"/>
         <element name="RecommendationActions" positionX="-558" positionY="-144" width="128" height="148"/>
-        <element name="UserCard" positionX="-560" positionY="-360" width="128" height="133"/>
-        <element name="UserStatistics" positionX="16" positionY="-154" width="128" height="88"/>
-        <element name="UserSession" positionX="187" positionY="-156" width="128" height="118"/>
+        <element name="User" positionX="-542" positionY="-612" width="128" height="255"/>
         <element name="UserAchievements" positionX="97" positionY="-459" width="128" height="90"/>
+        <element name="UserCard" positionX="-560" positionY="-360" width="128" height="133"/>
+        <element name="UserSession" positionX="187" positionY="-156" width="128" height="118"/>
+        <element name="UserSettings" positionX="-218" positionY="-693" width="128" height="118"/>
+        <element name="UserStatistics" positionX="16" positionY="-154" width="128" height="88"/>
     </elements>
 </model>

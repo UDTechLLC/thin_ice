@@ -11,4 +11,12 @@
 
 @interface InformationViewController : UIViewController
 
+@property NSMutableDictionary           *regUserDict;
+@property NSMutableDictionary           *regUserBOOLDict;       // User Information Validation State (NSInteger) 1 = YES | 0 = NO
+
+- (void)errorForTextFieldSex:(BOOL)loginState;
+- (void)errorForTextFieldDateOfBirth:(BOOL)passState;
+- (void)errorForTextFieldHeight:(BOOL)passState;
+- (void)errorForTextFieldWeight:(BOOL)passState;
+
 @end
