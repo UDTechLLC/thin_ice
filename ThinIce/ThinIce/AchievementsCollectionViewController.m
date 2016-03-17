@@ -8,8 +8,7 @@
 
 #import "AchievementsCollectionViewController.h"
 #import "AchievementsCollectionCell.h"
-
-#define achievementsCount                   17
+#import "AchievementsInfo.h"
 
 typedef NS_ENUM(NSUInteger, ImageState) {
     ImageStateInactive,
@@ -52,27 +51,36 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     
     [self addAchievementsBackgroundImage];
     
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionViewFlowLayout.sectionInset = UIEdgeInsetsMake(-STATUSplusNAVIGATIONBARINSETS, 0, 1, 0);
+    AchievementsInfo *thinIceAchievements           = [[AchievementsInfo alloc] init];
+    arrayAchievementsData                           = [NSArray arrayWithArray:thinIceAchievements.achievementName];
+    
+    self.collectionView.backgroundColor             = [UIColor clearColor];
+    self.collectionViewFlowLayout.sectionInset      = UIEdgeInsetsMake(-STATUSplusNAVIGATIONBARINSETS, 0, 1, 0);
+    
     [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegate UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return achievementsCount;
+    
+    return arrayAchievementsData.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    AchievementsCollectionCell *cell = nil;
-    cell = [collectionView dequeueReusableCellWithReuseIdentifier:kAchievementsCollectionCellIdentifier forIndexPath:indexPath];
-    [cell loadCellWithTitle:@"title" andImageState: arc4random_uniform(2) achievementsID: 0];
+    
+    AchievementsCollectionCell *cell    = nil;
+    cell                                = [collectionView dequeueReusableCellWithReuseIdentifier:kAchievementsCollectionCellIdentifier forIndexPath:indexPath];
+    [cell loadCellWithTitle: [arrayAchievementsData objectAtIndex:indexPath.row] andImageState: arc4random_uniform(2) achievementsID: 0];
+    
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat cellWidth = ([UIScreen mainScreen].bounds.size.width / 3) - 2;
-    CGFloat cellHeight = ([UIScreen mainScreen].bounds.size.height / 3.5) - 2;
+    
+    CGFloat cellWidth       = ([UIScreen mainScreen].bounds.size.width / 3) - 2;
+    CGFloat cellHeight      = ([UIScreen mainScreen].bounds.size.height / 3.5) - 2;
+    
     return CGSizeMake(cellWidth, cellHeight);
 }
 

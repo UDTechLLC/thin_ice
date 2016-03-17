@@ -16,20 +16,20 @@
 - (void)loadCellWithTitle:(NSString*)title andImageState:(NSInteger)state achievementsID:(NSUInteger)index {
     
 // Configure Cell
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor                = [UIColor clearColor];
     
 // Configure Cell View Elements
-    self.cellImageView.contentMode = UIViewContentModeCenter;
+    self.cellImageView.contentMode      = UIViewContentModeCenter;
 
     switch (state) {
         case ImageStateInActive:
         {
-            self.cellImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"achievements_inactive_%d", (int)kScreenWidth]];
+            self.cellImageView.image    = [UIImage imageNamed:[NSString stringWithFormat:@"achievements_inactive_%d", (int)kScreenWidth]];
         }
             break;
         case ImageStateActive:
         {
-            self.cellImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"achievements_active_%d", (int)kScreenWidth]];
+            self.cellImageView.image    = [UIImage imageNamed:[NSString stringWithFormat:@"achievements_active_%d", (int)kScreenWidth]];
         }
             break;
             
@@ -37,11 +37,11 @@
             break;
     }
     
-    self.cellTitle.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
-    self.cellTitle.text = title;
+    self.cellTitle.textColor            = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.cellTitle.text                 = title;
     
     
-    self.achievementsID = index;
+    self.achievementsID                 = index;
 }
 
 @end

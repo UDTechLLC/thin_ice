@@ -50,21 +50,25 @@ typedef NS_ENUM(NSUInteger, TextFields) {
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
     [self createCustomNavBar];
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    
     // Focused UItextField
     [self.loginTextField becomeFirstResponder];
     [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    
     [super viewWillDisappear:animated];
 }
 
 - (void)createCustomNavBar {
+    
     [self.navigationbar addBackButtonWithImageName:kBackButtonImageNormal highlightedImage:kBackButtonImageActive];
     [self.navigationbar setTintColor: [UIColor clearColor]];
     self.navigationbar.backgroundColor = [UIColor clearColor];
@@ -72,58 +76,61 @@ typedef NS_ENUM(NSUInteger, TextFields) {
 
 - (void)createViewController {
     
-    self.pic.image = [UIImage imageNamed: @"thinice_logotype"];
+    self.pic.image                                      = [UIImage imageNamed: @"thinice_logotype"];
     
-    self.textfieldsBackgroundView.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha: 0.5];
-    self.textfieldsBackgroundView.layer.cornerRadius = 13;
+    self.textfieldsBackgroundView.backgroundColor       = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha: 0.5];
+    self.textfieldsBackgroundView.layer.cornerRadius    = 13;
     
-    self.loginHighLightedImage.hidden = YES;
-    self.passHighlightedImage.hidden = YES;
+    self.loginHighLightedImage.hidden                   = YES;
+    self.passHighlightedImage.hidden                    = YES;
     
     [self createTextFields];
 }
 
 - (void)createTextFields {
     
-    self.loginPic.image = [UIImage imageNamed: @"mail_icon"];
-    self.loginBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
-    self.loginTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
-    self.loginTextField.delegate = self;
-    self.loginTextField.tag = LoginTextField;
+    self.loginPic.image                                 = [UIImage imageNamed: @"mail_icon"];
+    self.loginBorderLine.backgroundColor                = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
+    self.loginTextField.keyboardAppearance              = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.loginTextField.delegate                        = self;
+    self.loginTextField.tag                             = LoginTextField;
     
-    self.passPic.image = [UIImage imageNamed: @"pass_icon"];
-    self.passBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
-    self.passTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
-    self.passTextField.secureTextEntry = YES;
-    self.passTextField.delegate = self;
-    self.passTextField.tag = PasswordTextField;
+    self.passPic.image                                  = [UIImage imageNamed: @"pass_icon"];
+    self.passBorderLine.backgroundColor                 = [[HelperManager sharedServer] colorwithHexString:@"#258895" alpha: 1];
+    self.passTextField.keyboardAppearance               = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.passTextField.secureTextEntry                  = YES;
+    self.passTextField.delegate                         = self;
+    self.passTextField.tag                              = PasswordTextField;
     
-    dictLoginPass = [[NSMutableDictionary alloc] init];
+    dictLoginPass                                       = [[NSMutableDictionary alloc] init];
 }
 
 #pragma UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    self.loginHighLightedImage.hidden = YES;
-    self.passHighlightedImage.hidden = YES;
-    textField.returnKeyType = UIReturnKeyGo;
+    
+    self.loginHighLightedImage.hidden                   = YES;
+    self.passHighlightedImage.hidden                    = YES;
+    textField.returnKeyType                             = UIReturnKeyGo;
     
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     
-    currentTextField_ = textField;
+    currentTextField_                                   = textField;
     
     if(currentTextField_.tag == LoginTextField) {
         
         if(self.loginTextField.text.length > 0) {
+            
             [dictLoginPass setValue:self.loginTextField.text forKey:kLoginKey];
         }
         
     } else if(currentTextField_.tag == PasswordTextField) {
         
         if(self.passTextField.text.length > 0) {
+            
             [dictLoginPass setValue:self.passTextField.text forKey:kPassKey];
         }
     }
@@ -132,27 +139,37 @@ typedef NS_ENUM(NSUInteger, TextFields) {
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
     [textField endEditing:YES];
     
     __weak typeof(self) weakself = self;
-    NSString *login = [NSString stringWithFormat:@"%@", [dictLoginPass objectForKey:kLoginKey]];
-    NSString *pass = [NSString stringWithFormat:@"%@", [dictLoginPass objectForKey:kPassKey]];
+    NSString        *login          = [NSString stringWithFormat:@"%@", [dictLoginPass objectForKey:kLoginKey]];
+    NSString        *pass           = [NSString stringWithFormat:@"%@", [dictLoginPass objectForKey:kPassKey]];
     
     if(![login isEqualToString:@"(null)"] || ![pass isEqualToString:@"(null)"]) {
+        
         if(login.length > 0 && pass.length > 0) {
+            
             [[AccountInfoManager sharedManager] autorizationWithLoginAndPass: [dictLoginPass objectForKey:kLoginKey] pass:[dictLoginPass objectForKey:kPassKey] Block:^(BOOL isUserEnable) {
+                
                 if(isUserEnable) {
+                    
                     [weakself performSegueWithIdentifier:kDashboardSegueIdentifier sender:nil];
                 } else {
+                    
                     [weakself errorForTextFieldLogin:YES];
                     [weakself errorForTextFieldPass:YES];
                 }
             }];
+            
         } else {
+            
             [self errorForTextFieldLogin:YES];
             [self errorForTextFieldPass:YES];
         }
+        
     } else {
+        
         [self errorForTextFieldLogin:YES];
         [self errorForTextFieldPass:YES];
     }
@@ -164,8 +181,11 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     
     self.loginHighLightedImage.hidden = NO;
     if(loginState) {
+        
         self.loginHighLightedImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"failed_%d", (int)kScreenWidth]];
+        
     } else {
+        
         self.loginHighLightedImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"success_%d", (int)kScreenWidth]];
     }
 }
@@ -174,8 +194,11 @@ typedef NS_ENUM(NSUInteger, TextFields) {
  
     self.passHighlightedImage.hidden = NO;
     if(passState) {
+        
         self.passHighlightedImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"failed_%d", (int)kScreenWidth]];
+        
     } else {
+        
         self.passHighlightedImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"success_%d", (int)kScreenWidth]];
     }
 }

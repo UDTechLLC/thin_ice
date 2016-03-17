@@ -115,10 +115,10 @@
 
 - (void)createStatisticsData {
     
-    NSMutableArray *weekStat = [[NSMutableArray alloc] init];
-    NSMutableArray *twoWeeksStat = [[NSMutableArray alloc] init];
-    NSMutableArray *monthStat = [[NSMutableArray alloc] init];
-    NSMutableArray *allTimeStat = [[NSMutableArray alloc] init];
+    NSMutableArray *weekStat        = [[NSMutableArray alloc] init];
+    NSMutableArray *twoWeeksStat    = [[NSMutableArray alloc] init];
+    NSMutableArray *monthStat       = [[NSMutableArray alloc] init];
+    NSMutableArray *allTimeStat     = [[NSMutableArray alloc] init];
     
     for (UserSession *session in [AccountInfoManager sharedManager].userToken.userStatistics.userSessions) {
         

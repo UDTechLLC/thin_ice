@@ -51,6 +51,24 @@
 #define kDateOfBirthKey                                         @"DateOfBirthField"
 #define kWeightKey                                              @"WeightField"
 #define kHeightKey                                              @"HeightField"
+                    // SETTINGS -> MEASUREMENTS VIEW
+
+#define kSettingsVolume                                         @"SettingsVolume"
+#define kSettingsTemperature                                    @"SettingsTemperature"
+#define kSettingsWeight                                         @"SettingsWeight"
+#define kSettingsLength                                         @"SettingsLength"
+
+                    // SINGLETION AND NOTIFICATION KEY
+#define ktokenKey                                               @"tokenKey"
+#define kEmailKey                                               @"EmailKey"
+#define kPasswordKey                                            @"PassKey"
+
+#define kSaveNotificationDelayKey                               @"SaveNotificationDelay"
+#define kSaveNotificationStateKey                               @"SaveNotificationState"
+
+#define kSaveInObjectNotificationDelayKey                       @"SaveInObjectNotificationDelay"
+#define kSaveInObjectNotificationStateKey                       @"SaveInObjectNotificationState"
+
 
 // ----------------------------------------====================================================================================----------------------------------------
 

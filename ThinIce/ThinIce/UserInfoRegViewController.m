@@ -158,10 +158,13 @@ typedef NS_ENUM(NSUInteger, TextFields) {
 }
 
 - (IBAction)textFieldEndEditing:(UITextField *)textField {
-    
+
     if(currentTextField_.tag == SexTextField) {
-        [currentTextField_ setText:[self pickerView:picker_ titleForRow:0 forComponent:0]];
-        [self definitionSexFieldsValue:currentTextField_];
+        if(currentTextField_.text.length <= 0) {
+            
+            [currentTextField_ setText:[self pickerView:picker_ titleForRow:0 forComponent:0]];
+            [self definitionSexFieldsValue:currentTextField_];
+        }
         
     } else if (currentTextField_.tag == DateOfBirthTextField) {
         [self updateTextField: datePicker_];
@@ -197,9 +200,6 @@ typedef NS_ENUM(NSUInteger, TextFields) {
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     //and here you can do in two ways:
-    //1
-    [currentTextField_ setText:[currentArrayForPicker_ objectAtIndex:row]];
-    //2
     [currentTextField_ setText:[self pickerView:picker_ titleForRow:row forComponent:component]];
 }
 

@@ -25,6 +25,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
     [self addNavigationBarAttributeTitle: @"Thin Ice Control"];
     self.navigationController.navigationBarHidden = NO;
     [self translucentNavigationBar: YES];
@@ -34,8 +35,7 @@
 - (void)createViewController {
     
     [self addThinIceControlBackgroundImage];
-    
-    self.deviceListTableView.backgroundColor = [UIColor clearColor];
+    self.deviceListTableView.backgroundColor                        = [UIColor clearColor];
 }
 
 - (void)addBluetoothDevice {

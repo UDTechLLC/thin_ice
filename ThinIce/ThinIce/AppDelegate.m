@@ -19,6 +19,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     // Override point for customization after application launch.
     [AccountInfoManager sharedManager];
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
@@ -40,6 +41,13 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidReveal object:nil queue:nil usingBlock:^(NSNotification *note) {
         NSLog(@"Revealed %@", note.userInfo[@"menu"]);
     }];
+    
+    // are you running on iOS8?
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeSound) categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
     
     return YES;
 }
@@ -70,6 +78,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [MagicalRecord cleanUp];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
 }
 
 @end

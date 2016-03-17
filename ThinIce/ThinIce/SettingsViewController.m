@@ -34,6 +34,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
     [self addNavigationBarAttributeTitle: @"Settings"];
     self.navigationController.navigationBarHidden = NO;
     [self translucentNavigationBar: YES];

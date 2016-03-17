@@ -8,7 +8,8 @@
 
 #import "AchievementsUnlockerManager.h"
 
-static NSString * const kAchievementsDescriptions[] = { @"You used Thin Ice clothing for your very first 30 minutes!",
+static NSString * const kAchievementsDescriptions[] = {
+    @"You used Thin Ice clothing for your very first 30 minutes!",
     @"You have used Thin Ice clothing for 10 hours!",
     @"You have used Thin Ice clothing for 100 hours!",
     @"You have used Thin Ice clothing for 500 hours!",
@@ -24,7 +25,8 @@ static NSString * const kAchievementsDescriptions[] = { @"You used Thin Ice clot
     @"You have registered your first Thin Ice profile!",
     @"You’ve checked the tracking screen 5 times!",
     @"You’ve checked the tracking screen 50 times!",
-    @"You’ve checked the tracking screen 500 times!" };
+    @"You’ve checked the tracking screen 500 times!"
+};
 
 @interface AchievementsUnlockerManager ()
 
@@ -33,28 +35,34 @@ static NSString * const kAchievementsDescriptions[] = { @"You used Thin Ice clot
 @implementation AchievementsUnlockerManager
 
 + (AchievementsUnlockerManager *)sharedManager {
+    
     static AchievementsUnlockerManager *instanceAchievementsUnlockerManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instanceAchievementsUnlockerManager = [[self alloc] init];
+        
+        instanceAchievementsUnlockerManager                                 = [[self alloc] init];
     });
+    
     return instanceAchievementsUnlockerManager;
 }
 
 - (id)init {
+    
     self = [super init];
     if (self) {
+        
         [self showPresentationAchievementsViewController];
     }
+    
     return self;
 }
 
 - (void)showPresentationAchievementsViewController {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:kAchievemetsUnlockedViewControllerID];
+    UIStoryboard        *storyboard     = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController    *vc             = [storyboard instantiateViewControllerWithIdentifier:kAchievemetsUnlockedViewControllerID];
 
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.modalPresentationStyle         = UIModalPresentationCurrentContext;
     [[SlideNavigationController sharedInstance] presentViewController:vc animated:YES completion:nil];
 }
 

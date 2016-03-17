@@ -32,19 +32,19 @@
     
     [self addNewAchievementBackgroundImage];
     
-    self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel.text = @"Achievements Unlocked!";
+    self.titleLabel.textColor                       = [UIColor whiteColor];
+    self.titleLabel.text                            = @"Achievements Unlocked!";
     
-    self.picViewer.contentMode = UIViewContentModeCenter;
-    self.picViewer.image = [UIImage imageNamed: [NSString stringWithFormat:@"badges_%d", (int)kScreenWidth]];
+    self.picViewer.contentMode                      = UIViewContentModeCenter;
+    self.picViewer.image                            = [UIImage imageNamed: [NSString stringWithFormat:@"badges_%d", (int)kScreenWidth]];
     
-    self.ahievementName.textColor = [UIColor whiteColor];
-    self.ahievementName.text = @"Newbie";
+    self.ahievementName.textColor                   = [UIColor whiteColor];
+    self.ahievementName.text                        = @"Newbie";
     
-    self.achievementDescription.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
-    self.achievementDescription.text = @"Forget those \"Bender\" and \"Crunked\" badges - you've conquered the playground circult!";
+    self.achievementDescription.textColor           = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.achievementDescription.text                = @"Forget those \"Bender\" and \"Crunked\" badges - you've conquered the playground circult!";
     
-    self.dismissButton.layer.cornerRadius = 13;
+    self.dismissButton.layer.cornerRadius           = 13;
     [self.dismissButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"btn_save_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
     [self.dismissButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"btn_save_active_%d", (int)kScreenWidth]] forState:UIControlStateSelected];
     [self.dismissButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"btn_save_active_%d", (int)kScreenWidth]] forState:UIControlStateHighlighted];

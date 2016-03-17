@@ -10,10 +10,28 @@
 #import "User.h"
 #import "SavedUser.h"
 
+#define kNotificationDeleyKey               @"NotificationDelayKey"
+#define kNotificationStateKey               @"NotificationStateKey"
+
+typedef NS_ENUM(NSUInteger, NotificationsDelay) {
+    OneHourNotification,
+    TwoHourNotification,
+    ThreeHourNotification,
+    FourHourNotification
+};
+
+typedef NS_ENUM(NSUInteger, NotificationsState) {
+    NotificationOFF,
+    NotificationON
+};
+
 @interface AccountInfoManager : NSObject
 
-@property (readonly, nonatomic) SavedUser *userSavedInHomeDirectory;
-@property (readonly, nonatomic) User *userToken;
+@property (readonly, nonatomic) SavedUser                       *userSavedInHomeDirectory;
+@property (readonly, nonatomic) User                            *userToken;
+
+@property (nonatomic) NotificationsState isNotificationON;
+@property (nonatomic) NotificationsDelay notificationDelay;
 
 + (AccountInfoManager *)sharedManager;
 

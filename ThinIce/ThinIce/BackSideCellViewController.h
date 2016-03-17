@@ -11,6 +11,6 @@
 
 @interface BackSideCellViewController : UIViewController
 
-@property (strong, nonatomic) DashboardDaysCardTableViewCell *cellSelf;
+@property (strong, nonatomic) DashboardDaysCardTableViewCell            *cellSelf;
 
 @end

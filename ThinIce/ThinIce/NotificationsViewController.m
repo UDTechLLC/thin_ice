@@ -53,7 +53,7 @@
 // change CornerRadius
     
     // Change CornerRadius From backgroundContainerView -
-    self.backgroundContainerView.layer.cornerRadius = 13;
+    self.backgroundContainerView.layer.cornerRadius     = 13;
     
     // Change CornerRadius From notificationsSelectedSlider -
     self.notificationsSelectedSlider.layer.cornerRadius = self.notificationsSelectedSlider.frame.size.height / 2;
@@ -65,95 +65,126 @@
 
 - (void)createViewController {
     
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor                           = [UIColor clearColor];
     
-    currentSelectedButton = 0;
-    isNotificationsEnable = NO;
+    currentSelectedButton                               = [AccountInfoManager sharedManager].notificationDelay;
+    isNotificationsEnable                               = [self changeStartStateSwitchNotification];
     
-    self.backgroundContainerView.backgroundColor = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha: 0.5];
+    self.backgroundContainerView.backgroundColor        = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha: 0.5];
 
 // Create Notifications Block init
-    self.notificationsLabel.text = @"Notifications";
-    self.notificationsLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
-    self.notificationSwitch.onTintColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
-    self.notificationSwitch.tintColor = [UIColor whiteColor];
-    self.notificationSwitch.on = isNotificationsEnable;
-    self.notificationsBorderLine.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    self.notificationsLabel.text                        = @"Notifications";
+    self.notificationsLabel.textColor                   = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.notificationSwitch.onTintColor                 = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    self.notificationSwitch.tintColor                   = [UIColor whiteColor];
+    self.notificationSwitch.on                          = isNotificationsEnable;
+    self.notificationsBorderLine.backgroundColor        = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
     // Button One
-    self.oneHourButton.tag = 0;
+    self.oneHourButton.tag                              = 0;
     [self.oneHourButton setTitleColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] forState:UIControlStateNormal];
     [self.oneHourButton setTitle: @"1 Hour" forState:UIControlStateNormal];
     
     // Button Two
-    self.twoHourButton.tag = 1;
+    self.twoHourButton.tag                              = 1;
     [self.twoHourButton setTitleColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] forState:UIControlStateNormal];
     [self.twoHourButton setTitle: @"2 Hour" forState:UIControlStateNormal];
     
     // Button Three
-    self.threeHourButton.tag = 2;
+    self.threeHourButton.tag                            = 2;
     [self.threeHourButton setTitleColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] forState:UIControlStateNormal];
     [self.threeHourButton setTitle: @"3 Hour" forState:UIControlStateNormal];
     
     // Button Four
-    self.fourHourButton.tag = 3;
+    self.fourHourButton.tag                             = 3;
     [self.fourHourButton setTitleColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] forState:UIControlStateNormal];
     [self.fourHourButton setTitle: @"4 Hour" forState:UIControlStateNormal];
     
 // Create Notifications Slide Houers Block init
-    self.notificationsSelectedSlider.backgroundColor = [[HelperManager sharedServer] colorwithHexString: ColorForSettingsBackgroundSlider alpha: 0.5];
+    self.notificationsSelectedSlider.backgroundColor    = [[HelperManager sharedServer] colorwithHexString: ColorForSettingsBackgroundSlider alpha: 0.5];
     
     
 // Create LabelInfo Block init
-    self.textInfoLabel.backgroundColor = [UIColor clearColor];
-    self.textInfoLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.textInfoLabel.backgroundColor                  = [UIColor clearColor];
+    self.textInfoLabel.textColor                        = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    
+    [self changeButtonBackgroundColorWithButtonSelected:currentSelectedButton];
+}
+
+- (BOOL)changeStartStateSwitchNotification {
+    
+    if([AccountInfoManager sharedManager].isNotificationON == NotificationON) {
+        
+        return YES;
+    } else {
+        
+        return NO;
+    }
 }
 
 - (IBAction)switchChangeNotificationStateView:(UISwitch *)sender {
+    
     if(sender.on) {
+        
         [self changeButtonBackgroundColorWithButtonSelected:currentSelectedButton];
-        self.notificationsSelectedSlider.userInteractionEnabled = YES;
-        self.notificationsLabel.textColor = [UIColor whiteColor];
+        self.notificationsSelectedSlider.userInteractionEnabled             = YES;
+        self.notificationsLabel.textColor                                   = [UIColor whiteColor];
+        
+        [AccountInfoManager sharedManager].isNotificationON    = NotificationON;
+        [[HelperManager sharedServer] startPOSTNotification];
+        
     } else {
-        self.notificationsLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
-        currentSelectedButton = 0;
+        
+        self.notificationsLabel.textColor                                   = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+        currentSelectedButton                                               = 0;
         [self changeButtonBackgroundColorWithButtonSelected:currentSelectedButton];
         [self.oneHourButton setBackgroundColor:[UIColor lightGrayColor]];
-        self.notificationsSelectedSlider.userInteractionEnabled = NO;
+        self.notificationsSelectedSlider.userInteractionEnabled             = NO;
+        
+        [AccountInfoManager sharedManager].isNotificationON    = NotificationOFF;
+        [[HelperManager sharedServer] stopPOSTNotification];
     }
 }
 
 - (IBAction)notificationHourActionHendlier:(UIButton*)sender {
-    currentSelectedButton = sender.tag;
+    
+    currentSelectedButton                                       = sender.tag;
     [self changeButtonBackgroundColorWithButtonSelected: currentSelectedButton];
 }
 
 - (UIView *)roundCornersOnView:(UIView *)view onTopLeft:(BOOL)tl topRight:(BOOL)tr bottomLeft:(BOOL)bl bottomRight:(BOOL)br radius:(float)radius {
     
     if (tl || tr || bl || br) {
+        
         UIRectCorner corner = 0; //holds the corner
         //Determine which corner(s) should be changed
         if (tl) {
+            
             corner = corner | UIRectCornerTopLeft;
         }
         if (tr) {
+            
             corner = corner | UIRectCornerTopRight;
         }
         if (bl) {
+            
             corner = corner | UIRectCornerBottomLeft;
         }
         if (br) {
+            
             corner = corner | UIRectCornerBottomRight;
         }
         
-        UIView *roundedView = view;
-        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:roundedView.bounds byRoundingCorners:corner cornerRadii:CGSizeMake(radius, radius)];
-        CAShapeLayer *maskLayer = [CAShapeLayer layer];
-        maskLayer.frame = roundedView.bounds;
-        maskLayer.path = maskPath.CGPath;
-        roundedView.layer.mask = maskLayer;
+        UIView          *roundedView    = view;
+        UIBezierPath    *maskPath       = [UIBezierPath bezierPathWithRoundedRect:roundedView.bounds byRoundingCorners:corner cornerRadii:CGSizeMake(radius, radius)];
+        CAShapeLayer    *maskLayer      = [CAShapeLayer layer];
+        maskLayer.frame                 = roundedView.bounds;
+        maskLayer.path                  = maskPath.CGPath;
+        roundedView.layer.mask          = maskLayer;
+        
         return roundedView;
     } else {
+        
         return view;
     }
 }
@@ -179,6 +210,8 @@
             [self.fourHourButton setBackgroundColor: [UIColor clearColor]];
             [self.fourHourButton setTitleColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] forState:UIControlStateNormal];
             self.fourHourButton = (UIButton *)[self roundCornersOnView:self.fourHourButton onTopLeft:YES topRight:YES bottomLeft:YES bottomRight:YES radius: 0];
+            
+            [AccountInfoManager sharedManager].notificationDelay = OneHourNotification;
         }
             break;
         case 1:
@@ -198,6 +231,8 @@
             [self.fourHourButton setBackgroundColor: [UIColor clearColor]];
             [self.fourHourButton setTitleColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] forState:UIControlStateNormal];
             self.fourHourButton = (UIButton *)[self roundCornersOnView:self.fourHourButton onTopLeft:YES topRight:YES bottomLeft:YES bottomRight:YES radius: 0];
+            
+            [AccountInfoManager sharedManager].notificationDelay = TwoHourNotification;
         }
             break;
         case 2:
@@ -217,6 +252,8 @@
             [self.fourHourButton setBackgroundColor: [UIColor clearColor]];
             [self.fourHourButton setTitleColor:[[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0] forState:UIControlStateNormal];
             self.fourHourButton = (UIButton *)[self roundCornersOnView:self.fourHourButton onTopLeft:YES topRight:YES bottomLeft:YES bottomRight:YES radius: 0];
+            
+            [AccountInfoManager sharedManager].notificationDelay = ThreeHourNotification;
         }
             break;
         case 3:
@@ -236,6 +273,8 @@
             [self.fourHourButton setBackgroundColor: [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0]];
             [self.fourHourButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             self.fourHourButton = (UIButton *)[self roundCornersOnView:self.fourHourButton onTopLeft:NO topRight:YES bottomLeft:NO bottomRight:YES radius: self.fourHourButton.bounds.size.height / 2];
+            
+            [AccountInfoManager sharedManager].notificationDelay = FourHourNotification;
         }
             break;
         default:

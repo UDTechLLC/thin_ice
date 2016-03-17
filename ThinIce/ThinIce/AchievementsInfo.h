@@ -30,6 +30,6 @@ typedef NS_ENUM(NSUInteger, achievementID) {
 
 @interface AchievementsInfo : NSObject
 
-@property (strong, nonatomic) NSArray *achievementName;
+@property (strong, nonatomic) NSArray       *achievementName;
 
 @end

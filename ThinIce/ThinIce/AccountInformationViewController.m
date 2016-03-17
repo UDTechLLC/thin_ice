@@ -336,20 +336,20 @@
 
 - (UIBezierPath *)selfedRoundedPolygonPathWithRect:(CGRect)rect lineWidth:(CGFloat)lineWidth sides:(NSInteger)sides cornerRadius:(CGFloat)cornerRadius {
     
-    UIBezierPath *path  = [UIBezierPath bezierPath];
+    UIBezierPath        *path               = [UIBezierPath bezierPath];
     
-    CGFloat theta       = 2.0 * M_PI / sides;                           // how much to turn at every corner
-    CGFloat width = MIN(rect.size.width, rect.size.height);   // width of the square
+    CGFloat             theta               = 2.0 * M_PI / sides;                           // how much to turn at every corner
+    CGFloat             width               = MIN(rect.size.width, rect.size.height);   // width of the square
     
     // Calculate Center
-    CGPoint center = CGPointMake(rect.origin.x + width / 2.0, rect.origin.y + width / 2.0);
-    CGFloat radius = (width - lineWidth + cornerRadius - (cos(theta) * cornerRadius)) / 2.0;
+    CGPoint             center              = CGPointMake(rect.origin.x + width / 2.0, rect.origin.y + width / 2.0);
+    CGFloat             radius              = (width - lineWidth + cornerRadius - (cos(theta) * cornerRadius)) / 2.0;
     
     // Start drawing at a point, which by default is at the right hand edge
     // but can be offset
-    CGFloat angle = M_PI / 2;
+    CGFloat             angle               = M_PI / 2;
     
-    CGPoint corner = CGPointMake(center.x + (radius - cornerRadius) * cos(angle), center.y + (radius - cornerRadius) * sin(angle));
+    CGPoint             corner              = CGPointMake(center.x + (radius - cornerRadius) * cos(angle), center.y + (radius - cornerRadius) * sin(angle));
     [path moveToPoint:(CGPointMake(corner.x + cornerRadius * cos(angle + theta), corner.y + cornerRadius * sin(angle + theta)))];
     
     // draw the sides and rounded corners of the polygon
@@ -358,10 +358,10 @@
         
         angle += theta;
         
-        CGPoint corner = CGPointMake(center.x + (radius - cornerRadius) * cos(angle), center.y + (radius - cornerRadius) * sin(angle));
-        CGPoint tip = CGPointMake(center.x + radius * cos(angle), center.y + radius * sin(angle));
-        CGPoint start = CGPointMake(corner.x + cornerRadius * cos(angle - theta), corner.y + cornerRadius * sin(angle - theta));
-        CGPoint end = CGPointMake(corner.x + cornerRadius * cos(angle + theta), corner.y + cornerRadius * sin(angle + theta));
+        CGPoint         corner              = CGPointMake(center.x + (radius - cornerRadius) * cos(angle), center.y + (radius - cornerRadius) * sin(angle));
+        CGPoint         tip                 = CGPointMake(center.x + radius * cos(angle), center.y + radius * sin(angle));
+        CGPoint         start               = CGPointMake(corner.x + cornerRadius * cos(angle - theta), corner.y + cornerRadius * sin(angle - theta));
+        CGPoint         end                 = CGPointMake(corner.x + cornerRadius * cos(angle + theta), corner.y + cornerRadius * sin(angle + theta));
         
         [path addLineToPoint:start];
         [path addQuadCurveToPoint:end controlPoint:tip];
@@ -375,10 +375,13 @@
 - (NSString*)writeImageFileName {
     
     if([AccountInfoManager sharedManager].userToken.socialityKey) {
+        
         return [AccountInfoManager sharedManager].userToken.socialityKey;
     } else if([AccountInfoManager sharedManager].userToken.userLogin) {
+        
         return [AccountInfoManager sharedManager].userToken.userLogin;
     }
+    
     return @"feil";
 }
 

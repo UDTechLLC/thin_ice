@@ -79,93 +79,88 @@
 
 - (void)createCircleProgressBar {
 // Auto calculate radius
-    self.autoCalculateCircleView.backgroundColor = [UIColor clearColor];
-    [self.autoCalculateCircleView drawCircleWithPercent:[doneCirclePercent integerValue]
-                                               duration:0.5
-                                              lineWidth:25
-                                              clockwise:YES
-                                                lineCap:kCALineCapRound
-                                              fillColor:[UIColor clearColor]
-                                            strokeColor:[UIColor clearColor]
-                                         animatedColors:@[[[HelperManager sharedServer] colorwithHexString: ColorForStatisticsCircleStateFull alpha: 1.0]]];
-    self.autoCalculateCircleView.percentLabel.hidden = YES;
+    self.autoCalculateCircleView.backgroundColor        = [UIColor clearColor];
+    [self.autoCalculateCircleView drawCircleWithPercent:[doneCirclePercent integerValue] duration:0.5 lineWidth:25 clockwise:YES lineCap:kCALineCapRound fillColor:[UIColor clearColor] strokeColor:[UIColor clearColor] animatedColors:@[[[HelperManager sharedServer] colorwithHexString:ColorForStatisticsCircleStateFull alpha: 1.0]]];
+    self.autoCalculateCircleView.percentLabel.hidden    = YES;
 }
 
 - (void)createCircleViewBlock {
 
 // Done Block
-    self.doneLabel.text = @"Done";
-    self.doneLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsCircleStateFull alpha:1.0];
+    self.doneLabel.text                     = @"Done";
+    self.doneLabel.textColor                = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsCircleStateFull alpha:1.0];
     
-    self.doneSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    self.doneSeparator.backgroundColor      = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.doneLabelCountHrs.text = [NSString stringWithFormat:@"%@ hrs", doneLabelString];
-    self.doneLabelCountHrs.textColor = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsCircleStateFull alpha:1.0];
+    self.doneLabelCountHrs.text             = [NSString stringWithFormat:@"%@ hrs", doneLabelString];
+    self.doneLabelCountHrs.textColor        = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsCircleStateFull alpha:1.0];
     
 // Planned Block
-    self.plannedLabel.text = @"Planned";
-    self.plannedLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsPlannedLabel alpha:1.0];
+    self.plannedLabel.text                  = @"Planned";
+    self.plannedLabel.textColor             = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsPlannedLabel alpha:1.0];
     
-    self.plannedSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    self.plannedSeparator.backgroundColor   = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.plannedLabelCountHrs.text = [NSString stringWithFormat:@"%@ hrs", plannedLabelString];
-    self.plannedLabelCountHrs.textColor = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsPlannedLabel alpha:1.0];
+    self.plannedLabelCountHrs.text          = [NSString stringWithFormat:@"%@ hrs", plannedLabelString];
+    self.plannedLabelCountHrs.textColor     = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsPlannedLabel alpha:1.0];
 }
 
 - (void)createBurntAndAVGBlock {
     
 // Burnt Cal Block
-    self.burntLabel.text = @"Burnt Calories";
-    self.burntLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.burntLabel.text                    = @"Burnt Calories";
+    self.burntLabel.textColor               = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     
-    self.burntImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icons_statisticsBurnedCal_%d", (int)kScreenWidth]];
-    self.burntImageView.contentMode = UIViewContentModeCenter;
+    self.burntImageView.image               = [UIImage imageNamed:[NSString stringWithFormat:@"icons_statisticsBurnedCal_%d", (int)kScreenWidth]];
+    self.burntImageView.contentMode         = UIViewContentModeCenter;
     
-    self.burntSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    self.burntSeparator.backgroundColor     = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.burntLabelCountCal.text = [NSString stringWithFormat:@"%@ cal", doneLabelString];
-    self.burntLabelCountCal.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
+    self.burntLabelCountCal.text            = [NSString stringWithFormat:@"%@ cal", doneLabelString];
+    self.burntLabelCountCal.textColor       = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
     
 // AVG Temp
-    self.avgLabel.text = @"AVG Temp";
-    self.avgLabel.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.avgLabel.text                      = @"AVG Temp";
+    self.avgLabel.textColor                 = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     
-    self.avgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icons_statisticstemperature_%d", (int)kScreenWidth]];
-    self.avgImageView.contentMode = UIViewContentModeCenter;
+    self.avgImageView.image                 = [UIImage imageNamed:[NSString stringWithFormat:@"icons_statisticstemperature_%d", (int)kScreenWidth]];
+    self.avgImageView.contentMode           = UIViewContentModeCenter;
     
-    self.avgSeparator.backgroundColor = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    self.avgSeparator.backgroundColor       = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.avgLabelCount.text = [NSString stringWithFormat:@"%@ ℃", avgTempString];
-    self.avgLabelCount.textColor = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
+    self.avgLabelCount.text                 = [NSString stringWithFormat:@"%@ ℃", avgTempString];
+    self.avgLabelCount.textColor            = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextYELLOW alpha:1.0];
 }
 
 - (void)calculateDataViewController {
     
-    float doneTime = 0.0;
-    float plannedTime = 0.0;
-    float avgTemp = 0.0;
+    float doneTime      = 0.0;
+    float plannedTime   = 0.0;
+    float avgTemp       = 0.0;
     float burntCalories = 0.0;
     
     for (UserSession *session in self.dataStatisticArray) {
+        
         doneTime        += session.doneTimeValue;
         plannedTime     += session.plannedTimeValue;
         avgTemp         += session.avgTemperatureValue;
         burntCalories   += session.doneTimeValue;
     }
     
-    doneTime = doneTime / self.dataStatisticArray.count;
-    plannedTime = plannedTime / self.dataStatisticArray.count;
-    avgTemp = avgTemp / self.dataStatisticArray.count;
-    burntCalories = burntCalories / self.dataStatisticArray.count;
+    doneTime        = doneTime / self.dataStatisticArray.count;
+    plannedTime     = plannedTime / self.dataStatisticArray.count;
+    avgTemp         = avgTemp / self.dataStatisticArray.count;
+    burntCalories   = burntCalories / self.dataStatisticArray.count;
     
-    doneCirclePercent = [NSNumber numberWithFloat:[self calculateCirclePercentDone:doneTime Planned:plannedTime]];
-    doneLabelString = [NSString stringWithFormat:@"%d", (int)doneTime];
-    plannedLabelString = [NSString stringWithFormat:@"%d", (int)plannedTime];
-    burntCaloriesLabelString = [NSString stringWithFormat:@"%d", (int)burntCalories];
-    avgTempString = [NSString stringWithFormat:@"%d", (int)avgTemp];
+    doneCirclePercent           = [NSNumber numberWithFloat:[self calculateCirclePercentDone:doneTime Planned:plannedTime]];
+    doneLabelString             = [NSString stringWithFormat:@"%d", (int)doneTime];
+    plannedLabelString          = [NSString stringWithFormat:@"%d", (int)plannedTime];
+    burntCaloriesLabelString    = [NSString stringWithFormat:@"%d", (int)burntCalories];
+    avgTempString               = [NSString stringWithFormat:@"%d", (int)avgTemp];
 }
 
 - (float)calculateCirclePercentDone:(float)doneValue Planned:(float)plannedValue {
+    
     return doneValue * 100 / plannedValue;
 }
 

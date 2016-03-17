@@ -12,6 +12,10 @@
 @interface HelperManager : NSObject
 
 + (HelperManager *)sharedServer;
+
+- (void)startPOSTNotification;
+- (void)stopPOSTNotification;
+
 - (UIColor *)colorwithHexString:(NSString *)hexStr alpha:(CGFloat)alpha;
 - (void)createAchivementsDataBaseForUser:(User*)user;
 - (void)saveContextWithBlock:(void(^)(NSManagedObjectContext *localContext))block;

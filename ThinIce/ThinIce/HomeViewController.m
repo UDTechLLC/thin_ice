@@ -42,6 +42,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
     self.navigationController.navigationBarHidden = YES;
     [super viewWillAppear:animated];
 }
@@ -57,15 +58,20 @@
 }
 
 - (void)viewDidLayoutSubviews {
+    
     if (kScreenWidth == 320) {
-        self.signInButton.center = CGPointMake(kScreenWidth / 2, 257);
+        
+        self.signInButton.center    = CGPointMake(kScreenWidth / 2, 257);
     } else if(kScreenWidth == 375) {
-        self.signInButton.center = CGPointMake(kScreenWidth / 2, 301.5);
+        
+        self.signInButton.center    = CGPointMake(kScreenWidth / 2, 301.5);
     } else if (kScreenWidth == 414) {
-        self.signInButton.frame = CGRectMake(0, 0, 172, 184);
-        self.signInButton.center = CGPointMake(kScreenWidth / 2, 333.5);
+        
+        self.signInButton.frame     = CGRectMake(0, 0, 172, 184);
+        self.signInButton.center    = CGPointMake(kScreenWidth / 2, 333.5);
         NSLog(@"%@", NSStringFromCGRect(self.signInButton.frame));
     }
+    
     [super viewDidLayoutSubviews];
 }
 
@@ -180,13 +186,16 @@
 #pragma mark - twitter API -end
 
 - (NSString*)cutFirstName:(NSString*)firstName {
+    
     NSRange range = [firstName rangeOfString:@" "];
     
     return [firstName substringWithRange:NSMakeRange(0, range.location)];
 }
 
 - (NSString*)cutLastName:(NSString*)lastName {
+    
     NSRange range = [lastName rangeOfString:@" "];
+    
     return [lastName substringWithRange:NSMakeRange(range.location, lastName.length - range.location)];
 }
 
@@ -202,6 +211,7 @@
           
     if(([AccountInfoManager sharedManager].userSavedInHomeDirectory.savedUserLogin.length > 0 && [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedUserPass.length > 0 ) || [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedSocialityKey.length > 0 ) {
         [[AccountInfoManager sharedManager] loadUserObjectWithBlock:^{
+            
             DashboardViewController *dashboard = [weakself.storyboard instantiateViewControllerWithIdentifier:kDashboardViewControllerID];
             [weakself.navigationController pushViewController:dashboard animated:NO];
         }];

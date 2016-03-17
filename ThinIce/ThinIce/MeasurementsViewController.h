@@ -10,4 +10,6 @@
 
 @interface MeasurementsViewController : UIViewController
 
+@property NSMutableDictionary           *regUserDict;
+
 @end
