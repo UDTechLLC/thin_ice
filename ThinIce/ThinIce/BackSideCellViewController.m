@@ -128,7 +128,7 @@
     // Junk Food
     
     self.junkFoodImageView.image                                    = [UIImage imageNamed:[NSString stringWithFormat:@"icons_JunkFood_%d", (int)kScreenWidth]];
-    self.junkFoodImageView.contentMode                              = UIViewContentModeCenter;
+    self.junkFoodImageView.contentMode                              = UIViewContentModeScaleAspectFit;
     
     self.junkFoodLabel.text                                         = @"Junk Food, Servings";
     self.junkFoodLabel.textColor                                    = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
@@ -142,7 +142,7 @@
     // H-protein Meals
     
     self.hProteinMealsImageView.image                               = [UIImage imageNamed:[NSString stringWithFormat:@"icons_H_protein_%d", (int)kScreenWidth]];
-    self.hProteinMealsImageView.contentMode                         = UIViewContentModeCenter;
+    self.hProteinMealsImageView.contentMode                         = UIViewContentModeScaleAspectFit;
     
     self.hProteinMealsLabel.text                                    = @"H - protein Meals";
     self.hProteinMealsLabel.textColor                               = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
@@ -156,7 +156,7 @@
     // Hours Slapt
     
     self.hourseSleptImageView.image                                 = [UIImage imageNamed:[NSString stringWithFormat:@"icons_H_protein_%d", (int)kScreenWidth]];
-    self.hourseSleptImageView.contentMode                           = UIViewContentModeCenter;
+    self.hourseSleptImageView.contentMode                           = UIViewContentModeScaleAspectFit;
     
     self.hourseSleptLabel.text                                      = @"Hours Slept, hrs";
     self.hourseSleptLabel.textColor                                 = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
@@ -170,7 +170,7 @@
     // Carbs Consumed
     
     self.carbsConsumedImageView.image                               = [UIImage imageNamed:[NSString stringWithFormat:@"icons_H_protein_%d", (int)kScreenWidth]];
-    self.carbsConsumedImageView.contentMode                         = UIViewContentModeCenter;
+    self.carbsConsumedImageView.contentMode                         = UIViewContentModeScaleAspectFit;
     
     self.carbsConsumedLabel.text                                    = @"Carbs consumed, g";
     self.carbsConsumedLabel.textColor                               = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];

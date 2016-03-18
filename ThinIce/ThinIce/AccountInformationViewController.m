@@ -21,6 +21,7 @@
 #define iPhone6PlusYCoordinateForAccountImege           65
 
 @interface AccountInformationViewController () <CarbonTabSwipeDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+    
     NSArray                                                         *items;
     
     CarbonTabSwipeNavigation                                        *tabSwipe;

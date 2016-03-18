@@ -141,10 +141,10 @@
     
     [path closePath];
     
-    // Move the path to the correct origins
-    CGRect              bounds      = path.bounds;
-    CGAffineTransform   transform   =  CGAffineTransformMakeTranslation(-bounds.origin.x + rect.origin.x + lineWidth / 2.0, -bounds.origin.y + rect.origin.y + lineWidth / 2.0);
-    [path applyTransform:transform];
+//    // Move the path to the correct origins
+//    CGRect              bounds      = path.bounds;
+//    CGAffineTransform   transform   =  CGAffineTransformMakeTranslation(-bounds.origin.x + rect.origin.x + lineWidth / 2.0, -bounds.origin.y + rect.origin.y + lineWidth / 2.0);
+//    [path applyTransform:transform];
     
     return path;
 }

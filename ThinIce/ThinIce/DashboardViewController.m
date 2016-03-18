@@ -6,10 +6,12 @@
 //  Copyright © 2016 udtech.co. All rights reserved.
 //
 
-#define iPhone6XCoordinateForImege              14
+#define iPhone6XCoordinateForImege              11
 #define iPhone6YCoordinateForImege              88
-#define iPhone6PlusXCoordinateForImege          14
-#define iPhone6PlusYCoordinateForImege          93
+
+#define iPhone6PlusXCoordinateForImege          9
+#define iPhone6PlusYCoordinateForImege          96
+
 #define SpaceBetweenTwoCells                    10
 
 #import "DashboardViewController.h"
@@ -18,6 +20,7 @@
 @interface DashboardViewController () <SlideNavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     // Array With Data for TableView
     NSMutableArray                                                      *cellData;
+    BOOL                                                                isFirstCreation;
 }
 
 // Image Block
@@ -29,21 +32,22 @@
 @property (weak, nonatomic) IBOutlet UILabel                            *userNameLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint                 *userNameLabelYCoordinate;
 
-// insoles Block
-@property (weak, nonatomic) IBOutlet UIImageView                        *insolesPic;
-@property (weak, nonatomic) IBOutlet UILabel                            *powerInsolesLabel;
-@property (weak, nonatomic) IBOutlet UIView                             *powerInsolesBattaryHigherView;
-@property (weak, nonatomic) IBOutlet UIView                             *powerInsolesBattaryMiddleView;
-@property (weak, nonatomic) IBOutlet UIView                             *powerInsolesBattaryLowerView;
-// Separators Block
-@property (weak, nonatomic) IBOutlet UIView                             *insolesAndVestVerticalSeparator;
-@property (weak, nonatomic) IBOutlet UIView                             *horisontalSeparator;
 // Vest Block
+
 @property (weak, nonatomic) IBOutlet UIImageView                        *vestPic;
 @property (weak, nonatomic) IBOutlet UILabel                            *powerVestLabel;
 @property (weak, nonatomic) IBOutlet UIView                             *powerVestBattaryHigherView;
 @property (weak, nonatomic) IBOutlet UIView                             *powerVestBattaryMiddleView;
 @property (weak, nonatomic) IBOutlet UIView                             *powerVestBattaryLowerView;
+
+// Separators Block
+
+@property (weak, nonatomic) IBOutlet UIView                             *insolesAndVestVerticalSeparator;
+@property (weak, nonatomic) IBOutlet UIView                             *horisontalSeparator;
+
+// Power Button
+
+@property (weak, nonatomic) IBOutlet UIButton                           *powerButton;
 
 @end
 
@@ -65,34 +69,42 @@
     [self addNavigationBarAttributeTitle: @"Dashboard"];
     self.navigationController.navigationBarHidden = NO;
     [self translucentNavigationBar: YES];
+    
     [super viewWillAppear:YES];
 }
 
 - (void)viewDidLayoutSubviews {
     
-    [self createProfilePhotoImageView];
-    if((int)kScreenWidth == 375) {
+    if(isFirstCreation) {
         
-        self.imageXCoordinate.constant = iPhone6XCoordinateForImege;
-        self.imageYCoordinate.constant = iPhone6YCoordinateForImege;
-    } else if((int)kScreenWidth == 414) {
+        [self createProfilePhotoImageView];
         
-        self.imageXCoordinate.constant = iPhone6PlusXCoordinateForImege;
-        self.imageYCoordinate.constant = iPhone6PlusYCoordinateForImege;
+        if((int)kScreenWidth == 375) {
+            
+            // IPhone 6 Configuration Image View
+            
+            self.imageXCoordinate.constant  = iPhone6XCoordinateForImege;
+            self.imageYCoordinate.constant  = iPhone6YCoordinateForImege;
+            
+        } else if((int)kScreenWidth == 414) {
+            
+            self.imageXCoordinate.constant  = iPhone6PlusXCoordinateForImege;
+            self.imageYCoordinate.constant  = iPhone6PlusYCoordinateForImege;
+        }
+        isFirstCreation = NO;
     }
-    
-    [self.view setNeedsLayout];
-    [super viewDidLayoutSubviews];
 }
 
 - (void)createViewController {
+    
+    isFirstCreation                                         = YES;
     
     self.userNameLabel.backgroundColor                      = [UIColor clearColor];
     self.userNameLabel.textColor                            = [[HelperManager sharedServer] colorwithHexString:@"#ccccccc" alpha:1.0];
     self.userNameLabel.text                                 = [self createFirstAndLastName];
     
-    [self createInsolesBlock];
     [self createVestBlock];
+    [self createPowerONOFFButton];
     
     // Create SeparatorsView
     self.insolesAndVestVerticalSeparator.backgroundColor    = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
@@ -103,8 +115,9 @@
     self.dayCardTableViewBackgroundView.backgroundColor     = [UIColor clearColor];
     
     self.dayCardsTableView.backgroundColor                  = [UIColor clearColor];
-    self.dayCardsTableView.estimatedRowHeight               = 370;
+    self.dayCardsTableView.estimatedRowHeight               = 360;
     self.dayCardsTableView.rowHeight                        = UITableViewAutomaticDimension;
+    
     [self changeDelayButtonClickInTableView:self.dayCardsTableView];
 }
 
@@ -131,14 +144,14 @@
     self.imageViewPhoto.image                               = [[HelperManager sharedServer] getImageFromURL: [AccountInfoManager sharedManager].userToken.user_photo_url];
 }
 
-- (void)createInsolesBlock {
+- (void)createVestBlock {
     
-    self.insolesPic.image                                   = [UIImage imageNamed:[NSString stringWithFormat:@"insoles_%d", (int)kScreenWidth]];
-    self.insolesPic.contentMode                             = UIViewContentModeCenter;
+    self.vestPic.image                                      = [UIImage imageNamed:[NSString stringWithFormat:@"thin_ice_vest_%d", (int)kScreenWidth]];
+    self.vestPic.contentMode                                = UIViewContentModeCenter;
     
     self.powerVestLabel.backgroundColor                     = [UIColor clearColor];
     self.powerVestLabel.textColor                           = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
-    self.powerVestLabel.text                                = @"100 %";
+    self.powerVestLabel .text                               = @"100 %";
     
     self.powerVestBattaryHigherView.backgroundColor         = [UIColor clearColor];
     [self addBorderLineFor: self.powerVestBattaryHigherView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
@@ -148,21 +161,11 @@
     [self addBorderLineFor: self.powerVestBattaryLowerView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
 }
 
-- (void)createVestBlock {
+- (void)createPowerONOFFButton {
     
-    self.vestPic.image                                      = [UIImage imageNamed:[NSString stringWithFormat:@"thin_ice_vest_%d", (int)kScreenWidth]];
-    self.vestPic.contentMode                                = UIViewContentModeCenter;
-    
-    self.powerInsolesLabel.backgroundColor                  = [UIColor clearColor];
-    self.powerInsolesLabel.textColor                        = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
-    self.powerInsolesLabel.text                             = @"100 %";
-    
-    self.powerInsolesBattaryHigherView.backgroundColor      = [UIColor clearColor];
-    [self addBorderLineFor: self.powerInsolesBattaryHigherView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
-    self.powerInsolesBattaryMiddleView.backgroundColor      = [UIColor clearColor];
-    [self addBorderLineFor: self.powerInsolesBattaryMiddleView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
-    self.powerInsolesBattaryLowerView.backgroundColor       = [UIColor clearColor];
-    [self addBorderLineFor: self.powerInsolesBattaryLowerView withColor:[[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0] borderWidth:1.0];
+    [self.powerButton setImage:[UIImage imageNamed: @"button_power_normal_320@2x"] forState:UIControlStateNormal];
+    [self.powerButton setImage:[UIImage imageNamed: @"button_power_active_320@2x"] forState:UIControlStateSelected];
+    [self.powerButton setImage:[UIImage imageNamed: @"button_power_active_320@2x"] forState:UIControlStateHighlighted];
 }
 
 #pragma mark - UITableViewDelegate / UITableViewDataSource -
@@ -209,7 +212,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if((int)kScreenWidth == 375) {
+        return 400;
+    }
     return UITableViewAutomaticDimension;
 }
 

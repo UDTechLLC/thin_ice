@@ -171,8 +171,8 @@
     
     // Schedule the notification
     UILocalNotification* localNotification  = [[UILocalNotification alloc] init];
-    localNotification.fireDate              = [NSDate dateWithTimeIntervalSinceNow: 2];
-    localNotification.alertBody             = @"Your alert message";
+    localNotification.fireDate              = [NSDate dateWithTimeIntervalSinceNow: 0.3];
+    localNotification.alertBody             = @"Are you wearing the Thin Ice vest? If not, please don’t forget to tap the Power button";
     localNotification.repeatInterval        = NSCalendarUnitMinute;
     localNotification.timeZone              = [NSTimeZone defaultTimeZone];
     localNotification.soundName             = UILocalNotificationDefaultSoundName;

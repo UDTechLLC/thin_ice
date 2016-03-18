@@ -170,7 +170,6 @@
 		D8B2B2FE1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B2B2FD1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png */; };
 		D8CABAB51C86D4E6007EEBC7 /* insoles_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CABAB41C86D4E6007EEBC7 /* insoles_414@3x.png */; };
 		D8CABAB71C86D4F8007EEBC7 /* insoles_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CABAB61C86D4F8007EEBC7 /* insoles_375@2x.png */; };
-		D8CABAB91C86D4FC007EEBC7 /* insoles_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CABAB81C86D4FC007EEBC7 /* insoles_320@2x.png */; };
 		D8CABABF1C86E56F007EEBC7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CABABE1C86E56F007EEBC7 /* QuartzCore.framework */; };
 		D8CABACC1C87209B007EEBC7 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CABACB1C87209B007EEBC7 /* StatisticsViewController.m */; };
 		D8CABAD31C8723A3007EEBC7 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CABAD11C8723A3007EEBC7 /* CarbonSwipeRefresh.m */; };
@@ -184,6 +183,8 @@
 		D8CABAF31C873399007EEBC7 /* icons_statisticsBurnedCal_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CABAF11C873399007EEBC7 /* icons_statisticsBurnedCal_375@2x.png */; };
 		D8CABAF61C87339F007EEBC7 /* icons_statisticstemperature_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CABAF41C87339F007EEBC7 /* icons_statisticstemperature_320@2x.png */; };
 		D8CABAF71C87339F007EEBC7 /* icons_statisticsBurnedCal_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CABAF51C87339F007EEBC7 /* icons_statisticsBurnedCal_320@2x.png */; };
+		D8D843F71C9BE5B20027CD71 /* button_power_active_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D843F51C9BE5B20027CD71 /* button_power_active_320@2x.png */; };
+		D8D843F81C9BE5B20027CD71 /* button_power_normal_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D843F61C9BE5B20027CD71 /* button_power_normal_320@2x.png */; };
 		D8E133D21C7462FD00B9D813 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E133D11C7462FD00B9D813 /* SystemConfiguration.framework */; };
 		D8E133D81C7477AC00B9D813 /* FHSStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E133D51C7477AC00B9D813 /* FHSStream.m */; };
 		D8E133D91C7477AC00B9D813 /* FHSTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E133D71C7477AC00B9D813 /* FHSTwitterEngine.m */; };
@@ -431,7 +432,6 @@
 		D8B2B2FD1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons_thinIceCellLogo_414@3x.png"; sourceTree = "<group>"; };
 		D8CABAB41C86D4E6007EEBC7 /* insoles_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "insoles_414@3x.png"; sourceTree = "<group>"; };
 		D8CABAB61C86D4F8007EEBC7 /* insoles_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "insoles_375@2x.png"; sourceTree = "<group>"; };
-		D8CABAB81C86D4FC007EEBC7 /* insoles_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "insoles_320@2x.png"; sourceTree = "<group>"; };
 		D8CABABE1C86E56F007EEBC7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D8CABACA1C87209B007EEBC7 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		D8CABACB1C87209B007EEBC7 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
@@ -452,6 +452,8 @@
 		D8CABAF11C873399007EEBC7 /* icons_statisticsBurnedCal_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons_statisticsBurnedCal_375@2x.png"; sourceTree = "<group>"; };
 		D8CABAF41C87339F007EEBC7 /* icons_statisticstemperature_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons_statisticstemperature_320@2x.png"; sourceTree = "<group>"; };
 		D8CABAF51C87339F007EEBC7 /* icons_statisticsBurnedCal_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons_statisticsBurnedCal_320@2x.png"; sourceTree = "<group>"; };
+		D8D843F51C9BE5B20027CD71 /* button_power_active_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_power_active_320@2x.png"; sourceTree = "<group>"; };
+		D8D843F61C9BE5B20027CD71 /* button_power_normal_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_power_normal_320@2x.png"; sourceTree = "<group>"; };
 		D8E133D11C7462FD00B9D813 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D8E133D41C7477AC00B9D813 /* FHSStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSStream.h; sourceTree = "<group>"; };
 		D8E133D51C7477AC00B9D813 /* FHSStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSStream.m; sourceTree = "<group>"; };
@@ -1231,10 +1233,11 @@
 		D8EF714D1C7B56050006FDEF /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				D8D843F51C9BE5B20027CD71 /* button_power_active_320@2x.png */,
+				D8D843F61C9BE5B20027CD71 /* button_power_normal_320@2x.png */,
 				D8B2B2F91C85EBE40089E6B9 /* icons_thinIceCellLogo_320@2x.png */,
 				D8B2B2F31C85C3D70089E6B9 /* icons_H_protein_320@2x.png */,
 				D8B2B2E21C85C33E0089E6B9 /* icons_JunkFood_320@2x.png */,
-				D8CABAB81C86D4FC007EEBC7 /* insoles_320@2x.png */,
 				D8B2B2E31C85C33E0089E6B9 /* icons_waterIntake_320@2x.png */,
 				D8B2B2DB1C85C2180089E6B9 /* icons_gymSession_320@2x.png */,
 				D8B2B2CF1C85C1000089E6B9 /* icons_burntCalories_320@2x.png */,
@@ -1375,7 +1378,6 @@
 				D88845C61C90574D005DFE5C /* achievements_inactive_375@2x.png in Resources */,
 				D8EF71591C7B6D180006FDEF /* thin_ice_dashboard_background_320@2x.png in Resources */,
 				D8B2B2B41C8599C90089E6B9 /* icons_dashboardFlip_active_320@2x.png in Resources */,
-				D8CABAB91C86D4FC007EEBC7 /* insoles_320@2x.png in Resources */,
 				D87F8EE21C98506B00D6E58A /* failed_414@3x.png in Resources */,
 				D88845CA1C905753005DFE5C /* achievements_inactive_320@2x.png in Resources */,
 				D88845AD1C900D51005DFE5C /* arrow_414@3x.png in Resources */,
@@ -1404,6 +1406,8 @@
 				D8CABAB51C86D4E6007EEBC7 /* insoles_414@3x.png in Resources */,
 				D8A1678C1C886014000C4C1C /* background_accaunt_375@2x.png in Resources */,
 				D845D80A1C8D7D0300F8B563 /* btn_help_active_375@2x.png in Resources */,
+				D8D843F71C9BE5B20027CD71 /* button_power_active_320@2x.png in Resources */,
+				D8D843F81C9BE5B20027CD71 /* button_power_normal_320@2x.png in Resources */,
 				D872D9501C916A5C004EAC59 /* thiniceplus_normal_375@2x.png in Resources */,
 				D8B2B2C81C85A4820089E6B9 /* icons_temperature_320@2x.png in Resources */,
 				D8B2B2BC1C859A790089E6B9 /* icons_dashboardFlip_normal_414@3x.png in Resources */,
