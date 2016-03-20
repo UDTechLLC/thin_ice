@@ -7,10 +7,12 @@
 //
 
 #import "ThinIceControlViewController.h"
+#import "ThinIceControlChangeTemperatureSideViewController.h"
+#import "ThinIceControlChangeTimerAndDeviceSideViewController.h"
 
 @interface ThinIceControlViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *deviceListTableView;
+@property (weak, nonatomic) IBOutlet UIView *thinIceContentView;
 
 @end
 
@@ -35,7 +37,7 @@
 - (void)createViewController {
     
     [self addThinIceControlBackgroundImage];
-    self.deviceListTableView.backgroundColor                        = [UIColor clearColor];
+    self.thinIceContentView.backgroundColor                        = [UIColor clearColor];
 }
 
 - (void)addBluetoothDevice {

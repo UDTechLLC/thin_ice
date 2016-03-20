@@ -212,9 +212,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if((int)kScreenWidth == 375) {
-        return 400;
-    }
+    
     return UITableViewAutomaticDimension;
 }
 

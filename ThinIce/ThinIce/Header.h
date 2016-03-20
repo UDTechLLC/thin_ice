@@ -153,6 +153,8 @@
 #define kAchievemetsUnlockedViewControllerID                    @"AchievemetsUnlockedViewControllerIdentifier"
 #define kThinIceControlViewControllerID                         @"ThinIceControlViewControllerIdentifier"
 #define kBackSideDashboardID                                    @"BackSideDashboardIdentifier"
+#define ThinIceControlChangeTemperatureSideViewControllerID     @"ThinIceControlChangeTemperatureSideViewControllerIdentifier"
+#define ThinIceControlChangeTimerAndDeviceSideViewControllerID  @"ThinIceControlChangeTimerAndDeviceSideViewControllerIdentifier"
 
 // Cells Identifier
 
