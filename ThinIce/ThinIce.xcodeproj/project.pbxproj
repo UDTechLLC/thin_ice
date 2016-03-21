@@ -48,6 +48,8 @@
 		D872D95E1C916A69004EAC59 /* thiniceplus_normal_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D872D9571C916A69004EAC59 /* thiniceplus_normal_320@2x.png */; };
 		D872D95F1C916A69004EAC59 /* thiniceplus_active_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D872D9581C916A69004EAC59 /* thiniceplus_active_320@2x.png */; };
 		D872D96A1C91B4C8004EAC59 /* BackSideCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D872D9691C91B4C8004EAC59 /* BackSideCellViewController.m */; };
+		D875BDA01CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_normal_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D875BD9E1CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_normal_320@2x.png */; };
+		D875BDA11CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_active_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D875BD9F1CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_active_320@2x.png */; };
 		D87F8EDF1C98434E00D6E58A /* SavedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F8EDE1C98434E00D6E58A /* SavedUser.m */; };
 		D87F8EE21C98506B00D6E58A /* failed_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F8EE01C98506B00D6E58A /* failed_414@3x.png */; };
 		D87F8EE31C98506B00D6E58A /* success_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F8EE11C98506B00D6E58A /* success_414@3x.png */; };
@@ -104,9 +106,7 @@
 		D88845C31C905746005DFE5C /* achievements_active_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C11C905746005DFE5C /* achievements_active_414@3x.png */; };
 		D88845C61C90574D005DFE5C /* achievements_inactive_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C41C90574D005DFE5C /* achievements_inactive_375@2x.png */; };
 		D88845C71C90574D005DFE5C /* achievements_active_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C51C90574D005DFE5C /* achievements_active_375@2x.png */; };
-		D88845CA1C905753005DFE5C /* achievements_inactive_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C81C905753005DFE5C /* achievements_inactive_320@2x.png */; };
 		D88845CB1C905753005DFE5C /* achievements_active_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845C91C905753005DFE5C /* achievements_active_320@2x.png */; };
-		D88845CD1C9060C4005DFE5C /* background_over_achievements_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845CC1C9060C4005DFE5C /* background_over_achievements_320@2x.png */; };
 		D88845CF1C9060CB005DFE5C /* background_over_achievements_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845CE1C9060CB005DFE5C /* background_over_achievements_375@2x.png */; };
 		D88845D11C9060D2005DFE5C /* background_over_achievements_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88845D01C9060D2005DFE5C /* background_over_achievements_414@3x.png */; };
 		D88845D41C907542005DFE5C /* AchievementsUnlockerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D88845D31C907542005DFE5C /* AchievementsUnlockerManager.m */; };
@@ -171,6 +171,43 @@
 		D8B2B2FA1C85EBE40089E6B9 /* icons_thinIceCellLogo_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B2B2F91C85EBE40089E6B9 /* icons_thinIceCellLogo_320@2x.png */; };
 		D8B2B2FC1C85EBEA0089E6B9 /* icons_thinIceCellLogo_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B2B2FB1C85EBEA0089E6B9 /* icons_thinIceCellLogo_375@2x.png */; };
 		D8B2B2FE1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B2B2FD1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png */; };
+		D8C14F871CA02B3500028F23 /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C14F861CA02B3500028F23 /* Achievement.m */; };
+		D8C14F8A1CA0367F00028F23 /* SelectedBackground_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F891CA0367F00028F23 /* SelectedBackground_320@2x.png */; };
+		D8C14F9C1CA0368B00028F23 /* ResultsObsessed_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F8B1CA0368B00028F23 /* ResultsObsessed_320@2x.png */; };
+		D8C14F9D1CA0368B00028F23 /* ResultsOriented_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F8C1CA0368B00028F23 /* ResultsOriented_320@2x.png */; };
+		D8C14F9E1CA0368B00028F23 /* TheTracker_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F8D1CA0368B00028F23 /* TheTracker_320@2x.png */; };
+		D8C14F9F1CA0368B00028F23 /* FreshFace_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F8E1CA0368B00028F23 /* FreshFace_320@2x.png */; };
+		D8C14FA01CA0368B00028F23 /* TheButtonPresser_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F8F1CA0368B00028F23 /* TheButtonPresser_320@2x.png */; };
+		D8C14FA11CA0368B00028F23 /* SeeingResults_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F901CA0368B00028F23 /* SeeingResults_320@2x.png */; };
+		D8C14FA21CA0368B00028F23 /* GettinLean_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F911CA0368B00028F23 /* GettinLean_320@2x.png */; };
+		D8C14FA31CA0368B00028F23 /* FeelintheBurn_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F921CA0368B00028F23 /* FeelintheBurn_320@2x.png */; };
+		D8C14FA41CA0368B00028F23 /* Firestarter_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F931CA0368B00028F23 /* Firestarter_320@2x.png */; };
+		D8C14FA51CA0368B00028F23 /* TheStrategist_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F941CA0368B00028F23 /* TheStrategist_320@2x.png */; };
+		D8C14FA61CA0368B00028F23 /* TheSchemer_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F951CA0368B00028F23 /* TheSchemer_320@2x.png */; };
+		D8C14FA71CA0368B00028F23 /* TheDabbler_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F961CA0368B00028F23 /* TheDabbler_320@2x.png */; };
+		D8C14FA81CA0368B00028F23 /* TheMarathoner_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F971CA0368B00028F23 /* TheMarathoner_320@2x.png */; };
+		D8C14FA91CA0368B00028F23 /* TheEnthusiast_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F981CA0368B00028F23 /* TheEnthusiast_320@2x.png */; };
+		D8C14FAA1CA0368B00028F23 /* TheMotivated_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F991CA0368B00028F23 /* TheMotivated_320@2x.png */; };
+		D8C14FAB1CA0368B00028F23 /* MovingForward_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F9A1CA0368B00028F23 /* MovingForward_320@2x.png */; };
+		D8C14FAC1CA0368B00028F23 /* freshStart_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14F9B1CA0368B00028F23 /* freshStart_320@2x.png */; };
+		D8C14FAF1CA0378B00028F23 /* background_over_achievements_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FAE1CA0378B00028F23 /* background_over_achievements_320@2x.png */; };
+		D8C14FC11CA03D5D00028F23 /* FreshFace_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB01CA03D5D00028F23 /* FreshFace_unlocked_320@2x.png */; };
+		D8C14FC21CA03D5D00028F23 /* TheTracker_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB11CA03D5D00028F23 /* TheTracker_unlocked_320@2x.png */; };
+		D8C14FC31CA03D5D00028F23 /* ResultsOriented_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB21CA03D5D00028F23 /* ResultsOriented_unlocked_320@2x.png */; };
+		D8C14FC41CA03D5D00028F23 /* ResultsObsessed_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB31CA03D5D00028F23 /* ResultsObsessed_unlocked_320@2x.png */; };
+		D8C14FC51CA03D5D00028F23 /* TheButtonPresser_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB41CA03D5D00028F23 /* TheButtonPresser_unlocked_320@2x.png */; };
+		D8C14FC61CA03D5D00028F23 /* SeeingResults_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB51CA03D5D00028F23 /* SeeingResults_unlocked_320@2x.png */; };
+		D8C14FC71CA03D5D00028F23 /* Firestarter_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB61CA03D5D00028F23 /* Firestarter_unlocked_320@2x.png */; };
+		D8C14FC81CA03D5D00028F23 /* FellingTheBurn_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB71CA03D5D00028F23 /* FellingTheBurn_unlocked_320@2x.png */; };
+		D8C14FC91CA03D5D00028F23 /* GettinLean_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB81CA03D5D00028F23 /* GettinLean_unlocked_320@2x.png */; };
+		D8C14FCA1CA03D5D00028F23 /* TheStrategist_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FB91CA03D5D00028F23 /* TheStrategist_unlocked_320@2x.png */; };
+		D8C14FCB1CA03D5D00028F23 /* TheSchemer_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FBA1CA03D5D00028F23 /* TheSchemer_unlocked_320@2x.png */; };
+		D8C14FCC1CA03D5D00028F23 /* TheDabbler_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FBB1CA03D5D00028F23 /* TheDabbler_unlocked_320@2x.png */; };
+		D8C14FCD1CA03D5D00028F23 /* TheMarathoner_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FBC1CA03D5D00028F23 /* TheMarathoner_unlocked_320@2x.png */; };
+		D8C14FCE1CA03D5D00028F23 /* TheEnthusiast_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FBD1CA03D5D00028F23 /* TheEnthusiast_unlocked_320@2x.png */; };
+		D8C14FCF1CA03D5D00028F23 /* TheMotivated_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FBE1CA03D5D00028F23 /* TheMotivated_unlocked_320@2x.png */; };
+		D8C14FD01CA03D5D00028F23 /* MovingForward_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FBF1CA03D5D00028F23 /* MovingForward_unlocked_320@2x.png */; };
+		D8C14FD11CA03D5D00028F23 /* FreshStart_unlocked_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C14FC01CA03D5D00028F23 /* FreshStart_unlocked_320@2x.png */; };
 		D8CABAB51C86D4E6007EEBC7 /* insoles_414@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CABAB41C86D4E6007EEBC7 /* insoles_414@3x.png */; };
 		D8CABAB71C86D4F8007EEBC7 /* insoles_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CABAB61C86D4F8007EEBC7 /* insoles_375@2x.png */; };
 		D8CABABF1C86E56F007EEBC7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CABABE1C86E56F007EEBC7 /* QuartzCore.framework */; };
@@ -270,6 +307,8 @@
 		D872D9581C916A69004EAC59 /* thiniceplus_active_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thiniceplus_active_320@2x.png"; sourceTree = "<group>"; };
 		D872D9681C91B4C8004EAC59 /* BackSideCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackSideCellViewController.h; sourceTree = "<group>"; };
 		D872D9691C91B4C8004EAC59 /* BackSideCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackSideCellViewController.m; sourceTree = "<group>"; };
+		D875BD9E1CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_normal_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thinIceControl_btn_deletedevice_normal_320@2x.png"; sourceTree = "<group>"; };
+		D875BD9F1CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_active_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thinIceControl_btn_deletedevice_active_320@2x.png"; sourceTree = "<group>"; };
 		D87F8EDD1C98434E00D6E58A /* SavedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedUser.h; sourceTree = "<group>"; };
 		D87F8EDE1C98434E00D6E58A /* SavedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedUser.m; sourceTree = "<group>"; };
 		D87F8EE01C98506B00D6E58A /* failed_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failed_414@3x.png"; sourceTree = "<group>"; };
@@ -366,9 +405,7 @@
 		D88845C11C905746005DFE5C /* achievements_active_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_active_414@3x.png"; sourceTree = "<group>"; };
 		D88845C41C90574D005DFE5C /* achievements_inactive_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_inactive_375@2x.png"; sourceTree = "<group>"; };
 		D88845C51C90574D005DFE5C /* achievements_active_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_active_375@2x.png"; sourceTree = "<group>"; };
-		D88845C81C905753005DFE5C /* achievements_inactive_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_inactive_320@2x.png"; sourceTree = "<group>"; };
 		D88845C91C905753005DFE5C /* achievements_active_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievements_active_320@2x.png"; sourceTree = "<group>"; };
-		D88845CC1C9060C4005DFE5C /* background_over_achievements_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_over_achievements_320@2x.png"; sourceTree = "<group>"; };
 		D88845CE1C9060CB005DFE5C /* background_over_achievements_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_over_achievements_375@2x.png"; sourceTree = "<group>"; };
 		D88845D01C9060D2005DFE5C /* background_over_achievements_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_over_achievements_414@3x.png"; sourceTree = "<group>"; };
 		D88845D21C907542005DFE5C /* AchievementsUnlockerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsUnlockerManager.h; sourceTree = "<group>"; };
@@ -438,6 +475,44 @@
 		D8B2B2F91C85EBE40089E6B9 /* icons_thinIceCellLogo_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons_thinIceCellLogo_320@2x.png"; sourceTree = "<group>"; };
 		D8B2B2FB1C85EBEA0089E6B9 /* icons_thinIceCellLogo_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons_thinIceCellLogo_375@2x.png"; sourceTree = "<group>"; };
 		D8B2B2FD1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons_thinIceCellLogo_414@3x.png"; sourceTree = "<group>"; };
+		D8C14F851CA02B3500028F23 /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
+		D8C14F861CA02B3500028F23 /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
+		D8C14F891CA0367F00028F23 /* SelectedBackground_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelectedBackground_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F8B1CA0368B00028F23 /* ResultsObsessed_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsObsessed_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F8C1CA0368B00028F23 /* ResultsOriented_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsOriented_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F8D1CA0368B00028F23 /* TheTracker_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheTracker_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F8E1CA0368B00028F23 /* FreshFace_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FreshFace_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F8F1CA0368B00028F23 /* TheButtonPresser_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheButtonPresser_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F901CA0368B00028F23 /* SeeingResults_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SeeingResults_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F911CA0368B00028F23 /* GettinLean_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GettinLean_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F921CA0368B00028F23 /* FeelintheBurn_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FeelintheBurn_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F931CA0368B00028F23 /* Firestarter_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Firestarter_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F941CA0368B00028F23 /* TheStrategist_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheStrategist_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F951CA0368B00028F23 /* TheSchemer_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheSchemer_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F961CA0368B00028F23 /* TheDabbler_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheDabbler_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F971CA0368B00028F23 /* TheMarathoner_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheMarathoner_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F981CA0368B00028F23 /* TheEnthusiast_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheEnthusiast_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F991CA0368B00028F23 /* TheMotivated_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheMotivated_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F9A1CA0368B00028F23 /* MovingForward_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MovingForward_320@2x.png"; sourceTree = "<group>"; };
+		D8C14F9B1CA0368B00028F23 /* freshStart_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "freshStart_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FAE1CA0378B00028F23 /* background_over_achievements_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_over_achievements_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB01CA03D5D00028F23 /* FreshFace_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FreshFace_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB11CA03D5D00028F23 /* TheTracker_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheTracker_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB21CA03D5D00028F23 /* ResultsOriented_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsOriented_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB31CA03D5D00028F23 /* ResultsObsessed_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsObsessed_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB41CA03D5D00028F23 /* TheButtonPresser_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheButtonPresser_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB51CA03D5D00028F23 /* SeeingResults_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SeeingResults_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB61CA03D5D00028F23 /* Firestarter_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Firestarter_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB71CA03D5D00028F23 /* FellingTheBurn_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FellingTheBurn_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB81CA03D5D00028F23 /* GettinLean_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GettinLean_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FB91CA03D5D00028F23 /* TheStrategist_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheStrategist_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FBA1CA03D5D00028F23 /* TheSchemer_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheSchemer_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FBB1CA03D5D00028F23 /* TheDabbler_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheDabbler_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FBC1CA03D5D00028F23 /* TheMarathoner_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheMarathoner_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FBD1CA03D5D00028F23 /* TheEnthusiast_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheEnthusiast_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FBE1CA03D5D00028F23 /* TheMotivated_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheMotivated_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FBF1CA03D5D00028F23 /* MovingForward_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MovingForward_unlocked_320@2x.png"; sourceTree = "<group>"; };
+		D8C14FC01CA03D5D00028F23 /* FreshStart_unlocked_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FreshStart_unlocked_320@2x.png"; sourceTree = "<group>"; };
 		D8CABAB41C86D4E6007EEBC7 /* insoles_414@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "insoles_414@3x.png"; sourceTree = "<group>"; };
 		D8CABAB61C86D4F8007EEBC7 /* insoles_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "insoles_375@2x.png"; sourceTree = "<group>"; };
 		D8CABABE1C86E56F007EEBC7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -654,6 +729,8 @@
 		D872D9371C9168BC004EAC59 /* ThinIceControl */ = {
 			isa = PBXGroup;
 			children = (
+				D875BD9E1CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_normal_320@2x.png */,
+				D875BD9F1CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_active_320@2x.png */,
 				AC3AB07D1C9EBEFA00E1C61C /* ThinIceControl_vest_image_320@2x.png */,
 				AC3AB07E1C9EBEFA00E1C61C /* ThinIceControl_plusButton_active_320@2x.png */,
 				AC3AB07F1C9EBEFA00E1C61C /* ThinIceControl_minusButton_active_320@2x.png */,
@@ -787,6 +864,8 @@
 				D88845D31C907542005DFE5C /* AchievementsUnlockerManager.m */,
 				D887CD611C96F7EB00077447 /* AchievementsInfo.h */,
 				D887CD621C96F7EB00077447 /* AchievementsInfo.m */,
+				D8C14F851CA02B3500028F23 /* Achievement.h */,
+				D8C14F861CA02B3500028F23 /* Achievement.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -860,11 +939,12 @@
 		D88845BD1C90571C005DFE5C /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
+				D8C14F891CA0367F00028F23 /* SelectedBackground_320@2x.png */,
+				D8C14FAD1CA036F600028F23 /* achievementsUnlockedImage */,
+				D8C14F881CA0365C00028F23 /* AchievementsImageASSET */,
 				D88845D51C90852F005DFE5C /* badges_320@2x.png */,
-				D88845CC1C9060C4005DFE5C /* background_over_achievements_320@2x.png */,
-				D88845C81C905753005DFE5C /* achievements_inactive_320@2x.png */,
+				D8C14FAE1CA0378B00028F23 /* background_over_achievements_320@2x.png */,
 				D88845C91C905753005DFE5C /* achievements_active_320@2x.png */,
-				D88845D71C908533005DFE5C /* badges_375@2x.png */,
 			);
 			name = Achievements;
 			sourceTree = "<group>";
@@ -872,6 +952,7 @@
 		D88845BE1C905728005DFE5C /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
+				D88845D71C908533005DFE5C /* badges_375@2x.png */,
 				D88845CE1C9060CB005DFE5C /* background_over_achievements_375@2x.png */,
 				D88845C41C90574D005DFE5C /* achievements_inactive_375@2x.png */,
 				D88845C51C90574D005DFE5C /* achievements_active_375@2x.png */,
@@ -961,6 +1042,54 @@
 				D872D9691C91B4C8004EAC59 /* BackSideCellViewController.m */,
 			);
 			name = Dashboard_Cell;
+			sourceTree = "<group>";
+		};
+		D8C14F881CA0365C00028F23 /* AchievementsImageASSET */ = {
+			isa = PBXGroup;
+			children = (
+				D8C14F8B1CA0368B00028F23 /* ResultsObsessed_320@2x.png */,
+				D8C14F8C1CA0368B00028F23 /* ResultsOriented_320@2x.png */,
+				D8C14F8D1CA0368B00028F23 /* TheTracker_320@2x.png */,
+				D8C14F8E1CA0368B00028F23 /* FreshFace_320@2x.png */,
+				D8C14F8F1CA0368B00028F23 /* TheButtonPresser_320@2x.png */,
+				D8C14F901CA0368B00028F23 /* SeeingResults_320@2x.png */,
+				D8C14F911CA0368B00028F23 /* GettinLean_320@2x.png */,
+				D8C14F921CA0368B00028F23 /* FeelintheBurn_320@2x.png */,
+				D8C14F931CA0368B00028F23 /* Firestarter_320@2x.png */,
+				D8C14F941CA0368B00028F23 /* TheStrategist_320@2x.png */,
+				D8C14F951CA0368B00028F23 /* TheSchemer_320@2x.png */,
+				D8C14F961CA0368B00028F23 /* TheDabbler_320@2x.png */,
+				D8C14F971CA0368B00028F23 /* TheMarathoner_320@2x.png */,
+				D8C14F981CA0368B00028F23 /* TheEnthusiast_320@2x.png */,
+				D8C14F991CA0368B00028F23 /* TheMotivated_320@2x.png */,
+				D8C14F9A1CA0368B00028F23 /* MovingForward_320@2x.png */,
+				D8C14F9B1CA0368B00028F23 /* freshStart_320@2x.png */,
+			);
+			name = AchievementsImageASSET;
+			sourceTree = "<group>";
+		};
+		D8C14FAD1CA036F600028F23 /* achievementsUnlockedImage */ = {
+			isa = PBXGroup;
+			children = (
+				D8C14FB01CA03D5D00028F23 /* FreshFace_unlocked_320@2x.png */,
+				D8C14FB11CA03D5D00028F23 /* TheTracker_unlocked_320@2x.png */,
+				D8C14FB21CA03D5D00028F23 /* ResultsOriented_unlocked_320@2x.png */,
+				D8C14FB31CA03D5D00028F23 /* ResultsObsessed_unlocked_320@2x.png */,
+				D8C14FB41CA03D5D00028F23 /* TheButtonPresser_unlocked_320@2x.png */,
+				D8C14FB51CA03D5D00028F23 /* SeeingResults_unlocked_320@2x.png */,
+				D8C14FB61CA03D5D00028F23 /* Firestarter_unlocked_320@2x.png */,
+				D8C14FB71CA03D5D00028F23 /* FellingTheBurn_unlocked_320@2x.png */,
+				D8C14FB81CA03D5D00028F23 /* GettinLean_unlocked_320@2x.png */,
+				D8C14FB91CA03D5D00028F23 /* TheStrategist_unlocked_320@2x.png */,
+				D8C14FBA1CA03D5D00028F23 /* TheSchemer_unlocked_320@2x.png */,
+				D8C14FBB1CA03D5D00028F23 /* TheDabbler_unlocked_320@2x.png */,
+				D8C14FBC1CA03D5D00028F23 /* TheMarathoner_unlocked_320@2x.png */,
+				D8C14FBD1CA03D5D00028F23 /* TheEnthusiast_unlocked_320@2x.png */,
+				D8C14FBE1CA03D5D00028F23 /* TheMotivated_unlocked_320@2x.png */,
+				D8C14FBF1CA03D5D00028F23 /* MovingForward_unlocked_320@2x.png */,
+				D8C14FC01CA03D5D00028F23 /* FreshStart_unlocked_320@2x.png */,
+			);
+			name = achievementsUnlockedImage;
 			sourceTree = "<group>";
 		};
 		D8CABABA1C86D9E9007EEBC7 /* Dashboard */ = {
@@ -1374,15 +1503,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8B2B2CA1C85A4890089E6B9 /* icons_clock_320@2x.png in Resources */,
+				D8C14F8A1CA0367F00028F23 /* SelectedBackground_320@2x.png in Resources */,
 				D8CABAF31C873399007EEBC7 /* icons_statisticsBurnedCal_375@2x.png in Resources */,
 				D8B2B2C61C85A47B0089E6B9 /* icons_temperature_375@2x.png in Resources */,
+				D8C14FCD1CA03D5D00028F23 /* TheMarathoner_unlocked_320@2x.png in Resources */,
 				D8B2B2B21C8599770089E6B9 /* icons_dashboardFlip_normal_320@2x.png in Resources */,
 				D88845CB1C905753005DFE5C /* achievements_active_320@2x.png in Resources */,
+				D8C14F9F1CA0368B00028F23 /* FreshFace_320@2x.png in Resources */,
+				D8C14FA01CA0368B00028F23 /* TheButtonPresser_320@2x.png in Resources */,
+				D8C14FC21CA03D5D00028F23 /* TheTracker_unlocked_320@2x.png in Resources */,
 				AC3AB0871C9EBEFA00E1C61C /* ThinIceControl_minusButton_normal_320@2x.png in Resources */,
 				D845D80F1C8D7D0B00F8B563 /* btn_help_normal_414@3x.png in Resources */,
 				D88845D81C908533005DFE5C /* badges_375@2x.png in Resources */,
+				D8C14FCE1CA03D5D00028F23 /* TheEnthusiast_unlocked_320@2x.png in Resources */,
+				D8C14FC81CA03D5D00028F23 /* FellingTheBurn_unlocked_320@2x.png in Resources */,
+				D875BDA11CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_active_320@2x.png in Resources */,
 				D8A167791C882D33000C4C1C /* background_statistics_414@3x.png in Resources */,
 				D8B2B2B81C859A150089E6B9 /* icons_dashboardFlip_normal_375@2x.png in Resources */,
+				D8C14FAF1CA0378B00028F23 /* background_over_achievements_320@2x.png in Resources */,
 				D872D94E1C916A5C004EAC59 /* thinicebt_plus_active_375@2x.png in Resources */,
 				D88845CF1C9060CB005DFE5C /* background_over_achievements_375@2x.png in Resources */,
 				D8A167901C88601B000C4C1C /* icons_account_exit_account_normal_320@2x.png in Resources */,
@@ -1391,16 +1529,18 @@
 				D87F8EEA1C98507A00D6E58A /* failed_320@2x.png in Resources */,
 				D8B2B2E61C85C33E0089E6B9 /* icons_waterIntake_320@2x.png in Resources */,
 				D872D9511C916A5C004EAC59 /* thiniceplus_active_375@2x.png in Resources */,
+				D8C14FCF1CA03D5D00028F23 /* TheMotivated_unlocked_320@2x.png in Resources */,
 				D845D81E1C8DD66000F8B563 /* btn_save_active_375@2x.png in Resources */,
 				D872D9421C916A4C004EAC59 /* thiniceplus_normal_414@3x.png in Resources */,
 				D88C62691C84860100FDDF0B /* thin_ice_vest_414@3x.png in Resources */,
-				D88845CD1C9060C4005DFE5C /* background_over_achievements_320@2x.png in Resources */,
+				D8C14FC71CA03D5D00028F23 /* Firestarter_unlocked_320@2x.png in Resources */,
 				D845D8221C8DD66D00F8B563 /* btn_save_active_320@2x.png in Resources */,
 				D88845C61C90574D005DFE5C /* achievements_inactive_375@2x.png in Resources */,
 				D8EF71591C7B6D180006FDEF /* thin_ice_dashboard_background_320@2x.png in Resources */,
 				D8B2B2B41C8599C90089E6B9 /* icons_dashboardFlip_active_320@2x.png in Resources */,
+				D8C14FA11CA0368B00028F23 /* SeeingResults_320@2x.png in Resources */,
+				D8C14FA61CA0368B00028F23 /* TheSchemer_320@2x.png in Resources */,
 				D87F8EE21C98506B00D6E58A /* failed_414@3x.png in Resources */,
-				D88845CA1C905753005DFE5C /* achievements_inactive_320@2x.png in Resources */,
 				D88845AD1C900D51005DFE5C /* arrow_414@3x.png in Resources */,
 				D87F8EE61C98507300D6E58A /* failed_375@2x.png in Resources */,
 				D8B2B2D41C85C10B0089E6B9 /* icons_burntCalories_414@3x.png in Resources */,
@@ -1410,6 +1550,7 @@
 				D8B2B2FC1C85EBEA0089E6B9 /* icons_thinIceCellLogo_375@2x.png in Resources */,
 				D88C62611C8485EF00FDDF0B /* thin_ice_vest_320@2x.png in Resources */,
 				D8AB98841C7C4E6600E7BD0E /* btn_sign_up_normal_414@3x.png in Resources */,
+				D8C14FCB1CA03D5D00028F23 /* TheSchemer_unlocked_320@2x.png in Resources */,
 				D845D81D1C8DD66000F8B563 /* btn_save_normal_375@2x.png in Resources */,
 				D8A167861C88600C000C4C1C /* background_accaunt_414@3x.png in Resources */,
 				D872D94D1C916A5C004EAC59 /* thinicebt_plus_inactive_375@2x.png in Resources */,
@@ -1417,56 +1558,75 @@
 				D88845C21C905746005DFE5C /* achievements_inactive_414@3x.png in Resources */,
 				D88845DA1C90853A005DFE5C /* badges_414@3x.png in Resources */,
 				D8B2B2EC1C85C3460089E6B9 /* icons_waterIntake_375@2x.png in Resources */,
+				D8C14FA91CA0368B00028F23 /* TheEnthusiast_320@2x.png in Resources */,
 				D87F8EE71C98507300D6E58A /* success_375@2x.png in Resources */,
+				D8C14FA71CA0368B00028F23 /* TheDabbler_320@2x.png in Resources */,
 				D8B2B2F61C85C3DB0089E6B9 /* icons_H_protein_375@2x.png in Resources */,
 				D8B2B2FE1C85EBF00089E6B9 /* icons_thinIceCellLogo_414@3x.png in Resources */,
 				D8B2B2EB1C85C3460089E6B9 /* icons_JunkFood_375@2x.png in Resources */,
 				D8A167841C88600C000C4C1C /* icons_account_exit_account_normal_414@3x.png in Resources */,
 				AC3AB0861C9EBEFA00E1C61C /* ThinIceControl_plusButton_normal_320@2x.png in Resources */,
+				D8C14FC51CA03D5D00028F23 /* TheButtonPresser_unlocked_320@2x.png in Resources */,
+				D8C14F9E1CA0368B00028F23 /* TheTracker_320@2x.png in Resources */,
 				D8AB987E1C7C489400E7BD0E /* Thin_ice_background_375@2x.png in Resources */,
 				D8EDC9A31C75F2B400F5F524 /* btn_sign_up_active_375@2x.png in Resources */,
 				D8CABAB51C86D4E6007EEBC7 /* insoles_414@3x.png in Resources */,
 				D8A1678C1C886014000C4C1C /* background_accaunt_375@2x.png in Resources */,
 				D845D80A1C8D7D0300F8B563 /* btn_help_active_375@2x.png in Resources */,
+				D8C14FCA1CA03D5D00028F23 /* TheStrategist_unlocked_320@2x.png in Resources */,
+				D8C14FC91CA03D5D00028F23 /* GettinLean_unlocked_320@2x.png in Resources */,
 				D8D843F71C9BE5B20027CD71 /* button_power_active_320@2x.png in Resources */,
+				D8C14F9C1CA0368B00028F23 /* ResultsObsessed_320@2x.png in Resources */,
 				D8D843F81C9BE5B20027CD71 /* button_power_normal_320@2x.png in Resources */,
 				D872D9501C916A5C004EAC59 /* thiniceplus_normal_375@2x.png in Resources */,
+				D8C14FC41CA03D5D00028F23 /* ResultsObsessed_unlocked_320@2x.png in Resources */,
 				D8B2B2C81C85A4820089E6B9 /* icons_temperature_320@2x.png in Resources */,
 				D8B2B2BC1C859A790089E6B9 /* icons_dashboardFlip_normal_414@3x.png in Resources */,
 				D8AB98801C7C493700E7BD0E /* thin_ice_dashboard_background_375@2x.png in Resources */,
+				D8C14FC61CA03D5D00028F23 /* SeeingResults_unlocked_320@2x.png in Resources */,
 				D872D94F1C916A5C004EAC59 /* thinicebt_minus_active_375@2x.png in Resources */,
 				D8CABAEF1C87338F007EEBC7 /* icons_statisticstemperature_414@3x.png in Resources */,
 				D8AB98821C7C4CCD00E7BD0E /* Thin_ice_background_414@3x.png in Resources */,
+				D8C14FCC1CA03D5D00028F23 /* TheDabbler_unlocked_320@2x.png in Resources */,
 				D8B2B2BB1C859A790089E6B9 /* icons_dashboardFlip_active_414@3x.png in Resources */,
 				D845D8191C8DD65A00F8B563 /* btn_save_normal_414@3x.png in Resources */,
 				D8A167771C882D2E000C4C1C /* background_statistics_375@2x.png in Resources */,
 				D845D8211C8DD66D00F8B563 /* btn_save_normal_320@2x.png in Resources */,
 				D8A167921C88601B000C4C1C /* background_accaunt_320@2x.png in Resources */,
+				D8C14FAC1CA0368B00028F23 /* freshStart_320@2x.png in Resources */,
 				D8EDC9A41C75F2B400F5F524 /* btn_sign_up_normal_375@2x.png in Resources */,
 				AC3AB0851C9EBEFA00E1C61C /* ThinIceControl_minusButton_active_320@2x.png in Resources */,
 				D8B2B2E51C85C33E0089E6B9 /* icons_JunkFood_320@2x.png in Resources */,
+				D8C14FA81CA0368B00028F23 /* TheMarathoner_320@2x.png in Resources */,
 				D8B2B2CE1C85A4950089E6B9 /* icons_clock_414@3x.png in Resources */,
 				D8A1679D1C886489000C4C1C /* icons_account_exit_account_active_414@3x.png in Resources */,
 				D8A167751C882D28000C4C1C /* background_statistics_320@2x.png in Resources */,
+				D8C14FA41CA0368B00028F23 /* Firestarter_320@2x.png in Resources */,
 				D8B2B2E01C85C2230089E6B9 /* icons_gymSession_414@3x.png in Resources */,
 				D845D81A1C8DD65A00F8B563 /* btn_save_active_414@3x.png in Resources */,
 				D8B2B2F21C85C34E0089E6B9 /* icons_waterIntake_414@3x.png in Resources */,
 				D872D9411C916A4C004EAC59 /* thinicebt_minus_active_414@3x.png in Resources */,
 				D8B2B2F81C85C4120089E6B9 /* icons_H_protein_414@3x.png in Resources */,
 				D88C62651C8485F700FDDF0B /* thin_ice_vest_375@2x.png in Resources */,
+				D8C14FD11CA03D5D00028F23 /* FreshStart_unlocked_320@2x.png in Resources */,
 				D8B2B2F41C85C3D70089E6B9 /* icons_H_protein_320@2x.png in Resources */,
 				D8B2B2CC1C85A48F0089E6B9 /* icons_clock_375@2x.png in Resources */,
+				D8C14FC31CA03D5D00028F23 /* ResultsOriented_unlocked_320@2x.png in Resources */,
+				D8C14FA21CA0368B00028F23 /* GettinLean_320@2x.png in Resources */,
 				D8A1678A1C886014000C4C1C /* icons_account_exit_account_normal_375@2x.png in Resources */,
 				D8B2B2C41C85A4750089E6B9 /* icons_temperature_414@3x.png in Resources */,
 				AC3AB0841C9EBEFA00E1C61C /* ThinIceControl_plusButton_active_320@2x.png in Resources */,
 				D872D93E1C916A4C004EAC59 /* thiniceControl_vest_414@3x.png in Resources */,
 				D8EF71571C7B66680006FDEF /* Thin_ice_background_320@2x.png in Resources */,
+				D8C14F9D1CA0368B00028F23 /* ResultsOriented_320@2x.png in Resources */,
 				D8B2B2B71C859A150089E6B9 /* icons_dashboardFlip_active_375@2x.png in Resources */,
 				D8EDC99D1C75F28600F5F524 /* btn_sign_up_active_320@2x.png in Resources */,
 				D845D80B1C8D7D0300F8B563 /* btn_help_normal_375@2x.png in Resources */,
 				D845D8061C8D7CFC00F8B563 /* btn_help_active_320@2x.png in Resources */,
 				D872D95E1C916A69004EAC59 /* thiniceplus_normal_320@2x.png in Resources */,
+				D8C14FD01CA03D5D00028F23 /* MovingForward_unlocked_320@2x.png in Resources */,
 				D8B2B2F11C85C34E0089E6B9 /* icons_JunkFood_414@3x.png in Resources */,
+				D8C14FA51CA0368B00028F23 /* TheStrategist_320@2x.png in Resources */,
 				D8A1679F1C886490000C4C1C /* icons_account_exit_account_active_375@2x.png in Resources */,
 				D872D9431C916A4C004EAC59 /* thiniceplus_active_414@3x.png in Resources */,
 				D88845D11C9060D2005DFE5C /* background_over_achievements_414@3x.png in Resources */,
@@ -1474,6 +1634,7 @@
 				D87F8EE31C98506B00D6E58A /* success_414@3x.png in Resources */,
 				D872D94B1C916A5C004EAC59 /* thiniceControl_vest_375@2x.png in Resources */,
 				D8A1678B1C886014000C4C1C /* icons_account_photo_375@2x.png in Resources */,
+				D8C14FAA1CA0368B00028F23 /* TheMotivated_320@2x.png in Resources */,
 				D8CABAF21C873399007EEBC7 /* icons_statisticstemperature_375@2x.png in Resources */,
 				AC3AB0881C9EBEFA00E1C61C /* ThinIceControl_timer_image_320@2x.png in Resources */,
 				D8B2B2D21C85C1060089E6B9 /* icons_burntCalories_375@2x.png in Resources */,
@@ -1481,6 +1642,7 @@
 				D8867E5F1C732D02005F7B6D /* Assets.xcassets in Resources */,
 				AC3AB0831C9EBEFA00E1C61C /* ThinIceControl_vest_image_320@2x.png in Resources */,
 				D8CABAF71C87339F007EEBC7 /* icons_statisticsBurnedCal_320@2x.png in Resources */,
+				D8C14FC11CA03D5D00028F23 /* FreshFace_unlocked_320@2x.png in Resources */,
 				D8A167911C88601B000C4C1C /* icons_account_photo_320@2x.png in Resources */,
 				D88845D61C90852F005DFE5C /* badges_320@2x.png in Resources */,
 				D8B2B2DE1C85C21D0089E6B9 /* icons_gymSession_375@2x.png in Resources */,
@@ -1489,10 +1651,13 @@
 				D845D8071C8D7CFC00F8B563 /* btn_help_normal_320@2x.png in Resources */,
 				D88845AF1C900D57005DFE5C /* arrow_375@2x.png in Resources */,
 				D872D94C1C916A5C004EAC59 /* thinicebt_minus_inactive_375@2x.png in Resources */,
+				D875BDA01CA01FBB00CD3FA5 /* thinIceControl_btn_deletedevice_normal_320@2x.png in Resources */,
 				D872D95F1C916A69004EAC59 /* thiniceplus_active_320@2x.png in Resources */,
 				D872D9401C916A4C004EAC59 /* thinicebt_plus_active_414@3x.png in Resources */,
+				D8C14FA31CA0368B00028F23 /* FeelintheBurn_320@2x.png in Resources */,
 				D8CABAB71C86D4F8007EEBC7 /* insoles_375@2x.png in Resources */,
 				D8B2B2D01C85C1000089E6B9 /* icons_burntCalories_320@2x.png in Resources */,
+				D8C14FAB1CA0368B00028F23 /* MovingForward_320@2x.png in Resources */,
 				D88845B11C900D5D005DFE5C /* arrow_320@2x.png in Resources */,
 				D8EDC99E1C75F28600F5F524 /* btn_sign_up_normal_320@2x.png in Resources */,
 				D845D80E1C8D7D0B00F8B563 /* btn_help_active_414@3x.png in Resources */,
@@ -1564,6 +1729,7 @@
 				D887CD631C96F7EB00077447 /* AchievementsInfo.m in Sources */,
 				D8846B441C93190C000ECA38 /* RSKInternalUtility.m in Sources */,
 				D8EDC9991C75D66400F5F524 /* DashboardViewController.m in Sources */,
+				D8C14F871CA02B3500028F23 /* Achievement.m in Sources */,
 				D887CD4D1C96E98700077447 /* UserSettings.m in Sources */,
 				D88845B81C904D4A005DFE5C /* AchievemetsUnlockedViewController.m in Sources */,
 				D8CABAD41C8723A3007EEBC7 /* CarbonTabSwipeNavigation.m in Sources */,

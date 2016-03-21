@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThinIceControlViewController.h"
 
 @interface ThinIceControlChangeTemperatureSideViewController : UIViewController
 
-// Content View
-
-@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) ThinIceControlViewController          *parentVC;
 
 @end

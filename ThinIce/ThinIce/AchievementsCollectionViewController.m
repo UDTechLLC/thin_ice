@@ -39,9 +39,6 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     [self translucentNavigationBar: YES];
     [super viewWillAppear:YES];
     
-    
-    
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [AchievementsUnlockerManager sharedManager];
     });
@@ -51,8 +48,7 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     
     [self addAchievementsBackgroundImage];
     
-    AchievementsInfo *thinIceAchievements           = [[AchievementsInfo alloc] init];
-    arrayAchievementsData                           = [NSArray arrayWithArray:thinIceAchievements.achievementName];
+    arrayAchievementsData                           = [NSArray arrayWithArray:[AccountInfoManager sharedManager].userAchievements.achievements];
     
     self.collectionView.backgroundColor             = [UIColor clearColor];
     self.collectionViewFlowLayout.sectionInset      = UIEdgeInsetsMake(-STATUSplusNAVIGATIONBARINSETS, 0, 1, 0);
@@ -69,9 +65,11 @@ typedef NS_ENUM(NSUInteger, ImageState) {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    AchievementsCollectionCell *cell    = nil;
-    cell                                = [collectionView dequeueReusableCellWithReuseIdentifier:kAchievementsCollectionCellIdentifier forIndexPath:indexPath];
-    [cell loadCellWithTitle: [arrayAchievementsData objectAtIndex:indexPath.row] andImageState: arc4random_uniform(2) achievementsID: 0];
+    AchievementsCollectionCell *cell            = nil;
+    Achievement                 *achievement    = nil;
+                                cell            = [collectionView dequeueReusableCellWithReuseIdentifier:kAchievementsCollectionCellIdentifier forIndexPath:indexPath];
+                                achievement    = [arrayAchievementsData objectAtIndex:indexPath.row];
+    [cell loadCellWithTitle: achievement.achievementName andImageState: achievement.achievementIsEnable  achievementsID: achievement.achievementID AchievementImageName: achievement.achievementPicture];
     
     return cell;
 }

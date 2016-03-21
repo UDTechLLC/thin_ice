@@ -10,4 +10,7 @@
 
 @interface ThinIceControlViewController : BaseViewController
 
+- (void)rightFlip;
+- (void)leftFlip;
+
 @end

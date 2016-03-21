@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThinIceControlViewController.h"
 
 @interface ThinIceControlChangeTimerAndDeviceSideViewController : UIViewController
+
+@property (strong, nonatomic) ThinIceControlViewController          *parentVC;
 
 @end

@@ -10,9 +10,13 @@
 #import "ThinIceControlChangeTemperatureSideViewController.h"
 #import "ThinIceControlChangeTimerAndDeviceSideViewController.h"
 
-@interface ThinIceControlViewController ()
+@interface ThinIceControlViewController () {
+    
+    ThinIceControlChangeTemperatureSideViewController           * thinIceControlTemperature;
+    ThinIceControlChangeTimerAndDeviceSideViewController        * thinIceControlDevice;
+}
 
-@property (weak, nonatomic) IBOutlet UIView *thinIceContentView;
+@property (weak, nonatomic) IBOutlet UIView                     *thinIceContentView;
 
 @end
 
@@ -29,7 +33,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [self addNavigationBarAttributeTitle: @"Thin Ice Control"];
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden                   = NO;
     [self translucentNavigationBar: YES];
     [super viewWillAppear:YES];
 }
@@ -37,7 +41,17 @@
 - (void)createViewController {
     
     [self addThinIceControlBackgroundImage];
-    self.thinIceContentView.backgroundColor                        = [UIColor clearColor];
+    self.thinIceContentView.backgroundColor                         = [UIColor clearColor];
+    
+    thinIceControlTemperature                                       = [self.storyboard instantiateViewControllerWithIdentifier:ThinIceControlChangeTemperatureSideViewControllerID];
+    thinIceControlTemperature.parentVC                              = self;
+    thinIceControlDevice                                            = [self.storyboard instantiateViewControllerWithIdentifier:ThinIceControlChangeTimerAndDeviceSideViewControllerID];
+    thinIceControlDevice.parentVC                                   = self;
+    
+    thinIceControlTemperature.view.frame                            = self.thinIceContentView.bounds;
+    thinIceControlDevice.view.frame                                 = self.thinIceContentView.bounds;
+    
+    [self.thinIceContentView addSubview: thinIceControlTemperature.view];
 }
 
 - (void)addBluetoothDevice {
@@ -49,6 +63,36 @@
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
     
     return YES;
+}
+
+- (void)rightFlip {
+    
+    CGRect cellRect                                                 = self.thinIceContentView.bounds;
+    thinIceControlDevice.view.frame                                 = cellRect;
+    
+    [UIView transitionWithView:self.thinIceContentView duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews animations:^{
+        
+        [thinIceControlTemperature.view removeFromSuperview];
+        [self.thinIceContentView addSubview:thinIceControlDevice.view];
+        
+    } completion:^(BOOL finished) {
+    
+    }];
+}
+
+- (void)leftFlip {
+    
+    CGRect cellRect                                                 = self.thinIceContentView.bounds;
+    thinIceControlTemperature.view.frame                            = cellRect;
+    
+    [UIView transitionWithView:self.thinIceContentView duration:0.6 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        
+        [thinIceControlDevice.view removeFromSuperview];
+        [self.thinIceContentView addSubview:thinIceControlTemperature.view];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 @end

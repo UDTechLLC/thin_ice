@@ -66,6 +66,11 @@
 #define kSaveNotificationDelayKey                               @"SaveNotificationDelay"
 #define kSaveNotificationStateKey                               @"SaveNotificationState"
 
+#define kSaveDeviceTimerOnOFFKey                                @"DeviceTimerOnOFFKey"
+#define kSaveDeviceTimeDelayKey                                 @"DeviceTimeDelayKey"
+#define kStoreTimeForTimer                                      @"StoreTimeForTimer"
+#define kStoreCurrentDeviceTemperature                          @"StoreCurrentDeviceTemperature"
+
 #define kSaveInObjectNotificationDelayKey                       @"SaveInObjectNotificationDelay"
 #define kSaveInObjectNotificationStateKey                       @"SaveInObjectNotificationState"
 

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 #import "SavedUser.h"
+#import "AchievementsInfo.h"
 
 #define kNotificationDeleyKey               @"NotificationDelayKey"
 #define kNotificationStateKey               @"NotificationStateKey"
@@ -25,13 +26,33 @@ typedef NS_ENUM(NSUInteger, NotificationsState) {
     NotificationON
 };
 
+typedef NS_ENUM(NSUInteger, TimerDelay) {
+    ThirtyMenutes,
+    OneHour
+};
+
+typedef NS_ENUM(NSUInteger, DeviceTimerState) {
+    TimerOFF,
+    TimerON
+};
+
 @interface AccountInfoManager : NSObject
 
 @property (readonly, nonatomic) SavedUser                       *userSavedInHomeDirectory;
 @property (readonly, nonatomic) User                            *userToken;
+@property (readonly, nonatomic) AchievementsInfo                *userAchievements;
 
-@property (nonatomic) NotificationsState isNotificationON;
-@property (nonatomic) NotificationsDelay notificationDelay;
+// Notifications ViewController propertys
+
+@property (nonatomic) NotificationsState                        isNotificationON;
+@property (nonatomic) NotificationsDelay                        notificationDelay;
+
+// Timer / Temperature ViewController propertys
+
+@property (nonatomic) DeviceTimerState                          deviceONOFFTimer;
+@property (nonatomic) NSInteger                                 currentDeviceTemperature;
+@property (nonatomic) NSTimer                                   *deviceTimer;
+@property (nonatomic) TimerDelay                                timerDelay;
 
 + (AccountInfoManager *)sharedManager;
 

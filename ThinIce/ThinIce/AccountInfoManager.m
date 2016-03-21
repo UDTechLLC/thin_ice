@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong, readwrite) SavedUser                  *userSavedInHomeDirectory;
 @property (nonatomic, strong, readwrite) User                       *userToken;
+@property (nonatomic, strong, readwrite) AchievementsInfo           *userAchievements;
 
 @end
 
@@ -34,16 +35,34 @@
     self = [super init];
     if (self) {
         
+        [self p_getTimer];
         [self p_getSettings];
         [self p_getToken];
         
-        [self addObserver:self forKeyPath:@"userSavedInHomeDirectory" options:NSKeyValueObservingOptionNew context:NULL];
+        [self addObserver:self forKeyPath:@"deviceONOFFTimer" options:NSKeyValueObservingOptionNew context:NULL];
+        [self addObserver:self forKeyPath:@"currentDeviceTemperature" options:NSKeyValueObservingOptionNew context:NULL];
+        [self addObserver:self forKeyPath:@"deviceTimer" options:NSKeyValueObservingOptionNew context:NULL];
+        [self addObserver:self forKeyPath:@"timerDelay" options:NSKeyValueObservingOptionNew context:NULL];
         
+        [self addObserver:self forKeyPath:@"userSavedInHomeDirectory" options:NSKeyValueObservingOptionNew context:NULL];
         [self addObserver:self forKeyPath:@"isNotificationON" options:NSKeyValueObservingOptionNew context:NULL];
         [self addObserver:self forKeyPath:@"notificationDelay" options:NSKeyValueObservingOptionNew context:NULL];
     }
     
     return self;
+}
+
+- (void)p_getTimer {
+    
+   // NSString *stringGetTimeForTimer                 = [[NSUserDefaults standardUserDefaults] objectForKey:kStoreTimeForTimer];
+    NSString *stringGetTimerState                   = [[NSUserDefaults standardUserDefaults] objectForKey:kSaveDeviceTimerOnOFFKey];
+    NSString *stringGetDeviceTimerDelay             = [[NSUserDefaults standardUserDefaults] objectForKey:kSaveDeviceTimeDelayKey];
+    NSString *stringGetCurrentDeviceTemperature     = [[NSUserDefaults standardUserDefaults] objectForKey:kStoreCurrentDeviceTemperature];
+    
+    //self.deviceTimer                                = [stringGetTimeForTimer integerValue];
+    self.deviceONOFFTimer                           = [stringGetTimerState integerValue];
+    self.timerDelay                                 = [stringGetDeviceTimerDelay integerValue];
+    self.currentDeviceTemperature                   = [stringGetCurrentDeviceTemperature integerValue];
 }
 
 - (void)p_getSettings {
@@ -85,6 +104,26 @@
         
         [self saveSettingNotificationDelay];
     }
+    if([keyPath isEqual:@"deviceONOFFTimer"]) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:  self.deviceONOFFTimer] forKey:kSaveDeviceTimerOnOFFKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    if([keyPath isEqual:@"currentDeviceTemperature"]) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:  self.currentDeviceTemperature] forKey:kStoreCurrentDeviceTemperature];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    if([keyPath isEqual:@"deviceTimer"]) {
+        
+        // [[NSUserDefaults standardUserDefaults] setObject:self.savedUserPass forKey:kStoreTimeForTimer];
+        // [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    if([keyPath isEqual:@"timerDelay"]) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithInteger: self.timerDelay] forKey:kSaveDeviceTimeDelayKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (void)saveToken:(SavedUser*)token {
@@ -111,6 +150,7 @@
     
     self.userToken                  = nil;
     self.userSavedInHomeDirectory   = nil;
+    self.userAchievements           = nil;
     
     [self saveToken:self.userSavedInHomeDirectory];
 }
@@ -132,6 +172,9 @@
     
     self.userToken                              = newUser;
     
+    self.userAchievements                       = [[AchievementsInfo alloc] init];
+    [self.userAchievements createNSArrayAchievements];
+    
     block();
 }
 
@@ -148,6 +191,9 @@
         NSLog(@"-------=======user Find=======-------");
         self.userToken                      = [filteredPassword firstObject];
         self.userSavedInHomeDirectory       = [SavedUser initWithLogin:self.userToken.userLogin Pass:self.userToken.userPass];
+        
+        self.userAchievements               = [[AchievementsInfo alloc] init];
+        [self.userAchievements createNSArrayAchievements];
         
         block(YES);
     } else {
@@ -169,6 +215,9 @@
         NSLog(@"-------=======user Find=======-------");
         self.userToken                              = [filteredUser firstObject];
         self.userSavedInHomeDirectory               = [SavedUser initWithSocialityKey:self.userToken.socialityKey];
+        
+        self.userAchievements = [[AchievementsInfo alloc] init];
+        [self.userAchievements loadNSArrayAchievements];
         
         block(YES);
     } else {
@@ -195,6 +244,9 @@
         [self injectUserSettings:newUser];
         self.userSavedInHomeDirectory               = [SavedUser initWithSocialityKey:self.userToken.socialityKey];
         self.userToken                              = newUser;
+        
+        self.userAchievements                       = [[AchievementsInfo alloc] init];
+        [self.userAchievements createNSArrayAchievements];
         
         [defaultContext MR_saveToPersistentStoreAndWait];
         
@@ -223,6 +275,11 @@
     if(emailFilteredUser.count > 0) {
         
         self.userToken                                  = [emailFilteredUser firstObject];
+        
+        AchievementsInfo *userAchievements = [[AchievementsInfo alloc] init];
+        [userAchievements loadNSArrayAchievements];
+        
+        
         block();
         
         return;
@@ -279,6 +336,35 @@
     user.userSettings.user_Length           = @"Cm";
     
     [settingsContext MR_saveToPersistentStoreAndWait];
+}
+
+- (void)createUserCardsWithDay {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 @end

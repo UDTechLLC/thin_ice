@@ -33,6 +33,7 @@
     
     self.flipButton.backgroundColor                         = [UIColor clearColor];
     self.flipButton.tintColor                               = [UIColor clearColor];
+    
     [self.flipButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icons_dashboardFlip_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
     [self.flipButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icons_dashboardFlip_active_%d", (int)kScreenWidth]] forState:UIControlStateHighlighted];
     [self.flipButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icons_dashboardFlip_active_%d", (int)kScreenWidth]] forState:UIControlStateSelected];

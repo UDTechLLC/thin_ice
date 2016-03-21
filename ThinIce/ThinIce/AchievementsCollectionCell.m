@@ -13,7 +13,7 @@
 
 @implementation AchievementsCollectionCell
 
-- (void)loadCellWithTitle:(NSString*)title andImageState:(NSInteger)state achievementsID:(NSUInteger)index {
+- (void)loadCellWithTitle:(NSString*)title andImageState:(NSInteger)state achievementsID:(NSString*)ID AchievementImageName:(NSString*)imageName {
     
 // Configure Cell
     self.backgroundColor                = [UIColor clearColor];
@@ -24,12 +24,12 @@
     switch (state) {
         case ImageStateInActive:
         {
-            self.cellImageView.image    = [UIImage imageNamed:[NSString stringWithFormat:@"achievements_inactive_%d", (int)kScreenWidth]];
+            self.cellImageView.image    = [UIImage imageNamed:[NSString stringWithFormat:@"achievements_active_%d", (int)kScreenWidth]];
         }
             break;
         case ImageStateActive:
         {
-            self.cellImageView.image    = [UIImage imageNamed:[NSString stringWithFormat:@"achievements_active_%d", (int)kScreenWidth]];
+            self.cellImageView.image    = [UIImage imageNamed:[NSString stringWithFormat:@"%@%d",imageName, (int)kScreenWidth]];
         }
             break;
             
@@ -40,8 +40,7 @@
     self.cellTitle.textColor            = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     self.cellTitle.text                 = title;
     
-    
-    self.achievementsID                 = index;
+    self.achievementsID = ID;
 }
 
 @end

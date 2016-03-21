@@ -33,5 +33,6 @@
 #import "AchievementsUnlockerManager.h"
 #import "AchievementsInfo.h"
 #import "SavedUser.h"
+#import "Achievement.h"
 
 #endif /* PrefixHeader_pch */

@@ -10,10 +10,10 @@
 
 @interface AchievementsCollectionCell : UICollectionViewCell
 
-@property (nonatomic) NSUInteger                            achievementsID;
+@property (weak, nonatomic) NSString                        *achievementsID;
 @property (weak, nonatomic) IBOutlet UIImageView            *cellImageView;
 @property (weak, nonatomic) IBOutlet UILabel                *cellTitle;
 
-- (void)loadCellWithTitle:(NSString*)title andImageState:(NSInteger)state achievementsID:(NSUInteger)index;
+- (void)loadCellWithTitle:(NSString*)title andImageState:(NSInteger)state achievementsID:(NSString*)ID AchievementImageName:(NSString*)imageName;
 
 @end
