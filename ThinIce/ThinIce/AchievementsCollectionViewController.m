@@ -15,9 +15,7 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     ImageStateActive
 };
 
-@interface AchievementsCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
-    NSArray                                                                         *arrayAchievementsData;
-}
+@interface AchievementsCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView                               *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout                     *collectionViewFlowLayout;
@@ -48,8 +46,6 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     
     [self addAchievementsBackgroundImage];
     
-    arrayAchievementsData                           = [NSArray arrayWithArray:[AccountInfoManager sharedManager].userAchievements.achievements];
-    
     self.collectionView.backgroundColor             = [UIColor clearColor];
     self.collectionViewFlowLayout.sectionInset      = UIEdgeInsetsMake(-STATUSplusNAVIGATIONBARINSETS, 0, 1, 0);
     
@@ -60,7 +56,7 @@ typedef NS_ENUM(NSUInteger, ImageState) {
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return arrayAchievementsData.count;
+    return [AccountInfoManager sharedManager].userAchievements.achievements.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,7 +64,8 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     AchievementsCollectionCell *cell            = nil;
     Achievement                 *achievement    = nil;
                                 cell            = [collectionView dequeueReusableCellWithReuseIdentifier:kAchievementsCollectionCellIdentifier forIndexPath:indexPath];
-                                achievement    = [arrayAchievementsData objectAtIndex:indexPath.row];
+                                achievement    = [[AccountInfoManager sharedManager].userAchievements.achievements objectAtIndex:indexPath.row];
+    
     [cell loadCellWithTitle: achievement.achievementName andImageState: achievement.achievementIsEnable  achievementsID: achievement.achievementID AchievementImageName: achievement.achievementPicture];
     
     return cell;

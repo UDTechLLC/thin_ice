@@ -144,7 +144,7 @@
     
         // Hours Slapt
     
-    self.hourseSleptImageView.image                         = [UIImage imageNamed:[NSString stringWithFormat:@"icons_H_protein_%d", (int)kScreenWidth]];
+    self.hourseSleptImageView.image                         = [UIImage imageNamed:[NSString stringWithFormat:@"icons_hours_slapt_%d", (int)kScreenWidth]];
     self.hourseSleptImageView.contentMode                   = UIViewContentModeCenter;
     
     self.hourseSleptLabel.text                              = @"Hours Slept, hrs";
@@ -157,7 +157,7 @@
     
         // Carbs Consumed
     
-    self.carbsConsumedImageView.image                       = [UIImage imageNamed:[NSString stringWithFormat:@"icons_H_protein_%d", (int)kScreenWidth]];
+    self.carbsConsumedImageView.image                       = [UIImage imageNamed:[NSString stringWithFormat:@"icons_carbs_consumed_%d", (int)kScreenWidth]];
     self.carbsConsumedImageView.contentMode                 = UIViewContentModeCenter;
     
     self.carbsConsumedLabel.text                            = @"Carbs consumed, g";

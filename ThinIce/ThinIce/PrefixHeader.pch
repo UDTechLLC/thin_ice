@@ -12,11 +12,6 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-#ifdef __OBJC__
-    #define MR_SHORTHAND
-    #import <MagicalRecord/MagicalRecord.h>
-#endif
-
 #import "Header.h"
 #import "BaseViewController.h"
 #import "MBProgressHUD.h"
@@ -36,3 +31,8 @@
 #import "Achievement.h"
 
 #endif /* PrefixHeader_pch */
+
+#ifdef __OBJC__
+#define MR_SHORTHAND
+#import <MagicalRecord/MagicalRecord.h>
+#endif

@@ -108,7 +108,7 @@ typedef NS_ENUM(NSInteger, ChangeTemperatureButton) {
     [attributedTitlestring addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(8, 5)];
     self.titleLabel.attributedText                      = attributedTitlestring;
     
-    self.timerImage.image                               = [UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_timer_image_320@2x", (int)kScreenWidth]];
+    self.timerImage.image                               = [UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_timer_image_%d", (int)kScreenWidth]];
     self.timerImage.contentMode                         = UIViewContentModeCenter;
     
     self.timerLabel.text                                = @"12:59 PM";
@@ -132,7 +132,7 @@ typedef NS_ENUM(NSInteger, ChangeTemperatureButton) {
 
 - (void)createVestPickBlock {
     
-    self.vestPic.image                                  = [UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_vest_image_320@2x", (int)kScreenWidth]];
+    self.vestPic.image                                  = [UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_vest_image_%d", (int)kScreenWidth]];
     self.vestPic.contentMode                            = UIViewContentModeCenter;
 }
 
@@ -159,13 +159,13 @@ typedef NS_ENUM(NSInteger, ChangeTemperatureButton) {
     self.changeTemperatureLabel.text                    = [self calculateCelsiusFahrenheitValue];
     self.changeTemperatureLabel.textColor               = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     
-    [self.plusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_plusButton_normal_320@2x", (int)kScreenWidth]] forState:UIControlStateNormal];
-    [self.plusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_plusButton_active_320@2x", (int)kScreenWidth]] forState:UIControlStateHighlighted];
-    [self.plusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_plusButton_active_320@2x", (int)kScreenWidth]] forState:UIControlStateSelected];
+    [self.plusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_plusButton_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
+    [self.plusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_plusButton_active_%d", (int)kScreenWidth]] forState:UIControlStateHighlighted];
+    [self.plusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_plusButton_active_%d", (int)kScreenWidth]] forState:UIControlStateSelected];
     
-    [self.minusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_minusButton_normal_320@2x", (int)kScreenWidth]] forState:UIControlStateNormal];
-    [self.minusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_minusButton_active_320@2x", (int)kScreenWidth]] forState:UIControlStateHighlighted];
-    [self.minusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_minusButton_active_320@2x", (int)kScreenWidth]] forState:UIControlStateSelected];
+    [self.minusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_minusButton_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
+    [self.minusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_minusButton_active_%d", (int)kScreenWidth]] forState:UIControlStateHighlighted];
+    [self.minusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_minusButton_active_%d", (int)kScreenWidth]] forState:UIControlStateSelected];
 }
 
 - (void)addBorderLineFor:(UIView*)view withColor:(UIColor*)color borderWidth:(float)width {

@@ -1,20 +1,30 @@
 PODS:
   - IQKeyboardManager (4.0.0)
-  - MagicalRecord (2.3.2):
-    - MagicalRecord/Core (= 2.3.2)
-  - MagicalRecord/Core (2.3.2)
+  - MagicalRecord (2.3.3):
+    - MagicalRecord/Core (= 2.3.3)
+  - MagicalRecord/Core (2.3.3)
   - MBProgressHUD (0.9.2)
   - YLProgressBar (3.8.0)
 
 DEPENDENCIES:
   - IQKeyboardManager
-  - MagicalRecord
+  - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, tag `v2.3.3`)
   - MBProgressHUD
   - YLProgressBar
 
+EXTERNAL SOURCES:
+  MagicalRecord:
+    :git: https://github.com/magicalpanda/MagicalRecord.git
+    :tag: v2.3.3
+
+CHECKOUT OPTIONS:
+  MagicalRecord:
+    :git: https://github.com/magicalpanda/MagicalRecord.git
+    :tag: v2.3.3
+
 SPEC CHECKSUMS:
   IQKeyboardManager: b91928f7927ba55a5829b4dcf4b7a6736ac9fc22
-  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  MagicalRecord: e3dfdee87c234c6d460dbd5d8a32e3cb4de223aa
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   YLProgressBar: b6ec76bea4a1b8d6bdfd2995d828055a7e5f3e9a
 

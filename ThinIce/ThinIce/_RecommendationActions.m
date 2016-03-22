@@ -12,6 +12,10 @@ const struct RecommendationActionsAttributes RecommendationActionsAttributes = {
 	.waterIntake = @"waterIntake",
 };
 
+const struct RecommendationActionsRelationships RecommendationActionsRelationships = {
+	.userCards = @"userCards",
+};
+
 @implementation RecommendationActionsID
 @end
 
@@ -191,6 +195,8 @@ const struct RecommendationActionsAttributes RecommendationActionsAttributes = {
 - (void)setPrimitiveWaterIntakeValue:(int16_t)value_ {
 	[self setPrimitiveWaterIntake:[NSNumber numberWithShort:value_]];
 }
+
+@dynamic userCards;
 
 @end
 

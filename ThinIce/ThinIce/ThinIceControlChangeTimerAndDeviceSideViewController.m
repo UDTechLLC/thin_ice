@@ -148,9 +148,9 @@ typedef NS_ENUM(NSInteger, DelayedTimerButton) {
     self.thinIceControlInfoLabel.textColor              = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     
     self.deleteDeviceButton.layer.cornerRadius          = 13;
-    [self.deleteDeviceButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"thinIceControl_btn_deletedevice_normal_320@2x", (int)kScreenWidth]] forState:UIControlStateNormal];
-    [self.deleteDeviceButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"thinIceControl_btn_deletedevice_active_320@2x", (int)kScreenWidth]] forState:UIControlStateSelected];
-    [self.deleteDeviceButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"thinIceControl_btn_deletedevice_active_320@2x", (int)kScreenWidth]] forState:UIControlStateHighlighted];
+    [self.deleteDeviceButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"thinIceControl_btn_deletedevice_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
+    [self.deleteDeviceButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"thinIceControl_btn_deletedevice_active_%d", (int)kScreenWidth]] forState:UIControlStateSelected];
+    [self.deleteDeviceButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"thinIceControl_btn_deletedevice_active_%d", (int)kScreenWidth]] forState:UIControlStateHighlighted];
     [self.deleteDeviceButton setTitle:@"Delete Device" forState:UIControlStateNormal];
 }
 

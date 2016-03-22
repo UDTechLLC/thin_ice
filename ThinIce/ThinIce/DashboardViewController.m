@@ -163,9 +163,9 @@
 
 - (void)createPowerONOFFButton {
     
-    [self.powerButton setImage:[UIImage imageNamed: @"button_power_normal_320@2x"] forState:UIControlStateNormal];
-    [self.powerButton setImage:[UIImage imageNamed: @"button_power_active_320@2x"] forState:UIControlStateSelected];
-    [self.powerButton setImage:[UIImage imageNamed: @"button_power_active_320@2x"] forState:UIControlStateHighlighted];
+    [self.powerButton setImage:[UIImage imageNamed: [NSString stringWithFormat:@"button_power_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
+    [self.powerButton setImage:[UIImage imageNamed: [NSString stringWithFormat:@"button_power_active_%d", (int)kScreenWidth]] forState:UIControlStateSelected];
+    [self.powerButton setImage:[UIImage imageNamed: [NSString stringWithFormat:@"button_power_active_%d", (int)kScreenWidth]] forState:UIControlStateHighlighted];
 }
 
 #pragma mark - UITableViewDelegate / UITableViewDataSource -

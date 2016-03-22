@@ -28,9 +28,9 @@ extern const struct UserAchievementsAttributes {
 
 @property (nonatomic, strong) NSNumber* achivment_id;
 
-@property (atomic) int16_t achivment_idValue;
-- (int16_t)achivment_idValue;
-- (void)setAchivment_idValue:(int16_t)value_;
+@property (atomic) int32_t achivment_idValue;
+- (int32_t)achivment_idValue;
+- (void)setAchivment_idValue:(int32_t)value_;
 
 //- (BOOL)validateAchivment_id:(id*)value_ error:(NSError**)error_;
 
@@ -55,8 +55,8 @@ extern const struct UserAchievementsAttributes {
 - (NSNumber*)primitiveAchivment_id;
 - (void)setPrimitiveAchivment_id:(NSNumber*)value;
 
-- (int16_t)primitiveAchivment_idValue;
-- (void)setPrimitiveAchivment_idValue:(int16_t)value_;
+- (int32_t)primitiveAchivment_idValue;
+- (void)setPrimitiveAchivment_idValue:(int32_t)value_;
 
 - (NSNumber*)primitiveAchivment_progress;
 - (void)setPrimitiveAchivment_progress:(NSNumber*)value;

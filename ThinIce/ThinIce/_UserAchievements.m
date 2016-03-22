@@ -76,22 +76,22 @@ const struct UserAchievementsAttributes UserAchievementsAttributes = {
 
 @dynamic achivment_id;
 
-- (int16_t)achivment_idValue {
+- (int32_t)achivment_idValue {
 	NSNumber *result = [self achivment_id];
-	return [result shortValue];
+	return [result intValue];
 }
 
-- (void)setAchivment_idValue:(int16_t)value_ {
-	[self setAchivment_id:[NSNumber numberWithShort:value_]];
+- (void)setAchivment_idValue:(int32_t)value_ {
+	[self setAchivment_id:[NSNumber numberWithInt:value_]];
 }
 
-- (int16_t)primitiveAchivment_idValue {
+- (int32_t)primitiveAchivment_idValue {
 	NSNumber *result = [self primitiveAchivment_id];
-	return [result shortValue];
+	return [result intValue];
 }
 
-- (void)setPrimitiveAchivment_idValue:(int16_t)value_ {
-	[self setPrimitiveAchivment_id:[NSNumber numberWithShort:value_]];
+- (void)setPrimitiveAchivment_idValue:(int32_t)value_ {
+	[self setPrimitiveAchivment_id:[NSNumber numberWithInt:value_]];
 }
 
 @dynamic achivment_progress;

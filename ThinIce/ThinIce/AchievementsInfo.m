@@ -72,16 +72,31 @@ static NSString * const kAchievementsDescriptions[] = {
     for (int i = FreshStart ; i <= ResultsObsessed; i ++) {
         
         UserAchievements *achievement = [UserAchievements MR_createEntityInContext: achievementsContext];
-        achievement.achivment_addStatus = [NSNumber numberWithBool:NO];
-        achievement.achivment_id = [NSNumber numberWithInt:i];
-        achievement.achivment_progress = [NSNumber numberWithInt:0];
-        
+       // [achievement setAchivment_addStatus: [NSNumber numberWithBool:NO]];
+        [achievement setAchivment_id: [NSNumber numberWithInt:i]];
+        [achievement setAchivment_progress: [NSNumber numberWithInt:0]];
         [achievementsArray addObject:achievement];
     }
     
     [AccountInfoManager sharedManager].userToken.userAchievements = achievementsArray;
     
     [achievementsContext MR_saveToPersistentStoreAndWait];
+    
+    
+    User *myuser = [self findUserInDataBase];
+    
+    NSLog(@"user - %@", myuser.userAchievements);
+    NSLog(@"______________________________________");
+    NSLog(@"user - %@", myuser.userAchievements[0]);
+    NSLog(@"user - %@", myuser.userAchievements[1]);
+    NSLog(@"user - %@", myuser.userAchievements[2]);
+    NSLog(@"user - %@", myuser.userAchievements[3]);
+    NSLog(@"user - %@", myuser.userAchievements[4]);
+    NSLog(@"user - %@", myuser.userAchievements[5]);
+    NSLog(@"user - %@", myuser.userAchievements[6]);
+    NSLog(@"user - %@", myuser.userAchievements[7]);
+    NSLog(@"user - %@", myuser.userAchievements[8]);
+    
     
     
 }
@@ -104,6 +119,23 @@ static NSString * const kAchievementsDescriptions[] = {
         
         [currentArrayAhievements addObject:newAchievement];
         newAchievement                      = nil;
+    }
+    
+    
+}
+
+- (User*)findUserInDataBase {
+    
+    NSPredicate         *peopleFilterWithKey            = [NSPredicate predicateWithFormat:@"socialityKey == %@", [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedSocialityKey];
+    NSFetchRequest      *peopleRequest                  = [User MR_requestAllWithPredicate:peopleFilterWithKey];
+    NSArray             *filteredUser                   = [User MR_executeFetchRequest:peopleRequest];
+    
+    if(filteredUser.count > 0) {
+        
+        return [filteredUser firstObject];
+    } else {
+        
+        return nil;
     }
 }
 

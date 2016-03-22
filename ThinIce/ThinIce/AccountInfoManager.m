@@ -35,7 +35,7 @@
     self = [super init];
     if (self) {
         
-        [self p_getTimer];
+        [self p_getTimerTemperatureDeviceDelay];
         [self p_getSettings];
         [self p_getToken];
         
@@ -52,7 +52,7 @@
     return self;
 }
 
-- (void)p_getTimer {
+- (void)p_getTimerTemperatureDeviceDelay {
     
    // NSString *stringGetTimeForTimer                 = [[NSUserDefaults standardUserDefaults] objectForKey:kStoreTimeForTimer];
     NSString *stringGetTimerState                   = [[NSUserDefaults standardUserDefaults] objectForKey:kSaveDeviceTimerOnOFFKey];
@@ -63,6 +63,8 @@
     self.deviceONOFFTimer                           = [stringGetTimerState integerValue];
     self.timerDelay                                 = [stringGetDeviceTimerDelay integerValue];
     self.currentDeviceTemperature                   = [stringGetCurrentDeviceTemperature integerValue];
+    
+    [self checkTemperature];
 }
 
 - (void)p_getSettings {
@@ -116,8 +118,8 @@
     }
     if([keyPath isEqual:@"deviceTimer"]) {
         
-        // [[NSUserDefaults standardUserDefaults] setObject:self.savedUserPass forKey:kStoreTimeForTimer];
-        // [[NSUserDefaults standardUserDefaults] synchronize];
+    // [[NSUserDefaults standardUserDefaults] setObject:self.savedUserPass forKey:kStoreTimeForTimer];
+    //     [[NSUserDefaults standardUserDefaults] synchronize];
     }
     if([keyPath isEqual:@"timerDelay"]) {
         
@@ -144,6 +146,14 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger: self.notificationDelay] forKey:kSaveInObjectNotificationDelayKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)checkTemperature {
+    
+    if(self.currentDeviceTemperature == 0) {
+        
+        self.currentDeviceTemperature = 13;
+    }
 }
 
 - (void)logout {
@@ -242,8 +252,9 @@
         }
         
         [self injectUserSettings:newUser];
+        
+        self.userToken = newUser;
         self.userSavedInHomeDirectory               = [SavedUser initWithSocialityKey:self.userToken.socialityKey];
-        self.userToken                              = newUser;
         
         self.userAchievements                       = [[AchievementsInfo alloc] init];
         [self.userAchievements createNSArrayAchievements];

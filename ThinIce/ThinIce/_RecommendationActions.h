@@ -12,6 +12,12 @@ extern const struct RecommendationActionsAttributes {
 	__unsafe_unretained NSString *waterIntake;
 } RecommendationActionsAttributes;
 
+extern const struct RecommendationActionsRelationships {
+	__unsafe_unretained NSString *userCards;
+} RecommendationActionsRelationships;
+
+@class UserCard;
+
 @interface RecommendationActionsID : NSManagedObjectID {}
 @end
 
@@ -69,6 +75,10 @@ extern const struct RecommendationActionsAttributes {
 
 //- (BOOL)validateWaterIntake:(id*)value_ error:(NSError**)error_;
 
+@property (nonatomic, strong) UserCard *userCards;
+
+//- (BOOL)validateUserCards:(id*)value_ error:(NSError**)error_;
+
 @end
 
 @interface _RecommendationActions (CoreDataGeneratedPrimitiveAccessors)
@@ -108,5 +118,8 @@ extern const struct RecommendationActionsAttributes {
 
 - (int16_t)primitiveWaterIntakeValue;
 - (void)setPrimitiveWaterIntakeValue:(int16_t)value_;
+
+- (UserCard*)primitiveUserCards;
+- (void)setPrimitiveUserCards:(UserCard*)value;
 
 @end

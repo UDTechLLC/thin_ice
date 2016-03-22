@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="RecommendationActions" representedClassName="RecommendationActions" syncable="YES">
         <attribute name="carbsConsumed" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="gymSessions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -27,7 +27,7 @@
     </entity>
     <entity name="UserAchievements" representedClassName="UserAchievements" syncable="YES">
         <attribute name="achivment_addStatus" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="achivment_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="achivment_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="achivment_progress" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <entity name="UserCard" representedClassName="UserCard" syncable="YES">
