@@ -274,6 +274,11 @@
     if(filteredUser.count > 0) {
         
         self.userToken                                  = [filteredUser firstObject];
+        
+        self.userAchievements                           = [[AchievementsInfo alloc] init];
+        [self.userAchievements loadNSArrayAchievements];
+        
+        
         block();
         
         return;
@@ -287,8 +292,8 @@
         
         self.userToken                                  = [emailFilteredUser firstObject];
         
-        AchievementsInfo *userAchievements = [[AchievementsInfo alloc] init];
-        [userAchievements loadNSArrayAchievements];
+        self.userAchievements                           = [[AchievementsInfo alloc] init];
+        [self.userAchievements loadNSArrayAchievements];
         
         
         block();

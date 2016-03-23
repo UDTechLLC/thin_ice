@@ -13,7 +13,8 @@
 @property (weak, nonatomic) NSString                        *achievementsID;
 @property (weak, nonatomic) IBOutlet UIImageView            *cellImageView;
 @property (weak, nonatomic) IBOutlet UILabel                *cellTitle;
+@property (nonatomic) BOOL                                  achievementsAddStatus;
 
-- (void)loadCellWithTitle:(NSString*)title andImageState:(NSInteger)state achievementsID:(NSString*)ID AchievementImageName:(NSString*)imageName;
+- (void)loadCellWithTitle:(NSString*)title andImageState:(BOOL)state achievementsID:(NSString*)ID AchievementImageName:(NSString*)imageName;
 
 @end

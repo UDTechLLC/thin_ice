@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Achievement.h"
 
 @interface AchievemetsUnlockedViewController : BaseViewController
+
+@property (strong, nonatomic) Achievement       *currentAchievements;
 
 @end

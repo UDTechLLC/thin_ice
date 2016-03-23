@@ -331,6 +331,7 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
         curUser.userSettings.user_weight        = [weakself.regUserDict objectForKey:kSettingsWeight];
         curUser.userSettings.user_Length        = [weakself.regUserDict objectForKey:kSettingsLength];
         
+        [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: TheButtonPresser Progress:[NSNumber numberWithInt:1]];
     }];
     
     DashboardViewController *dashboard          = [[UIStoryboard storyboardWithName:kMainStoryBoardIdentifier bundle:nil] instantiateViewControllerWithIdentifier:kDashboardViewControllerID];

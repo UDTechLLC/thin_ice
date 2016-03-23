@@ -12,4 +12,6 @@
 
 + (AchievementsUnlockerManager *)sharedManager;
 
+- (void)showPresentationAchievementsViewControllerWithCurrentAchievement:(Achievement*)achievement;
+
 @end

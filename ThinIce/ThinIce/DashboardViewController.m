@@ -256,6 +256,22 @@
     return [NSString stringWithFormat:@"%@ %@",firstNameTemp, lastNameTemp];
 }
 
+- (IBAction)powerButtonActionHendlier:(UIButton *)sender {
+
+//    NSPredicate         *peopleFilterWithKey            = [NSPredicate predicateWithFormat:@"achivment_id == %d", 12];
+//    NSFetchRequest      *peopleRequest                  = [UserAchievements MR_requestAllWithPredicate:peopleFilterWithKey];
+//    NSArray             *filteredUser                   = [UserAchievements MR_executeFetchRequest:peopleRequest];
+    
+    UserAchievements *person = [UserAchievements MR_findFirstByAttribute:@"achivment_id"
+                                                               withValue: [NSString stringWithFormat:@"%@", [NSNumber numberWithInteger:12]]];
+    
+    NSLog(@"[AccountInfoManager sharedManager].userToken.userAchievements - %@", [AccountInfoManager sharedManager].userToken.userAchievements);
+  //  NSLog(@"filteredUser - %d", (int)filteredUser.count);
+    NSLog(@"achivment_id - %@", person.achivment_id);
+    NSLog(@"achivment_progress - %@", person.achivment_progress);
+    NSLog(@"achivment_addStatus - %@", person.achivment_addStatus);
+}
+
 #pragma mark - SlideNavigationController Methods -
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu {

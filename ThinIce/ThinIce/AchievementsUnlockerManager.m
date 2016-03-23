@@ -51,18 +51,17 @@ static NSString * const kAchievementsDescriptions[] = {
     self = [super init];
     if (self) {
         
-        [self showPresentationAchievementsViewController];
     }
     
     return self;
 }
 
-- (void)showPresentationAchievementsViewController {
+- (void)showPresentationAchievementsViewControllerWithCurrentAchievement:(Achievement*)achievement {
     
-    UIStoryboard        *storyboard     = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController    *vc             = [storyboard instantiateViewControllerWithIdentifier:kAchievemetsUnlockedViewControllerID];
-
-    self.modalPresentationStyle         = UIModalPresentationCurrentContext;
+    UIStoryboard                            *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AchievemetsUnlockedViewController       *vc                     = [storyboard instantiateViewControllerWithIdentifier:kAchievemetsUnlockedViewControllerID];
+                                            vc.currentAchievements  = achievement;
+    self.modalPresentationStyle                                     = UIModalPresentationCurrentContext;
     [[SlideNavigationController sharedInstance] presentViewController:vc animated:YES completion:nil];
 }
 

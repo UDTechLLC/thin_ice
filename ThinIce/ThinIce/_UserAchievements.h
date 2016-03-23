@@ -16,6 +16,7 @@ extern const struct UserAchievementsAttributes {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
+
 @property (nonatomic, readonly, strong) UserAchievementsID* objectID;
 
 @property (nonatomic, strong) NSNumber* achivment_addStatus;

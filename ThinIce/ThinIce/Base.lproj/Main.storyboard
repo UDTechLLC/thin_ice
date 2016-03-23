@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oT9-zr-aj1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oT9-zr-aj1">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -185,7 +185,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatisticCellID" id="OYJ-mu-Sgv" customClass="SlideMenuTableCell">
-                                        <rect key="frame" x="0.0" y="92" width="120" height="91"/>
+                                        <rect key="frame" x="0.0" y="92" width="120" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OYJ-mu-Sgv" id="ZLz-PN-jcP">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="91"/>
@@ -325,7 +325,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AchievementsCellID" id="Kw9-WX-06U" customClass="SlideMenuTableCell">
-                                        <rect key="frame" x="0.0" y="366" width="120" height="91"/>
+                                        <rect key="frame" x="0.0" y="366" width="120" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kw9-WX-06U" id="oXN-iI-x7U">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="91"/>
@@ -1826,26 +1826,26 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tg9-K3-A0u">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="1f6-dC-G6F">
-                                    <size key="itemSize" width="106" height="162"/>
+                                    <size key="itemSize" width="106" height="119"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AchievementsCollectionCellIdentifier" id="6uV-hI-L3h" customClass="AchievementsCollectionCell">
-                                        <rect key="frame" x="0.0" y="64" width="106" height="162"/>
+                                        <rect key="frame" x="0.0" y="64" width="106" height="119"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="106" height="162"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="106" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mL3-gc-vSr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="110"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="80"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENi-G0-AXi">
-                                                    <rect key="frame" x="0.0" y="110" width="106" height="52"/>
+                                                    <rect key="frame" x="0.0" y="79" width="106" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="52" id="9YV-Fu-6sA"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="9YV-Fu-6sA"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1858,12 +1858,12 @@
                                             <constraint firstAttribute="trailing" secondItem="ENi-G0-AXi" secondAttribute="trailing" id="7tJ-bS-jl0"/>
                                             <constraint firstItem="mL3-gc-vSr" firstAttribute="leading" secondItem="6uV-hI-L3h" secondAttribute="leading" id="BhH-LE-2ia"/>
                                             <constraint firstItem="ENi-G0-AXi" firstAttribute="leading" secondItem="6uV-hI-L3h" secondAttribute="leading" id="EzD-BY-BMT"/>
-                                            <constraint firstItem="ENi-G0-AXi" firstAttribute="top" secondItem="mL3-gc-vSr" secondAttribute="bottom" id="GI8-aV-1Ar"/>
+                                            <constraint firstItem="ENi-G0-AXi" firstAttribute="top" secondItem="mL3-gc-vSr" secondAttribute="bottom" constant="-1" id="GI8-aV-1Ar"/>
                                             <constraint firstAttribute="trailing" secondItem="mL3-gc-vSr" secondAttribute="trailing" id="SjW-Ik-W3q"/>
                                             <constraint firstAttribute="bottom" secondItem="ENi-G0-AXi" secondAttribute="bottom" id="a4o-wb-rJT"/>
                                             <constraint firstItem="mL3-gc-vSr" firstAttribute="top" secondItem="6uV-hI-L3h" secondAttribute="top" id="aJz-Gc-SFF"/>
                                         </constraints>
-                                        <size key="customSize" width="106" height="162"/>
+                                        <size key="customSize" width="106" height="119"/>
                                         <connections>
                                             <outlet property="cellImageView" destination="mL3-gc-vSr" id="S4q-i9-mx5"/>
                                             <outlet property="cellTitle" destination="ENi-G0-AXi" id="8BA-ze-oeQ"/>
@@ -3427,6 +3427,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cse-l4-xAm" secondAttribute="height" multiplier="1:1" constant="14" id="lwH-M0-cPz"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="powerButtonActionHendlier:" destination="raz-e2-5gd" eventType="touchUpInside" id="l9L-84-1Gq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

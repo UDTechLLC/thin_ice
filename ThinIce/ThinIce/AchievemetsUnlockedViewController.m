@@ -36,13 +36,13 @@
     self.titleLabel.text                            = @"Achievements Unlocked!";
     
     self.picViewer.contentMode                      = UIViewContentModeCenter;
-    self.picViewer.image                            = [UIImage imageNamed: [NSString stringWithFormat:@"badges_%d", (int)kScreenWidth]];
+    self.picViewer.image                            = [UIImage imageNamed: [NSString stringWithFormat:@"%@%d", self.currentAchievements.achievementBigPicure, (int)kScreenWidth]];
     
     self.ahievementName.textColor                   = [UIColor whiteColor];
-    self.ahievementName.text                        = @"Newbie";
+    self.ahievementName.text                        = self.currentAchievements.achievementName;
     
     self.achievementDescription.textColor           = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
-    self.achievementDescription.text                = @"Forget those \"Bender\" and \"Crunked\" badges - you've conquered the playground circult!";
+    self.achievementDescription.text                = self.currentAchievements.achievementDescription;
     
     self.dismissButton.layer.cornerRadius           = 13;
     [self.dismissButton setBackgroundImage: [UIImage imageNamed: [NSString stringWithFormat:@"btn_save_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];

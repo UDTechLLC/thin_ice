@@ -64,9 +64,11 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     AchievementsCollectionCell *cell            = nil;
     Achievement                 *achievement    = nil;
                                 cell            = [collectionView dequeueReusableCellWithReuseIdentifier:kAchievementsCollectionCellIdentifier forIndexPath:indexPath];
-                                achievement    = [[AccountInfoManager sharedManager].userAchievements.achievements objectAtIndex:indexPath.row];
+                                achievement     = [[AccountInfoManager sharedManager].userAchievements.achievements objectAtIndex:indexPath.row];
     
-    [cell loadCellWithTitle: achievement.achievementName andImageState: achievement.achievementIsEnable  achievementsID: achievement.achievementID AchievementImageName: achievement.achievementPicture];
+    NSLog(@"%@ %@ %@", achievement.achievementName, achievement.achievementID, achievement.achievementPicture);
+    
+    [cell loadCellWithTitle: achievement.achievementName andImageState: achievement.achievementIsEnable achievementsID: achievement.achievementID AchievementImageName: achievement.achievementPicture];
     
     return cell;
 }
@@ -74,14 +76,30 @@ typedef NS_ENUM(NSUInteger, ImageState) {
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CGFloat cellWidth       = ([UIScreen mainScreen].bounds.size.width / 3) - 2;
-    CGFloat cellHeight      = ([UIScreen mainScreen].bounds.size.height / 3.5) - 2;
+    CGFloat cellHeight      = ([UIScreen mainScreen].bounds.size.height / 4) - 2;
     
     return CGSizeMake(cellWidth, cellHeight);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-   // AchievemetsUnlockedViewController *unlockerAchive = [self.storyboard instantiateViewControllerWithIdentifier:kAchievemetsUnlockedViewControllerID];
-   // [self performSegueWithIdentifier:kAchievemetsUnlockedViewControllerSegueIdentifier sender:nil];
+    
+    if([self checkAchievementsStatusWithIndexPath: indexPath]) {
+     
+        [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement:[[AccountInfoManager sharedManager].userAchievements.achievements objectAtIndex:indexPath.row]];
+    }
+}
+
+- (BOOL)checkAchievementsStatusWithIndexPath:(NSIndexPath*)indexPath {
+    
+    Achievement                 *achievement    = nil;
+    achievement     = [[AccountInfoManager sharedManager].userAchievements.achievements objectAtIndex:indexPath.row];
+    
+    if(achievement.achievementIsEnable) {
+        
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 #pragma mark - SlideNavigationController Methods -

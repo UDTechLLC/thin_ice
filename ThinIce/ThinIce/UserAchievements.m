@@ -13,7 +13,7 @@
 @implementation UserAchievements
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
+    self = [super initWithEntity:[NSEntityDescription entityForName:@"UserAchievements" inManagedObjectContext:[NSManagedObjectContext MR_defaultContext]] insertIntoManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
     if(self) {
         
         self.achivment_addStatus    = [aDecoder decodeObjectForKey:kAhievements_addStatus_EntityKey];
