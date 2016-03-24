@@ -25,7 +25,7 @@
 #define GettinLeanBurnt                         10000               // You have burnt 10,000 calories with Thin Ice clothing!
 #define SeeingResultsBurnt                      50000               // You have burnt 50,000 calories with Thin Ice clothing!
 
-#define TheButtonPresserSettings                [NSNumber numberWithFloat:1.0]                 // You have changed a setting!
+#define TheButtonPresserSettings                1                 // You have changed a setting!
 
 #define FreshFaceFirstProfile                   1                   // You have registered your first Thin Ice profile!
 
@@ -33,7 +33,7 @@
 #define ResultsOrientedTrackingScreen           50                  // You’ve checked the tracking screen 50 times!
 #define ResultsObsessedTrackingScreen           500                 // You’ve checked the tracking screen 500 times!
 
-#define AchievementFALSE                        0
+#define AchievementFALSE                        NO
 
 static NSString * const kAchievementsNames[] = {
     @"Fresh Start", @"Moving Forward", @"The Motivated", @"The Enthusiast",
@@ -79,6 +79,12 @@ static NSString * const kAchievementsDescriptions[] = {
     @"You’ve checked the tracking screen 500 times!"
 };
 
+@interface AchievementsInfo ()
+
+@property (strong, nonatomic) NSMutableArray       *achievements;
+
+@end
+
 @implementation AchievementsInfo
 
 - (id)init {
@@ -98,253 +104,167 @@ static NSString * const kAchievementsDescriptions[] = {
     
     for (int i = FreshStart ; i <= ResultsObsessed; i ++) {
         
-        UserAchievements *achievement = [UserAchievements MR_createEntityInContext: achievementsContext];
-        [achievement setAchivment_addStatus: [NSNumber numberWithBool:NO]];
-        [achievement setAchivment_id: [NSNumber numberWithInt:i]];
-        [achievement setAchivment_progress: [NSNumber numberWithInt:0]];
-        [achievementsArray addObject:achievement];
+        Achievement * newAchievement        = [[Achievement alloc] initWithAchievementsID:[NSString stringWithFormat:@"%@", [NSNumber numberWithInt: i]]
+                                                                                     Name:kAchievementsNames[i]
+                                                                                 Progress:[NSString stringWithFormat:@"%@", [NSNumber numberWithInt: 0]]
+                                                                                  picName:kAchievementsPicNames[i]
+                                                                                 IsEnable:NO
+                                                                              Description:kAchievementsDescriptions[i]
+                                                                               BigPicture:kAchievementsbigPicNames[i]];
+        [achievementsArray addObject:newAchievement];
     }
     
-    [AccountInfoManager sharedManager].userToken.userAchievements = achievementsArray;
-    [self loadNSArrayAchievements];
-}
-
-- (void)loadNSArrayAchievements {
-    
-    NSArray *arrayAchiv                     = [[NSArray alloc] initWithArray: [AccountInfoManager sharedManager].userToken.userAchievements];
-    NSMutableArray *currentArrayAhievements = [[NSMutableArray alloc] init];
-
-    for (UserAchievements *object in arrayAchiv) {
-        
-        Achievement * newAchievement        = [[Achievement alloc] initWithAchievementsID:[NSString stringWithFormat:@"%@", object.achivment_id]
-                                                                                     Name:kAchievementsNames[[object.achivment_id intValue]]
-                                                                                 Progress:[NSString stringWithFormat:@"%@", object.achivment_progress]
-                                                                                  picName:kAchievementsPicNames[[object.achivment_id intValue]]
-                                                                                 IsEnable: [object achivment_addStatusValue]
-                                                                              Description:kAchievementsDescriptions[[object.achivment_id intValue]]
-                                                                               BigPicture:kAchievementsbigPicNames[[object.achivment_id intValue]]];
-        
-        [currentArrayAhievements addObject:newAchievement];
-    }
-    self.achievements = [NSMutableArray arrayWithArray:currentArrayAhievements];
-}
-
-//- (User*)findUserInDataBase {
-//    
-//    NSPredicate         *peopleFilterWithKey            = [NSPredicate predicateWithFormat:@"socialityKey == %@", [AccountInfoManager sharedManager].userSavedInHomeDirectory.savedSocialityKey];
-//    NSFetchRequest      *peopleRequest                  = [User MR_requestAllWithPredicate:peopleFilterWithKey];
-//    NSArray             *filteredUser                   = [User MR_executeFetchRequest:peopleRequest];
-//    
-//    if(filteredUser.count > 0) {
-//        
-//        return [filteredUser firstObject];
-//    } else {
-//        
-//        return nil;
-//    }
-//}
-
-//- (UserAchievements*)findUserAchievementInDataBaseWithID:(NSInteger)achievement_ID {
-//    
-//    NSPredicate         *peopleFilterWithKey            = [NSPredicate predicateWithFormat:@"achivment_id == %d", achievement_ID];
-//    NSFetchRequest      *peopleRequest                  = [UserAchievements MR_requestAllWithPredicate:peopleFilterWithKey];
-//    NSArray             *filteredUser                   = [UserAchievements MR_executeFetchRequest:peopleRequest];
-//    
-//    if(filteredUser.count > 0) {
-//        
-//        return [filteredUser firstObject];
-//    } else {
-//        
-//        return nil;
-//    }
-//}
-
-- (void)findUserAchievementInDataBaseWithID:(NSInteger)achievement_ID {
-    
-    NSPredicate         *peopleFilterWithKey            = [NSPredicate predicateWithFormat:@"achivment_id == %d", achievement_ID];
-    NSFetchRequest      *peopleRequest                  = [UserAchievements MR_requestAllWithPredicate:peopleFilterWithKey];
-    NSArray             *filteredUser                   = [UserAchievements MR_executeFetchRequest:peopleRequest];
-    
-    NSLog(@"filteredUser - %d", (int)filteredUser.count);
-
+    [AccountInfoManager sharedManager].userToken.userAchievements = [NSKeyedArchiver archivedDataWithRootObject:achievementsArray];
+    [achievementsContext MR_saveToPersistentStoreAndWait];
 }
 
 - (void)addValueToAchievement:(NSInteger)achievement Progress:(NSNumber*)value {
     
-    NSLog(@"before");
-    [self findUserAchievementInDataBaseWithID: achievement];
-    //UserAchievements *achievementObject = (UserAchievements*)[AccountInfoManager sharedManager].userToken.userAchievements[achievement]; //[self findUserAchievementInDataBaseWithID: achievement];
-    //((UserAchievements*)[AccountInfoManager sharedManager].userToken.userAchievements[achievement]).achivment_progress = [NSNumber numberWithInteger:([((UserAchievements*)[AccountInfoManager sharedManager].userToken.userAchievements[achievement]).achivment_progress integerValue] + [value integerValue])];
-    
-    UserAchievements *person = [UserAchievements MR_findFirstByAttribute:@"achivment_id"
-                                                               withValue: [NSString stringWithFormat:@"%d", (int)achievement]];
-    person.achivment_progress = [NSNumber numberWithInteger:([person.achivment_progress integerValue] + [value integerValue])];
-
-    
-    NSLog(@"after");
-    [self findUserAchievementInDataBaseWithID: achievement];
-    //NSLog(@"[achievementObject.achivment_progress integerValue] + [value integerValue]) - %@", achievementObject.achivment_progress);
-    [self checkAchievementsStatusWithAchievement: achievement];
+    [self checkAchievementsStatusWithAchievement: achievement Progress: value];
 }
 
-- (void)checkAchievementsStatusWithAchievement:(NSInteger)achievement {
+- (void)checkAchievementsStatusWithAchievement:(NSInteger)achievement Progress:(NSNumber*)progressValue {
 
-    UserAchievements *achievementObject = [AccountInfoManager sharedManager].userToken.userAchievements[achievement]; //[self findUserAchievementInDataBaseWithID: achievement];
+    NSManagedObjectContext *contextForSave                          = [NSManagedObjectContext MR_defaultContext];
+    NSMutableArray *arrayForChanges                                 = [[NSMutableArray alloc] init];
+    arrayForChanges                                                 = [NSKeyedUnarchiver unarchiveObjectWithData: [AccountInfoManager sharedManager].userToken.userAchievements];
+    Achievement *achievementObject                                  = [arrayForChanges objectAtIndex:achievement];
+    achievementObject.achievementProgress                           = [NSString stringWithFormat:@"%d", (int)[achievementObject.achievementProgress integerValue] + (int)[progressValue integerValue]];
     
     switch (achievement) {
         case FreshStart:
         {
-            if([achievementObject.achivment_progress integerValue] == FreshStart30minutes && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == FreshStart30minutes && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case MovingForward:
         {
-            if([achievementObject.achivment_progress integerValue] == MovingForward10hours && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == MovingForward10hours && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case TheMotivated:
         {
-            if([achievementObject.achivment_progress integerValue] == TheMotivated100hours && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == TheMotivated100hours && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case TheEnthusiast:
         {
-            if([achievementObject.achivment_progress integerValue] == TheEnthusiast500hours && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == TheEnthusiast500hours && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case TheMarathoner:
         {
-            if([achievementObject.achivment_progress integerValue] == TheMarathoner1000hours && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == TheMarathoner1000hours && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case TheDabbler:
         {
-            if([achievementObject.achivment_progress integerValue] == TheDabblerSuccessfully && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == TheDabblerSuccessfully && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case TheSchemer:
         {
-            if([achievementObject.achivment_progress integerValue] == TheSchemerSuccessfully && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == TheSchemerSuccessfully && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case TheStrategist:
         {
-            if([achievementObject.achivment_progress integerValue] == TheStrategistSuccessfully && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == TheStrategistSuccessfully && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case Firestarter:
         {
-            if([achievementObject.achivment_progress integerValue] == FirestarterBurnt && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == FirestarterBurnt && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case FeelintheBurn:
         {
-            if([achievementObject.achivment_progress integerValue] == FeelinTheBurnBurnt && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == FeelinTheBurnBurnt && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case GettinLean:
         {
-            if([achievementObject.achivment_progress integerValue] == GettinLeanBurnt && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == GettinLeanBurnt && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case SeeingResults:
         {
-            if([achievementObject.achivment_progress integerValue] == SeeingResultsBurnt && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == SeeingResultsBurnt && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case TheButtonPresser:
         {
-            
-            
-            
-            
-            
-            if(achievementObject.achivment_progress == TheButtonPresserSettings && [achievementObject primitiveAchivment_addStatus]) {
-            
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == TheButtonPresserSettings && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
-//            
-//            
-//            NSLog(@"-------------------------------------");
-//            NSManagedObjectContext  *achievementsContext = [NSManagedObjectContext MR_defaultContext];
-//            
-//            
-//            User *user = [self findUserInDataBase];
-//            [user.userAchievements replaceObjectAtIndex:TheButtonPresser withObject:achievementObject];
-//            [achievementsContext MR_saveToPersistentStoreAndWait];
-//            
-//            User *useri = [self findUserInDataBase];
-//            NSLog(@"LOAD - %@ %@", ((UserAchievements*)[useri.userAchievements objectAtIndex:TheButtonPresser]).achivment_progress, ((UserAchievements*)[useri.userAchievements objectAtIndex:TheButtonPresser]).achivment_id);
-//            
-            
         }
             break;
         case FreshFace:
         {
-            if([achievementObject.achivment_progress integerValue] == FreshFaceFirstProfile && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == FreshFaceFirstProfile && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case TheTracker:
         {
-            if([achievementObject.achivment_progress integerValue] == TheTrackerTrackingScreen && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == TheTrackerTrackingScreen && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case ResultsOriented:
         {
-            if([achievementObject.achivment_progress integerValue] == ResultsOrientedTrackingScreen && [achievementObject achivment_addStatusValue] == NO) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == ResultsOrientedTrackingScreen && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
         case ResultsObsessed:
         {
-            if([achievementObject.achivment_progress integerValue] == ResultsObsessedTrackingScreen && achievementObject.achivment_addStatus == AchievementFALSE) {
-                achievementObject.achivment_addStatus = [NSNumber numberWithBool:YES];
-                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: [self.achievements objectAtIndex:achievement]];
+            if([achievementObject.achievementProgress integerValue] == ResultsObsessedTrackingScreen && achievementObject.achievementIsEnable == AchievementFALSE) {
+                achievementObject.achievementIsEnable = YES;
+                [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement: achievementObject];
             }
         }
             break;
@@ -352,7 +272,10 @@ static NSString * const kAchievementsDescriptions[] = {
             break;
     }
     
-    [self loadNSArrayAchievements];
+    [arrayForChanges replaceObjectAtIndex:achievement withObject:achievementObject];
+    [AccountInfoManager sharedManager].userToken.userAchievements   = [NSKeyedArchiver archivedDataWithRootObject:arrayForChanges];
+    
+    [contextForSave MR_saveToPersistentStoreAndWait];
 }
 
 @end

@@ -47,6 +47,7 @@ typedef NS_ENUM(NSUInteger, TextFields) {
 @property (weak, nonatomic) IBOutlet UILabel                            *chooseSexLabel;
 @property (weak, nonatomic) IBOutlet UITextField                        *chooseSexTextField;
 @property (weak, nonatomic) IBOutlet UIView                             *chooseSexBorderLine;
+@property (weak, nonatomic) IBOutlet UIImageView                        *sexImageArrow;
 
 // DateOfBirth Block
 @property (weak, nonatomic) IBOutlet UILabel                            *dateOfBirthLabel;
@@ -126,6 +127,8 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     self.chooseSexTextField.keyboardAppearance              = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.chooseSexTextField.inputView                       = picker_;
     self.chooseSexTextField.tag                             = SexTextField;
+    self.sexImageArrow.image                                = [UIImage imageNamed: [NSString stringWithFormat:@"arrow_%d", (int)kScreenWidth]];
+    self.sexImageArrow.contentMode                          = UIViewContentModeCenter;
     self.chooseSexBorderLine.backgroundColor                = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
 // DateOfBirth Block init

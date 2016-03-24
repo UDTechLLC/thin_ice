@@ -15,7 +15,10 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     ImageStateActive
 };
 
-@interface AchievementsCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface AchievementsCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
+    
+    NSMutableArray                                                                  *achievementsForCollectionsView;
+}
 
 @property (weak, nonatomic) IBOutlet UICollectionView                               *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout                     *collectionViewFlowLayout;
@@ -36,15 +39,16 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     self.navigationController.navigationBarHidden = NO;
     [self translucentNavigationBar: YES];
     [super viewWillAppear:YES];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [AchievementsUnlockerManager sharedManager];
-    });
 }
 
 - (void)createViewController {
     
     [self addAchievementsBackgroundImage];
+    
+    achievementsForCollectionsView = [[NSMutableArray alloc] init];
+    
+    achievementsForCollectionsView = [NSKeyedUnarchiver unarchiveObjectWithData: [AccountInfoManager sharedManager].userToken.userAchievements];
+    
     
     self.collectionView.backgroundColor             = [UIColor clearColor];
     self.collectionViewFlowLayout.sectionInset      = UIEdgeInsetsMake(-STATUSplusNAVIGATIONBARINSETS, 0, 1, 0);
@@ -56,7 +60,7 @@ typedef NS_ENUM(NSUInteger, ImageState) {
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return [AccountInfoManager sharedManager].userAchievements.achievements.count;
+    return achievementsForCollectionsView.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -64,7 +68,7 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     AchievementsCollectionCell *cell            = nil;
     Achievement                 *achievement    = nil;
                                 cell            = [collectionView dequeueReusableCellWithReuseIdentifier:kAchievementsCollectionCellIdentifier forIndexPath:indexPath];
-                                achievement     = [[AccountInfoManager sharedManager].userAchievements.achievements objectAtIndex:indexPath.row];
+                                achievement     = [achievementsForCollectionsView objectAtIndex:indexPath.row];
     
     NSLog(@"%@ %@ %@", achievement.achievementName, achievement.achievementID, achievement.achievementPicture);
     
@@ -85,14 +89,14 @@ typedef NS_ENUM(NSUInteger, ImageState) {
     
     if([self checkAchievementsStatusWithIndexPath: indexPath]) {
      
-        [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement:[[AccountInfoManager sharedManager].userAchievements.achievements objectAtIndex:indexPath.row]];
+        [[AchievementsUnlockerManager sharedManager] showPresentationAchievementsViewControllerWithCurrentAchievement:[achievementsForCollectionsView objectAtIndex:indexPath.row]];
     }
 }
 
 - (BOOL)checkAchievementsStatusWithIndexPath:(NSIndexPath*)indexPath {
     
     Achievement                 *achievement    = nil;
-    achievement     = [[AccountInfoManager sharedManager].userAchievements.achievements objectAtIndex:indexPath.row];
+    achievement     = [achievementsForCollectionsView objectAtIndex:indexPath.row];
     
     if(achievement.achievementIsEnable) {
         

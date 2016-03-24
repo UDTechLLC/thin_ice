@@ -26,6 +26,14 @@
 		AC3AB08C1C9EBFFC00E1C61C /* ThinIceControlChangeTemperatureSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3AB08B1C9EBFFC00E1C61C /* ThinIceControlChangeTemperatureSideViewController.m */; };
 		AC3AB08F1C9EC02700E1C61C /* ThinIceControlChangeTimerAndDeviceSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3AB08E1C9EC02700E1C61C /* ThinIceControlChangeTimerAndDeviceSideViewController.m */; };
 		ACA316861C7EFB10007FD570 /* BaseSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA316851C7EFB10007FD570 /* BaseSignUpViewController.m */; };
+		D83993B31CA42BFA00027B15 /* _User.m in Sources */ = {isa = PBXBuildFile; fileRef = D83993A41CA42BFA00027B15 /* _User.m */; };
+		D83993B41CA42BFA00027B15 /* _UserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D83993A61CA42BFA00027B15 /* _UserSession.m */; };
+		D83993B51CA42BFA00027B15 /* _UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D83993A81CA42BFA00027B15 /* _UserSettings.m */; };
+		D83993B61CA42BFA00027B15 /* _UserStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = D83993AA1CA42BFA00027B15 /* _UserStatistics.m */; };
+		D83993B71CA42BFA00027B15 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D83993AC1CA42BFA00027B15 /* User.m */; };
+		D83993B81CA42BFA00027B15 /* UserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D83993AE1CA42BFA00027B15 /* UserSession.m */; };
+		D83993B91CA42BFA00027B15 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D83993B01CA42BFA00027B15 /* UserSettings.m */; };
+		D83993BA1CA42BFA00027B15 /* UserStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = D83993B21CA42BFA00027B15 /* UserStatistics.m */; };
 		D845D7F91C8D76BA00F8B563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D845D7F81C8D76BA00F8B563 /* SettingsViewController.m */; };
 		D845D7FD1C8D76E800F8B563 /* MeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D845D7FC1C8D76E800F8B563 /* MeasurementsViewController.m */; };
 		D845D8001C8D76F600F8B563 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D845D7FF1C8D76F600F8B563 /* NotificationsViewController.m */; };
@@ -145,20 +153,6 @@
 		D86897A51CA1924A001AE97A /* MovingForward_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D86897941CA1924A001AE97A /* MovingForward_375@2x.png */; };
 		D86897A61CA1924A001AE97A /* freshStart_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D86897951CA1924A001AE97A /* freshStart_375@2x.png */; };
 		D86897A81CA1926F001AE97A /* SelectedBackground_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D86897A71CA1926F001AE97A /* SelectedBackground_375@2x.png */; };
-		D86898201CA1AC56001AE97A /* _RecommendationActions.m in Sources */ = {isa = PBXBuildFile; fileRef = D86898051CA1AC56001AE97A /* _RecommendationActions.m */; };
-		D86898211CA1AC56001AE97A /* _User.m in Sources */ = {isa = PBXBuildFile; fileRef = D86898071CA1AC56001AE97A /* _User.m */; };
-		D86898221CA1AC56001AE97A /* _UserAchievements.m in Sources */ = {isa = PBXBuildFile; fileRef = D86898091CA1AC56001AE97A /* _UserAchievements.m */; };
-		D86898231CA1AC56001AE97A /* _UserCard.m in Sources */ = {isa = PBXBuildFile; fileRef = D868980B1CA1AC56001AE97A /* _UserCard.m */; };
-		D86898241CA1AC56001AE97A /* _UserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D868980D1CA1AC56001AE97A /* _UserSession.m */; };
-		D86898251CA1AC56001AE97A /* _UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D868980F1CA1AC56001AE97A /* _UserSettings.m */; };
-		D86898261CA1AC56001AE97A /* _UserStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = D86898111CA1AC56001AE97A /* _UserStatistics.m */; };
-		D86898271CA1AC56001AE97A /* RecommendationActions.m in Sources */ = {isa = PBXBuildFile; fileRef = D86898131CA1AC56001AE97A /* RecommendationActions.m */; };
-		D86898281CA1AC56001AE97A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D86898151CA1AC56001AE97A /* User.m */; };
-		D86898291CA1AC56001AE97A /* UserAchievements.m in Sources */ = {isa = PBXBuildFile; fileRef = D86898171CA1AC56001AE97A /* UserAchievements.m */; };
-		D868982A1CA1AC56001AE97A /* UserCard.m in Sources */ = {isa = PBXBuildFile; fileRef = D86898191CA1AC56001AE97A /* UserCard.m */; };
-		D868982B1CA1AC56001AE97A /* UserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D868981B1CA1AC56001AE97A /* UserSession.m */; };
-		D868982C1CA1AC56001AE97A /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D868981D1CA1AC56001AE97A /* UserSettings.m */; };
-		D868982D1CA1AC56001AE97A /* UserStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = D868981F1CA1AC56001AE97A /* UserStatistics.m */; };
 		D872D9341C9163C7004EAC59 /* ThinIceControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D872D9331C9163C7004EAC59 /* ThinIceControlViewController.m */; };
 		D872D9501C916A5C004EAC59 /* thiniceplus_normal_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D872D9491C916A5C004EAC59 /* thiniceplus_normal_375@2x.png */; };
 		D872D9511C916A5C004EAC59 /* thiniceplus_active_375@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D872D94A1C916A5C004EAC59 /* thiniceplus_active_375@2x.png */; };
@@ -367,6 +361,22 @@
 		ACA316841C7EFB10007FD570 /* BaseSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSignUpViewController.h; sourceTree = "<group>"; };
 		ACA316851C7EFB10007FD570 /* BaseSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSignUpViewController.m; sourceTree = "<group>"; };
 		B8F8B1830A2539DF36354C98 /* Pods-ThinIce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThinIce.release.xcconfig"; path = "Pods/Target Support Files/Pods-ThinIce/Pods-ThinIce.release.xcconfig"; sourceTree = "<group>"; };
+		D83993A31CA42BFA00027B15 /* _User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _User.h; sourceTree = "<group>"; };
+		D83993A41CA42BFA00027B15 /* _User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _User.m; sourceTree = "<group>"; };
+		D83993A51CA42BFA00027B15 /* _UserSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UserSession.h; sourceTree = "<group>"; };
+		D83993A61CA42BFA00027B15 /* _UserSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _UserSession.m; sourceTree = "<group>"; };
+		D83993A71CA42BFA00027B15 /* _UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UserSettings.h; sourceTree = "<group>"; };
+		D83993A81CA42BFA00027B15 /* _UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _UserSettings.m; sourceTree = "<group>"; };
+		D83993A91CA42BFA00027B15 /* _UserStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UserStatistics.h; sourceTree = "<group>"; };
+		D83993AA1CA42BFA00027B15 /* _UserStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _UserStatistics.m; sourceTree = "<group>"; };
+		D83993AB1CA42BFA00027B15 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		D83993AC1CA42BFA00027B15 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		D83993AD1CA42BFA00027B15 /* UserSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSession.h; sourceTree = "<group>"; };
+		D83993AE1CA42BFA00027B15 /* UserSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSession.m; sourceTree = "<group>"; };
+		D83993AF1CA42BFA00027B15 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
+		D83993B01CA42BFA00027B15 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
+		D83993B11CA42BFA00027B15 /* UserStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStatistics.h; sourceTree = "<group>"; };
+		D83993B21CA42BFA00027B15 /* UserStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStatistics.m; sourceTree = "<group>"; };
 		D845D7F71C8D76BA00F8B563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D845D7F81C8D76BA00F8B563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D845D7FB1C8D76E800F8B563 /* MeasurementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementsViewController.h; sourceTree = "<group>"; };
@@ -489,34 +499,6 @@
 		D86897941CA1924A001AE97A /* MovingForward_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MovingForward_375@2x.png"; sourceTree = "<group>"; };
 		D86897951CA1924A001AE97A /* freshStart_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "freshStart_375@2x.png"; sourceTree = "<group>"; };
 		D86897A71CA1926F001AE97A /* SelectedBackground_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelectedBackground_375@2x.png"; sourceTree = "<group>"; };
-		D86898041CA1AC56001AE97A /* _RecommendationActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RecommendationActions.h; sourceTree = "<group>"; };
-		D86898051CA1AC56001AE97A /* _RecommendationActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RecommendationActions.m; sourceTree = "<group>"; };
-		D86898061CA1AC56001AE97A /* _User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _User.h; sourceTree = "<group>"; };
-		D86898071CA1AC56001AE97A /* _User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _User.m; sourceTree = "<group>"; };
-		D86898081CA1AC56001AE97A /* _UserAchievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UserAchievements.h; sourceTree = "<group>"; };
-		D86898091CA1AC56001AE97A /* _UserAchievements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _UserAchievements.m; sourceTree = "<group>"; };
-		D868980A1CA1AC56001AE97A /* _UserCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UserCard.h; sourceTree = "<group>"; };
-		D868980B1CA1AC56001AE97A /* _UserCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _UserCard.m; sourceTree = "<group>"; };
-		D868980C1CA1AC56001AE97A /* _UserSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UserSession.h; sourceTree = "<group>"; };
-		D868980D1CA1AC56001AE97A /* _UserSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _UserSession.m; sourceTree = "<group>"; };
-		D868980E1CA1AC56001AE97A /* _UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UserSettings.h; sourceTree = "<group>"; };
-		D868980F1CA1AC56001AE97A /* _UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _UserSettings.m; sourceTree = "<group>"; };
-		D86898101CA1AC56001AE97A /* _UserStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UserStatistics.h; sourceTree = "<group>"; };
-		D86898111CA1AC56001AE97A /* _UserStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _UserStatistics.m; sourceTree = "<group>"; };
-		D86898121CA1AC56001AE97A /* RecommendationActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendationActions.h; sourceTree = "<group>"; };
-		D86898131CA1AC56001AE97A /* RecommendationActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendationActions.m; sourceTree = "<group>"; };
-		D86898141CA1AC56001AE97A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		D86898151CA1AC56001AE97A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		D86898161CA1AC56001AE97A /* UserAchievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAchievements.h; sourceTree = "<group>"; };
-		D86898171CA1AC56001AE97A /* UserAchievements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAchievements.m; sourceTree = "<group>"; };
-		D86898181CA1AC56001AE97A /* UserCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCard.h; sourceTree = "<group>"; };
-		D86898191CA1AC56001AE97A /* UserCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCard.m; sourceTree = "<group>"; };
-		D868981A1CA1AC56001AE97A /* UserSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSession.h; sourceTree = "<group>"; };
-		D868981B1CA1AC56001AE97A /* UserSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSession.m; sourceTree = "<group>"; };
-		D868981C1CA1AC56001AE97A /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
-		D868981D1CA1AC56001AE97A /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
-		D868981E1CA1AC56001AE97A /* UserStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStatistics.h; sourceTree = "<group>"; };
-		D868981F1CA1AC56001AE97A /* UserStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStatistics.m; sourceTree = "<group>"; };
 		D872D9321C9163C7004EAC59 /* ThinIceControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThinIceControlViewController.h; sourceTree = "<group>"; };
 		D872D9331C9163C7004EAC59 /* ThinIceControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThinIceControlViewController.m; sourceTree = "<group>"; };
 		D872D9491C916A5C004EAC59 /* thiniceplus_normal_375@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thiniceplus_normal_375@2x.png"; sourceTree = "<group>"; };
@@ -1486,34 +1468,22 @@
 			children = (
 				D8E134481C74A30A00B9D813 /* DatabaseEntities.h */,
 				D8E134021C7498D100B9D813 /* ThinIce.xcdatamodeld */,
-				D86898041CA1AC56001AE97A /* _RecommendationActions.h */,
-				D86898051CA1AC56001AE97A /* _RecommendationActions.m */,
-				D86898061CA1AC56001AE97A /* _User.h */,
-				D86898071CA1AC56001AE97A /* _User.m */,
-				D86898081CA1AC56001AE97A /* _UserAchievements.h */,
-				D86898091CA1AC56001AE97A /* _UserAchievements.m */,
-				D868980A1CA1AC56001AE97A /* _UserCard.h */,
-				D868980B1CA1AC56001AE97A /* _UserCard.m */,
-				D868980C1CA1AC56001AE97A /* _UserSession.h */,
-				D868980D1CA1AC56001AE97A /* _UserSession.m */,
-				D868980E1CA1AC56001AE97A /* _UserSettings.h */,
-				D868980F1CA1AC56001AE97A /* _UserSettings.m */,
-				D86898101CA1AC56001AE97A /* _UserStatistics.h */,
-				D86898111CA1AC56001AE97A /* _UserStatistics.m */,
-				D86898121CA1AC56001AE97A /* RecommendationActions.h */,
-				D86898131CA1AC56001AE97A /* RecommendationActions.m */,
-				D86898141CA1AC56001AE97A /* User.h */,
-				D86898151CA1AC56001AE97A /* User.m */,
-				D86898161CA1AC56001AE97A /* UserAchievements.h */,
-				D86898171CA1AC56001AE97A /* UserAchievements.m */,
-				D86898181CA1AC56001AE97A /* UserCard.h */,
-				D86898191CA1AC56001AE97A /* UserCard.m */,
-				D868981A1CA1AC56001AE97A /* UserSession.h */,
-				D868981B1CA1AC56001AE97A /* UserSession.m */,
-				D868981C1CA1AC56001AE97A /* UserSettings.h */,
-				D868981D1CA1AC56001AE97A /* UserSettings.m */,
-				D868981E1CA1AC56001AE97A /* UserStatistics.h */,
-				D868981F1CA1AC56001AE97A /* UserStatistics.m */,
+				D83993A31CA42BFA00027B15 /* _User.h */,
+				D83993A41CA42BFA00027B15 /* _User.m */,
+				D83993A51CA42BFA00027B15 /* _UserSession.h */,
+				D83993A61CA42BFA00027B15 /* _UserSession.m */,
+				D83993A71CA42BFA00027B15 /* _UserSettings.h */,
+				D83993A81CA42BFA00027B15 /* _UserSettings.m */,
+				D83993A91CA42BFA00027B15 /* _UserStatistics.h */,
+				D83993AA1CA42BFA00027B15 /* _UserStatistics.m */,
+				D83993AB1CA42BFA00027B15 /* User.h */,
+				D83993AC1CA42BFA00027B15 /* User.m */,
+				D83993AD1CA42BFA00027B15 /* UserSession.h */,
+				D83993AE1CA42BFA00027B15 /* UserSession.m */,
+				D83993AF1CA42BFA00027B15 /* UserSettings.h */,
+				D83993B01CA42BFA00027B15 /* UserSettings.m */,
+				D83993B11CA42BFA00027B15 /* UserStatistics.h */,
+				D83993B21CA42BFA00027B15 /* UserStatistics.m */,
 			);
 			name = DataBase;
 			sourceTree = "<group>";
@@ -2134,26 +2104,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D83993B71CA42BFA00027B15 /* User.m in Sources */,
+				D83993B31CA42BFA00027B15 /* _User.m in Sources */,
 				D8EF714A1C7B158F0006FDEF /* SlideMenuTableCell.m in Sources */,
+				D83993BA1CA42BFA00027B15 /* UserStatistics.m in Sources */,
 				D8B2B2B01C858C100089E6B9 /* DashboardDaysCardTableViewCell.m in Sources */,
 				D8867E7B1C735724005F7B6D /* BaseViewController.m in Sources */,
 				D887CD631C96F7EB00077447 /* AchievementsInfo.m in Sources */,
-				D86898281CA1AC56001AE97A /* User.m in Sources */,
 				D8846B441C93190C000ECA38 /* RSKInternalUtility.m in Sources */,
+				D83993B61CA42BFA00027B15 /* _UserStatistics.m in Sources */,
 				D8EDC9991C75D66400F5F524 /* DashboardViewController.m in Sources */,
 				D8C14F871CA02B3500028F23 /* Achievement.m in Sources */,
 				D88845B81C904D4A005DFE5C /* AchievemetsUnlockedViewController.m in Sources */,
-				D86898221CA1AC56001AE97A /* _UserAchievements.m in Sources */,
-				D86898211CA1AC56001AE97A /* _User.m in Sources */,
 				D8CABAD41C8723A3007EEBC7 /* CarbonTabSwipeNavigation.m in Sources */,
-				D86898241CA1AC56001AE97A /* _UserSession.m in Sources */,
 				D887CCE21C96BBE000077447 /* TOActionSheet.m in Sources */,
 				D8EF71361C7B08DE0006FDEF /* SlideNavigationController.m in Sources */,
 				D8867E991C7379CD005F7B6D /* NSObject+Runtime.m in Sources */,
+				D83993B91CA42BFA00027B15 /* UserSettings.m in Sources */,
 				D87F8EDF1C98434E00D6E58A /* SavedUser.m in Sources */,
 				D8867E571C732D02005F7B6D /* HomeViewController.m in Sources */,
 				D8EDC9B51C7619FC00F5F524 /* BluetoothConnectViewController.m in Sources */,
 				D8846B431C93190C000ECA38 /* RSKImageScrollView.m in Sources */,
+				D83993B81CA42BFA00027B15 /* UserSession.m in Sources */,
 				D8A1677D1C885C92000C4C1C /* AccountInformationViewController.m in Sources */,
 				D872D9341C9163C7004EAC59 /* ThinIceControlViewController.m in Sources */,
 				D8846B451C93190C000ECA38 /* RSKTouchView.m in Sources */,
@@ -2162,10 +2134,8 @@
 				D88845D41C907542005DFE5C /* AchievementsUnlockerManager.m in Sources */,
 				D845D7FD1C8D76E800F8B563 /* MeasurementsViewController.m in Sources */,
 				D8EF71441C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
-				D868982A1CA1AC56001AE97A /* UserCard.m in Sources */,
 				D8867E841C736715005F7B6D /* HelperManager.m in Sources */,
 				D8EDC9961C75D59600F5F524 /* SignUpViewController.m in Sources */,
-				D86898291CA1AC56001AE97A /* UserAchievements.m in Sources */,
 				D8EDC98A1C75B89900F5F524 /* SignInViewController.m in Sources */,
 				D8867E931C737595005F7B6D /* AccountInfoManager.m in Sources */,
 				D872D96A1C91B4C8004EAC59 /* BackSideCellViewController.m in Sources */,
@@ -2176,13 +2146,10 @@
 				D88845B51C904D15005DFE5C /* AchievementsCollectionViewController.m in Sources */,
 				D8CABAE81C87317A007EEBC7 /* KNPercentLabel.m in Sources */,
 				D8CABAE71C87317A007EEBC7 /* KNCirclePercentView.m in Sources */,
-				D86898201CA1AC56001AE97A /* _RecommendationActions.m in Sources */,
-				D86898231CA1AC56001AE97A /* _UserCard.m in Sources */,
-				D86898251CA1AC56001AE97A /* _UserSettings.m in Sources */,
 				D8846B421C93190C000ECA38 /* RSKImageCropViewController.m in Sources */,
 				D8846B471C93190C000ECA38 /* UIImage+RSKImageCropper.m in Sources */,
+				D83993B41CA42BFA00027B15 /* _UserSession.m in Sources */,
 				AC3AB08F1C9EC02700E1C61C /* ThinIceControlChangeTimerAndDeviceSideViewController.m in Sources */,
-				D86898261CA1AC56001AE97A /* _UserStatistics.m in Sources */,
 				D8E134041C7498D100B9D813 /* ThinIce.xcdatamodeld in Sources */,
 				D88845BC1C90516D005DFE5C /* AchievementsCollectionCell.m in Sources */,
 				D8E133D81C7477AC00B9D813 /* FHSStream.m in Sources */,
@@ -2191,14 +2158,12 @@
 				D8EF71461C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				D8867E541C732D02005F7B6D /* AppDelegate.m in Sources */,
 				D8A167991C886196000C4C1C /* InformationViewController.m in Sources */,
-				D868982C1CA1AC56001AE97A /* UserSettings.m in Sources */,
+				D83993B51CA42BFA00027B15 /* _UserSettings.m in Sources */,
 				D845D8001C8D76F600F8B563 /* NotificationsViewController.m in Sources */,
 				D8EDC98E1C75B9FE00F5F524 /* CustomNavigationBar.m in Sources */,
-				D86898271CA1AC56001AE97A /* RecommendationActions.m in Sources */,
 				D8EDC9B21C7619E900F5F524 /* UserInfoRegViewController.m in Sources */,
 				D845D7F91C8D76BA00F8B563 /* SettingsViewController.m in Sources */,
 				D8867E511C732D02005F7B6D /* main.m in Sources */,
-				D868982B1CA1AC56001AE97A /* UserSession.m in Sources */,
 				D8EF71331C7B08D20006FDEF /* LeftMenuViewController.m in Sources */,
 				D8EF71421C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				D8EF71431C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorScale.m in Sources */,
@@ -2206,7 +2171,6 @@
 				D8846B461C93190C000ECA38 /* UIApplication+RSKImageCropper.m in Sources */,
 				ACA316861C7EFB10007FD570 /* BaseSignUpViewController.m in Sources */,
 				D8CABACC1C87209B007EEBC7 /* StatisticsViewController.m in Sources */,
-				D868982D1CA1AC56001AE97A /* UserStatistics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

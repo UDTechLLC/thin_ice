@@ -28,11 +28,7 @@
 
 @interface AchievementsInfo : NSObject
 
-@property (strong, nonatomic) NSMutableArray       *achievements;
-
-
 - (void)createNSArrayAchievements;
-- (void)loadNSArrayAchievements;
 - (void)addValueToAchievement:(NSInteger)achievement Progress:(NSNumber*)value;
 
 @end

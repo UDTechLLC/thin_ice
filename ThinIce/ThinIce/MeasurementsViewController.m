@@ -252,55 +252,10 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
     return @"";
 }
 
-- (BOOL)checkVariable:(NSString*)string {
-    
-    BOOL state  = YES;
-    
-    if(string.length == 0) {
-        state   = NO;
-    }
-    if([string isEqualToString:@"(null)"]) {
-        state   = NO;
-    }
-    if(string == nil) {
-        state   = NO;
-    }
-    
-    return state;
-}
-
 - (IBAction)saveButtonActionHendlier:(UIButton *)sender {
     
     [self createUserParamsDictionary];
     [self saveRegInformation];
-}
-
-- (NSString*)setUserLoginField {
-    
-    if([self checkVariable:[AccountInfoManager sharedManager].userToken.userLogin]) {
-        
-        return [AccountInfoManager sharedManager].userToken.userLogin;
-    } else if([self checkVariable:[AccountInfoManager sharedManager].userToken.socialityKey]) {
-        
-        return [AccountInfoManager sharedManager].userToken.socialityKey;
-    } else {
-        
-        return @"";
-    }
-}
-
-- (NSString*)setUserPredicatFormat {
-    
-    if([self checkVariable:[AccountInfoManager sharedManager].userToken.userLogin]) {
-        
-        return kLoginEmailKey;
-    } else if([self checkVariable:[AccountInfoManager sharedManager].userToken.socialityKey]) {
-        
-        return kSocialityKey;
-    } else {
-        
-        return @"";
-    }
 }
 
 - (void)createUserParamsDictionary {
@@ -321,17 +276,18 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
 
 - (void)saveRegInformation {
     
+    [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: TheButtonPresser Progress:[NSNumber numberWithInt:1]];
+    
     __weak typeof(self) weakself                = self;
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
         
-        User *curUser                           = [User MR_findFirstByAttribute:[self setUserPredicatFormat] withValue:[self setUserLoginField] inContext:localContext];
+        User *curUser                           = [User MR_findFirstByAttribute:[[HelperManager sharedServer] setUserPredicatFormat] withValue:[[HelperManager sharedServer] setUserLoginField] inContext:localContext];
         
         curUser.userSettings.user_Volume        = [weakself.regUserDict objectForKey:kSettingsVolume];
         curUser.userSettings.user_temperature   = [weakself.regUserDict objectForKey:kSettingsTemperature];
         curUser.userSettings.user_weight        = [weakself.regUserDict objectForKey:kSettingsWeight];
         curUser.userSettings.user_Length        = [weakself.regUserDict objectForKey:kSettingsLength];
         
-        [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: TheButtonPresser Progress:[NSNumber numberWithInt:1]];
     }];
     
     DashboardViewController *dashboard          = [[UIStoryboard storyboardWithName:kMainStoryBoardIdentifier bundle:nil] instantiateViewControllerWithIdentifier:kDashboardViewControllerID];

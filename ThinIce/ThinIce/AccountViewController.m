@@ -87,6 +87,7 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     self.passwordTextField.tintColor                            = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     self.passwordTextField.tag                                  = PasswordTextField;
     self.passwordTextField.keyboardAppearance                   = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.passwordTextField.secureTextEntry                      = YES;
     self.passwordBorderLine.backgroundColor                     = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
     self.confirmPasswordTextField.attributedPlaceholder         = [[NSAttributedString alloc] initWithString:@"Confirm New Password" attributes:@{NSForegroundColorAttributeName: [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0]}];
@@ -94,6 +95,7 @@ typedef NS_ENUM(NSUInteger, TextFields) {
     self.confirmPasswordTextField.tintColor                     = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     self.confirmPasswordTextField.tag                           = ConfirmPasswordTextField;
     self.confirmPasswordTextField.keyboardAppearance            = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.confirmPasswordTextField.secureTextEntry               = YES;
     self.confirmPasswordBorderLine.backgroundColor              = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
     // Create SaveButton

@@ -51,22 +51,6 @@
     return color;
 }
 
-- (void)createAchivementsDataBaseForUser:(User*)user {
-    
-    NSMutableArray *arrayOfAchivements = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < AchievementsCount; i ++) {
-        
-        UserAchievements *uAchievement  = [[UserAchievements alloc] init];
-        [uAchievement setAchivment_addStatusValue:NO];
-        uAchievement.achivment_id       = [NSNumber numberWithInt:i];
-        uAchievement.achivment_progress = 0;
-        [arrayOfAchivements addObject:uAchievement];
-    }
-    user.userAchievements               = arrayOfAchivements;
-    
-}
-
 - (void)saveContextWithBlock:(void(^)(NSManagedObjectContext*))block {
     
     UIApplication *application = [UIApplication sharedApplication];
@@ -182,6 +166,51 @@
 - (void)stopPOSTNotification {
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
+
+- (NSString*)setUserPredicatFormat {
+    
+    if([self checkVariable:[AccountInfoManager sharedManager].userToken.userLogin]) {
+        
+        return kLoginEmailKey;
+    } else if([self checkVariable:[AccountInfoManager sharedManager].userToken.socialityKey]) {
+        
+        return kSocialityKey;
+    } else {
+        
+        return @"";
+    }
+}
+
+- (NSString*)setUserLoginField {
+    
+    if([self checkVariable:[AccountInfoManager sharedManager].userToken.userLogin]) {
+        
+        return [AccountInfoManager sharedManager].userToken.userLogin;
+    } else if([self checkVariable:[AccountInfoManager sharedManager].userToken.socialityKey]) {
+        
+        return [AccountInfoManager sharedManager].userToken.socialityKey;
+    } else {
+        
+        return @"";
+    }
+}
+
+- (BOOL)checkVariable:(NSString*)string {
+    
+    BOOL state  = YES;
+    
+    if(string.length == 0) {
+        state   = NO;
+    }
+    if([string isEqualToString:@"(null)"]) {
+        state   = NO;
+    }
+    if(string == nil) {
+        state   = NO;
+    }
+    
+    return state;
 }
 
 @end

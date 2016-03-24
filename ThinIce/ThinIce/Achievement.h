@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Achievement : NSObject
+@interface Achievement : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString      *achievementID;
 @property (strong, nonatomic) NSString      *achievementName;
@@ -19,5 +19,8 @@
 @property (strong, nonatomic) NSString      *achievementDescription;
 
 - (instancetype)initWithAchievementsID:(NSString*)ID Name:(NSString*)name Progress:(NSString*)progress picName:(NSString*)pictureName IsEnable:(BOOL)isEnable Description:(NSString*)description BigPicture:(NSString*)bigPic;
+
+- (id)initWithCoder:(NSCoder *)aDecoder;
+- (void)encodeWithCoder:(NSCoder *)encoder;
 
 @end

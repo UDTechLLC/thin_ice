@@ -69,11 +69,11 @@
 
 - (void)p_getSettings {
     
-    NSString *stringInObjectNotificationState = [[NSUserDefaults standardUserDefaults] objectForKey:kSaveInObjectNotificationStateKey];
-    NSString *stringInObjectNotificationDelay = [[NSUserDefaults standardUserDefaults] objectForKey:kSaveInObjectNotificationDelayKey];
+    NSString *stringInObjectNotificationState   = [[NSUserDefaults standardUserDefaults] objectForKey:kSaveInObjectNotificationStateKey];
+    NSString *stringInObjectNotificationDelay   = [[NSUserDefaults standardUserDefaults] objectForKey:kSaveInObjectNotificationDelayKey];
     
-    self.isNotificationON       = [stringInObjectNotificationState integerValue];
-    self.notificationDelay      = [stringInObjectNotificationDelay integerValue];
+    self.isNotificationON                       = [stringInObjectNotificationState integerValue];
+    self.notificationDelay                      = [stringInObjectNotificationDelay integerValue];
 
 }
 
@@ -177,13 +177,13 @@
     newUser.user_weightValue                    = [[userParams objectForKey:kWeightKey] floatValue];
     newUser.user_sex                            = [userParams objectForKey:kSexFieldKey];
     
-    [self injectUserSettings:newUser];
-    [defaultContext MR_saveToPersistentStoreAndWait];
-    
     self.userToken                              = newUser;
     
     self.userAchievements                       = [[AchievementsInfo alloc] init];
     [self.userAchievements createNSArrayAchievements];
+    
+    [self injectUserSettings:newUser];
+    [defaultContext MR_saveToPersistentStoreAndWait];
     
     block();
 }
@@ -201,9 +201,6 @@
         NSLog(@"-------=======user Find=======-------");
         self.userToken                      = [filteredPassword firstObject];
         self.userSavedInHomeDirectory       = [SavedUser initWithLogin:self.userToken.userLogin Pass:self.userToken.userPass];
-        
-        self.userAchievements               = [[AchievementsInfo alloc] init];
-        [self.userAchievements createNSArrayAchievements];
         
         block(YES);
     } else {
@@ -226,16 +223,12 @@
         self.userToken                              = [filteredUser firstObject];
         self.userSavedInHomeDirectory               = [SavedUser initWithSocialityKey:self.userToken.socialityKey];
         
-        self.userAchievements = [[AchievementsInfo alloc] init];
-        [self.userAchievements loadNSArrayAchievements];
-        
         block(YES);
     } else {
         
         NSLog(@"-------=======user not find=======-------");
         
         User                *newUser                = [User MR_createEntityInContext:defaultContext];
-
         newUser.socialityKey                        = key;
         
         if([[HelperManager sharedServer] saveImage:profileImage withFileName:[NSString stringWithFormat:@"%@", key] ofType:[[HelperManager sharedServer] definitionImageType:profileImage]].length > 0) {
@@ -275,9 +268,6 @@
         
         self.userToken                                  = [filteredUser firstObject];
         
-        self.userAchievements                           = [[AchievementsInfo alloc] init];
-        [self.userAchievements loadNSArrayAchievements];
-        
         
         block();
         
@@ -292,10 +282,7 @@
         
         self.userToken                                  = [emailFilteredUser firstObject];
         
-        self.userAchievements                           = [[AchievementsInfo alloc] init];
-        [self.userAchievements loadNSArrayAchievements];
-        
-        
+    
         block();
         
         return;
@@ -355,27 +342,6 @@
 }
 
 - (void)createUserCardsWithDay {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

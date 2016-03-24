@@ -26,10 +26,6 @@ extern const struct UserRelationships {
 @class UserSettings;
 @class UserStatistics;
 
-@class NSObject;
-
-@class NSObject;
-
 @interface UserID : NSManagedObjectID {}
 @end
 
@@ -55,11 +51,11 @@ extern const struct UserRelationships {
 
 //- (BOOL)validateSocialityKey:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) id userAchievements;
+@property (nonatomic, strong) NSData* userAchievements;
 
 //- (BOOL)validateUserAchievements:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) id userCard;
+@property (nonatomic, strong) NSData* userCard;
 
 //- (BOOL)validateUserCard:(id*)value_ error:(NSError**)error_;
 
@@ -119,11 +115,11 @@ extern const struct UserRelationships {
 - (NSString*)primitiveSocialityKey;
 - (void)setPrimitiveSocialityKey:(NSString*)value;
 
-- (id)primitiveUserAchievements;
-- (void)setPrimitiveUserAchievements:(id)value;
+- (NSData*)primitiveUserAchievements;
+- (void)setPrimitiveUserAchievements:(NSData*)value;
 
-- (id)primitiveUserCard;
-- (void)setPrimitiveUserCard:(id)value;
+- (NSData*)primitiveUserCard;
+- (void)setPrimitiveUserCard:(NSData*)value;
 
 - (NSString*)primitiveUserLogin;
 - (void)setPrimitiveUserLogin:(NSString*)value;
