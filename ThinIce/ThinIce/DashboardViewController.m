@@ -97,6 +97,15 @@
 
 - (void)createViewController {
     
+    // Check Or Create Days Cards
+    
+    [[AccountInfoManager sharedManager].userDaysCard checkAndCreateCards];
+    
+    cellData = [NSMutableArray arrayWithArray:[AccountInfoManager sharedManager].userDaysCard.weeksCardArray];
+    
+    
+    
+    
     isFirstCreation                                         = YES;
     
     self.userNameLabel.backgroundColor                      = [UIColor clearColor];
@@ -109,8 +118,7 @@
     // Create SeparatorsView
     self.insolesAndVestVerticalSeparator.backgroundColor    = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
     self.horisontalSeparator.backgroundColor                = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
-    
-    cellData                                                = [[NSMutableArray alloc] init];
+
 
     self.dayCardTableViewBackgroundView.backgroundColor     = [UIColor clearColor];
     
@@ -172,12 +180,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1; //cellData.count;
+    return cellData.count; //cellData.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 4; //array count returns 10
+    return 1; //array count returns 10
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -191,14 +199,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     DashboardDaysCardTableViewCell *cell    = [self.dayCardsTableView dequeueReusableCellWithIdentifier:kDashboardCellIdentifier forIndexPath:indexPath];
-    [cell loadCellWithData:nil];
-    cell.dashboardSelf                      = self;
+    
+    if(indexPath == [NSIndexPath indexPathWithIndex:0]) {
+        
+        [cell loadCellWithData:[AccountInfoManager sharedManager].userDaysCard.currentCard];
+        [cell addCellsObservers];
+        cell.dashboardSelf                      = self;
+    } else {
+        
+        [cell loadCellWithData: [cellData objectAtIndex:indexPath.row]];
+        [cell addCellsObservers];
+        cell.dashboardSelf                      = self;
+    }
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

@@ -10,6 +10,7 @@
 #import "User.h"
 #import "SavedUser.h"
 #import "AchievementsInfo.h"
+#import "DayCardsCreator.h"
 
 #define kNotificationDeleyKey               @"NotificationDelayKey"
 #define kNotificationStateKey               @"NotificationStateKey"
@@ -41,6 +42,7 @@ typedef NS_ENUM(NSUInteger, DeviceTimerState) {
 @property (readonly, nonatomic) SavedUser                       *userSavedInHomeDirectory;
 @property (readonly, nonatomic) User                            *userToken;
 @property (readonly, nonatomic) AchievementsInfo                *userAchievements;
+@property (readonly, nonatomic) DayCardsCreator                 *userDaysCard;                          // inside NSArray Current Card
 
 // Notifications ViewController propertys
 

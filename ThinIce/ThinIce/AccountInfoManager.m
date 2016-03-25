@@ -13,6 +13,7 @@
 @property (nonatomic, strong, readwrite) SavedUser                  *userSavedInHomeDirectory;
 @property (nonatomic, strong, readwrite) User                       *userToken;
 @property (nonatomic, strong, readwrite) AchievementsInfo           *userAchievements;
+@property (nonatomic, strong, readwrite) DayCardsCreator            *userDaysCard;
 
 @end
 
@@ -35,6 +36,7 @@
     self = [super init];
     if (self) {
         
+        self.userDaysCard = [[DayCardsCreator alloc] init];
         [self p_getTimerTemperatureDeviceDelay];
         [self p_getSettings];
         [self p_getToken];

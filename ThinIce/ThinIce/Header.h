@@ -56,7 +56,7 @@
 #define kSettingsVolume                                         @"SettingsVolume"
 #define kSettingsTemperature                                    @"SettingsTemperature"
 #define kSettingsWeight                                         @"SettingsWeight"
-#define kSettingsLength                                         @"SettingsLength"
+#define kSettingsHeight                                         @"SettingsHeight"
 
                     // SINGLETION AND NOTIFICATION KEY
 #define ktokenKey                                               @"tokenKey"

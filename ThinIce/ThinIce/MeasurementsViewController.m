@@ -13,13 +13,13 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
     VolumeTextField,
     TemperatureTextField,
     WeightTextField,
-    LengthTextField
+    HeightTextField
 };
 
 #define kArrayWithVolume        [NSArray arrayWithObjects:@"Ml",@"Oz", nil]
 #define kArrayWithTemperature   [NSArray arrayWithObjects:@"℃",@"℉", nil]
 #define kArrayWithWeight        [NSArray arrayWithObjects:@"Kg",@"Lbf", nil]
-#define kArrayWithLength        [NSArray arrayWithObjects:@"Cm",@"Ft",@"Inch", nil]
+#define kArrayWithHeight        [NSArray arrayWithObjects:@"Cm",@"Ft",@"Inch", nil]
 
 @interface MeasurementsViewController () <UIPickerViewDataSource, UIPickerViewDelegate> {
     
@@ -50,10 +50,10 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
 @property (weak, nonatomic) IBOutlet UIImageView                    *weightArrow;
 
 // Length Block
-@property (weak, nonatomic) IBOutlet UILabel                        *lengthLabel;
-@property (weak, nonatomic) IBOutlet UITextField                    *lengthTextField;
-@property (weak, nonatomic) IBOutlet UIView                         *lengthBorderLine;
-@property (weak, nonatomic) IBOutlet UIImageView                    *lengthArrow;
+@property (weak, nonatomic) IBOutlet UILabel                        *heightLabel;
+@property (weak, nonatomic) IBOutlet UITextField                    *heightTextField;
+@property (weak, nonatomic) IBOutlet UIView                         *heightBorderLine;
+@property (weak, nonatomic) IBOutlet UIImageView                    *heightArrow;
 
 // Save Button Block
 @property (weak, nonatomic) IBOutlet UIButton                       *saveButton;
@@ -125,16 +125,16 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
     
 // Create Length Block init
     
-    self.lengthLabel.text                               = @"Length";
-    self.lengthLabel.textColor                          = [UIColor lightGrayColor];
-    self.lengthTextField.tag                            = LengthTextField;
-    self.lengthTextField.text                           = [self setTextInTextViewWithTag:LengthTextField];
-    self.lengthTextField.textColor                      = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
-    self.lengthTextField.tintColor                      = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
-    self.lengthTextField.keyboardAppearance             = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
-    self.lengthBorderLine.backgroundColor               = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
-    self.lengthArrow.contentMode                        = UIViewContentModeCenter;
-    self.lengthArrow.image                              = [UIImage imageNamed:[NSString stringWithFormat:@"arrow_%d", (int)kScreenWidth]];
+    self.heightLabel.text                               = @"Height";
+    self.heightLabel.textColor                          = [UIColor lightGrayColor];
+    self.heightTextField.tag                            = HeightTextField;
+    self.heightTextField.text                           = [self setTextInTextViewWithTag:HeightTextField];
+    self.heightTextField.textColor                      = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.heightTextField.tintColor                      = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
+    self.heightTextField.keyboardAppearance             = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.heightBorderLine.backgroundColor               = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
+    self.heightArrow.contentMode                        = UIViewContentModeCenter;
+    self.heightArrow.image                              = [UIImage imageNamed:[NSString stringWithFormat:@"arrow_%d", (int)kScreenWidth]];
     
 // Create SaveButton init
     
@@ -169,9 +169,9 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
         currentArrayForPicker_ = [kArrayWithWeight mutableCopy];
         [picker_ reloadAllComponents];
         [picker_ selectRow: [self findIndexAtObject:currentTextField_.text ] inComponent:0 animated:NO];
-    } else if (currentTextField_.tag == LengthTextField) {
+    } else if (currentTextField_.tag == HeightTextField) {
         
-        currentArrayForPicker_ = [kArrayWithLength mutableCopy];
+        currentArrayForPicker_ = [kArrayWithHeight mutableCopy];
         [picker_ reloadAllComponents];
         [picker_ selectRow: [self findIndexAtObject:currentTextField_.text ] inComponent:0 animated:NO];
     }
@@ -188,9 +188,9 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
     } else if (currentTextField_.tag == WeightTextField) {
         
         [self.regUserDict setObject:currentTextField_.text forKey:kSettingsWeight];
-    } else if (currentTextField_.tag == LengthTextField) {
+    } else if (currentTextField_.tag == HeightTextField) {
         
-        [self.regUserDict setObject:currentTextField_.text forKey:kSettingsLength];
+        [self.regUserDict setObject:currentTextField_.text forKey:kSettingsHeight];
     }
 }
 
@@ -241,7 +241,7 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
             return [NSString stringWithFormat:@"%@", [AccountInfoManager sharedManager].userToken.userSettings.user_weight];
         }
             break;
-        case LengthTextField:
+        case HeightTextField:
         {
             return [NSString stringWithFormat:@"%@", [AccountInfoManager sharedManager].userToken.userSettings.user_Length];
         }
@@ -261,16 +261,20 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
 - (void)createUserParamsDictionary {
     
     if(self.volumeTextField.text.length > 0) {
+        
         [self.regUserDict setObject:self.volumeTextField.text forKey:kSettingsVolume];
     }
     if(self.temperatureTextField.text.length > 0) {
+        
         [self.regUserDict setObject:self.temperatureTextField.text forKey:kSettingsTemperature];
     }
     if(self.weightTextField.text.length > 0) {
+        
         [self.regUserDict setObject:self.weightTextField.text forKey:kSettingsWeight];
     }
-    if(self.lengthTextField.text.length > 0) {
-        [self.regUserDict setObject:self.lengthTextField.text forKey:kSettingsLength];
+    if(self.heightTextField.text.length > 0) {
+        
+        [self.regUserDict setObject:self.heightTextField.text forKey:kSettingsHeight];
     }
 }
 
@@ -286,7 +290,7 @@ typedef NS_ENUM(NSUInteger, CurrentTextFields) {
         curUser.userSettings.user_Volume        = [weakself.regUserDict objectForKey:kSettingsVolume];
         curUser.userSettings.user_temperature   = [weakself.regUserDict objectForKey:kSettingsTemperature];
         curUser.userSettings.user_weight        = [weakself.regUserDict objectForKey:kSettingsWeight];
-        curUser.userSettings.user_Length        = [weakself.regUserDict objectForKey:kSettingsLength];
+        curUser.userSettings.user_Length        = [weakself.regUserDict objectForKey:kSettingsHeight];
         
     }];
     

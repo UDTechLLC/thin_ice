@@ -346,6 +346,10 @@
 		D8EF714A1C7B158F0006FDEF /* SlideMenuTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EF71491C7B158F0006FDEF /* SlideMenuTableCell.m */; };
 		D8EF71571C7B66680006FDEF /* Thin_ice_background_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8EF71561C7B66680006FDEF /* Thin_ice_background_320@2x.png */; };
 		D8EF71591C7B6D180006FDEF /* thin_ice_dashboard_background_320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8EF71581C7B6D180006FDEF /* thin_ice_dashboard_background_320@2x.png */; };
+		D8FBB18D1CA54A1300746A47 /* UserDaysCards.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FBB18C1CA54A1300746A47 /* UserDaysCards.m */; };
+		D8FBB1901CA54A2300746A47 /* RecomendationActions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FBB18F1CA54A2300746A47 /* RecomendationActions.m */; };
+		D8FBB1941CA5614800746A47 /* DayCardsCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FBB1931CA5614800746A47 /* DayCardsCreator.m */; };
+		D8FBB1961CA5655200746A47 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8FBB1951CA5655200746A47 /* CoreMotion.framework */; };
 		DE9071CAB00EE51D46F86B50 /* libPods-ThinIce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C806EB0926C366CC18D7AA /* libPods-ThinIce.a */; };
 /* End PBXBuildFile section */
 
@@ -752,6 +756,13 @@
 		D8EF71491C7B158F0006FDEF /* SlideMenuTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuTableCell.m; sourceTree = "<group>"; };
 		D8EF71561C7B66680006FDEF /* Thin_ice_background_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thin_ice_background_320@2x.png"; sourceTree = "<group>"; };
 		D8EF71581C7B6D180006FDEF /* thin_ice_dashboard_background_320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thin_ice_dashboard_background_320@2x.png"; sourceTree = "<group>"; };
+		D8FBB18B1CA54A1300746A47 /* UserDaysCards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDaysCards.h; sourceTree = "<group>"; };
+		D8FBB18C1CA54A1300746A47 /* UserDaysCards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDaysCards.m; sourceTree = "<group>"; };
+		D8FBB18E1CA54A2300746A47 /* RecomendationActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecomendationActions.h; sourceTree = "<group>"; };
+		D8FBB18F1CA54A2300746A47 /* RecomendationActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecomendationActions.m; sourceTree = "<group>"; };
+		D8FBB1921CA5614800746A47 /* DayCardsCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCardsCreator.h; sourceTree = "<group>"; };
+		D8FBB1931CA5614800746A47 /* DayCardsCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCardsCreator.m; sourceTree = "<group>"; };
+		D8FBB1951CA5655200746A47 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -759,6 +770,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8FBB1961CA5655200746A47 /* CoreMotion.framework in Frameworks */,
 				D8CABABF1C86E56F007EEBC7 /* QuartzCore.framework in Frameworks */,
 				D8E1344A1C74BC5E00B9D813 /* Social.framework in Frameworks */,
 				D8E133D21C7462FD00B9D813 /* SystemConfiguration.framework in Frameworks */,
@@ -777,6 +789,7 @@
 		8F49DA89D550528273F21E22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8FBB1951CA5655200746A47 /* CoreMotion.framework */,
 				D8CABABE1C86E56F007EEBC7 /* QuartzCore.framework */,
 				D8E134491C74BC5E00B9D813 /* Social.framework */,
 				D8E133D31C7477AC00B9D813 /* FHSTwitterEngine */,
@@ -1127,8 +1140,7 @@
 		D8867E811C735DBE005F7B6D /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				D87F8EDD1C98434E00D6E58A /* SavedUser.h */,
-				D87F8EDE1C98434E00D6E58A /* SavedUser.m */,
+				D8FBB1911CA5610900746A47 /* DataTypeClass */,
 				D8867E821C736715005F7B6D /* HelperManager.h */,
 				D8867E831C736715005F7B6D /* HelperManager.m */,
 				D8867E911C737595005F7B6D /* AccountInfoManager.h */,
@@ -1137,8 +1149,8 @@
 				D88845D31C907542005DFE5C /* AchievementsUnlockerManager.m */,
 				D887CD611C96F7EB00077447 /* AchievementsInfo.h */,
 				D887CD621C96F7EB00077447 /* AchievementsInfo.m */,
-				D8C14F851CA02B3500028F23 /* Achievement.h */,
-				D8C14F861CA02B3500028F23 /* Achievement.m */,
+				D8FBB1921CA5614800746A47 /* DayCardsCreator.h */,
+				D8FBB1931CA5614800746A47 /* DayCardsCreator.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -1718,6 +1730,21 @@
 			name = Dashboard;
 			sourceTree = "<group>";
 		};
+		D8FBB1911CA5610900746A47 /* DataTypeClass */ = {
+			isa = PBXGroup;
+			children = (
+				D87F8EDD1C98434E00D6E58A /* SavedUser.h */,
+				D87F8EDE1C98434E00D6E58A /* SavedUser.m */,
+				D8C14F851CA02B3500028F23 /* Achievement.h */,
+				D8C14F861CA02B3500028F23 /* Achievement.m */,
+				D8FBB18B1CA54A1300746A47 /* UserDaysCards.h */,
+				D8FBB18C1CA54A1300746A47 /* UserDaysCards.m */,
+				D8FBB18E1CA54A2300746A47 /* RecomendationActions.h */,
+				D8FBB18F1CA54A2300746A47 /* RecomendationActions.m */,
+			);
+			name = DataTypeClass;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2125,12 +2152,15 @@
 				D8867E571C732D02005F7B6D /* HomeViewController.m in Sources */,
 				D8EDC9B51C7619FC00F5F524 /* BluetoothConnectViewController.m in Sources */,
 				D8846B431C93190C000ECA38 /* RSKImageScrollView.m in Sources */,
+				D8FBB1941CA5614800746A47 /* DayCardsCreator.m in Sources */,
 				D83993B81CA42BFA00027B15 /* UserSession.m in Sources */,
 				D8A1677D1C885C92000C4C1C /* AccountInformationViewController.m in Sources */,
 				D872D9341C9163C7004EAC59 /* ThinIceControlViewController.m in Sources */,
 				D8846B451C93190C000ECA38 /* RSKTouchView.m in Sources */,
 				D8A167961C88618A000C4C1C /* AccountViewController.m in Sources */,
 				D8E133D91C7477AC00B9D813 /* FHSTwitterEngine.m in Sources */,
+				D8FBB1901CA54A2300746A47 /* RecomendationActions.m in Sources */,
+				D8FBB18D1CA54A1300746A47 /* UserDaysCards.m in Sources */,
 				D88845D41C907542005DFE5C /* AchievementsUnlockerManager.m in Sources */,
 				D845D7FD1C8D76E800F8B563 /* MeasurementsViewController.m in Sources */,
 				D8EF71441C7B08EA0006FDEF /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,

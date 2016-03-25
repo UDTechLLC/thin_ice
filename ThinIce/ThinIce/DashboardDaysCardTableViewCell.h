@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DashboardViewController.h"
+#import "AccountInfoManager.h"
 
 @interface DashboardDaysCardTableViewCell : UITableViewCell
 
@@ -87,9 +88,9 @@
 @property(strong, nonatomic) DashboardViewController                    *dashboardSelf;
 
 
-
-- (void)loadCellWithData:(id)data;
+- (void)loadCellWithData:(UserDaysCards*)data;
 - (IBAction)cellflipActionButton:(UIButton *)sender;
+- (void)addCellsObservers;
 - (void)leftFlip;
 
 @end

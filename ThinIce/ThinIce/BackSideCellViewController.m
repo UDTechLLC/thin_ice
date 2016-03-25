@@ -8,10 +8,9 @@
 
 #import "BackSideCellViewController.h"
 
-@interface BackSideCellViewController ()
-
-@property (weak, nonatomic) IBOutlet UIScrollView                       *scrollView;
-@property (weak, nonatomic) IBOutlet UIView                             *backgroundAllView;
+@interface BackSideCellViewController () {
+    NSNumberFormatter *formatter;
+}
 
 // Header View Block
 @property (weak, nonatomic) IBOutlet UIView                             *headerCellView;
@@ -80,12 +79,10 @@
 
 - (void)createViewController {
     
+    formatter = [[NSNumberFormatter alloc] init];
+    
     self.view.backgroundColor                                       = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha:0.5];
     self.view.layer.cornerRadius                                    = CellAndTableCornerRadius;
-    
-    self.backgroundAllView.backgroundColor                          = [UIColor clearColor];
-    
-    self.scrollView.backgroundColor                                 = [UIColor clearColor];
     
     self.headerCellView.backgroundColor                             = [[HelperManager sharedServer] colorwithHexString:@"#6568a1" alpha:1.0];
     
@@ -109,7 +106,7 @@
     self.gymSessionCountTextField.text                              = @"0";
     self.gymSessionCountTextField.textColor                         = [UIColor whiteColor];
     self.gymSessionCountTextField.keyboardAppearance                = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
-    
+    self.gymSessionCountTextField.keyboardType                      = UIKeyboardTypeDecimalPad;
     // Water Intake
     
     self.waterIntakeImageView.image                                 = [UIImage imageNamed:[NSString stringWithFormat:@"icons_waterIntake_%d", (int)kScreenWidth]];
@@ -124,6 +121,7 @@
     self.waterIntakeCountTextField.text                             = @"0";
     self.waterIntakeCountTextField.textColor                        = [UIColor whiteColor];
     self.waterIntakeCountTextField.keyboardAppearance               = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.waterIntakeCountTextField.keyboardType                     = UIKeyboardTypeDecimalPad;
     
     // Junk Food
     
@@ -138,6 +136,7 @@
     self.junkFoodCountTextField.text                                = @"0";
     self.junkFoodCountTextField.textColor                           = [UIColor whiteColor];
     self.junkFoodCountTextField.keyboardAppearance                  = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.junkFoodCountTextField.keyboardType                        = UIKeyboardTypeDecimalPad;
     
     // H-protein Meals
     
@@ -152,6 +151,7 @@
     self.hProteinCountTextField.text                                = @"0";
     self.hProteinCountTextField.textColor                           = [UIColor whiteColor];
     self.hProteinCountTextField.keyboardAppearance                  = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.hProteinCountTextField.keyboardType                        = UIKeyboardTypeDecimalPad;
     
     // Hours Slapt
     
@@ -166,6 +166,7 @@
     self.hourseSleptCountTextField.text                             = @"0";
     self.hourseSleptCountTextField.textColor                        = [UIColor whiteColor];
     self.hourseSleptCountTextField.keyboardAppearance               = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.hourseSleptCountTextField.keyboardType                     = UIKeyboardTypeDecimalPad;
     
     // Carbs Consumed
     
@@ -180,6 +181,7 @@
     self.carbsConsumedCountTextField.text                           = @"0";
     self.carbsConsumedCountTextField.textColor                      = [UIColor whiteColor];
     self.carbsConsumedCountTextField.keyboardAppearance             = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    self.carbsConsumedCountTextField.keyboardType                   = UIKeyboardTypeDecimalPad;
 }
 
 - (UIView *)roundCornersOnView:(UIView *)view onTopLeft:(BOOL)tl topRight:(BOOL)tr bottomLeft:(BOOL)bl bottomRight:(BOOL)br radius:(float)radius {
@@ -217,9 +219,27 @@
     }
 }
 
-- (IBAction)backflip:(UIButton *)sender {
-
+- (IBAction)saveButtonActionHendlier:(UIButton *)sender {
+    
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.gymSession = [self convertText:self.gymSessionCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.waterIntake = [self convertText:self.waterIntakeCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.junkFood = [self convertText:self.junkFoodCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hProtein = [self convertText:self.hProteinCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hoursSlept = [self convertText:self.hourseSleptCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.carbsConsumed = [self convertText:self.carbsConsumedCountTextField.text];
+    
     [self.cellSelf leftFlip];
+}
+
+- (IBAction)backflip:(UIButton *)sender {
+    
+    [self.cellSelf leftFlip];
+}
+
+- (NSNumber*)convertText:(NSString*)text {
+    
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    return [formatter numberFromString: text];
 }
 
 @end

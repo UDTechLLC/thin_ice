@@ -65,6 +65,4 @@ static NSString * const kAchievementsDescriptions[] = {
     [[SlideNavigationController sharedInstance] presentViewController:vc animated:YES completion:nil];
 }
 
-
-
 @end

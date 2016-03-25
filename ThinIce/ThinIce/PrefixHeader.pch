@@ -29,6 +29,10 @@
 #import "AchievementsInfo.h"
 #import "SavedUser.h"
 #import "Achievement.h"
+#import "UserDaysCards.h"
+#import "RecomendationActions.h"
+#import "DayCardsCreator.h"
+@import CoreMotion;
 
 #endif /* PrefixHeader_pch */
 

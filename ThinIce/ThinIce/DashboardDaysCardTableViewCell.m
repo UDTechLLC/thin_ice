@@ -14,6 +14,11 @@
     BackSideCellViewController                           *vc;
 }
 
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)awakeFromNib {
     // Initialization code
     
@@ -26,7 +31,7 @@
     vc.cellSelf                                             = self;
 }
 
-- (void)loadCellWithData:(id)data {
+- (void)loadCellWithData:(UserDaysCards*)data {
     // INIT Header View Block
     
     self.headerCellView.backgroundColor                     = [[HelperManager sharedServer] colorwithHexString:@"#6568a1" alpha:1.0];
@@ -100,7 +105,7 @@
     
     self.gymSessionSeparator.backgroundColor                = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.gymSessionCountLabel.text                          = @"2";
+    self.gymSessionCountLabel.text                          = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.gymSession stringValue];
     self.gymSessionCountLabel.textColor                     = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextGYMSession alpha:1.0];
     
         // Water Intake
@@ -113,7 +118,7 @@
     
     self.waterIntakeSeparator.backgroundColor               = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.waterIntakeCountLabel.text                         = @"2000";
+    self.waterIntakeCountLabel.text                         = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.waterIntake stringValue];
     self.waterIntakeCountLabel.textColor                    = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextWaterIntake alpha:1.0];
     
         // Junk Food
@@ -126,7 +131,7 @@
     
     self.junkFoodSeparator.backgroundColor                  = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.junkFoodCountLabel.text                            = @"2";
+    self.junkFoodCountLabel.text                            = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.junkFood stringValue];
     self.junkFoodCountLabel.textColor                       = [[HelperManager sharedServer] colorwithHexString:ColorFromInputTextJunkFood alpha:1.0];
     
         // H-protein Meals
@@ -139,7 +144,7 @@
     
     self.hProteinMealsSeparator.backgroundColor             = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.hProteinCountLabel.text                            = @"1";
+    self.hProteinCountLabel.text                            = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hProtein stringValue];
     self.hProteinCountLabel.textColor                       = [[HelperManager sharedServer] colorwithHexString:ColorFromHproteinMeals alpha:1.0];
     
         // Hours Slapt
@@ -152,7 +157,7 @@
     
     self.hourseSleptSeparator.backgroundColor               = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.hourseSleptCountLabel.text                         = @"1";
+    self.hourseSleptCountLabel.text                         = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hoursSlept stringValue];
     self.hourseSleptCountLabel.textColor                    = [[HelperManager sharedServer] colorwithHexString:ColorFromHproteinMeals alpha:1.0];
     
         // Carbs Consumed
@@ -165,8 +170,75 @@
     
     self.carbsConsumedSeparator.backgroundColor             = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.carbsConsumedCountLabel.text                       = @"0";
+    self.carbsConsumedCountLabel.text                       = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.carbsConsumed stringValue];
     self.carbsConsumedCountLabel.textColor                  = [[HelperManager sharedServer] colorwithHexString:ColorFromHproteinMeals alpha:1.0];
+}
+
+- (void)addCellsObservers {
+    
+    [self addObserver:[AccountInfoManager sharedManager].userDaysCard.currentCard forKeyPath:@"temperature" options:NSKeyValueObservingOptionNew context:NULL];
+    [self addObserver:[AccountInfoManager sharedManager].userDaysCard.currentCard forKeyPath:@"currentTime" options:NSKeyValueObservingOptionNew context:NULL];
+    [self addObserver:[AccountInfoManager sharedManager].userDaysCard.currentCard forKeyPath:@"targetTime" options:NSKeyValueObservingOptionNew context:NULL];
+    [self addObserver:[AccountInfoManager sharedManager].userDaysCard.currentCard forKeyPath:@"timeProgress" options:NSKeyValueObservingOptionNew context:NULL];
+    [self addObserver:[AccountInfoManager sharedManager].userDaysCard.currentCard forKeyPath:@"burntCalories" options:NSKeyValueObservingOptionNew context:NULL];
+    
+    [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions addObserver:self forKeyPath:@"gymSession" options:NSKeyValueObservingOptionNew context:NULL];
+    [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions addObserver:self forKeyPath:@"waterIntake" options:NSKeyValueObservingOptionNew context:NULL];
+    [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions addObserver:self forKeyPath:@"junkFood" options:NSKeyValueObservingOptionNew context:NULL];
+    [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions addObserver:self forKeyPath:@"hProtein" options:NSKeyValueObservingOptionNew context:NULL];
+    [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions addObserver:self forKeyPath:@"hoursSlept" options:NSKeyValueObservingOptionNew context:NULL];
+    [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions addObserver:self forKeyPath:@"carbsConsumed" options:NSKeyValueObservingOptionNew context:NULL];
+}
+// Observers
+
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context {
+    
+    if ([keyPath isEqual:@"temperature"]) {
+        
+
+    }
+    if ([keyPath isEqual:@"currentTime"]) {
+        
+        
+    }
+    if ([keyPath isEqual:@"targetTime"]) {
+        
+        
+    }
+    if ([keyPath isEqual:@"timeProgress"]) {
+        
+        
+    }
+    if ([keyPath isEqual:@"burntCalories"]) {
+        
+        
+    }
+    
+    
+    if ([keyPath isEqual:@"gymSession"]) {
+        
+        self.waterIntakeCountLabel.text                         = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.gymSession stringValue];
+    }
+    if ([keyPath isEqual:@"waterIntake"]) {
+        
+        self.junkFoodCountLabel.text                            = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.waterIntake stringValue];
+    }
+    if ([keyPath isEqual:@"junkFood"]) {
+        
+        self.junkFoodCountLabel.text                            = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.junkFood stringValue];
+    }
+    if ([keyPath isEqual:@"hProtein"]) {
+        
+        self.hProteinCountLabel.text                            = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hProtein stringValue];
+    }
+    if ([keyPath isEqual:@"hoursSlept"]) {
+        
+        self.hourseSleptCountLabel.text                         = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hoursSlept stringValue];
+    }
+    if ([keyPath isEqual:@"carbsConsumed"]) {
+        
+        self.carbsConsumedCountLabel.text                       = [[AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.carbsConsumed stringValue];
+    }
 }
 
 // RightFlip
