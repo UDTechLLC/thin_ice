@@ -213,4 +213,49 @@
     return state;
 }
 
+- (NSString*)currentDateText:(NSDate*)date {
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MMM dd, yyyy"];
+    
+    return [dateFormat stringFromDate: date];
+}
+
+- (NSString*)currentTimeText:(NSDate*)time {
+    
+    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+    [timeFormat setDateFormat:@"HH:mm:ss"];
+    
+    return [timeFormat stringFromDate: time];
+}
+
+- (NSString*)calculateCelsiusFahrenheitValue:(int)temperature {
+    
+    if([[AccountInfoManager sharedManager].userToken.userSettings.user_temperature isEqualToString:@"℃"]) {
+        
+        return [NSString stringWithFormat:@"%d %@", (int)temperature, [AccountInfoManager sharedManager].userToken.userSettings.user_temperature];
+    } else {
+        
+        int temperatureTMPValue                         = 0;
+        temperatureTMPValue                             = (temperature * 1.8) + 32;
+        return [NSString stringWithFormat:@"%d %@", (int)temperatureTMPValue, [AccountInfoManager sharedManager].userToken.userSettings.user_temperature];
+    }
+}
+
+- (void)updateElapsedTimeDisplay:(NSTimeInterval)timeInterval ToLabel:(UILabel*)label {
+    
+    NSTimeInterval interval = timeInterval;
+    NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
+    formatter.allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    formatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorPad;
+    NSString *string = [formatter stringFromTimeInterval:interval];
+    
+    // If you want to get the individual digits of the units, use div again
+    // with a divisor of 10.
+    if(label) {
+        label.text = string;
+    }
+    NSLog(@"%@", string);
+}
+
 @end

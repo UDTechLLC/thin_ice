@@ -4,13 +4,13 @@ PODS:
     - MagicalRecord/Core (= 2.3.3)
   - MagicalRecord/Core (2.3.3)
   - MBProgressHUD (0.9.2)
-  - YLProgressBar (3.8.0)
+  - TYMProgressBarView (0.3.2)
 
 DEPENDENCIES:
   - IQKeyboardManager
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, tag `v2.3.3`)
   - MBProgressHUD
-  - YLProgressBar
+  - TYMProgressBarView
 
 EXTERNAL SOURCES:
   MagicalRecord:
@@ -26,6 +26,6 @@ SPEC CHECKSUMS:
   IQKeyboardManager: b91928f7927ba55a5829b4dcf4b7a6736ac9fc22
   MagicalRecord: e3dfdee87c234c6d460dbd5d8a32e3cb4de223aa
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  YLProgressBar: b6ec76bea4a1b8d6bdfd2995d828055a7e5f3e9a
+  TYMProgressBarView: 9f4c54bfd1cde0340f25a8c67e6c3548611f1a8e
 
 COCOAPODS: 0.39.0

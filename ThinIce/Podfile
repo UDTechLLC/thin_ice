@@ -8,7 +8,7 @@ target 'ThinIce' do
 pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git', :tag => 'v2.3.3'
 pod 'MBProgressHUD'
 pod 'IQKeyboardManager'
-pod 'YLProgressBar'
+pod 'TYMProgressBarView'
 
 end
 

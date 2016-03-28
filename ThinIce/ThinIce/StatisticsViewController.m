@@ -44,6 +44,10 @@
     [self addStatisticsBackgroundImage];
     [self addRightBarButtonWithTitle:@"Clear" normalColorHexName:ColorFromSeparators highlightedColor:ColorForHighlightedButton selector:@selector(clearStatistics)];
     [self createStatisticsViewController];
+    
+    [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: TheTracker Progress:[NSNumber numberWithInt:1]];
+    [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: ResultsOriented Progress:[NSNumber numberWithInt:1]];
+    [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: ResultsObsessed Progress:[NSNumber numberWithInt:1]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -15,6 +15,8 @@
 @property (nonatomic, strong, readwrite) AchievementsInfo           *userAchievements;
 @property (nonatomic, strong, readwrite) DayCardsCreator            *userDaysCard;
 
+@property (nonatomic, strong, readwrite) NSTimer                    *timer;
+
 @end
 
 @implementation AccountInfoManager
@@ -35,8 +37,7 @@
     
     self = [super init];
     if (self) {
-        
-        self.userDaysCard = [[DayCardsCreator alloc] init];
+
         [self p_getTimerTemperatureDeviceDelay];
         [self p_getSettings];
         [self p_getToken];
@@ -49,6 +50,8 @@
         [self addObserver:self forKeyPath:@"userSavedInHomeDirectory" options:NSKeyValueObservingOptionNew context:NULL];
         [self addObserver:self forKeyPath:@"isNotificationON" options:NSKeyValueObservingOptionNew context:NULL];
         [self addObserver:self forKeyPath:@"notificationDelay" options:NSKeyValueObservingOptionNew context:NULL];
+        
+        self.userDaysCard = [[DayCardsCreator alloc] init];
     }
     
     return self;
@@ -154,7 +157,7 @@
     
     if(self.currentDeviceTemperature == 0) {
         
-        self.currentDeviceTemperature = 13;
+        self.currentDeviceTemperature = 5;
     }
 }
 
@@ -343,12 +346,29 @@
     [settingsContext MR_saveToPersistentStoreAndWait];
 }
 
-- (void)createUserCardsWithDay {
+- (void)startDeviceWorkingTimer {
     
+    self.timer = [[NSTimer alloc] init];
     
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onTick:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer: self.timer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop] run];
+}
+
+- (void)stopDeviceWorkingTimer {
+    [self.timer invalidate];
+    self.timer = nil;
+
+}
+
+- (void)onTick:(NSTimer *)timer {
     
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.currentTime                 += 5;
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.timeProgress                = [NSNumber numberWithDouble: [AccountInfoManager sharedManager].userDaysCard.currentCard.currentTime * 1.0 / [AccountInfoManager sharedManager].userDaysCard.currentCard.targetTime];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.burntCalories               = [NSNumber numberWithDouble: [AccountInfoManager sharedManager].userDaysCard.currentCard.currentTime  * 1000 / [AccountInfoManager sharedManager].userDaysCard.currentCard.targetTime];
+    [[HelperManager sharedServer] updateElapsedTimeDisplay:[AccountInfoManager sharedManager].userDaysCard.currentCard.currentTime ToLabel:nil];
     
-    
+    [[AccountInfoManager sharedManager].userDaysCard saveCurrentCards];
 }
 
 @end

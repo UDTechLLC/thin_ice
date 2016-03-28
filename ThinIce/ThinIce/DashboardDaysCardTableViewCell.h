@@ -30,7 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel                            *timeInfoLabel;
 @property (weak, nonatomic) IBOutlet UILabel                            *targetLabel;
 @property (weak, nonatomic) IBOutlet UILabel                            *targetTimeLabel;
-@property (weak, nonatomic) IBOutlet UIView                             *progressBar;
+@property (strong, nonatomic) IBOutlet TYMProgressBarView               *progressBar;
 @property (weak, nonatomic) IBOutlet UIView                             *separatorView;
 
 // Thin Ice Burn Calories Cell Block
@@ -44,42 +44,36 @@
     // Gym Session
 
 @property (weak, nonatomic) IBOutlet UIImageView                        *gymSessionImageView;
-@property (weak, nonatomic) IBOutlet UILabel                            *gymSessionLabel;
 @property (weak, nonatomic) IBOutlet UIView                             *gymSessionSeparator;
 @property (weak, nonatomic) IBOutlet UILabel                            *gymSessionCountLabel;
 
     // Water Intake
 
 @property (weak, nonatomic) IBOutlet UIImageView                        *waterIntakeImageView;
-@property (weak, nonatomic) IBOutlet UILabel                            *waterIntakeLabel;
 @property (weak, nonatomic) IBOutlet UIView                             *waterIntakeSeparator;
 @property (weak, nonatomic) IBOutlet UILabel                            *waterIntakeCountLabel;
 
     // Junk Food
 
 @property (weak, nonatomic) IBOutlet UIImageView                        *junkFoodImageView;
-@property (weak, nonatomic) IBOutlet UILabel                            *junkFoodLabel;
 @property (weak, nonatomic) IBOutlet UIView                             *junkFoodSeparator;
 @property (weak, nonatomic) IBOutlet UILabel                            *junkFoodCountLabel;
 
     // H-protein Meals
 
 @property (weak, nonatomic) IBOutlet UIImageView                        *hProteinMealsImageView;
-@property (weak, nonatomic) IBOutlet UILabel                            *hProteinMealsLabel;
 @property (weak, nonatomic) IBOutlet UIView                             *hProteinMealsSeparator;
 @property (weak, nonatomic) IBOutlet UILabel                            *hProteinCountLabel;
 
     // Hourse Slept
 
 @property (weak, nonatomic) IBOutlet UIImageView                        *hourseSleptImageView;
-@property (weak, nonatomic) IBOutlet UILabel                            *hourseSleptLabel;
 @property (weak, nonatomic) IBOutlet UIView                             *hourseSleptSeparator;
 @property (weak, nonatomic) IBOutlet UILabel                            *hourseSleptCountLabel;
 
     // Carbs consumed
 
 @property (weak, nonatomic) IBOutlet UIImageView                        *carbsConsumedImageView;
-@property (weak, nonatomic) IBOutlet UILabel                            *carbsConsumedLabel;
 @property (weak, nonatomic) IBOutlet UIView                             *carbsConsumedSeparator;
 @property (weak, nonatomic) IBOutlet UILabel                            *carbsConsumedCountLabel;
 
@@ -88,7 +82,8 @@
 @property(strong, nonatomic) DashboardViewController                    *dashboardSelf;
 
 
-- (void)loadCellWithData:(UserDaysCards*)data;
+- (void)loadCellWithData:(UserDaysCards*)data isToday:(BOOL)todaystate;
+- (void)updateLabelText;
 - (IBAction)cellflipActionButton:(UIButton *)sender;
 - (void)addCellsObservers;
 - (void)leftFlip;

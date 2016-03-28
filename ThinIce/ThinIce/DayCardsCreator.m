@@ -8,10 +8,6 @@
 
 #import "DayCardsCreator.h"
 
-#define OPACITY                         0.55
-
-static NSString * const kDayCardsColor[] = { @"#BA68C8", @"#7E57C2", @"#4B6697", @"#29B6F6", @"#64FFDA", @"#16A086", @"#54A6B7", @"#607d8b" };
-
 @implementation DayCardsCreator
 
 - (id)init {
@@ -36,21 +32,74 @@ static NSString * const kDayCardsColor[] = { @"#BA68C8", @"#7E57C2", @"#4B6697",
         NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
         NSInteger weekday = [comps weekday] - 1;
         
-        
         self.currentCard = [[UserDaysCards alloc] initCardsWithDaysID:weekday CurrentCreateDate:[NSDate date]];
+        [self.weeksCardArray addObject:self.currentCard];   
+        [AccountInfoManager sharedManager].userToken.userCard = [NSKeyedArchiver archivedDataWithRootObject:self.weeksCardArray];
+        [self saveCurrentCards];
         
+    } else if(arrayForCards.count == 7 && [self checkCardsCreateDate]) {
+        
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+        NSInteger weekday = [comps weekday] - 1;
+        
+        [arrayForCards removeLastObject];
+        self.currentCard = [[UserDaysCards alloc] initCardsWithDaysID:weekday CurrentCreateDate:[NSDate date]];
         [self.weeksCardArray addObject:self.currentCard];
+        [AccountInfoManager sharedManager].userToken.userCard = [NSKeyedArchiver archivedDataWithRootObject:self.weeksCardArray];
+        [self saveCurrentCards];
+        
+    } else if ([self checkCardsCreateDate]) {
+        
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+        NSInteger weekday = [comps weekday] - 1;
+
+        self.currentCard = [[UserDaysCards alloc] initCardsWithDaysID:weekday CurrentCreateDate:[NSDate date]];
+        [self.weeksCardArray addObject:self.currentCard];
+        [AccountInfoManager sharedManager].userToken.userCard = [NSKeyedArchiver archivedDataWithRootObject:self.weeksCardArray];
+        
+        [self saveCurrentCards];
     } else {
         
-        
+        self.weeksCardArray = [NSMutableArray arrayWithArray: arrayForCards];
+        self.currentCard    = [self.weeksCardArray firstObject];
     }
 }
 
 - (void)changeCardTemperature:(NSNumber*)temperature {
     
+    [self.currentCard changeTemperatureWithValue: temperature];
+    [self saveCurrentCards];
+}
+
+- (BOOL)checkCardsCreateDate {
     
+    NSMutableArray *arrayForCards                                   = [[NSMutableArray alloc] init];
+    arrayForCards                                                   = [NSKeyedUnarchiver unarchiveObjectWithData: [AccountInfoManager sharedManager].userToken.userCard];
+    UserDaysCards *newUserCards                                     = [arrayForCards firstObject];
     
+    if([[NSCalendar currentCalendar] isDate:[NSDate date] inSameDayAsDate:newUserCards.createCardsDate]) {
+        
+        return NO;
+    } else {
+        
+        return YES;
+    }
+}
+
+- (void)saveCurrentCards {
     
+    NSManagedObjectContext *cardsContext                            = [NSManagedObjectContext MR_defaultContext];
+
+    NSMutableArray *arrayForCards                                   = [[NSMutableArray alloc] init];
+    arrayForCards                                                   = [NSKeyedUnarchiver unarchiveObjectWithData: [AccountInfoManager sharedManager].userToken.userCard];
+    
+    [arrayForCards replaceObjectAtIndex:0 withObject:self.currentCard];
+    self.weeksCardArray = [NSMutableArray arrayWithArray: arrayForCards];
+    [AccountInfoManager sharedManager].userToken.userCard           = [NSKeyedArchiver archivedDataWithRootObject:self.weeksCardArray];
+    
+    [cardsContext MR_saveToPersistentStoreAndWait];
 }
 
 @end

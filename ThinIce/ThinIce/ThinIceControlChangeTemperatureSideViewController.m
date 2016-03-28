@@ -156,7 +156,7 @@ typedef NS_ENUM(NSInteger, ChangeTemperatureButton) {
     self.temperatureLabel.textColor                     = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     self.temperatureSeparator.backgroundColor           = [[HelperManager sharedServer] colorwithHexString:@"#33c6cb" alpha:1.0];
     
-    self.changeTemperatureLabel.text                    = [self calculateCelsiusFahrenheitValue];
+    self.changeTemperatureLabel.text                    = [[HelperManager sharedServer] calculateCelsiusFahrenheitValue:(int)temperatureTemp];
     self.changeTemperatureLabel.textColor               = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     
     [self.plusButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ThinIceControl_plusButton_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
@@ -211,34 +211,23 @@ typedef NS_ENUM(NSInteger, ChangeTemperatureButton) {
             {
                 temperatureTemp++;
                 [AccountInfoManager sharedManager].currentDeviceTemperature = temperatureTemp;
-                return [self calculateCelsiusFahrenheitValue];
+                [[AccountInfoManager sharedManager].userDaysCard changeCardTemperature:[NSNumber numberWithInt: (int)temperatureTemp]];
+                return [[HelperManager sharedServer] calculateCelsiusFahrenheitValue:(int)temperatureTemp];
             }
                 break;
             case MinusTemperatureButton:
             {
                 temperatureTemp--;
                 [AccountInfoManager sharedManager].currentDeviceTemperature = temperatureTemp;
-                return [self calculateCelsiusFahrenheitValue];
+                [[AccountInfoManager sharedManager].userDaysCard  changeCardTemperature:[NSNumber numberWithInt: (int)temperatureTemp]];
+                return [[HelperManager sharedServer] calculateCelsiusFahrenheitValue:(int)temperatureTemp];
             }
                 break;
             default:
                 break;
         }
     }
-    return [self calculateCelsiusFahrenheitValue];
-}
-
-- (NSString*)calculateCelsiusFahrenheitValue {
-    
-    if([[AccountInfoManager sharedManager].userToken.userSettings.user_temperature isEqualToString:@"℃"]) {
-        
-        return [NSString stringWithFormat:@"%d %@", (int)temperatureTemp, [AccountInfoManager sharedManager].userToken.userSettings.user_temperature];
-    } else {
-        
-        int temperatureTMPValue                         = 0;
-        temperatureTMPValue                             = (temperatureTemp * 1.8) + 32;
-        return [NSString stringWithFormat:@"%d %@", (int)temperatureTMPValue, [AccountInfoManager sharedManager].userToken.userSettings.user_temperature];
-    }
+    return [[HelperManager sharedServer] calculateCelsiusFahrenheitValue:(int)temperatureTemp];
 }
 
 - (IBAction)plusButtonActionHendlier:(UIButton *)sender {

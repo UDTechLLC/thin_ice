@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'EC2EA5CBBF859E801F97B355'
-               BlueprintName = 'YLProgressBar'
+               BlueprintIdentifier = '448556321059D8078C81E786'
+               BlueprintName = 'TYMProgressBarView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libYLProgressBar.a'>
+               BuildableName = 'libTYMProgressBarView.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

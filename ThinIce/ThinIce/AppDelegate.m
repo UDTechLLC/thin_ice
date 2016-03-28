@@ -60,6 +60,10 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    NSTimer* t = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(methodRunAfterBackground) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:t forMode:UITrackingRunLoopMode];
+    [[NSRunLoop currentRunLoop] run];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -82,6 +86,10 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     
+}
+
+- (void)methodRunAfterBackground {
+    NSLog(@"1");
 }
 
 @end

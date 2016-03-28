@@ -8,6 +8,10 @@
 
 #import "BackSideCellViewController.h"
 
+#define OPACITY                         0.55
+
+static NSString * const kDayCardsColor[] = { @"#BA68C8", @"#7E57C2", @"#4B6697", @"#29B6F6", @"#64FFDA", @"#16A086", @"#54A6B7", @"#607d8b" };
+
 @interface BackSideCellViewController () {
     NSNumberFormatter *formatter;
 }
@@ -84,7 +88,7 @@
     self.view.backgroundColor                                       = [[HelperManager sharedServer] colorwithHexString:@"#346b7d" alpha:0.5];
     self.view.layer.cornerRadius                                    = CellAndTableCornerRadius;
     
-    self.headerCellView.backgroundColor                             = [[HelperManager sharedServer] colorwithHexString:@"#6568a1" alpha:1.0];
+    self.headerCellView.backgroundColor                             = [[HelperManager sharedServer] colorwithHexString: kDayCardsColor[self.cellData.currentCardsID] alpha:OPACITY];
     
     [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
     [self.saveButton setTitle:@"Save" forState:UIControlStateNormal];
@@ -103,7 +107,7 @@
     
     self.gymSessionSeparator.backgroundColor                        = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.gymSessionCountTextField.text                              = @"0";
+    self.gymSessionCountTextField.text                              = [NSString stringWithFormat:@"%@", [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.gymSession];
     self.gymSessionCountTextField.textColor                         = [UIColor whiteColor];
     self.gymSessionCountTextField.keyboardAppearance                = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.gymSessionCountTextField.keyboardType                      = UIKeyboardTypeDecimalPad;
@@ -113,12 +117,12 @@
     self.waterIntakeImageView.contentMode                           = UIViewContentModeScaleAspectFit;
     self.waterIntakeImageView.clipsToBounds                         = YES;
     
-    self.waterIntakeLabel.text                                      = @"Water Intake, ml";
+    self.waterIntakeLabel.text                                      = [NSString stringWithFormat:@"Water Intake, %@", [AccountInfoManager sharedManager].userToken.userSettings.user_Volume];
     self.waterIntakeLabel.textColor                                 = [[HelperManager sharedServer] colorwithHexString:ColorFromPlaceHolderText alpha:1.0];
     
     self.waterIntakeSeparator.backgroundColor                       = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.waterIntakeCountTextField.text                             = @"0";
+    self.waterIntakeCountTextField.text                             = [NSString stringWithFormat:@"%@", [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.waterIntake];
     self.waterIntakeCountTextField.textColor                        = [UIColor whiteColor];
     self.waterIntakeCountTextField.keyboardAppearance               = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.waterIntakeCountTextField.keyboardType                     = UIKeyboardTypeDecimalPad;
@@ -133,7 +137,7 @@
     
     self.junkFoodSeparator.backgroundColor                          = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.junkFoodCountTextField.text                                = @"0";
+    self.junkFoodCountTextField.text                                = [NSString stringWithFormat:@"%@", [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.junkFood];
     self.junkFoodCountTextField.textColor                           = [UIColor whiteColor];
     self.junkFoodCountTextField.keyboardAppearance                  = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.junkFoodCountTextField.keyboardType                        = UIKeyboardTypeDecimalPad;
@@ -148,7 +152,7 @@
     
     self.hProteinMealsSeparator.backgroundColor                     = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.hProteinCountTextField.text                                = @"0";
+    self.hProteinCountTextField.text                                = [NSString stringWithFormat:@"%@", [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hProtein];
     self.hProteinCountTextField.textColor                           = [UIColor whiteColor];
     self.hProteinCountTextField.keyboardAppearance                  = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.hProteinCountTextField.keyboardType                        = UIKeyboardTypeDecimalPad;
@@ -163,7 +167,7 @@
     
     self.hourseSleptSeparator.backgroundColor                       = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.hourseSleptCountTextField.text                             = @"0";
+    self.hourseSleptCountTextField.text                             = [NSString stringWithFormat:@"%@", [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hoursSlept];
     self.hourseSleptCountTextField.textColor                        = [UIColor whiteColor];
     self.hourseSleptCountTextField.keyboardAppearance               = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.hourseSleptCountTextField.keyboardType                     = UIKeyboardTypeDecimalPad;
@@ -178,7 +182,7 @@
     
     self.carbsConsumedSeparator.backgroundColor                     = [[HelperManager sharedServer] colorwithHexString:ColorFromSeparators alpha:1.0];
     
-    self.carbsConsumedCountTextField.text                           = @"0";
+    self.carbsConsumedCountTextField.text                           = [NSString stringWithFormat:@"%@", [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.carbsConsumed];
     self.carbsConsumedCountTextField.textColor                      = [UIColor whiteColor];
     self.carbsConsumedCountTextField.keyboardAppearance             = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
     self.carbsConsumedCountTextField.keyboardType                   = UIKeyboardTypeDecimalPad;
@@ -221,13 +225,18 @@
 
 - (IBAction)saveButtonActionHendlier:(UIButton *)sender {
     
-    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.gymSession = [self convertText:self.gymSessionCountTextField.text];
-    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.waterIntake = [self convertText:self.waterIntakeCountTextField.text];
-    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.junkFood = [self convertText:self.junkFoodCountTextField.text];
-    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hProtein = [self convertText:self.hProteinCountTextField.text];
-    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hoursSlept = [self convertText:self.hourseSleptCountTextField.text];
-    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.carbsConsumed = [self convertText:self.carbsConsumedCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.gymSession     = [self convertText:self.gymSessionCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.waterIntake    = [self convertText:self.waterIntakeCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.junkFood       = [self convertText:self.junkFoodCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hProtein       = [self convertText:self.hProteinCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.hoursSlept     = [self convertText:self.hourseSleptCountTextField.text];
+    [AccountInfoManager sharedManager].userDaysCard.currentCard.recomendationDaysActions.carbsConsumed  = [self convertText:self.carbsConsumedCountTextField.text];
     
+    [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: TheDabbler Progress:[NSNumber numberWithInt:1]];
+    [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: TheSchemer Progress:[NSNumber numberWithInt:1]];
+    [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: TheStrategist Progress:[NSNumber numberWithInt:1]];
+    
+    [self.cellSelf updateLabelText];
     [self.cellSelf leftFlip];
 }
 

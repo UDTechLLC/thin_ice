@@ -69,6 +69,7 @@
     [self addNavigationBarAttributeTitle: @"Dashboard"];
     self.navigationController.navigationBarHidden = NO;
     [self translucentNavigationBar: YES];
+    [self.dayCardsTableView reloadData];
     
     [super viewWillAppear:YES];
 }
@@ -97,13 +98,13 @@
 
 - (void)createViewController {
     
+    [[AccountInfoManager sharedManager].userAchievements addValueToAchievement: FreshFace Progress:[NSNumber numberWithInt:1]];
+    
     // Check Or Create Days Cards
     
     [[AccountInfoManager sharedManager].userDaysCard checkAndCreateCards];
     
     cellData = [NSMutableArray arrayWithArray:[AccountInfoManager sharedManager].userDaysCard.weeksCardArray];
-    
-    
     
     
     isFirstCreation                                         = YES;
@@ -180,12 +181,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return cellData.count; //cellData.count;
+    return 1; //cellData.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1; //array count returns 10
+    return cellData.count; //array count returns 10
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -200,15 +201,14 @@
     
     DashboardDaysCardTableViewCell *cell    = [self.dayCardsTableView dequeueReusableCellWithIdentifier:kDashboardCellIdentifier forIndexPath:indexPath];
     
-    if(indexPath == [NSIndexPath indexPathWithIndex:0]) {
+    if(indexPath.section == 0) {
         
-        [cell loadCellWithData:[AccountInfoManager sharedManager].userDaysCard.currentCard];
+        [cell loadCellWithData:[AccountInfoManager sharedManager].userDaysCard.currentCard isToday:YES];
         [cell addCellsObservers];
         cell.dashboardSelf                      = self;
     } else {
         
-        [cell loadCellWithData: [cellData objectAtIndex:indexPath.row]];
-        [cell addCellsObservers];
+        [cell loadCellWithData: [cellData objectAtIndex:indexPath.row] isToday:NO];
         cell.dashboardSelf                      = self;
     }
     
@@ -272,13 +272,14 @@
 
 - (IBAction)powerButtonActionHendlier:(UIButton *)sender {
     
-    NSMutableArray *arrayForChanges                                 = [[NSMutableArray alloc] init];
-    arrayForChanges = [NSKeyedUnarchiver unarchiveObjectWithData: [AccountInfoManager sharedManager].userToken.userAchievements];
-    
-    for (Achievement *object in arrayForChanges) {
-        NSLog(@"achivment_id - %@", object.achievementID);
-        NSLog(@"achivment_progress - %@", object.achievementProgress);
-        NSLog(object.achievementIsEnable ? @"achivment_addStatus - YES" : @"achivment_addStatus - NO");
+    if([[AccountInfoManager sharedManager].timer isValid]) {
+
+        [self.powerButton setImage:[UIImage imageNamed: [NSString stringWithFormat:@"button_power_normal_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
+        [[AccountInfoManager sharedManager] stopDeviceWorkingTimer];
+    } else {
+        
+        [self.powerButton setImage:[UIImage imageNamed: [NSString stringWithFormat:@"button_power_active_%d", (int)kScreenWidth]] forState:UIControlStateNormal];
+        [[AccountInfoManager sharedManager] startDeviceWorkingTimer];
     }
 }
 

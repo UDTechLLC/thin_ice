@@ -17,9 +17,9 @@
 #define kRecomendationActions                       @"RecomendationActionsCards"
 
 
-#define RecomendCardTargetTime          60
+#define RecomendCardTargetTime          1
 #define RecomendTemperature             5
-#define RecomendBurntCalories           1000
+#define RecomendBurntCalories           1500
 
 @implementation UserDaysCards
 
@@ -33,18 +33,14 @@
         self.recomendationDaysActions   = [[RecomendationActions alloc] init];
         self.timeProgress               = [NSNumber numberWithInteger:0];
         [self calculateTargetTimeTemperatureBurntCalories];
+        [self changeCurrentTimeWithTimer];
     }
     return self;
 }
 
 - (void)calculateTargetTimeTemperatureBurntCalories {
     
-    // calculate Target Time
-    NSDate *mydate                      = [NSDate date];
-    NSTimeInterval secondsInEightHours  = RecomendCardTargetTime * 60 * 60;
-    NSDate *dateEightHoursAhead         = [mydate dateByAddingTimeInterval:secondsInEightHours];
-    
-    self.targetTime                     = dateEightHoursAhead;
+    self.targetTime                     = RecomendCardTargetTime * 60 * 60;
     
     // calculate Recomend Temperature
     
@@ -52,18 +48,19 @@
     
     // calculate Recomend Temperature
     
-    self.burntCalories                  = [NSNumber numberWithInteger:RecomendBurntCalories];
+    self.burntCalories                  = [NSNumber numberWithInteger:0];
 }
 
 - (void)changeTemperatureWithValue:(NSNumber*)temperatureValue {
     
-    self.temperature = temperatureValue;
+    self.temperature                    = temperatureValue;
     
+    self.targetTime                     = 18 * [self.temperature integerValue] * 60;
 }
 
 - (void)changeCurrentTimeWithTimer {
     
-  //  self.currentTime
+    [self updateElapsedTimeDisplay];
 }
 
 - (void)changeCardsRecomendationActionsGymSession:(NSNumber*)gymSession WaterIntake:(NSNumber*)waterIntake JunkFood:(NSNumber*)junkFood Hprotein:(NSNumber*)hprotein HoursSlept:(NSNumber*)hoursSlept CarbsConsumed:(NSNumber*)carbsConsumed {
@@ -83,8 +80,8 @@
         
         self.currentCardsID             = [aDecoder decodeIntegerForKey:kcurrentCardsDayID];
         self.createCardsDate            = [aDecoder decodeObjectForKey:kCreateDateKey];
-        self.targetTime                 = [aDecoder decodeObjectForKey:kTargetTime];
-        self.currentTime                = [aDecoder decodeObjectForKey:kCurrentTime];
+        self.targetTime                 = [aDecoder decodeDoubleForKey:kTargetTime];
+        self.currentTime                = [aDecoder decodeDoubleForKey:kCurrentTime];
         self.temperature                = [aDecoder decodeObjectForKey:kTemperature];
         self.burntCalories              = [aDecoder decodeObjectForKey:kBurntCalories];
         self.recomendationDaysActions   = [aDecoder decodeObjectForKey:kRecomendationActions];
@@ -96,11 +93,33 @@
     
     [encoder encodeInteger:self.currentCardsID forKey:kcurrentCardsDayID];
     [encoder encodeObject:self.createCardsDate forKey:kCreateDateKey];
-    [encoder encodeObject:self.targetTime forKey:kTargetTime];
-    [encoder encodeObject:self.currentTime forKey:kCurrentTime];
+    [encoder encodeDouble:self.targetTime forKey:kTargetTime];
+    [encoder encodeDouble:self.currentTime forKey:kCurrentTime];
     [encoder encodeObject:self.temperature forKey:kTemperature];
     [encoder encodeObject:self.burntCalories forKey:kBurntCalories];
     [encoder encodeObject:self.recomendationDaysActions forKey:kRecomendationActions];
+}
+
+- (void)updateElapsedTimeDisplay {
+    
+    // You could also have stored the start time using
+    // CFAbsoluteTimeGetCurrent()
+    NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceNow];
+    self.currentTime = elapsedTime;
+    
+    // Divide the interval by 3600 and keep the quotient and remainder
+    div_t h = div(elapsedTime, 3600);
+    int hours = h.quot;
+    // Divide the remainder by 60; the quotient is minutes, the remainder
+    // is seconds.
+    div_t m = div(h.rem, 60);
+    int minutes = m.quot;
+    int seconds = m.rem;
+    
+    // If you want to get the individual digits of the units, use div again
+    // with a divisor of 10.
+    
+    NSLog(@"%d:%d:%d", hours, minutes, seconds);
 }
 
 @end

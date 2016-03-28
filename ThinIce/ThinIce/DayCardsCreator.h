@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UserDaysCards         *currentCard;
 @property (strong, nonatomic) NSMutableArray        *weeksCardArray;
 
+- (void)saveCurrentCards;
 - (void)checkAndCreateCards;
 - (void)changeCardTemperature:(NSNumber*)temperature;
 

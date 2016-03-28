@@ -25,8 +25,8 @@ typedef NS_ENUM(NSInteger, CardsDaysID) {
 
 @property (nonatomic) CardsDaysID                       currentCardsID;
 @property (strong, nonatomic) NSDate                    *createCardsDate;
-@property (strong, nonatomic) NSDate                    *targetTime;
-@property (strong, nonatomic) NSDate                    *currentTime;
+@property (nonatomic) NSTimeInterval                    targetTime;
+@property (nonatomic) NSTimeInterval                    currentTime;
 @property (strong, nonatomic) NSNumber                  *temperature;
 @property (strong, nonatomic) NSNumber                  *timeProgress;
 @property (strong, nonatomic) NSNumber                  *burntCalories;

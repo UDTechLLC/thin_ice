@@ -1,3 +1,6 @@
+#ifndef REMOVE_IB_DESIGNABLE
+IB_DESIGNABLE
+#endif
 //
 //  PrefixHeader.pch
 //  ThinIce
@@ -22,7 +25,7 @@
 #import "CustomNavigationBar.h"
 #import "SlideNavigationController.h"
 #import "BaseSignUpViewController.h"
-#import "YLProgressBar.h"
+#import "TYMProgressBarView.h"
 #import "QuartzCore/QuartzCore.h"
 #import "AchievemetsUnlockedViewController.h"
 #import "AchievementsUnlockerManager.h"

@@ -86,6 +86,8 @@
 
 - (void)createCircleViewBlock {
 
+    doneCirclePercent = [NSNumber numberWithInteger:arc4random()%70];
+    
 // Done Block
     self.doneLabel.text                     = @"Done";
     self.doneLabel.textColor                = [[HelperManager sharedServer] colorwithHexString:ColorForStatisticsCircleStateFull alpha:1.0];

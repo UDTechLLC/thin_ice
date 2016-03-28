@@ -13,8 +13,10 @@
 
 + (HelperManager *)sharedServer;
 
+
 - (void)startPOSTNotification;
 - (void)stopPOSTNotification;
+
 
 - (UIColor *)colorwithHexString:(NSString *)hexStr alpha:(CGFloat)alpha;
 - (void)saveContextWithBlock:(void(^)(NSManagedObjectContext *localContext))block;
@@ -23,9 +25,17 @@
 - (NSString*)definitionImageType:(UIImage*)image;
 - (UIImage *)getImageFromURL:(NSString *)fileURL;
 
+
 - (NSString*)setUserPredicatFormat;
 - (NSString*)setUserLoginField;
 - (BOOL)checkVariable:(NSString*)string;
 
+
+- (NSString*)currentTimeText:(NSDate*)time;
+- (NSString*)currentDateText:(NSDate*)date;
+
+- (NSString*)calculateCelsiusFahrenheitValue:(int)temperature;
+
+- (void)updateElapsedTimeDisplay:(NSTimeInterval)timeInterval ToLabel:(UILabel*)label;
 
 @end

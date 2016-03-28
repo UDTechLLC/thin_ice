@@ -43,6 +43,7 @@ typedef NS_ENUM(NSUInteger, DeviceTimerState) {
 @property (readonly, nonatomic) User                            *userToken;
 @property (readonly, nonatomic) AchievementsInfo                *userAchievements;
 @property (readonly, nonatomic) DayCardsCreator                 *userDaysCard;                          // inside NSArray Current Card
+@property (readonly, nonatomic) NSTimer                         *timer;
 
 // Notifications ViewController propertys
 
@@ -53,7 +54,6 @@ typedef NS_ENUM(NSUInteger, DeviceTimerState) {
 
 @property (nonatomic) DeviceTimerState                          deviceONOFFTimer;
 @property (nonatomic) NSInteger                                 currentDeviceTemperature;
-@property (nonatomic) NSTimer                                   *deviceTimer;
 @property (nonatomic) TimerDelay                                timerDelay;
 
 + (AccountInfoManager *)sharedManager;
@@ -64,5 +64,9 @@ typedef NS_ENUM(NSUInteger, DeviceTimerState) {
 - (void)logout;
 - (User*)findUserInDataBase;
 - (void)registrationNewUserWithParams:(NSDictionary*)userParams Block:(void(^)())block;
+
+
+- (void)startDeviceWorkingTimer;
+- (void)stopDeviceWorkingTimer;
 
 @end
